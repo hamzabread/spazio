@@ -1,0 +1,14 @@
+/* Errors */
+/* ---------------------------------------------------------- */
+
+.gh-error {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    color: #F0626B;
+    font-weight: 600;
+}
+
+.custom-layout-settings {
+    display: none;
+}

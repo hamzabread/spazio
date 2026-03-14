@@ -1,0 +1,533 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <script>\
+const domain = location.host.replace('www.', '');\
+const links = document.querySelectorAll('.gh-post-content a,.sitelinks-link a, .gh-sidebar-crypto-platforms a');\
+\
+if (!document.body.classList.contains('tag-hash-glossary')) \{\
+links.forEach((link) => \{\
+  let href = link.href;\
+\
+  if (href.includes('?ref=www.spaziocrypto.com')) \{\
+    href = href.replace('?ref=www.spaziocrypto.com', '');\
+  \}\
+  if (href.includes('&ref=www.spaziocrypto.com')) \{\
+    href = href.replace('&ref=www.spaziocrypto.com', '');\
+  \}\
+  if(!href.includes('www.spaziocrypto.com'))\{\
+    link.setAttribute('target', '_blank');\
+    link.setAttribute('rel', 'noreferrer noopener');\
+  \}\
+  link.href = href;\
+\});\
+\}\
+</script>\
+\
+<a href="#" class="termly-display-preferences">Consent Preferences</a>\
+\
+\
+<!-- ITALIANO \'97 www.spaziocrypto.com -->\
+<script>\
+(function()\{\
+  try\{\
+    var host = location.host.toLowerCase();\
+    var path = location.pathname.replace(/\\/+$/,'') || '/';\
+    var isITHome = (host === 'www.spaziocrypto.com' && (path === '/' || path === '/index' || path === '/index.html'));\
+    if (isITHome) \{\
+      document.documentElement.setAttribute('data-home-it','true');\
+    \}\
+  \}catch(e)\{\}\
+\})();\
+</script>\
+\
+\
+\
+<style>\
+/* ============================= */\
+/*  GOOGLE FONTS                 */\
+/* ============================= */\
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');\
+\
+/* ============================= */\
+/*  VISIBILE SOLO HOME IT        */\
+/* ============================= */\
+.home-it-only\{display:none;\}\
+html[data-home-it="true"] .home-it-only\{display:block;\}\
+\
+/* ============================= */\
+/*  \uc0\u9989  TERMLY SEMPRE SOPRA       */\
+/* ============================= */\
+.termly-styles-root,\
+#termly-code-snippet,\
+[class*="termly"]\{\
+  z-index:2147483647 !important;\
+\}\
+\
+/* ============================= */\
+/*  ANIMAZIONE DESKTOP           */\
+/* ============================= */\
+@keyframes slowSlideInRight\{\
+  from\{transform:translateX(120px);opacity:0\}\
+  to\{transform:translateX(0);opacity:1\}\
+\}\
+\
+/* ============================= */\
+/*  WRAPPER BASE                 */\
+/* ============================= */\
+.video-wrapper-it\{\
+  position:fixed;\
+  bottom:88px;     /* base */\
+  right:16px;\
+  width:330px;\
+  height:187px;\
+\
+  /* \uc0\u11015 \u65039  sotto Termly */\
+  z-index:2147482000;\
+\
+  overflow:visible;\
+  pointer-events:none;\
+\
+  /* di default: nascosto finch\'e9 non c'\'e8 consenso */\
+  display:none;\
+  opacity:0;\
+  transform:translateX(120px);\
+\}\
+\
+/* \uc0\u9989  DESKTOP: spostalo pi\'f9 su per NON coprire il banner 970x90 */\
+@media (min-width: 769px)\{\
+  .video-wrapper-it\{\
+    bottom: 150px; /* 90px banner + ~24px label/close + margine */\
+  \}\
+\}\
+\
+/* Desktop: quando attivo */\
+.video-wrapper-it.is-visible\{\
+  display:block;\
+  pointer-events:auto;\
+  animation:slowSlideInRight .9s cubic-bezier(.22,.61,.36,1) forwards;\
+\}\
+\
+/* ============================= */\
+/*  MOBILE                       */\
+/*  - solo dopo consenso + scroll*/\
+/*  - no animazioni              */\
+/*  - pi\'f9 in basso a destra      */\
+/* ============================= */\
+@media (max-width:768px)\{\
+  .video-wrapper-it\{\
+    bottom:16px;\
+    right:8px;\
+    transform:none!important;\
+    animation:none!important;\
+  \}\
+  .video-wrapper-it.is-visible\{\
+    animation:none!important;\
+    transform:none!important;\
+    opacity:1!important;\
+  \}\
+\}\
+\
+/* ============================= */\
+/*  VIDEO BOX \'96 GLOW ARANCIONE   */\
+/* ============================= */\
+#videoBox-it\{\
+  position:absolute;\
+  inset:0;\
+  border-radius:22px;\
+\
+  /* \uc0\u55357 \u56593  lascia uscire il glow */\
+  overflow:visible;\
+\
+  background:#000;\
+  pointer-events:auto;\
+  z-index:2147482001;\
+\
+  font-family:'Manrope', sans-serif;\
+  font-size:14px;\
+\}\
+\
+/* bordo */\
+#videoBox-it::before\{\
+  content:"";\
+  position:absolute;\
+  inset:-1px;\
+  border-radius:24px;\
+  padding:1.5px;\
+  pointer-events:none;\
+  z-index:2147482002;\
+\
+  background:linear-gradient(135deg,\
+    rgba(255,232,170,.95) 0%,\
+    rgba(241,144,33,1)    35%,\
+    rgba(255,170,80,.9)   65%,\
+    rgba(241,144,33,.95)  100%);\
+\
+  -webkit-mask:\
+    linear-gradient(#000 0 0) content-box,\
+    linear-gradient(#000 0 0);\
+  -webkit-mask-composite:xor;\
+  mask-composite:exclude;\
+\}\
+\
+/* glow */\
+#videoBox-it::after\{\
+  content:"";\
+  position:absolute;\
+  inset:-12px;\
+  border-radius:30px;\
+  pointer-events:none;\
+  z-index:2147482000;\
+\
+  background:\
+    radial-gradient(120px 80px at 85% 18%,\
+      rgba(255,235,180,.55) 0%,\
+      rgba(241,144,33,.22) 45%,\
+      rgba(241,144,33,0)   70%),\
+    linear-gradient(135deg,\
+      rgba(255,210,120,.35) 0%,\
+      rgba(241,144,33,.28) 35%,\
+      rgba(241,144,33,.12) 65%,\
+      rgba(255,200,110,.20) 100%);\
+\
+  filter:blur(14px);\
+  opacity:.95;\
+\}\
+\
+/* ============================= */\
+/*  INNER (CLIP VIDEO)           */\
+/* ============================= */\
+.video-inner-it\{\
+  position:absolute;\
+  inset:0;\
+  border-radius:22px;\
+  overflow:hidden;            /* clip SOLO qui */\
+  background:#000;\
+  z-index:2147482001;\
+\}\
+\
+/* \uc0\u55357 \u56613  FIX DEFINITIVO SPAZI BIANCHI */\
+.video-inner-it iframe\{\
+  width:100%!important;\
+  height:100%!important;\
+  display:block!important;\
+  border:0!important;\
+  background:#000!important;\
+  object-fit:cover;\
+\}\
+\
+/* ============================= */\
+/*  TYPOGRAPHY                   */\
+/* ============================= */\
+#videoBox-it .badge-latest,\
+#videoBox-it .video-close\{\
+  font-family:'Epilogue', sans-serif;\
+  font-weight:600;\
+  letter-spacing:.25px;\
+\}\
+#videoBox-it span,\
+#videoBox-it a,\
+#videoBox-it button\{\
+  font-family:'Manrope', sans-serif;\
+  font-weight:500;\
+\}\
+\
+/* ============================= */\
+/*  BADGE ISCRIVITI              */\
+/* ============================= */\
+.badge-latest\{\
+  position:absolute;\
+  top:9px;\
+  left:9px;\
+  display:inline-flex;\
+  align-items:center;\
+  gap:5px;\
+  padding:3px 8px;\
+  border-radius:9999px;\
+  background:#ff2b2b;\
+  color:#fff;\
+  font-size:10.5px;\
+  font-weight:700;\
+  letter-spacing:.25px;\
+  text-decoration:none;\
+  line-height:1.2;\
+  z-index:2147482003;\
+\}\
+.badge-latest:hover\{background:#cc0000;\}\
+\
+.latest-dot\{\
+  width:6px;\
+  height:6px;\
+  border-radius:50%;\
+  background:#fff;\
+  position:relative;\
+\}\
+.latest-dot::after\{\
+  content:"";\
+  position:absolute;\
+  inset:-3px;\
+  border-radius:50%;\
+  border:2px solid rgba(255,255,255,.6);\
+  animation:pulse 1.4s ease-out infinite;\
+\}\
+@keyframes pulse\{\
+  0%\{transform:scale(.7);opacity:1\}\
+  100%\{transform:scale(1.4);opacity:0\}\
+\}\
+\
+/* ============================= */\
+/*  CLOSE                        */\
+/* ============================= */\
+.video-close\{\
+  position:absolute;\
+  top:7px;\
+  right:9px;\
+  width:24px;\
+  height:24px;\
+  border-radius:50%;\
+  border:none;\
+  background:rgba(0,0,0,.6);\
+  color:#fff;\
+  font-size:13px;\
+  cursor:pointer;\
+  line-height:24px;\
+  text-align:center;\
+  z-index:2147482003;\
+\}\
+\
+/* ============================= */\
+/*  SEO NASCOSTO                 */\
+/* ============================= */\
+.seo-only\{\
+  position:absolute!important;\
+  width:1px!important;\
+  height:1px!important;\
+  padding:0!important;\
+  margin:-1px!important;\
+  overflow:hidden!important;\
+  clip:rect(0 0 0 0)!important;\
+  clip-path:inset(50%)!important;\
+  white-space:nowrap!important;\
+  border:0!important;\
+\}\
+</style>\
+\
+<div class="home-it-only">\
+\
+  <div class="seo-only" lang="it">\
+    <h2>Nazioni Crypto: la battaglia per denaro, potere e codice</h2>\
+    <p>Documentario su Bitcoin, blockchain e geopolitica globale.</p>\
+  </div>\
+\
+  <div class="video-wrapper-it">\
+    <div id="videoBox-it">\
+      <div class="video-inner-it">\
+\
+        <a class="badge-latest"\
+           href="https://www.youtube.com/@spaziocrypto?sub_confirmation=1"\
+           target="_blank" rel="noopener"\
+           aria-label="Ultimo video \'97 Iscriviti">\
+          <span class="latest-dot" aria-hidden="true"></span> Iscriviti\
+        </a>\
+\
+        <button class="video-close"\
+                type="button"\
+                aria-label="Chiudi video"\
+                onclick="this.closest('.video-wrapper-it').style.display='none'">\uc0\u10005 </button>\
+\
+        <iframe\
+          loading="lazy"\
+          data-src="https://www.youtube.com/embed/DSlvs0iXIy8?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1"\
+          title="Nazioni Crypto: la battaglia per denaro, potere e codice"\
+          allow="autoplay; encrypted-media; picture-in-picture"\
+          referrerpolicy="strict-origin-when-cross-origin"\
+          allowfullscreen>\
+        </iframe>\
+\
+      </div>\
+    </div>\
+  </div>\
+\
+<script>\
+(function()\{\
+  const wrap = document.querySelector('.video-wrapper-it');\
+  if(!wrap) return;\
+\
+  const iframe  = wrap.querySelector('iframe[data-src]');\
+  const isMobile = window.matchMedia('(max-width:768px)').matches;\
+  const MOBILE_SCROLL_THRESHOLD = 350;\
+\
+  const CONSENT_KEY = 'sc_termly_choice_it_v1'; // accept | reject\
+\
+  function getSaved()\{\
+    try\{\
+      return localStorage.getItem(CONSENT_KEY) || sessionStorage.getItem(CONSENT_KEY);\
+    \}catch(e)\{\
+      return sessionStorage.getItem(CONSENT_KEY);\
+    \}\
+  \}\
+  function setSaved(v)\{\
+    try\{ localStorage.setItem(CONSENT_KEY, v); \}catch(e)\{\}\
+    try\{ sessionStorage.setItem(CONSENT_KEY, v); \}catch(e)\{\}\
+  \}\
+\
+  function loadIframe()\{\
+    if(iframe && !iframe.getAttribute('src'))\{\
+      iframe.setAttribute('src', iframe.getAttribute('data-src'));\
+    \}\
+  \}\
+\
+  function showDesktop()\{\
+    wrap.style.display = 'block';\
+    requestAnimationFrame(()=>\{\
+      wrap.classList.add('is-visible');\
+      wrap.style.pointerEvents = 'auto';\
+      loadIframe();\
+    \});\
+  \}\
+\
+  function showMobileAfterScroll()\{\
+    wrap.style.display = 'block';\
+    wrap.style.opacity = '0';\
+    wrap.style.pointerEvents = 'none';\
+\
+    function reveal()\{\
+      wrap.classList.add('is-visible');\
+      wrap.style.opacity = '1';\
+      wrap.style.pointerEvents = 'auto';\
+      loadIframe();\
+      window.removeEventListener('scroll', onScroll, \{passive:true\});\
+    \}\
+\
+    function onScroll()\{\
+      if(window.scrollY >= MOBILE_SCROLL_THRESHOLD) reveal();\
+    \}\
+\
+    if(window.scrollY >= MOBILE_SCROLL_THRESHOLD) reveal();\
+    else window.addEventListener('scroll', onScroll, \{passive:true\});\
+  \}\
+\
+  function startWidgetIfAccepted()\{\
+    if(isMobile) showMobileAfterScroll();\
+    else showDesktop();\
+  \}\
+\
+  function stopWidget()\{\
+    wrap.style.display = 'none';\
+    wrap.style.pointerEvents = 'none';\
+  \}\
+\
+  const saved = getSaved();\
+  if(saved === 'reject')\{ stopWidget(); return; \}\
+  if(saved === 'accept')\{ startWidgetIfAccepted(); return; \}\
+\
+  function getCookieStr()\{ return document.cookie || ''; \}\
+\
+  function looksAcceptedFromTermly()\{\
+    try\{\
+      const c = getCookieStr().toLowerCase();\
+      if(c.includes('termly'))\{\
+        if(c.includes('reject') || c.includes('decline')) return 'reject';\
+        if(c.includes('accept') || c.includes('agree') || c.includes('consent') || c.includes('true')) return 'accept';\
+      \}\
+\
+      try\{\
+        for(let i=0;i<localStorage.length;i++)\{\
+          const key = (localStorage.key(i) || '').toLowerCase();\
+          if(!key.includes('termly')) continue;\
+\
+          const raw = localStorage.getItem(localStorage.key(i)) || '';\
+          const v = raw.toLowerCase();\
+\
+          if(v.includes('reject') || v.includes('decline')) return 'reject';\
+          if(v.includes('accept') || v.includes('agree')) return 'accept';\
+\
+          try\{\
+            const obj = JSON.parse(raw);\
+            const s = JSON.stringify(obj).toLowerCase();\
+            if(s.includes('reject') || s.includes('decline')) return 'reject';\
+            if(s.includes('accept') || s.includes('agree') || s.includes('"consent":true') || s.includes('categories') || s.includes('preferences')) return 'accept';\
+          \}catch(e)\{\}\
+        \}\
+      \}catch(e)\{\}\
+\
+      return null;\
+    \}catch(e)\{\
+      return null;\
+    \}\
+  \}\
+\
+  const inferred = looksAcceptedFromTermly();\
+  if(inferred === 'reject')\{\
+    setSaved('reject');\
+    stopWidget();\
+    return;\
+  \}\
+  if(inferred === 'accept')\{\
+    setSaved('accept');\
+    startWidgetIfAccepted();\
+    return;\
+  \}\
+\
+  const ACCEPT_WORDS = [\
+    'accept','agree','allow','ok','consent',\
+    'accetta','accetto','accetta tutto','accetta tutti','accetta e continua',\
+    'consenti','va bene','ho capito','ok'\
+  ];\
+  const REJECT_WORDS = [\
+    'reject','decline','disagree','deny','refuse',\
+    'rifiuta','rifiuto','nega','non accetto'\
+  ];\
+\
+  function textOf(el)\{\
+    return ((el.getAttribute('aria-label') || '') + ' ' + (el.textContent || '')).trim().toLowerCase();\
+  \}\
+  function matchesAny(t, arr)\{\
+    return arr.some(w => t === w || t.includes(w));\
+  \}\
+\
+  function wireTermlyButtons()\{\
+    const candidates = Array.from(document.querySelectorAll('button, a, [role="button"]'));\
+    for(const el of candidates)\{\
+      if(el.__scTermlyBound) continue;\
+      const t = textOf(el);\
+      if(!t) continue;\
+\
+      if(matchesAny(t, ACCEPT_WORDS))\{\
+        el.__scTermlyBound = true;\
+        el.addEventListener('click', ()=>\{\
+          setSaved('accept');\
+          setTimeout(startWidgetIfAccepted, 200);\
+          setTimeout(startWidgetIfAccepted, 800);\
+        \}, true);\
+      \}\
+\
+      if(matchesAny(t, REJECT_WORDS))\{\
+        el.__scTermlyBound = true;\
+        el.addEventListener('click', ()=>\{\
+          setSaved('reject');\
+          stopWidget();\
+        \}, true);\
+      \}\
+    \}\
+  \}\
+\
+  const obs = new MutationObserver(wireTermlyButtons);\
+  obs.observe(document.documentElement, \{subtree:true, childList:true, attributes:true\});\
+  wireTermlyButtons();\
+\
+  stopWidget();\
+\})();\
+</script>\
+\
+</div>\
+\
+\
+\
+\
+\
+}

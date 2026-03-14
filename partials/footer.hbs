@@ -1,0 +1,145 @@
+<footer class="gh-footer scf-footer">
+    <div class="scf-wrap gh-container">
+        <div class="scf-top">
+            <div class="scf-brand-col">
+                <a class="scf-logo {{#if @custom.dark_mode_logo}}gh-site-logo-has-DM-logo{{/if}}" href="{{@site.url}}" aria-label="{{@site.title}} home">
+                    {{#if @site.logo}}
+                    <img src="{{img_url @site.logo}}" alt="{{@site.title}}" class="gh-site-logo-img">
+                    {{#if @custom.dark_mode_logo}}
+                    <img src="{{img_url @custom.dark_mode_logo}}" alt="{{@site.title}}" class="gh-site-logo-img-dark-mode">
+                    {{/if}}
+                    {{else}}
+                    <span class="scf-site-title">{{@site.title}}</span>
+                    {{/if}}
+                </a>
+
+                <h3 class="scf-intel-title"><i class="fa fa-envelope" aria-hidden="true"></i> Daily Crypto Intel + Market News</h3>
+                <p class="scf-intel-sub">Get the latest crypto news and market analysis straight to your inbox.</p>
+
+                <form class="gh-form scf-inline-form" data-members-form="subscribe" data-members-autoredirect="false" novalidate>
+                    <div class="gh-form__input-wrapper">
+                        <input class="gh-form-input scf-email-input" data-members-email type="email" name="email-input" placeholder="Your email address" aria-label="Your email address" required="true">
+                    </div>
+                    <button class="gh-main-button gh-form__submit-button scf-subscribe-btn" type="submit" aria-label="Subscribe">
+                        <span>Subscribe</span>
+                        {{> "icons/loader"}}
+                    </button>
+                    <p class="gh-form__error" data-members-error></p>
+                </form>
+
+                <p class="scf-note">No Spam. Unsubscribe Anytime.</p>
+
+                <h4 class="scf-connect-title">CONNECT</h4>
+                <div class="scf-socials">
+                    {{#if @site.facebook}}
+                    <a href="{{facebook_url}}" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    {{/if}}
+                    {{#if @custom.telegram_link}}
+                    <a href="{{@custom.telegram_link}}" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+                    {{/if}}
+                    <a href="#" aria-label="Google"><i class="fa fa-google" aria-hidden="true"></i></a>
+                    {{#if @custom.insta_link}}
+                    <a href="{{@custom.insta_link}}" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    {{/if}}
+                    {{#if @site.twitter}}
+                    <a href="{{twitter_url}}" target="_blank" rel="noopener noreferrer" aria-label="X">X</a>
+                    {{/if}}
+                    {{#if @custom.linkedin_link}}
+                    <a href="{{@custom.linkedin_link}}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    {{/if}}
+                    {{#if @custom.tiktok_link}}
+                    <a href="{{@custom.tiktok_link}}" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa fa-music" aria-hidden="true"></i></a>
+                    {{/if}}
+                    <a href="#" aria-label="Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <div class="scf-links-col">
+                <div class="scf-col">
+                    <h5>Cryptocurrencies</h5>
+                    <a href="#">Coin Rankings</a>
+                    <a href="#">Biggest Gainers</a>
+                    <a href="#">Biggest Losers</a>
+                    <a href="#">Highest Volume</a>
+                    <a href="#">Recently Added</a>
+                </div>
+
+                <div class="scf-col">
+                    <h5>Popular Sectors</h5>
+                    <a href="#">Sectors Hub</a>
+                    <a href="#">AI</a>
+                    <a href="#">DeFi</a>
+                    <a href="#">Memes</a>
+                    <a href="#">Stablecoins</a>
+
+                    <h6>TRENDING SECTORS</h6>
+                    <div class="scf-chip-grid">
+                        <span>Stablecoins (7%)</span>
+                        <span>Cannabis (2%)</span>
+                        <span>Charity (5%)</span>
+                        <span>Inactive(0%)</span>
+                        <span>Stablecoins (0%)</span>
+                        <span>Staking (3%)</span>
+                        <span>Masternodes (0%)</span>
+                        <span>xToken (3%)</span>
+                        <span>Manufacturing (8%)</span>
+                        <span>Wrapped (3%)</span>
+                    </div>
+                </div>
+
+                <div class="scf-col">
+                    <h5>Crypto News</h5>
+                    <a href="#">Bitcoin</a>
+                    <a href="#">Ethereum</a>
+                    <a href="#">Ripple</a>
+                    <a href="#">Altcoins</a>
+
+                    <h5 class="scf-subhead">News Coverage</h5>
+                    <a href="#">DeFi</a>
+                    <a href="#">Macro</a>
+                    <a href="#">Markets</a>
+                    <a href="#">Politics</a>
+                    <a href="#">Regulation</a>
+                </div>
+
+                <div class="scf-col">
+                    <h5>Reviews</h5>
+                    <a href="#">Reviews Hub</a>
+                    <a href="#">Bitcoin IRA</a>
+                    <a href="#">Crypto Exchanges</a>
+                    <a href="#">Crypto Casinos</a>
+
+                    <h5 class="scf-subhead">Directory</h5>
+                    <a href="#">Directory Hub</a>
+                    <a href="#">Companies</a>
+                    <a href="#">Products</a>
+                    <a href="#">People</a>
+                </div>
+
+                <div class="scf-col">
+                    <h5>More</h5>
+                    <a href="#">About SpazioCrypto</a>
+                    <a href="#">Brand Assets</a>
+                    <a href="#">Company Updates</a>
+                    <a href="#">Crypto Glossary</a>
+                    <a href="#">Disclaimers</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Help &amp; Support</a>
+                    <a href="#">Media Kit</a>
+                    <a href="#">Press Releases</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scf-disclaimer">
+            Disclaimer: By using this website, you agree to the Terms and Conditions and Privacy Policy. SpazioCrypto has no affiliation or relationship with any coin, business, project or event unless explicitly noted otherwise. SpazioCrypto is only an informational website that provides news about coins, blockchain companies, blockchain products and events. None of the information you read on SpazioCrypto should be taken as investment advice. Buying crypto currencies should be considered a high-risk investment. Please do your own diligence before making any investment decisions. SpazioCrypto will not be held responsible, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any content you read on the site.
+        </div>
+
+        <div class="scf-bottom">
+            <span>© {{date format="YYYY"}} SpazioCrypto. All rights reserved.</span>
+            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+            <span>|</span>
+            <a href="/privacy-and-cookie-policy">Privacy Policy</a>
+        </div>
+    </div>
+</footer>

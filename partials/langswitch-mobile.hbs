@@ -1,0 +1,86 @@
+<button id="lang-switch-mobile" class="lang-switch-mobile gh-member-button">
+        {{#match @site.locale "en"}}                        
+            {{> flags/gb }}
+        {{else match @site.locale "it"}}                                            
+            {{> flags/it }}
+        {{else match @site.locale "de"}}                                            
+            {{> flags/de }}                    
+        {{else match @site.locale "fr"}}                                            
+            {{> flags/fr }}                    
+        {{else match @site.locale "es"}}                                            
+            {{> flags/es }}                    
+        {{else match @site.locale "ru"}}                                            
+            {{> flags/ru }}                    
+        {{else match @site.locale "zh"}}                                            
+            {{> flags/cn }}                    
+        {{else match @site.locale "ja"}}                                            
+            {{> flags/jp }}                    
+        {{else match @site.locale "ko"}}                                            
+            {{> flags/kr }}                    
+        {{/match}}
+</button>
+<div id="lang-popup-mobile" class="mobile-popup-menu">
+    
+    <button class="close-btn" aria-label="{{t " Close mobile language popup"}}">
+        {{> "icons/close-icon"}}
+    </button>
+    
+    <ul>
+        <li class="gh-mobile-menu__nav-item">
+            <a class="gh-mobile-menu__nav-item-link" href="https://www.spaziocrypto.com"> {{> flags/it }} Italiano</a>
+        </li>
+        <li class="gh-mobile-menu__nav-item">
+            <a class="gh-mobile-menu__nav-item-link" href="https://en.spaziocrypto.com">{{> flags/gb }} English</a>
+        </li>
+
+        <li class="gh-mobile-menu__nav-item">
+            <a class="gh-mobile-menu__nav-item-link" href="https://fr.spaziocrypto.com">{{> flags/fr }}  Français</a>
+        </li>
+
+        <li class="gh-mobile-menu__nav-item">
+            <a class="gh-mobile-menu__nav-item-link" href="https://es.spaziocrypto.com">{{> flags/es }} Español</a>
+        </li>
+
+        <li class="gh-mobile-menu__nav-item">
+            <a class="gh-mobile-menu__nav-item-link" href="https://de.spaziocrypto.com">{{> flags/de }} Deutsch</a>
+        </li>
+
+        <li class="gh-mobile-menu__nav-item">
+            <a class="gh-mobile-menu__nav-item-link" href="https://ru.spaziocrypto.com">{{> flags/ru }} Русский</a>
+        </li>
+
+        <li class="gh-mobile-menu__nav-item">
+            <a class="gh-mobile-menu__nav-item-link" href="https://ko.spaziocrypto.com">{{> flags/kr }}  한국어</a>
+        </li>
+
+        <li class="gh-mobile-menu__nav-item">
+            <a class="gh-mobile-menu__nav-item-link" href="https://ja.spaziocrypto.com">{{> flags/jp }}  日本語</a>
+        </li>
+
+        <li class="gh-mobile-menu__nav-item">
+            <a class="gh-mobile-menu__nav-item-link" href="https://zh.spaziocrypto.com"> {{> flags/cn }}  中文</a>
+        </li>
+
+
+    </ul>
+</div>
+
+<script>
+    const popupBtn = document.getElementById('lang-switch-mobile');
+    const popupMenu = document.getElementById('lang-popup-mobile');
+
+    popupBtn.addEventListener('click', () => {
+        popupMenu.style.display = 'flex';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == popupMenu) {
+            popupMenu.style.display = 'none';
+        }
+    });
+
+    const closeBtn = document.querySelector('.mobile-popup-menu .close-btn');
+    closeBtn.addEventListener('click', () => {
+        popupMenu.style.display = 'none';
+    });
+</script>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" data-color-scheme="light">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{meta_title}}</title>
+    <link rel="stylesheet" href="{{asset 'built/index.css'}}" />
+    <script>
+        const rootElem = document.querySelector("html[data-color-scheme]");
+
+        const detectSystemTheme = () => {
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                rootElem.setAttribute("data-color-scheme", "dark");
+            } else {
+                rootElem.setAttribute("data-color-scheme", "light");
+            }
+        };
+
+        const initTheme = () => {
+            const localStoragePref = localStorage.getItem("color-scheme");
+
+            if (localStoragePref) {
+                rootElem.setAttribute("data-color-scheme", localStoragePref);
+            } else {
+                detectSystemTheme();
+            }
+        };
+
+        initTheme();
+
+        window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", () => {
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    rootElem.setAttribute("data-color-scheme", "dark");
+                } else {
+                    rootElem.setAttribute("data-color-scheme", "light");
+                }
+            });
+    </script>
+
+    {{!-- Outputs styles for chosen border-radius setting --}}
+    {{>border-radius}}
+
+    {{!-- Outputs styles and uploads fonts for chosen font-pairing setting --}}
+    {{>font-pairings}}
+   
+    {{!-- Outputs important meta data and settings, should always be in <head> --}}
+    {{ghost_head}}
+
+</head>
+
+<body class="{{body_class}}">
+    <div class="gh-viewport">
+        <main class="gh-sign-up-page gh-form-page gh-container">
+            {{#if @site.cover_image}}
+            <picture>
+                <source srcset="{{img_url @site.cover_image size="3000" format="webp" }} 3000w, {{img_url @site.cover_image
+                    size="1600" format="webp" }} 1600w, {{img_url @site.cover_image size="1200" format="webp" }} 1200w, {{img_url
+                    @site.cover_image size="1000" format="webp" }} 1000w, {{img_url @site.cover_image size="800" format="webp" }}
+                    800w, {{img_url @site.cover_image size="600" format="webp" }} 600w, {{img_url @site.cover_image size="500"
+                    format="webp" }} 500w" sizes="100vw" type="image/webp">
+                <img class="gh-form-page-image" srcset="{{img_url @site.cover_image size="3000"}} 3000w, {{img_url
+                    @site.cover_image size="1000" }} 1000w, {{img_url @site.cover_image size="1600" }} 1600w, {{img_url
+                    @site.cover_image size="1200" }} 1200w, {{img_url @site.cover_image size="800" }} 800w, {{img_url
+                    @site.cover_image size="600" }} 600w, {{img_url @site.cover_image size="500" }} 500w" sizes="100vw"
+                    src="{{img_url @site.cover_image size="3000"}}" alt="{{t "Site cover image"}}" loading="lazy">
+            </picture>
+            {{/if}}
+            <div class="gh-form-wrapper">
+                <form class="gh-form" data-members-form="signup" data-members-autoredirect="false" novalidate>
+                    <a class="gh-site-logo gh-form-page__site-logo {{#if @custom.dark_mode_logo}}gh-site-logo-has-DM-logo{{/if}}"
+                        href="{{@site.url}}" aria-label="{{@site.title}} {{t "logo and home page link"}}">
+                        {{#if @site.logo}}
+                        {{#if @custom.dark_mode_logo}}
+                        <img src="{{img_url @custom.dark_mode_logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode">
+                        {{/if}}
+                        <img src="{{img_url @site.logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img">
+                        {{else}}
+                        <span class="gh-site-title">{{@site.title}}</span>
+                        {{/if}}
+                    </a>
+                    <h1 class="gh-form__title">{{t "Create Account"}}</h1>
+                    <div class="gh-form__input-wrapper">
+                        <label class="gh-form__input-label" for="name-input">{{t "Your Name"}}</label>
+                        <input class="gh-form-input" data-members-name type="text" name="name-unput" id="name-input" placeholder="Charles Barrett" aria-label="{{t "Your Name"}}" autofocus required="true">
+                    </div>
+                    <div class="gh-form__input-wrapper">
+                        <label class="gh-form__input-label" for="email-input">{{t "Your Email Address"}}</label>
+                        <input class="gh-form-input" data-members-email type="email" name="email-unput" id="email-input" placeholder="{{t "Your Email Address"}}hello.com" aria-label="{{t "Your Email Address"}}" required="true">
+                    </div>
+                    <button aria-labelledby="{{t "Sign Up"}}" class="gh-main-button gh-form__submit-button" type="submit">
+                        <span>{{t "Sign Up"}}</span>
+                        {{> "icons/loader"}}
+                    </button>
+                    <p class="gh-form__error" data-members-error></p>
+                    <p class="gh-form-question">
+                        <span class="gh-form-question__span">{{t "Already have an account?"}}</span>
+                        <a class="gh-form-question__link" href="{{@site.url}}/signin" aria-label="{{t "Sign In"}}">
+                            {{t "Sign In"}}
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="https://www.w3.org/2000/svg">
+                                <path d="M13.1667 6L19 12M19 12L13.1667 18M19 12L5 12" stroke="#1D1D1F" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </p>
+                    <div class="gh-form__success">
+                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <g clip-path="url(#clip0_1051_5084)">
+                                <path
+                                    d="M24 4.5C20.1433 4.5 16.3731 5.64366 13.1664 7.78634C9.95963 9.92903 7.46027 12.9745 5.98436 16.5377C4.50845 20.1008 4.12228 24.0216 4.8747 27.8043C5.62711 31.5869 7.4843 35.0615 10.2114 37.7886C12.9386 40.5157 16.4131 42.3729 20.1957 43.1253C23.9784 43.8777 27.8992 43.4916 31.4623 42.0156C35.0255 40.5397 38.071 38.0404 40.2137 34.8336C42.3564 31.6269 43.5 27.8567 43.5 24C43.4945 18.83 41.4383 13.8732 37.7826 10.2174C34.1268 6.56167 29.1701 4.50546 24 4.5ZM32.5613 20.5613L22.0613 31.0613C21.9219 31.2007 21.7565 31.3114 21.5744 31.3868C21.3923 31.4623 21.1971 31.5012 21 31.5012C20.8029 31.5012 20.6077 31.4623 20.4256 31.3868C20.2435 31.3114 20.0781 31.2007 19.9388 31.0613L15.4388 26.5613C15.1573 26.2798 14.9992 25.898 14.9992 25.5C14.9992 25.102 15.1573 24.7202 15.4388 24.4387C15.7202 24.1573 16.102 23.9992 16.5 23.9992C16.8981 23.9992 17.2798 24.1573 17.5613 24.4387L21 27.8794L30.4388 18.4387C30.5781 18.2994 30.7436 18.1888 30.9257 18.1134C31.1078 18.038 31.3029 17.9992 31.5 17.9992C31.6971 17.9992 31.8923 18.038 32.0744 18.1134C32.2564 18.1888 32.4219 18.2994 32.5613 18.4387C32.7006 18.5781 32.8112 18.7436 32.8866 18.9257C32.962 19.1077 33.0008 19.3029 33.0008 19.5C33.0008 19.6971 32.962 19.8923 32.8866 20.0743C32.8112 20.2564 32.7006 20.4219 32.5613 20.5613Z"
+                                    fill="#00B567" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_1051_5084">
+                                    <rect width="48" height="48" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <p class="gh-form__success-title">{{t "Success! Now Check Your Email"}}</p>
+                        <p class="gh-form__success-text">{{t "To complete Sign Up, click the confirmation link in your inbox. If it doesn’t
+                            arrive within 3 minutes, check your spam folder."}}</p>
+                        <a href="{{@site.url}}" class="gh-main-button">{{t "Ok, Thanks"}}</a>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    {{! <foot> }}
+    {{ghost_foot}}
+    {{! Outputs important scripts - should always be included before closing body tag }}
+</body>
+
+</html>

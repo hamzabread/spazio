@@ -1,0 +1,82 @@
+@keyframes overlayFadeIn {
+    from {
+        background-color: rgba(210, 210, 210, 0);
+    }
+    to {
+        background-color: rgba(210, 210, 210, 0.5);
+    }
+}
+
+@keyframes moveRight {
+    from {
+        left: -450px;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+@keyframes moveLeft {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -450px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes headerBGColor {
+    from {
+        background-color: transparent;
+    }
+    to {
+        background-color: var(--color-background-main);
+    }
+}
+
+@keyframes showAnnBar {
+    from {
+        opacity: 0;
+        left: -320px;
+    }
+
+    to {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+@keyframes showMembershipBtn {
+    from {
+        opacity: 0;
+        transform: translateX(-320px) ;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) ;
+    }
+}
+@keyframes showTierCard {
+    0% {
+        top: 140px;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0px;
+        opacity: 1;
+    }
+}

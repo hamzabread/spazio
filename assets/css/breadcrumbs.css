@@ -1,0 +1,50 @@
+/* Breadcrumbs Styles */
+/* ---------------------------------------------------------- */
+
+.gh-breadcrumbs {
+    display: flex;
+    margin-top: 16px;
+    gap: 24px;
+}
+
+.gh-breadcrumb-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.gh-breadcrumb-item a {
+    font-size: 13px;
+    font-weight: 500;
+    transition: opacity 0.25s ease;
+    color: var(--breadcrumbs-color);
+    line-height: 1;
+}
+
+.gh-breadcrumb-item:hover a {
+    opacity: 0.6;
+}
+
+.gh-breadcrumb-item:last-child span {
+    font-size: 13px;
+    font-weight: 500;
+    /* opacity: 0.6; */
+    color: var(--breadcrumbs-color);
+    line-height: 1;
+}
+
+.gh-breadcrumbs li+li::before {
+    position: absolute;
+    top: -6px;
+    left: -19px;
+    width: 16px;
+    height: 16px;
+}
+
+:root[data-color-scheme="light"] .gh-breadcrumbs li+li::before {
+    content: url("../imagesAndIcons/chevron-right-solid.svg");
+}
+
+:root[data-color-scheme="dark"] .gh-breadcrumbs li+li::before {
+    content: url("../imagesAndIcons/chevron-right-solid-dark.svg");
+}

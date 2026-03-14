@@ -1,0 +1,85 @@
+{{!< default}} {{#post}} <main class="gh-post-page-wrapper custom-advertising-template">
+    <article
+        class="gh-post-page {{post_class}}{{^if feature_image}} without-image{{/if}}{{^match @page.show_title_and_feature_image}} without-title-image{{/match}}">
+        {{#if featured}}
+        {{#match @page.show_title_and_feature_image}}
+        <div class="gh-post-head page-head{{^if feature_image}} without-image{{/if}}">
+            {{#if feature_image}}
+            <picture>
+                <source srcset="{{img_url feature_image size=" 3000" format="webp" }} 3000w, {{img_url feature_image
+                    size="2000" format="webp" }} 2000w, {{img_url feature_image size="1200" format="webp" }} 1200w,
+                    {{img_url feature_image size="1000" format="webp" }} 1000w, {{img_url feature_image size="800"
+                    format="webp" }} 800w, {{img_url feature_image size="500" format="webp" }} 500w" sizes="100vw"
+                    type="image/webp">
+                <img srcset="{{img_url feature_image size=" 3000"}} 3000w, {{img_url feature_image size="2000" }} 2000w,
+                    {{img_url feature_image size="1200" }} 1200w, {{img_url feature_image size="1000" }} 1000w,
+                    {{img_url feature_image size="800" }} 800w, {{img_url feature_image size="500" }} 500w"
+                    sizes="100vw" src="{{img_url feature_image size=" 3000"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                    class="gh-post-feature-image" />
+            </picture>
+            {{/if}}
+            <div class="gh-post-head-wrapper page-head-wrapper gh-container{{#match @custom.header_type " Logo with
+                bottom navigation" }} with-big-header{{else match @custom.header_type "Author with bottom navigation" }}
+                with-big-header{{/match}}">
+                {{> "breadcrumbs"}}
+                <div class="gh-post-head-content">
+                    <div class="gh-post-head-content-container">
+                        <h1 class="gh-post-page-title">{{title}}</h1>
+                        {{#if excerpt}}
+                        <p class="gh-post-page-excerpt">{{excerpt}}</p>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/match}}
+        {{else}}
+        {{#match @page.show_title_and_feature_image}}
+        <div class="gh-container">
+            {{> "breadcrumbs"}}
+        </div>
+        <div class="gh-post-head gh-container page-head{{^if feature_image}} without-image{{/if}}">
+            <div class="gh-post-head-wrapper page-head-wrapper{{^if feature_image}} without-image{{/if}}">
+                {{#if feature_image}}
+                <picture>
+                    <source srcset="{{img_url feature_image size=" 1600" format="webp" }} 1600w, {{img_url feature_image
+                        size="1200" format="webp" }} 1200w, {{img_url feature_image size="1000" format="webp" }} 1000w,
+                        {{img_url feature_image size="800" format="webp" }} 800w, {{img_url feature_image size="500"
+                        format="webp" }} 500w" sizes="(min-width: 816px) 736px, 90vw" type="image/webp">
+                    <img srcset="{{img_url feature_image size=" 1600"}} 1600w, {{img_url feature_image size="1200" }}
+                        1200w, {{img_url feature_image size="1000" }} 1000w, {{img_url feature_image size="800" }} 800w,
+                        {{img_url feature_image size="500" }} 500w" sizes="(min-width: 816px) 736px, 90vw"
+                        src="{{img_url feature_image size=" 1600"}}"
+                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                        class="gh-post-feature-image" />
+                </picture>
+                {{/if}}
+                <div class="gh-post-head-content">
+                    <div class="gh-post-head-content-container">
+                        <h1 class="gh-post-page-title">{{title}}</h1>
+                        {{#if excerpt}}
+                        <p class="gh-post-page-excerpt">{{excerpt}}</p>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/match}}
+        {{/if}}
+
+        <div class="gh-post-main-wrapper gh-container">
+            <div class="gh-post-page-main">
+                <div class="gh-post-content">
+                    {{content}}
+                    {{!-- {{> "global-audience"}} --}}
+                </div>
+            </div>
+        </div>
+    </article>
+    </main>
+
+
+    {{> glossary}}
+
+    {{/post}}

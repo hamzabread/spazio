@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" data-color-scheme="light">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{meta_title}}</title>
+    <link rel="stylesheet" href="{{asset 'built/index.css'}}" />
+    <script>
+        const rootElem = document.querySelector("html[data-color-scheme]");
+
+        const detectSystemTheme = () => {
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                rootElem.setAttribute("data-color-scheme", "dark");
+            } else {
+                rootElem.setAttribute("data-color-scheme", "light");
+            }
+        };
+
+        const initTheme = () => {
+            const localStoragePref = localStorage.getItem("color-scheme");
+
+            if (localStoragePref) {
+                rootElem.setAttribute("data-color-scheme", localStoragePref);
+            } else {
+                detectSystemTheme();
+            }
+        };
+
+        initTheme();
+
+        window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", () => {
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    rootElem.setAttribute("data-color-scheme", "dark");
+                } else {
+                    rootElem.setAttribute("data-color-scheme", "light");
+                }
+            });
+    </script>
+
+    {{!-- Outputs styles for chosen border-radius setting --}}
+    {{>border-radius}}
+
+    {{!-- Outputs styles and uploads fonts for chosen font-pairing setting --}}
+    {{>font-pairings}}
+   
+    {{!-- Outputs important meta data and settings, should always be in <head> --}}
+    {{ghost_head}}
+
+</head>
+
+<body class="{{body_class}}">
+    <div class="gh-viewport">
+        <main class="gh-sign-in-page gh-form-page gh-container">
+            {{#post}}
+        
+        <h1 class="gh-post-page-title">{{title}}</h1>
+
+                <div class="gh-post-content">
+                    {{content}}                                        
+                </div>
+              
+              <div id="records-container"></div>
+            {{/post}}
+        
+        </main>
+    </div>
+
+
+<script>
+
+    const apiToken = 'your_api_authentication_token';
+
+    // Get all the recordID elements
+    const recordIDElements = document.querySelectorAll('div[data-recordID]');
+
+    // Loop through each recordID element
+    recordIDElements.forEach(element => {
+        const recordID = element.getAttribute('data-recordID');
+
+        // Fetch the data from the API with authentication header
+        fetch(`https://n8n.ghostflow.net/webhook/2e340949-9ddd-4782-8a1e-6c1a54be6c16?record=${recordID}`,        
+        {
+        headers: {
+          'Authorization': `Bearer ${apiToken}`
+        }
+        })
+              
+            .then(response => response.json())
+            .then(data => {
+                // Create the HTML elements for the record
+                const recordDiv = document.createElement('div');
+                recordDiv.classList.add('user-card');
+
+                const nameElement = document.createElement('h2');
+                nameElement.textContent = data[0].Name;
+
+                const notesElement = document.createElement('p');
+                notesElement.textContent = data[0].Notes;
+
+                const photoElement = document.createElement('img');
+                photoElement.src = data[0].Photo;
+                photoElement.alt = 'Record Photo';
+                photoElement.width = '300';                
+
+                // Append the elements to the record div
+                recordDiv.appendChild(nameElement);
+                recordDiv.appendChild(notesElement);
+                recordDiv.appendChild(photoElement);
+
+                // Append the record div to the main container
+                document.getElementById('records-container').appendChild(recordDiv);
+            })
+            .catch(error => {
+                console.error(`Error fetching record ${recordID} data:`, error);
+            });
+    });
+
+
+</script>
+
+
+    {{! <foot> }}
+    {{ghost_foot}}
+    {{! Outputs important scripts - should always be included before closing body tag }}
+</body>
+
+</html>
+

@@ -1,0 +1,12 @@
+{{#get "pages" filter="slug:global-audience" limit="1"}}
+{{#foreach pages}}
+<div id="global-audience-section" class="section audience">
+    <div class="container">
+        <div class="content">
+            {{content}}
+        </div>
+    </div>
+</div>
+
+{{/foreach}}
+{{/get}}

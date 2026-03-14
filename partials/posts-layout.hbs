@@ -1,0 +1,38 @@
+<section class="gh-archive-feed-wrapper">
+
+    {{!-- GRID LAYOUT --}}
+
+    {{#match @custom.archive_type "Grid" }}
+    <div class="gh-grid-archive gh-posts-feed{{#is 'home'}}{{#if @custom.homepage_sidebar}} with-sidebar{{/if}}{{/is}}">
+        {{#foreach posts}}
+            {{>post-card}}
+        {{/foreach}}
+    </div>
+    {{/match}}
+
+    {{!-- LIST LAYOUT --}}
+
+    {{#match @custom.archive_type "List" }}
+    <div class="gh-list-archive gh-posts-feed{{#is 'home'}}{{#if @custom.homepage_sidebar}} with-sidebar{{/if}}{{/is}}">
+        {{#foreach posts}}
+            {{>post-card}}
+        {{/foreach}}
+    </div>
+    {{/match}}
+
+    {{!-- TIMELINE LAYOUT --}}
+
+    {{#match @custom.archive_type "Timeline" }}
+    <div class="gh-timeline-archive gh-posts-feed{{#is 'home'}}{{#if @custom.homepage_sidebar}} with-sidebar{{/if}}{{/is}}">
+        {{#foreach posts}}
+            {{>post-card-timeline}}
+        {{/foreach}}
+    </div>
+    {{/match}}
+
+    {{!-- LOAD MORE BUTTON --}}
+    <a rel="next" name="{{#match @custom.archive_type "Timeline" }}timeline{{/match}}{{^match @custom.archive_type "Timeline" }}default{{/match}}" class="gh-secondary-button gh-load-more-button" aria-label="{{t "Load more posts button"}}">
+        {{t "Load More"}}
+    </a>
+
+</section>

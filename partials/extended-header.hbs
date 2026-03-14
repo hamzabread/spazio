@@ -1,0 +1,39 @@
+<div class="extended-header">
+    <div class="gh-container">
+        <div class="left">
+            <script data-categories="essential" src="https://widgets.coingecko.com/gecko-coin-price-marquee-widget.js"></script>
+            <gecko-coin-price-marquee-widget id="gecko" 
+            initial-currency="{{#match @site.locale "=" "it"}}eur{{else}}{{#match @site.locale "=" "de"}}eur{{else}}{{#match @site.locale "=" "fr"}}eur{{else}}{{#match @site.locale "=" "ja"}}jpy{{else}}{{#match @site.locale "=" "zh"}}cny{{else}}{{#match @site.locale "=" "ko"}}krw{{else}}{{#match @site.locale "=" "ru"}}rub{{else}}usd{{/match}}{{/match}}{{/match}}{{/match}}{{/match}}{{/match}}{{/match}}"
+            locale="{{@site.locale}}" dark-mode="false" transparent-background="true"
+            coin-ids="bitcoin,tether,binancecoin,usd-coin,ripple,solana,cardano,dogecoin,matic-network,polkadot,tron,litecoin"></gecko-coin-price-marquee-widget>
+       
+        </div>
+        
+        <div class="right">
+            {{#get "pages" filter="tag:[hash-extended-header]" limit="5" order="published_at desc"}}
+            {{#if pages}}
+            <nav>
+                <ul>
+                    {{#foreach pages}}
+                        <li><a href="{{url}}">{{title}}</a></li>
+                    {{/foreach}}
+                </ul>
+            </nav>
+            {{/if}}
+            {{/get}}
+        </div>
+    </div>
+</div>
+<script>
+    const gecko = document.getElementById("gecko");
+    const localStoragePref = localStorage.getItem("color-scheme");
+    if (localStoragePref) {
+        gecko.setAttribute("dark-mode", localStoragePref === "dark");
+    }else{
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            gecko.setAttribute("dark-mode", "true");          
+        } else {
+            gecko.setAttribute("dark-mode", "false");                        
+        }
+    }
+</script>

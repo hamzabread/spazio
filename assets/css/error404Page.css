@@ -1,0 +1,47 @@
+.gh-error-404-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 79px);
+}
+
+.gh-error-404-page.with-big-header {
+    height: calc(100vh - 154px);
+}
+
+.gh-404-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gh-404-error-title {
+    font-size: 56px;
+    font-weight: var(--font-weight-headings);
+    letter-spacing: var(--letter-spacing-big);
+    line-height: 1.12;
+    margin-bottom: 16px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+    animation-delay: 0;
+}
+
+.gh-404-error-description {
+    max-width: 650px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in forwards;
+    animation-delay: 150ms;
+}
+
+.gh-main-button.gh-404-error-home-btn {
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in forwards;
+    animation-delay: 300ms;
+}

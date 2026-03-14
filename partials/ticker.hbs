@@ -1,0 +1,64 @@
+<style>
+  .ticker-container {
+    display: none;
+  }
+</style>
+
+<div class="ticker-headline">{{t "We are featured on"}}&nbsp;&#9660;</div>
+<div class="ticker-container">
+{{#get "pages" filter="slug:featured-on" as |featured_on|}}
+{{#featured_on}}
+  {{{content}}}
+{{/featured_on}}
+{{/get}}
+</div>
+
+<div class="swiper ticker"><div class="swiper-wrapper ticker"></div></div>
+<script>
+  const tickerElements = document.querySelectorAll('.ticker-container .kg-card.kg-image-card');
+  for (let i = 0; i < 3; i++) {
+    tickerElements.forEach((element) => {
+      const img = element.querySelector('img');
+      const src = img.getAttribute('src');
+      const alt = img.getAttribute('alt');
+      const slide = document.createElement('div');
+      const link = element.querySelector('a');
+      slide.classList.add('swiper-slide');
+      if (link) {
+        slide.innerHTML = `<a href="${link.href}" target="_blank"><img src="${src}" alt="${alt}"></a>`;
+      } else {
+        slide.innerHTML = `<img src="${src}" alt="${alt}">`;
+      }
+      document.querySelector('.swiper-wrapper.ticker').appendChild(slide);
+    });
+  }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const swiper = new Swiper('.ticker', {
+    // Optional parameters
+    direction: 'horizontal',    
+    loop: 'true',        
+    autoplay: {
+      enabled: 'true',      
+      delay: 0,      
+      freeMode: 'true',
+      disableOnInteraction: 'false',
+      pauseOnMouseEnter: 'false',
+      stopOnLastSlide: 'false',      
+    },    
+    speed: 3000,
+    momentumRatio: 3,        
+    breakpoints: {
+          300: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 10,
+            spaceBetween: 20,
+          }
+        }
+  });
+});
+</script>
+

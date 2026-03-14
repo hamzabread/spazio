@@ -1,0 +1,39 @@
+.youtube-videos {
+  background-color: #0f1115;
+  color: white;
+  padding: 40px 20px;
+}
+
+.youtube-videos h2 {
+  margin-block: 20px;
+}
+
+.video-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+  gap: 20px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+.video-item {
+  min-width: 300px;
+  background: #11141b;
+  padding: 10px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.video-item iframe {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  aspect-ratio: 16/9;
+}
+
+.video-item p {
+  margin-top: 10px;
+  font-size: 14px;
+}

@@ -1,0 +1,126 @@
+<section class="sc-more-news">
+    <div class="sc-mn-inner">
+
+        {{!-- Main posts grid --}}
+        <div class="sc-mn-main">
+            <h2 class="sc-mn-heading">More News</h2>
+            <div class="sc-mn-grid">
+                {{#foreach posts}}
+                <article class="sc-mn-card">
+                    {{#if feature_image}}
+                    <a class="sc-mn-card-img-wrap" href="{{url}}" aria-label="{{title}}">
+                        <img src="{{img_url feature_image size="2000"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="sc-mn-card-img" loading="lazy" />
+                    </a>
+                    {{else}}
+                    <a class="sc-mn-card-img-wrap sc-mn-card-img-wrap--no-img" href="{{url}}" aria-label="{{title}}">
+                        <span class="sc-mn-card-img-placeholder">{{@site.title}}</span>
+                    </a>
+                    {{/if}}
+                    <div class="sc-mn-card-body">
+                        <div class="sc-mn-card-meta">
+                            {{#primary_author}}
+                            {{#if profile_image}}
+                            <img class="sc-mn-card-avatar" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+                            {{else}}
+                            <div class="sc-mn-card-avatar sc-mn-card-avatar--letter">{{name.[0]}}</div>
+                            {{/if}}
+                            <span class="sc-mn-card-author">{{name}}</span>
+                            {{/primary_author}}
+                            <span class="sc-mn-card-bullet">•</span>
+                            <span class="sc-mn-card-date">{{date format="MMM D, YYYY"}}</span>
+                        </div>
+                        <h3 class="sc-mn-card-title">
+                            <a href="{{url}}">{{title}}</a>
+                        </h3>
+                        {{#if excerpt}}
+                        <p class="sc-mn-card-excerpt">{{excerpt}}</p>
+                        {{/if}}
+                        {{#if tags}}
+                        <div class="sc-mn-card-tags">
+                            {{#foreach tags limit="4"}}
+                            {{#unless (match slug "^hash-")}}
+                            <a class="sc-mn-card-tag" href="{{url}}">{{name}}</a>
+                            {{/unless}}
+                            {{/foreach}}
+                        </div>
+                        {{/if}}
+                    </div>
+                </article>
+                {{/foreach}}
+            </div>
+        </div>
+
+        {{!-- Sidebar --}}
+        <aside class="sc-mn-sidebar">
+
+            {{!-- Scam Alerts --}}
+            {{#get "posts" include="tags" filter="tags:[scams,truffe,arnaques,estafas,betrug,moshennichestvo,sagi,pianju]" limit=5 as |scams|}}
+            {{#if scams}}
+            <div class="sc-mn-widget">
+                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/scams/">
+                    <span>Scam Alerts</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <div class="sc-mn-scam-list">
+                    {{#foreach scams}}
+                    <a class="sc-mn-scam-item" href="{{url}}">
+                        <span class="sc-mn-scam-date"><time datetime="{{date format="YYYY-MM-DDTHH:mm:ss"}}Z">{{date format="MMM D, YYYY HH:mm"}} UTC</time></span>
+                        <h4 class="sc-mn-scam-title">{{title}}</h4>
+                        {{#primary_tag}}
+                        <span class="sc-mn-scam-tag">{{name}}</span>
+                        {{/primary_tag}}
+                    </a>
+                    {{/foreach}}
+                </div>
+            </div>
+            {{/if}}
+            {{/get}}
+
+            {{!-- Best Exchanges & Wallets --}}
+            <div class="sc-mn-widget">
+                <div class="sc-mn-widget-hd sc-mn-widget-hd--dark">
+                    <span>Best Exchanges &amp; Wallets</span>
+                </div>
+                <p class="sc-mn-exchanges-disclaimer">Informative content with affiliate links. <a href="#">Disclaimer →</a></p>
+                <div class="sc-mn-exchanges">
+                    <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
+                        <div class="sc-mn-exchange-icon" style="background:rgba(0,200,100,0.15);color:#00C864;">B</div>
+                        <span class="sc-mn-exchange-name">Bitget</span>
+                        <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
+                        <div class="sc-mn-exchange-icon" style="background:rgba(30,140,255,0.15);color:#1E8CFF;">M</div>
+                        <span class="sc-mn-exchange-name">MEXC</span>
+                        <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
+                        <div class="sc-mn-exchange-icon" style="background:rgba(249,153,42,0.15);color:#F9992A;">BY</div>
+                        <span class="sc-mn-exchange-name">ByBit</span>
+                        <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
+                        <div class="sc-mn-exchange-icon" style="background:rgba(249,153,42,0.15);color:#F9992A;">BY</div>
+                        <span class="sc-mn-exchange-name">ByBit</span>
+                        <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            {{!-- Newsletter --}}
+            <div class="sc-mn-newsletter">
+                <div class="sc-mn-nl-icons">
+                    <div class="sc-mn-nl-icon-wrap">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="sc-mn-nl-icon-wrap sc-mn-nl-icon-wrap--overlap">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="1.5"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+                    </div>
+                </div>
+                <h3 class="sc-mn-nl-title">SUBSCRIBE TO THE NEWSLETTER</h3>
+                <p class="sc-mn-nl-desc">Spaziocrypto brings you the weekly summary of major Web3-related news.</p>
+                <a href="#/portal/signup" class="sc-mn-nl-btn">Subscribe</a>
+            </div>
+
+        </aside>
+    </div>
+</section>

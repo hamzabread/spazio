@@ -1,0 +1,59 @@
+{{!< default}}
+
+{{#page}}
+<main class="gh-archive-page gh-container">
+    {{>breadcrumbs}}
+    <div class="gh-archive-page-header{{#if feature_image}} with-image{{/if}}">
+        {{#if feature_image}}
+        <picture>
+            <source srcset="{{img_url feature_image size="3000" format="webp" }} 3000w, {{img_url feature_image size="2000"
+                format="webp" }} 2000w, {{img_url feature_image size="1600" format="webp" }} 1600w, {{img_url feature_image size="1000" format="webp" }} 1000w, {{img_url feature_image
+                size="800" format="webp" }} 800w, {{img_url feature_image size="600" format="webp" }} 600w, {{img_url feature_image
+                size="500" format="webp" }} 500w" sizes="(min-width: 1480px) 1400px, 95vw" type="image/webp">
+            <img class="gh-archive-page-feature-image" srcset="{{img_url feature_image size="3000"}} 3000w, {{img_url feature_image
+                size="2000" }} 2000w, {{img_url feature_image size="1600" }} 1600w, {{img_url feature_image size="1000" }} 1000w, {{img_url feature_image size="800" }} 800w,
+                {{img_url feature_image size="600" }} 600w, {{img_url feature_image size="500" }} 500w"
+                sizes="(min-width: 1480px) 1400px, 95vw" src="{{img_url feature_image size="3000"}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}} {{t "feature image"}}{{/if}}">
+        </picture>
+        {{/if}}
+        <h1 class="gh-archive-page-title">{{title}}</h1>
+        {{#if excerpt}}
+        <p class="gh-archive-page-excerpt">{{excerpt}}</p>
+        {{/if}}
+    </div>
+
+    {{!-- Checking if this is template used for categories (tags) page --}}
+
+    {{#has tag="#categories-page"}}
+    {{#get "tags" include="count.posts" limit="all"}}
+    {{#if tags}}
+    <div class="gh-archive-page-cards">
+        {{#foreach tags}}
+        {{>archive-card}}
+        {{/foreach}}
+    </div>
+    {{else}}
+    <span class="gh-archive-page-no-cards-span">{{t "No categories or tags…"}}</span>
+    {{/if}}
+    {{/get}}
+    {{/has}}
+
+    {{!-- Checking if this is template used for authors page --}}
+
+    {{#has tag="#authors-page"}}
+    {{#get "authors" include="count.posts" limit="all"}}
+    {{#if authors}}
+    <div class="gh-archive-page-cards">
+        {{#foreach authors}}
+        {{>archive-card}}
+        {{/foreach}}
+    </div>
+    {{else}}
+    <span class="gh-archive-page-no-cards-span">{{t "No authors…"}}</span>
+    {{/if}}
+    {{/get}}
+    {{/has}}
+
+</main>
+{{/page}}

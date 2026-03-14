@@ -1,0 +1,64 @@
+.gh-main-button {
+    font-family: var(--font-family-buttons);
+    font-weight: var(--font-weight-buttons);
+    line-height: 1.2;
+    font-size: var(--font-size-buttons);
+    letter-spacing: var(--letter-spacing-buttons);
+    text-transform: var(--text-transform-buttons);
+    color: var(--color-buttons-main-text);
+    background-color: var(--background-color-button);
+    border-radius: var(--border-radius-buttons);
+    transition: color 0.25s ease, background-color 0.3s ease;
+    padding: var(--padding-buttons);
+    width: max-content;
+    text-align: center;
+}
+
+.gh-main-button:hover {
+    color: #FFF !important;
+    background-color: var(--ghost-accent-color) !important;
+}
+
+
+
+
+
+.gh-secondary-button {
+    font-family: var(--font-family-buttons);
+    font-weight: var(--font-weight-buttons);
+    line-height: 1.2;
+    font-size: var(--font-size-buttons);
+    letter-spacing: var(--letter-spacing-buttons);
+    text-transform: var(--text-transform-buttons);
+    color: var(--color-buttons-secondary-text);
+    background-color: var(--color-buttons-secondary);
+    transition: color 0.25s ease, background-color 0.3s ease;
+    border-radius: var(--border-radius-buttons);
+    padding: var(--padding-buttons);
+    width: max-content;
+    text-align: center;
+}
+
+.gh-secondary-button:hover {
+    color: #FFF ;
+    background-color: var(--ghost-accent-color);
+}
+
+.gh-secondary-button.gh-load-more-button {
+    align-self: center;
+}
+
+
+@media (max-width: 768px) {
+  .gh-main-button:active,
+  .gh-main-button:focus {
+    color: #FFF !important;
+    background-color: var(--ghost-accent-color) !important;
+  }
+
+  .gh-secondary-button:active,
+  .gh-secondary-button:focus {
+    color: #FFF !important;
+    background-color: var(--ghost-accent-color) !important;
+  }
+}

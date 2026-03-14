@@ -1,0 +1,133 @@
+:root[data-color-scheme=dark] .scam-news-section .gh-main-button.gh-sidebar-cta-btn{
+    background-color: #ededed;
+    color: #000;
+}
+.scam-news-section .gh-main-button.gh-sidebar-cta-btn{
+    margin-inline: 20px;
+    margin-bottom: 40px;
+}
+.scam-news-section {
+  font-family: Arial, sans-serif;
+  background-color: var(--sidebar-main-bg-color);
+  border-radius: var(--border-radius-containers);
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.scam-news-section .header-bar {
+  background-color: var(--ghost-accent-color, #e22121);
+  color: white;
+  font-weight: bold;
+  padding: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.scam-news-section .marquee-continuous {
+  display: inline-block;
+  white-space: nowrap;
+  width: 100%;
+  animation: blink 1.2s linear infinite;
+}
+
+
+
+.scam-news-section .marquee-continuous {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scam-news-section .marquee-content {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+  font-size: 1rem;
+}
+
+
+
+.scam-news-section .news-list {
+  padding: 20px;
+  position: relative;
+  max-height: 600px;
+  overflow-y: scroll;
+}
+
+.scam-news-section .news-item {
+
+  position: relative;
+  padding-left: 20px;
+  padding-bottom: 40px;
+}
+
+.scam-news-section .news-item::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 2px;
+  height: 100%;
+  background-color: var(--ghost-accent-color);
+}
+
+.scam-news-section .dot-line::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--ghost-accent-color);
+  border-radius: 50%;
+}
+
+.scam-news-section .gh-tag {
+  margin-bottom: 10px;
+}
+
+.scam-news-section .tag.exchange {
+  background-color: #e0e0e0;
+}
+
+.scam-news-section .date {
+  display: block;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.scam-news-section .title {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.scam-news-section .description {
+  font-size: 14px;
+   color: var(--color-main);
+  margin-bottom: 5px !important;
+}
+
+.scam-news-section .read-more {
+  font-size: 14px;
+  color: var(--ghost-accent-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.scam-news-section .read-more:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-53%); } 
+}
+
+/* Blinking effect */
+@keyframes blink {
+  50% { opacity: 0.7; }
+}

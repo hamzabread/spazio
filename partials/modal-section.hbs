@@ -1,0 +1,86 @@
+{{#get "pages" filter="slug:popup-section" as |modalSection|}}
+{{#modalSection}}
+<div class="modal-section">
+    <div id="newsletterModal" class="gh-container modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                {{{content}}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var modal = document.querySelector('#newsletterModal');
+    var span = document.querySelector('.close');
+    if(!popupDisplayTimeout){
+        var popupDisplayTimeout = 360000;
+    }
+
+    // Change the kg-signup-card-input placeholder text to the respective language
+    var kgSignupCardInput = document.querySelector('.kg-signup-card-input');
+    if (kgSignupCardInput) {
+        kgSignupCardInput.placeholder = '{{t "Your Email"}}';
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+        document.body.classList.remove('modal-open');
+        document.documentElement.classList.remove('modal-open');
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            document.body.classList.remove('modal-open');
+            document.documentElement.classList.remove('modal-open');
+        }
+    }
+    
+    // Handle Escape key to close modal
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'flex') {
+            modal.style.display = "none";
+            document.body.classList.remove('modal-open');
+            document.documentElement.classList.remove('modal-open');
+        }
+    });
+    // Check if the popup has been displayed before
+    var popupDisplayed = localStorage.getItem('popupDisplayed');
+    if (!popupDisplayed) {
+        // Check if the timestamp is already stored in localStorage
+        var firstVisitTime = localStorage.getItem('firstVisitTime');
+        var currentTime = new Date().getTime();
+
+        if (!firstVisitTime) {
+            // If not stored, set the current time as the first visit time
+            localStorage.setItem('firstVisitTime', currentTime);
+            firstVisitTime = currentTime;
+        }
+
+        // Calculate the remaining time
+        var elapsedTime = currentTime - firstVisitTime;
+        var remainingTime = popupDisplayTimeout - elapsedTime;
+
+        if (remainingTime <= 0) {
+            // If the remaining time is less than or equal to 0, show the modal immediately
+            modal.style.display = "flex";
+            document.body.classList.add('modal-open');
+            document.documentElement.classList.add('modal-open');
+            localStorage.setItem('popupDisplayed', 'true');
+        } else {
+            // Otherwise, set a timeout to show the modal after the remaining time
+            setTimeout(function() {
+                modal.style.display = "flex";
+                document.body.classList.add('modal-open');
+                document.documentElement.classList.add('modal-open');
+                localStorage.setItem('popupDisplayed', 'true');
+            }, remainingTime);
+        }
+    }
+    
+</script>
+{{/modalSection}}
+{{/get}}

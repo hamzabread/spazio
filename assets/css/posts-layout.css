@@ -1,0 +1,39 @@
+.gh-archive-feed-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding-bottom: 104px;
+}
+
+/* GRID LAYOUT */
+/* --------------------------------------------------------- */
+
+.gh-grid-archive {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 32px;
+    row-gap: 64px;
+}
+
+.gh-grid-archive.with-sidebar {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+}
+
+/* LIST LAYOUT */
+/* --------------------------------------------------------- */
+
+.gh-list-archive {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+/* TIMELINE LAYOUT */
+/* --------------------------------------------------------- */
+
+.gh-timeline-archive {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}

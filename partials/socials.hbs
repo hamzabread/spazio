@@ -1,0 +1,48 @@
+{{! Reusable social icons block }}
+
+<div class="gh-social-icons">
+    {{#if @site.facebook}}
+    <a class="gh-social-icon-link" href="{{facebook_url}}" target="_blank" rel="noopener noreferrer"
+        aria-label="{{@site.title}} {{t "Facebook"}}">{{> "icons/facebook"}}</a>
+    {{/if}}
+    {{#if @site.twitter}}
+    <a class="gh-social-icon-link twitter-link" href="{{twitter_url}}" target="_blank" rel="noopener noreferrer"
+        aria-label="{{@site.title}} {{t "Twitter"}}">{{> "icons/twitter"}}</a>
+    {{/if}}
+
+    {{#if @custom.telegram_link}}
+    <a class="gh-social-icon-link" href="{{@custom.telegram_link}}" target="_blank" rel="noopener noreferrer"
+    aria-label="{{@site.title}} {{t "Telegram"}}">
+    {{> "icons/telegram"}}
+    </a>
+    {{/if}}
+
+    {{#if @custom.insta_link}}
+    <a class="gh-social-icon-link" href="{{@custom.insta_link}}" target="_blank" rel="noopener noreferrer"
+    aria-label="{{@site.title}} {{t "Instagram"}}">
+    {{> "icons/instagram"}}
+    </a>
+    {{/if}}
+
+    
+    {{#if @custom.linkedin_link}}
+    <a class="gh-social-icon-link" href="{{@custom.linkedin_link}}" target="_blank" rel="noopener noreferrer"
+    aria-label="{{@site.title}} {{t "LinkedIn"}}">
+    {{> "icons/linkedin"}}
+    </a>
+    {{/if}}
+    
+    {{#if @custom.youtube_link}}
+    <a class="gh-social-icon-link" href="{{@custom.youtube_link}}" target="_blank" rel="noopener noreferrer"
+    aria-label="{{@site.title}} {{t "Youtube"}}">
+    {{> "icons/youtube"}}
+    </a>
+    {{/if}}
+    
+    {{#if @custom.tiktok_link}}
+    <a class="gh-social-icon-link" href="{{@custom.tiktok_link}}" target="_blank" rel="noopener noreferrer"
+    aria-label="{{@site.title}} {{t "TikTok"}}">
+    {{> "icons/tiktok"}}
+    </a>
+    {{/if}}
+</div>

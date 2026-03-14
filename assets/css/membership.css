@@ -1,0 +1,291 @@
+.gh-membership-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 104px;
+}
+
+.gh-membership-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.gh-membership-page-title {
+    font-size: 56px;
+    font-family: var(--font-family-headings);
+    font-weight: var(--font-weight-headings);
+    letter-spacing: var(--letter-spacing-big);
+    line-height: 1.2;
+    margin-top: 64px;
+}
+
+.gh-membership-page-desc {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 800px;
+    margin-top: 16px !important;
+}
+
+.gh-membership-toggle-btn {
+    position: relative;
+    background-color: var(--membership-toggle-bg-color);
+    border-radius: var(--border-radius-buttons);
+    display: flex;
+    align-items: center;
+    gap: 58px;
+    padding: 23px 32px;
+    margin-top: 64px;
+    margin-bottom: 32px;
+    width: max-content;
+    transition: background-color 0.4s ease;
+}
+
+.gh-membership-toggle-btn:hover {
+    background-color: var(--membership-toggle-bg-color--hover);
+}
+
+.gh-membership-toggle-btn::after {
+    content: "";
+    background-color: var(--color-main);
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 118px;
+    height: 48px;
+    border-radius: var(--border-radius-buttons);
+    transition: left 0.3s ease;
+}
+
+.gh-membership-page.yearly .gh-membership-toggle-btn::after {
+    left: 136px;
+}
+
+.gh-membership-toggle-value {
+    display: block;
+    width: 70px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 120%;
+    z-index: 2;
+    transition: color 0.4s ease;
+}
+
+.gh-membership-toggle-value--montly {
+    color: var(--membership-toggle-bg-color);
+}
+
+.gh-membership-toggle-value--yearly {
+    color: var(--color-main);
+}
+
+.gh-membership-page.yearly .gh-membership-toggle-value--montly {
+    color: var(--color-main);
+}
+
+.gh-membership-page.yearly .gh-membership-toggle-value--yearly {
+    color: var(--membership-toggle-bg-color);
+}
+
+.gh-tiers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.128%;
+    row-gap: 56px;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.gh-tier-card {
+    display: grid;
+    grid-template-rows: auto auto auto 1fr auto;
+    background-color: var(--membership-card-bg-color);
+    width: 31.915%;
+    padding: 40px;
+    border-radius: var(--border-radius-containers);
+    position: relative;
+    opacity: 0;
+    top: 140px;
+    animation: showTierCard 0.45s ease forwards;
+    animation-delay: calc(var(--i) * 0.12s);
+}
+
+.gh-tier-card__name {
+    font-family: var(--font-family-headings);
+    letter-spacing: var(--letter-spacing-small);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.gh-tier-card__trial-days {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 12px;
+    background-color: var(--color-background-main);
+    border-radius: calc(var(--border-radius-containers) - 4px);
+}
+
+.gh-tier-card__trial-days-span {
+    color: var(--color-main);
+    opacity: 0.7;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing-small);
+}
+
+.gh-tier-card__price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.gh-tier-card__price-value {
+    font-weight: 700;
+    letter-spacing: var(--letter-spacing-big);
+    font-size: 56px;
+    line-height: 112%;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.gh-tier-card__price-per {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.gh-tier-card__price-value.yearly {
+    display: none;
+}
+
+.gh-tier-card__price-per.yearly {
+    display: none;
+}
+
+.gh-membership-page.yearly .gh-tier-card__price-value.monthly {
+    display: none;
+}
+
+.gh-membership-page.yearly .gh-tier-card__price-per.monthly {
+    display: none;
+}
+
+.gh-membership-page.yearly .gh-tier-card__price-value.yearly {
+    display: block;
+}
+
+.gh-membership-page.yearly .gh-tier-card__price-per.yearly {
+    display: block;
+}
+
+.gh-tier-card__desc {
+    opacity: 0.7;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 24px;
+}
+
+.gh-tier-card-benefits-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--tier-card-hr);
+    gap: 16px;
+}
+
+.gh-tier-card-benefit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.gh-tier-card-benefit svg path {
+    fill: var(--color-main);
+}
+
+.gh-tier-card-btn-wrapper {
+    display: flex;
+    margin-top: 40px;
+}
+
+.gh-tier-card-signup {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: #1d1d1f;
+}
+
+.gh-tier-card-signup.yearly {
+    display: none;
+}
+
+.gh-membership-page.yearly .gh-tier-card-signup.monthly {
+    display: none;
+}
+
+.gh-membership-page.yearly .gh-tier-card-signup.yearly {
+    display: flex;
+}
+
+.gh-membership-page__sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    color: #A5A5A5;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-membership-page__sign-in-link {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: var(--color-main);
+    font-size: 16px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.gh-membership-page__sign-in-link svg {
+    transition: transform 0.3s ease;
+}
+
+.gh-membership-page__sign-in-link svg path {
+    stroke: var(--color-main);
+    transition: stroke 0.3s ease;
+}
+
+.gh-membership-page__sign-in-link:hover {
+    color: var(--ghost-accent-color);
+}
+
+.gh-membership-page__sign-in-link:hover svg {
+    transform: rotate(-45deg);
+}
+
+.gh-membership-page__sign-in-link:hover svg path {
+    stroke: var(--ghost-accent-color);
+}
+
+.gh-membership-page-content {
+    margin-top: 104px;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,35 @@
+.featured-feed-container .gh-sidebar-featured-posts-wrapper{
+ border: none !important;
+}
+
+.featured-feed-container .featured-feed{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+
+    .swiper-slide{
+        display: grid;
+    }
+}
+
+.featured-feed-container  .gh-sidebar-feat-post-img-video-wrapper{
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.featured-feed-container .gh-small-slider-button-all{
+margin-left: auto;
+}
+.featured-feed-container {
+    .tag-section-title{
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.4;
+
+        @media (max-width: 750px) {
+            font-size: 24px;
+        }
+    }
+}

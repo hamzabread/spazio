@@ -1,0 +1,139 @@
+{{#get "pages" filter="slug:social-section" as |social_section|}}
+{{#social_section}}
+<style>
+
+    .social-section p{
+        font-weight: 500;
+        line-height: 1.4;
+    }
+    .social-section .social-card-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        max-width: 1000px;
+        padding-bottom: 64px;
+    }
+
+    @media (max-width: 1000px) {
+        .social-section .social-card-container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 550px) {
+        .social-section .social-card-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .social-section .social-card-container .social-card {
+        background: var(--sidebar-main-bg-color);
+        border-radius: 15px;
+        box-shadow: 2px 4px 12px rgba(0, 0, 0, .08);
+        padding: 32px;
+    }
+
+    .social-section .social-card-container .social-card:first-child {
+        grid-column: span 3;
+    }
+
+    @media (max-width: 1000px) {
+        .social-section .social-card-container .social-card:first-child {
+            grid-column: span 2;
+        }
+    }
+
+    @media (max-width: 550px) {
+        .social-section .social-card-container .social-card:first-child {
+            grid-column: span 1;
+        }
+    }
+
+    .social-section .social-card-container .social-card .logo {
+        max-width: 48px;
+        height: 48px;
+        margin: 0;
+    }
+
+    .social-section .social-card-container .social-card p {
+        margin: 0 0 1em !important;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.4;
+        color: var(--placeholder-color);
+    }
+    @media (max-width: 550px) {
+        .social-section .social-card-container .social-card p {
+            font-size: medium;
+        }
+        .social-section .social-card-container .social-card h3 {
+            font-size: 24px;
+        }
+    }
+    .social-section .social-card-container .social-card .gh-secondary-button {
+        background-color: var(--ghost-accent-color);
+        color: white;
+        line-height: 1;
+    }
+
+    .social-section .social-card-container .social-card .gh-secondary-button:hover {
+        opacity: 0.8;
+    }
+
+    .social-section-content{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    @media (max-width: 750px) {
+        .social-section-content{
+            flex-direction: column;
+        }
+    }
+
+</style>
+<div class="social-section gh-container gh-post-main-wrapper gh-post-content">
+    {{{content}}}
+    <div class="social-section-content gh-container">
+        {{^if @member.paid}}
+        <div class="bnr-container-vertical">
+            {{!-- {{> "ads/vertical"}} --}}
+            {{!-- Ad Unit #2402004 - Socia Media - Left --}}
+            <iframe data-aa='2402004' src='//ad.a-ads.com/2402004?size=160x600' style='width:160px; height:600px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+        </div>
+        {{/if}}
+        <div class="social-card-container"></div>
+        {{^if @member.paid}}
+        <div class="bnr-container-vertical">
+            {{!-- Ad Unit #2402005 - Socia Media - right --}}
+            <iframe data-aa='2402005' src='//ad.a-ads.com/2402005?size=160x600' style='width:160px; height:600px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+            {{!-- {{> "ads/vertical"}} --}}
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+<script>
+    const socialCards = document.querySelectorAll('.kg-product-card');
+    socialCards.forEach((card, index) => {
+        const cardContainer = card.querySelector('.kg-product-card-container');
+        const cardImage = card.querySelector('.kg-product-card-image');
+        const cardTitle = card.querySelector('.kg-product-card-title');
+        const cardDescription = card.querySelector('.kg-product-card-description');
+        const cardButton = card.querySelector('.kg-product-card-button');
+
+        const socialCard = document.createElement('div');
+        socialCard.classList.add('social-card');
+        socialCard.innerHTML = `
+            <img class="logo" src="${cardImage.src}" alt="${cardTitle.textContent}">
+            <h3>${cardTitle.textContent}</h3>
+            <p>${cardDescription.textContent}</p>
+            <a class="gh-secondary-button" href="${cardButton.href}" target="_blank">${cardButton.textContent}</a>
+        `;
+        document.querySelector('.social-card-container').appendChild(socialCard);
+        card.remove(card);
+    });
+</script>
+{{/social_section}}
+{{/get}}

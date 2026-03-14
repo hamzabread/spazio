@@ -1,0 +1,195 @@
+<div class="gh-overlay">
+    <div class="gh-mobile-menu">
+        <div class="gh-mobile-menu__header">
+            
+            {{#match @custom.header_type "Author on the left" }}
+            {{> "header-author"}}
+            {{else match @custom.header_type "Author in the middle" }}
+            {{> "header-author"}}
+            {{else match @custom.header_type "Author with social icons"}}
+            {{> "header-author"}}
+            {{else match @custom.header_type "Mobile menu with author"}}
+            {{> "header-author"}}
+            {{else match @custom.header_type "Mobile menu with author and icons"}}
+            {{> "header-author"}}
+            {{else}}
+            <a class="gh-site-logo {{#if @custom.dark_mode_logo}}gh-site-logo-has-DM-logo{{/if}}" href="{{@site.url}}"
+                aria-label="{{@site.title}} {{t " logo and homepage link"}}">
+                {{#if @site.logo}}
+                {{#if @custom.dark_mode_logo}}
+                <img src="{{img_url @custom.dark_mode_logo}}" alt="{{@site.title}} {{t " icon"}}"
+                    class="gh-site-logo-img-dark-mode">
+                {{/if}}
+                <img src="{{img_url @site.logo}}" alt="{{@site.title}} {{t " icon"}}" class="gh-site-logo-img">
+                {{else}}
+                <h1 class="gh-site-title">{{@site.title}}</h1>
+                {{/if}}
+            </a>
+            {{/match}}
+            <button class="gh-mobile-menu__close-btn" aria-label="{{t " Close mobile menu button"}}">
+                {{> "icons/close-icon"}}
+            </button>
+        </div>
+        <div class="gh-mobile-menu-main">
+            {{!-- <nav class="gh-mobile-menu__nav">
+                <ul class="gh-mobile-menu__nav-list">
+                    {{#foreach navigation}}
+                    <li class="gh-mobile-menu__nav-item"><a class="gh-mobile-menu__nav-item-link" href="{{url absolute=" true"}}" aria-label="{{label}} {{t " navigation link"}}">{{label}}</a></li>
+                    {{/foreach}}
+                </ul>
+                {{#if @site.members_enabled}}
+                {{#if @member}}
+                <a class="gh-main-button gh-member-button" href="{{@site.url}}/account" aria-label="{{t " Account page
+                    link"}}">
+                    {{t "My Account"}}
+                </a>
+                {{else}}
+                <a class="gh-main-button gh-member-button" href="{{@site.url}}/signup" aria-label="{{t " Sign up
+                    button"}}">
+                    {{t "Sign Up"}}
+                </a>
+                {{/if}}
+                {{/if}}
+
+                {{> "langswitch-mobile"}}
+
+            </nav>
+            {{#if @site.members_enabled}}
+            {{#unless @member}}
+            <div class="gh-mobile-menu__subscription-wrapper">
+                <div class="gh-mobile-menu__subscription{{#if @site.cover_image}} with-image{{/if}}">
+                    <h3 class="gh-mobile-menu__subscription-cta-text">
+                        {{@custom.cta_text_for_subscription_section}}
+                    </h3>
+                    <p class="gh-mobile-menu__subscription-cta-subtext">
+                        {{@custom.cta_subtext_for_subscription_section}}
+                    </p>
+                    <a class="gh-main-button" href="{{@site.url}}/subscribe" aria-label="{{t " Subscribe button"}}">{{t
+                        "Subscribe"}}</a>
+                    {{#if @site.cover_image}}
+                    <picture>
+                        <source srcset="{{img_url @site.cover_image size=" 600" format="webp" }} 600w, {{img_url
+                            @site.cover_image size="500" format="webp" }} 500w, {{img_url @site.cover_image size="300"
+                            format="webp" }} 300w" sizes="(max-width: 500px) 90vw, 368px" type="image/webp">
+                        <img class="gh-mobile-menu__cover-img" srcset="{{img_url @site.cover_image size=" 600"}} 600w,
+                            {{img_url @site.cover_image size="500" }} 500w, {{img_url @site.cover_image size="300" }}
+                            300w" sizes="(max-width: 500px) 90vw, 368px" src="{{img_url @site.cover_image size=" 600"}}"
+                            alt="{{@site.title}} {{t " cover image"}}">
+                    </picture>
+                    {{else}}
+                    <div class="gh-mobile-menu__cover-plug"></div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/unless}}
+            {{/if}} --}}
+
+            <div class="wrapp_main-menu active" id="wrapp_main-menu">
+                <div class="main-menu">
+                    <nav>
+                        <section class="main-menu_block">
+                            {{!-- <span class="title"><a href="#">{{t "Navigation"}}</a></span> --}}
+                            <ul class="mobile-menu">
+                                {{#foreach navigation}}
+                                    <li><a class="gh-mobile-menu__nav-item-link" href="{{url absolute=" true"}}" aria-label="{{label}} {{t " navigation link"}}">{{label}}</a></li>
+                                {{/foreach}}
+                            </ul>
+                        </section>
+                        <section class="main-menu_block">
+                            {{!-- <span class="title"><a href="#">{{t "Social"}}</a></span> --}}
+                            <ul class="mobile-menu">
+                                {{#if @site.facebook}}
+                                <li><a class="gh-social-icon-link" href="{{facebook_url}}" target="_blank" rel="noopener noreferrer"
+                                    aria-label="{{@site.title}} {{t "Facebook"}}">{{> "icons/facebook"}} Facebook</a></li>
+                                {{/if}}
+                                {{#if @site.twitter}}
+                                <li><a class="gh-social-icon-link twitter-link" href="{{twitter_url}}" target="_blank" rel="noopener noreferrer"
+                                    aria-label="{{@site.title}} {{t "Twitter"}}">{{> "icons/twitter"}} X</a></li>
+                                {{/if}}
+
+                                <li><a class="gh-social-icon-link" href="{{@custom.telegram_link}}" target="_blank" rel="noopener noreferrer"
+                                aria-label="{{@site.title}} {{t "Telegram"}}">
+                                {{> "icons/telegram"}} Telegram
+                                </a></li>
+
+                                <li><a class="gh-social-icon-link" href="{{@custom.insta_link}}" target="_blank" rel="noopener noreferrer"
+                                aria-label="{{@site.title}} {{t "Instagram"}}">
+                                {{> "icons/instagram"}} Instagram
+                                </a></li>
+
+                                <li><a class="gh-social-icon-link" href="{{@custom.linkedin_link}}" target="_blank" rel="noopener noreferrer"
+                                aria-label="{{@site.title}} {{t "LinkedIn"}}">
+                                {{> "icons/linkedin"}} LinkedIn
+                                </a></li>
+
+                                <li><a class="gh-social-icon-link" href="{{@custom.youtube_link}}" target="_blank" rel="noopener noreferrer"
+                                aria-label="{{@site.title}} {{t "Youtube"}}">
+                                {{> "icons/youtube"}} Youtube
+                                </a></li>
+                            </ul>
+                        </section>
+                        <div class="gh-head-actions">
+                            {{#if @site.members_enabled}}
+                                <div class="gh-head-members">
+                                    {{#unless @member}}
+                                        {{#unless @site.members_invite_only}}
+                                            <a class="gh-main-link" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                            <a class="gh-main-button" href="/signup/">Join the 10k+ Subscribers</a>
+                                        {{else}}
+                                            <a class="gh-main-button" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                        {{/unless}}
+                                    {{else}}
+                                        <a class="gh-main-button" href="#/portal/account" data-portal="account">Account</a>
+                                    {{/unless}}
+                                </div>
+                            {{/if}}
+                        </div>
+                        <footer class="mobile-footer">
+                            <p class="copy">
+                                <span>© {{date format="YYYY"}} {{@site.title}}</span>
+                                <span>{{t "ALL RIGHTS RESERVED"}}.</span>
+                            </p>
+                        </footer>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    let mobileNavItems = document.querySelectorAll('.mobile-menu li');
+    var prevItem;
+    var subItems = [];
+    for (var i = 0; i <= mobileNavItems.length; i++) {
+        let item = mobileNavItems[i];
+        let label = item?.children[0]?.innerHTML;
+        if (label && label.trim().indexOf('--') == 0) {
+            subItems.push(item);
+        } else {
+            if (subItems.length > 0) {
+                // Append list to previous item
+                prevItemInner = prevItem.children[0].innerHTML;
+                let subNavHTML = `<span class="plus"></span><a href="#">${prevItemInner}</a><ul>`;
+                for (var j = 0; j < subItems.length; j++) {
+                    subItems[j].classList.add('gh-subnav-item-link');
+                    subNavHTML += `<li class="${subItems[j].classList}">${subItems[j].innerHTML.replaceAll('-- ', '')}</li>`;
+                    subItems[j].remove();
+                }
+                subNavHTML += '</ul>';
+                prevItem.innerHTML = '' + subNavHTML + '';
+                prevItem.classList.add('has-list');
+                prevItem.querySelector('span.plus').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                    this.parentElement.querySelector('ul').classList.toggle('active');
+                });
+            }
+            // Reset
+            prevItem = item;
+            subItems = [];
+        }
+    }
+</script>

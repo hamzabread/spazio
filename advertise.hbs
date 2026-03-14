@@ -1,0 +1,271 @@
+{{!< default-contact}} 
+{{#post}} {{#if featured}} {{#match @page.show_title_and_feature_image}} <div
+    class="gh-post-head page-head{{^if feature_image}} without-image{{/if}}">
+    {{#if feature_image}}
+    <picture>
+        <source srcset="{{img_url feature_image size="3000" format="webp" }} 3000w, {{img_url feature_image size="2000"
+            format="webp" }} 2000w, {{img_url feature_image size="1200" format="webp" }} 1200w, {{img_url feature_image
+            size="1000" format="webp" }} 1000w, {{img_url feature_image size="800" format="webp" }} 800w, {{img_url
+            feature_image size="500" format="webp" }} 500w" sizes="100vw" type="image/webp">
+        <img srcset="{{img_url feature_image size=" 3000"}} 3000w, {{img_url feature_image size="2000" }} 2000w,
+            {{img_url feature_image size="1200" }} 1200w, {{img_url feature_image size="1000" }} 1000w, {{img_url
+            feature_image size="800" }} 800w, {{img_url feature_image size="500" }} 500w" sizes="100vw"
+            src="{{img_url feature_image size="3000"}}"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+            class="gh-post-feature-image" />
+    </picture>
+    {{/if}}
+    <div class="gh-post-head-wrapper page-head-wrapper gh-container{{#match @custom.header_type " Logo with bottom
+        navigation" }} with-big-header{{else match @custom.header_type "Author with bottom navigation" }}
+        with-big-header{{/match}}">
+        {{> "breadcrumbs"}}
+        <div class="gh-post-head-content">
+            <div class="gh-post-head-content-container">
+                <h1 class="gh-post-page-title">{{title}}</h1>
+                {{#if excerpt}}
+                <p class="gh-post-page-excerpt">{{excerpt}}</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    </div>
+    {{/match}}
+    {{else}}
+    {{#match @page.show_title_and_feature_image}}
+    <div class="gh-container">
+        {{> "breadcrumbs"}}
+    </div>
+    <div class="gh-post-head gh-container page-head{{^if feature_image}} without-image{{/if}}">
+        <div class="gh-post-head-wrapper page-head-wrapper{{^if feature_image}} without-image{{/if}}">
+            {{#if feature_image}}
+            <picture>
+                <source srcset="{{img_url feature_image size="1600" format="webp" }} 1600w, {{img_url feature_image
+                    size="1200" format="webp" }} 1200w, {{img_url feature_image size="1000" format="webp" }} 1000w,
+                    {{img_url feature_image size="800" format="webp" }} 800w, {{img_url feature_image size="500"
+                    format="webp" }} 500w" sizes="(min-width: 816px) 736px, 90vw" type="image/webp">
+                <img srcset="{{img_url feature_image size=" 1600"}} 1600w, {{img_url feature_image size="1200" }} 1200w,
+                    {{img_url feature_image size="1000" }} 1000w, {{img_url feature_image size="800" }} 800w, {{img_url
+                    feature_image size="500" }} 500w" sizes="(min-width: 816px) 736px, 90vw"
+                    src="{{img_url feature_image size="1600"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                    class="gh-post-feature-image" />
+            </picture>
+            {{/if}}
+            <div class="gh-post-head-content">
+                <div class="gh-post-head-content-container">
+                    <h1 class="gh-post-page-title">{{title}}</h1>
+                    {{#if excerpt}}
+                    <p class="gh-post-page-excerpt">{{excerpt}}</p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/match}}
+    {{/if}}
+
+    {{/post}}
+
+    <main class="main">
+        <div class="container py-14 lg:pt-32 lg:pb-20 template-contact-container">
+            <div class="contact-form-container-ad flex flex-wrap justify-between lg:flex-nowrap"
+                style="flex-direction: row-reverse;">
+                <div class=" lg:w-1/2 lg:max-w-[640px]">
+                    <div class="wpcf7 js" id="wpcf7-f407-o2" lang="en-US" dir="ltr">
+                        <form action="https://formspree.io/f/xrgwqvpb" method="post">
+                            <div class="form-row">
+                                <div class="form-column">
+                                    <label for="contact-nome">
+                                        {{t "Name"}} <span class="text-bright-red-600 p3 p3--ns">* <span
+                                                class="sr-only">{{t "Required"}}</span></span>
+                                    </label>
+                                    <input class="form-input" id="contact-name" required="" aria-required="true"
+                                        aria-invalid="false" value="" type="text"
+                                        name="your-name">
+                                </div>
+                                <div class="form-column">
+                                    <label for="contact-email">
+                                        {{t "Email"}} <span class="text-bright-red-600 p3 p3--ns">* <span
+                                                class="sr-only">{{t "Required"}}</span></span>
+                                    </label>
+                                    <input class="form-input" id="contact-email" required="" aria-required="true"
+                                        aria-invalid="false" value=""
+                                        type="email" name="your-email">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-column">
+                                    <label for="contact-email">
+                                        {{t "Company"}}<span class="text-bright-red-600 p3 p3--ns">* <span
+                                                class="sr-only">{{t "Required"}}</span></span>
+                                    </label>
+                                    <input class="form-input" id="contact-name" required="" aria-required="true"
+                                        aria-invalid="false" value="" type="text"
+                                        name="company-name">
+                                </div>
+                                <div class="form-column">
+                                    <label for="contact-name">
+                                        {{t "Telegram"}}
+                                    </label>
+                                    <input class="form-input" id="contact-name" required="" aria-required="true"
+                                        aria-invalid="false"  value="" type="text"
+                                        name="your-name">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label for="contact-name">
+                                    {{t "Website"}}
+                                </label>
+                                <input class="form-input" aria-invalid="false" 
+                                    value="" type="text" name="text-website">
+                            </div>
+                            <label for="contact-name">
+                                {{t "Choose an option"}}
+                            </label>
+                            <div class="form-row">
+                                <div class="form-column">
+                                    <select class="form-select" id="contact-reason" required="" aria-required="true"
+                                        aria-invalid="false" name="menu-130">
+                                        <option value="">{{t "—Choose an option—"}}</option>
+                                        <option value="Ad Network">{{t "Advertising network"}}</option>
+                                        <option value="Agency/Intermerdiary">{{t "Agency/intermediary"}}</option>
+                                        <option value="Conference/Event">{{t "Conference/event"}}</option>
+                                        <option value="Crypto Mining">{{t "Cryptocurrency mining"}}</option>
+                                        <option value="Currency/Coin project">{{t "Currency/coin project"}}</option>
+                                        <option value="Finance/Investment">{{t "Finance/investment"}}</option>
+                                        <option value="Giochi/giochi d'azzardo">{{t "Games/gambling"}}</option>
+                                        <option value="Tecnologia generale">{{t "General technology"}}</option>
+                                        <option value="Other (Crypto-related)">{{t "Otherrc"}}
+                                        </option>
+                                        <option value="Other (Non-crypto related)">{{t "Othernrc"}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-column" style="display: flex;">
+                                    <a href="https://docsend.com/v/tk4mp/spaziocrypto-media-kit"
+                                        class="gh-main-button gh-member-button"
+                                        style="max-height:42px;background-color: #f19021;border-radius: 8px;align-content: center;display: inline-flex;align-items: center;justify-content:center;margin-top:3px;margin-bottom:10px;"
+                                        target="_blank">
+                                        <div style="display:flex;align-items:center;">
+                                            <svg xmlns="https://www.w3.org/2000/svg"
+                                                xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
+                                                viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                                                xml:space="preserve" width="24" height="24"
+                                                style="fill: white;width:20px;height:20px;display:block;transform:scale(1, 1);transition-property:none;"
+                                                role="img" aria-labelledby="titleid33966ca59">
+                                                <defs>
+                                                    <linearGradient class="cerosgradient" data-cerosgradient="true"
+                                                        id="CerosGradient_iddfe4adcb7" gradientUnits="userSpaceOnUse"
+                                                        x1="50%" y1="100%" x2="50%" y2="0%">
+                                                        <stop offset="0%" stop-color="#000000"
+                                                            style="stop-color: rgb(0, 0, 0); transition-property: none;">
+                                                        </stop>
+                                                        <stop offset="100%" stop-color="#000000"
+                                                            style="stop-color: rgb(0, 0, 0); transition-property: none;">
+                                                        </stop>
+                                                        <animate attributeName="x1" fill="freeze" keyTimes="0;0.5;1"
+                                                            calcMode="spline" values="50%;50%;50%"
+                                                            keySplines="0.125 0.05 0.1875 0.3;0.4375 0.775 0.625 1"
+                                                            begin="84.6133804321289s" dur="0.5s"></animate>
+                                                        <animate attributeName="y1" fill="freeze" keyTimes="0;0.5;1"
+                                                            calcMode="spline" values="100%;100%;100%"
+                                                            keySplines="0.125 0.05 0.1875 0.3;0.4375 0.775 0.625 1"
+                                                            begin="84.6133804321289s" dur="0.5s"></animate>
+                                                        <animate attributeName="x2" fill="freeze" keyTimes="0;0.5;1"
+                                                            calcMode="spline" values="50%;50%;50%"
+                                                            keySplines="0.125 0.05 0.1875 0.3;0.4375 0.775 0.625 1"
+                                                            begin="84.6133804321289s" dur="0.5s"></animate>
+                                                        <animate attributeName="y2" fill="freeze" keyTimes="0;0.5;1"
+                                                            calcMode="spline" values="0%;0%;0%"
+                                                            keySplines="0.125 0.05 0.1875 0.3;0.4375 0.775 0.625 1"
+                                                            begin="84.6133804321289s" dur="0.5s"></animate>
+                                                    </linearGradient>
+                                                    <linearGradient></linearGradient>
+                                                </defs>
+                                                <g>
+                                                    <path
+                                                        d="M90.7,70.4h-3V11.2h3c0.8,0,1.4-0.6,1.4-1.4c0-0.8-0.7-1.4-1.4-1.4H51.4V6.4C51.4,5.6,50.8,5,50,5c-0.8,0-1.4,0.6-1.4,1.4   v1.8H9.3c-0.8,0-1.4,0.6-1.4,1.4c0,0.8,0.6,1.4,1.4,1.4h3v59.2h-3c-0.8,0-1.4,0.6-1.4,1.4c0,0.8,0.6,1.4,1.4,1.4h28.9L18.9,92.5   c-0.6,0.6-0.6,1.5,0,2c0.3,0.3,0.7,0.4,1,0.4c0.4,0,0.7-0.1,1-0.4l21.3-21.3h6.3v16.2c0,0.8,0.6,1.4,1.4,1.4c0.8,0,1.4-0.6,1.4-1.4   V73.3h6.3l21.3,21.3c0.3,0.3,0.7,0.4,1,0.4c0.4,0,0.7-0.1,1-0.4c0.6-0.6,0.6-1.5,0-2L61.9,73.3h28.9c0.8,0,1.4-0.6,1.4-1.4   C92.2,71,91.5,70.4,90.7,70.4z M84.9,70.4H15.1v-5.5c0,0,0.1-0.1,0.1-0.1l16-16l8.2,8.2c0.6,0.6,1.5,0.6,2,0l24.2-24.2L84.9,52   V70.4z M84.9,47.9L66.7,29.7c-0.6-0.6-1.5-0.6-2,0L40.5,53.9l-8.2-8.2c-0.6-0.6-1.5-0.6-2,0L15.1,60.8V11.2h69.8V47.9z"
+                                                        style="fill: white; transition-property: none;">
+                                                    </path>
+                                                </g>
+                                                <g>
+                                                    <g>
+                                                        <path
+                                                            d="M35.4,37.8c-4.5,0-8.3-3.7-8.3-8.3s3.7-8.3,8.3-8.3s8.3,3.7,8.3,8.3S39.9,37.8,35.4,37.8z M35.4,24.2    c-3,0-5.4,2.4-5.4,5.4s2.4,5.4,5.4,5.4c3,0,5.4-2.4,5.4-5.4S38.3,24.2,35.4,24.2z"
+                                                            style="fill: white; transition-property: none;">
+                                                        </path>
+                                                    </g>
+                                                </g>
+                                                <title id="titleid33966ca59"></title>
+                                            </svg>
+                                            <span style="margin-left:10px">{{t "Media Kit"}}</span>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <label for="contact-name">
+                                    {{t "Write your message"}}
+                                </label>
+                                <textarea rows="10" name="message" class="form-message" required style="height: 11rem;"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <input type="submit" value="{{t "Send"}}"
+                                    class="form-button contact-us-btn button-change-color"
+                                    style="width:100%;min-height:48px;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src={{asset '/imagesAndIcons/advertising.webp' }}
+                        class="block relative lg:-right-19 lg:top-5 mt-10 lg:mt-0 top-0" alt="" decoding="async"
+                        loading="lazy" style="width: 100%;">
+                </div>
+            </div>
+            <div
+                class="contact-box-color max-w-[1080px] mx-auto flex flex-wrap items-center p-6 mt-6 lg:mt-24 contact-details bg-grey-100 dark:bg-dark-grey-500 rounded-2xl lg:p-10 lg:flex-nowrap lg:justify-between contact-box-text-align">
+                <div class="contact-address w-full max-w-[480px] lg:w-1/2">
+                    <h2 class="mb-3 font-bold leading-6 p3" style="margin-bottom: 14px;">Spaziocrypto Limited</h2>
+                    <address class="not-italic leading-6 p4 font-body">
+                        <p>Galton Tower, 22, Civic Close, B1 2NW</p>
+                        <p>Birmingham</p>
+                        <p>United Kingdom</p>
+                        <p>Phone: +44 07400250775</p>
+                    </address>
+                </div>
+                <ul
+                    class="w-full pt-4 mt-4 border-t lg:mt-0 lg:pt-0 lg:w-1/2 lg:grid lg:grid-cols-2-max gap-y-8 gap-x-20 contact-emails border-t-grey-300 dark:border-t-dark-grey-700 lg:border-none lg:justify-end">
+                    <li class="mb-5 lg:mb-0 last:mb-0">
+                        <h4 class="mb-1 font-sans font-bold leading-6 p3 contact-box-email-title">{{t "General"}}</h4>
+                        <address class="not-italic leading-6 p4 font-body custom-email" style="color: #F19021;">
+                            <a href="mailto:info@spaziocrypto.com" target="">info@spaziocrypto.com</a>
+                        </address>
+                    </li>
+                    {{!-- <li class="mb-5 lg:mb-0 last:mb-0">
+                        <h4 class="mb-1 font-sans font-bold leading-6 p3">Editor in Chief</h4>
+                        <address class="not-italic leading-6 text-blue-600 p4 font-body dark:text-lime-600">
+                            <a href="mailto:editorinchief@beincrypto.com" target="">editorinchief@spaziocrypto.com</a>
+                        </address>
+                    </li> --}}
+                    <li class="mb-5 lg:mb-0 last:mb-0 contact-box-email">
+                        <h4 class="mb-1 font-sans font-bold leading-6 p3 contact-box-email-title">{{t "Marketing and
+                            Sales"}}
+                        </h4>
+                        <address class="not-italic leading-6 p4 font-body custom-email" style="color: #F19021;">
+                            <a href="mailto:marketing@spaziocrypto.com" target="">marketing@spaziocrypto.com</a>
+                        </address>
+                    </li>
+                    {{!-- <li class="mb-5 lg:mb-0 last:mb-0">
+                        <h4 class="mb-1 font-sans font-bold leading-6 p3">Write for us</h4>
+                        <address class="not-italic leading-6 text-blue-600 p4 font-body dark:text-lime-600">
+                            <a href="mailto:expertinsights@beincrypto.com" target="">expertinsights@spaziocrypto.com</a>
+                        </address>
+                    </li> --}}
+                </ul>
+            </div>
+        </div>
+</main>

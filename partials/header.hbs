@@ -1,0 +1,178 @@
+<header class="gh-header header-{{#match @custom.header_type "Logo on the left"}}left-logo{{else match
+    @custom.header_type "Author on the left" }}left-logo{{else match @custom.header_type "Logo in the middle"
+    }}middle-logo{{else match @custom.header_type "Author in the middle" }}middle-logo{{else match
+    @custom.header_type "Logo with social icons" }}include-social-icons{{else match
+    @custom.header_type "Author with social icons" }}include-social-icons{{else match
+    @custom.header_type "Mobile menu with logo" }}mobile-menu{{else match @custom.header_type "Mobile menu with author"
+    }}mobile-menu{{else match @custom.header_type "Mobile menu with logo and icons" }}mobile-menu-icons{{else match
+    @custom.header_type "Mobile menu with author and icons" }}mobile-menu-icons{{else match
+    @custom.header_type "Logo with bottom navigation" }}bottom-nav{{else match
+    @custom.header_type "Author with bottom navigation" }}bottom-nav{{/match}}{{#is 'post' }}{{#post}}{{#if featured}}
+    transparent fixed{{/if}}{{/post}}{{/is}}{{#is 'page' }}{{#page}}{{#if featured}}{{#if feature_image}}{{#match @page.show_title_and_feature_image}}
+    transparent fixed{{/match}}{{/if}}{{/if}}{{/page}}{{/is}}{{#is 'home' }}{{#match @custom.featured_posts "Large Slider" }} transparent
+    fixed{{/match}}{{/is}}" id="gh-header">
+    <div class="gh-header-container gh-container">
+        {{#match @custom.header_type "Logo with bottom navigation" }}
+        <div class="gh-header-socials">
+            {{>socials}}
+        </div>
+        {{else match @custom.header_type "Author with bottom navigation" }}
+        <div class="gh-header-socials">
+            {{>socials}}
+        </div>
+        {{/match}}
+        <div class="gh-header-brand-wrapper">
+            {{> langswitch-mobile}}
+            <button class="gh-burger-btn" aria-label="{{t "Mobile menu button"}}">
+                {{>icons/burger-icon}}
+            </button>
+            <div class="gh-header-brand">
+                {{#match @custom.header_type "Author on the left"}}
+                {{>header-author}}
+                {{else match @custom.header_type "Author in the middle"}}
+                {{>header-author}}
+                {{else match @custom.header_type "Author with social icons"}}
+                {{>header-author}}
+                {{else match @custom.header_type "Mobile menu with author and icons"}}
+                {{>header-author}}
+                {{else match @custom.header_type "Mobile menu with author"}}
+                {{>header-author}}
+                {{else match @custom.header_type "Author with bottom navigation"}}
+                {{>header-author}}
+                {{else}}
+                <a class="gh-site-logo {{#if @custom.dark_mode_logo}}gh-site-logo-has-DM-logo{{/if}}"
+                    href="{{@site.url}}" aria-label="{{@site.title}} {{t "logo and home page link"}}">
+                    {{#if @site.logo}}
+                    <img src="{{img_url @site.logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img">
+                    {{#if @custom.dark_mode_logo}}
+                    <img src="{{img_url @custom.dark_mode_logo}}" alt="{{@site.title}} {{t "icon"}}"
+                        class="gh-site-logo-img-dark-mode">
+                    {{/if}}
+                    {{else}}
+                    <span class="gh-site-title">{{@site.title}}</span>
+                    {{/if}}
+                </a>
+                {{/match}}
+            </div>
+
+        </div>
+        {{^match @custom.header_type "Logo with bottom navigation" }}
+        {{^match @custom.header_type "Author with bottom navigation" }}
+        <nav class="gh-header-navigation-wrapper">
+            <ul class="gh-header-navigation">
+                <li class="gh-header-nav-item">
+                    <a class="gh-header-nav-link" href="{{@site.url}}/tag/news/">
+                        <svg class="sc-nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+                        {{t "News"}}
+                        <svg class="sc-nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </li>
+                <li class="gh-header-nav-item">
+                    <a class="gh-header-nav-link" href="{{@site.url}}/tag/markets/">
+                        <svg class="sc-nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        {{t "Markets"}}
+                        <svg class="sc-nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </li>
+                <li class="gh-header-nav-item">
+                    <a class="gh-header-nav-link" href="{{@site.url}}/tag/product/">
+                        <svg class="sc-nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        {{t "Product"}}
+                        <svg class="sc-nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </li>
+                <li class="gh-header-nav-item">
+                    <a class="gh-header-nav-link" href="{{@site.url}}/tag/ai/">
+                        <svg class="sc-nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 014 4v1a3 3 0 013 3v1a2 2 0 012 2 2 2 0 01-2 2h-1a3 3 0 01-3 3h-1a4 4 0 01-8 0H5a3 3 0 01-3-3H1a2 2 0 01-2-2 2 2 0 012-2V10a3 3 0 013-3V6a4 4 0 014-4z"/></svg>
+                        {{t "AI Insights"}}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        {{/match}}
+        {{/match}}
+        <div class="gh-header-actions">
+            <div class="gh-header-actions-buttons">
+                
+                
+                 <li class="popup-launcher no-mobile">
+                    {{> "langswitch"}}
+                    <span class="caret">▼</span>
+                 </li>
+               
+
+                <button class="gh-dark-mode-toggle-btn" aria-label="{{t "Dark mode toggle button"}}">
+                    {{>icons/sun}}
+                    {{>icons/moon}}
+                </button>
+                <script>
+                    const toggleBtn = document.querySelector(".gh-dark-mode-toggle-btn");
+
+                        function updateTooltip(isDarkMode) {
+                        toggleBtn.setAttribute(
+                            "data-tooltip",
+                            isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
+                        );
+                        }
+
+                        let darkMode = false;
+                        toggleBtn.addEventListener("click", () => {
+                        darkMode = !darkMode;
+                        updateTooltip(darkMode);
+                        });
+
+                        updateTooltip(darkMode);
+
+                </script>
+                <button class="gh-search-btn" title="{{t "Search button"}}" aria-label="{{t "Search button"}}" data-ghost-search>
+                    {{>icons/search}}
+                </button>
+            </div>
+            <div class="sc-header-cta">
+                <a class="sc-btn-outline" href="{{@site.url}}/post-a-job" aria-label="{{t "Post a Job"}}">
+                    {{t "Post a Job"}}
+                </a>
+                <a class="sc-btn-filled" href="{{@site.url}}/list-your-company" aria-label="{{t "List Your Company"}}">
+                    {{t "List Your Company"}}
+                </a>
+            </div>
+        </div>
+    </div>
+    {{#match @custom.header_type "Logo with bottom navigation" }}
+    <div class="gh-header-bottom gh-container">
+        <div class="gh-header-bottom-navigation">
+            {{navigation}}
+        </div>
+        <div class="gh-header-bottom-actions">
+            
+                <button class="popup-launcher no-mobile">
+                    {{> "langswitch"}}
+                </button>
+
+            <button class="gh-dark-mode-toggle-btn" aria-label="{{t "Dark mode toggle button"}}">
+                {{>icons/sun}}
+                {{>icons/moon}}
+            </button>
+            <button class="gh-search-btn" title="{{t "Search button"}}" aria-label="{{t "Search button"}}" data-ghost-search>
+                {{> "icons/search"}}
+            </button>
+        </div>
+    </div>
+    {{else match @custom.header_type "Author with bottom navigation" }}
+    <div class="gh-header-bottom gh-container">
+        <div class="gh-header-bottom-navigation">
+            {{navigation}}
+        </div>
+        <div class="gh-header-bottom-actions">
+            <button class="gh-dark-mode-toggle-btn" aria-label="{{t "Dark mode toggle button"}}">
+                {{>icons/sun}}
+                {{>icons/moon}}
+            </button>
+            <button class="gh-search-btn" title="Search button" aria-label="{{t "Search button"}}" data-ghost-search>
+                {{> "icons/search"}}
+            </button>
+        </div>
+    </div>
+    {{/match}}
+    {{> "mobile-menu"}}
+</header>

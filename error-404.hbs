@@ -1,0 +1,12 @@
+{{!< default}}
+
+<main class="gh-main gh-container gh-error-404-page{{#match @custom.header_type "Logo with bottom navigation" }} with-big-header{{else match
+    @custom.header_type "Author with bottom navigation" }} with-big-header{{/match}}">
+    <div class="gh-404-error">
+        <h1 class="gh-404-error-title">{{t "Page Not Found"}}</h1>
+        <p class="gh-404-error-description">
+            {{t "Uh oh! The page you are looking for doesn't exist or has been moved. Try retracing your steps or going back home."}}
+        </p>
+        <a class="gh-main-button gh-404-error-home-btn" href="{{#if @site.url}}{{@site.url}}{{else}}/{{/if}}" aria-label="{{t "Back To Home Page"}}">{{t "Back To Home Page"}}</a>
+    </div>
+</main>

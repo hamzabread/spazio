@@ -1,0 +1,51 @@
+{{!< default}}
+
+{{#post}}
+<main class="sc-about-page">
+    <section class="sc-about-hero">
+        <div class="sc-about-shell">
+            <article class="sc-about-hero-card">
+                <div class="sc-about-hero-copy">
+                    {{> breadcrumbs}}
+                    <span class="sc-about-chip">About Us</span>
+                    <h1>Spaziocrypto - The Web3 <span>Community</span></h1>
+                    <p>
+                        Our vision is to become the leading italian reference point for information and
+                        learning in the vast world of cryptocurrencies, blockchain technology and finance.
+                        We are determined to create a virtuous environment where access to high quality
+                        content is easy, understandable and useful to all.
+                    </p>
+
+                    <div class="sc-about-socials">
+                        {{#if @site.facebook}}<a href="{{facebook_url}}" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook"></i></a>{{/if}}
+                        {{#if @custom.telegram_link}}<a href="{{@custom.telegram_link}}" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa fa-paper-plane"></i></a>{{/if}}
+                        <a href="#" aria-label="Google"><i class="fa fa-google"></i></a>
+                        {{#if @custom.insta_link}}<a href="{{@custom.insta_link}}" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa fa-instagram"></i></a>{{/if}}
+                        {{#if @site.twitter}}<a href="{{twitter_url}}" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter"></i></a>{{/if}}
+                    </div>
+                </div>
+
+                <div class="sc-about-hero-image-wrap">
+                    <img class="sc-about-hero-image" src="{{asset 'imagesAndIcons/aboutustop.png'}}" alt="About us" loading="lazy" />
+                </div>
+            </article>
+        </div>
+    </section>
+
+    {{> breaking-news}}
+
+    <section class="sc-about-mission">
+        <div class="sc-about-shell">
+            <article class="sc-about-mission-card">
+                <h2>What <span>Drives Us</span></h2>
+                <p>
+                    Our mission is to be a trusted source for learning about crypto and blockchain by offering
+                    clear, research-based content that helps people make informed decisions. Our vision is to build
+                    an impartial, collaborative community where knowledge is shared openly and even complex topics
+                    become easy to understand for everyone.
+                </p>
+            </article>
+        </div>
+    </section>
+</main>
+{{/post}}

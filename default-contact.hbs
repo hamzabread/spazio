@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" data-color-scheme="light">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{meta_title}}</title>
+
+    {{!-- Main CSS --}}
+    <link rel="stylesheet" href="{{asset 'built/index.css'}}" />
+    <link rel="stylesheet" href="{{asset 'built/contact-us.css'}}" />
+
+
+    {{!-- SwiperJS Min Styles --}}
+    {{#is "home, post"}}
+    <link rel="stylesheet" href="https://media.spaziocrypto.com/css/swiper-bundle.min.css" />
+    {{/is}}
+
+    <link rel="stylesheet" data-categories="essential" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
+    {{!-- JavaScript for Dark Mode --}}
+    <script>
+        const rootElem = document.querySelector("html[data-color-scheme]");
+
+        const detectSystemTheme = () => {
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                rootElem.setAttribute("data-color-scheme", "dark");
+            } else {
+                rootElem.setAttribute("data-color-scheme", "light");
+            }
+        };
+
+        const initTheme = () => {
+            const localStoragePref = localStorage.getItem("color-scheme");
+
+            if (localStoragePref) {
+                rootElem.setAttribute("data-color-scheme", localStoragePref);
+            } else {
+                detectSystemTheme();
+            }
+        };
+
+        initTheme();
+
+        window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", () => {
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    rootElem.setAttribute("data-color-scheme", "dark");
+                } else {
+                    rootElem.setAttribute("data-color-scheme", "light");
+                }
+            });
+    </script>
+
+    {{!-- Outputs styles for chosen border-radius setting --}}
+    {{>border-radius}}
+
+    {{!-- Outputs styles and uploads fonts for chosen font-pairing setting --}}
+    {{>font-pairings}}
+
+    {{!-- Outputs important meta data and settings, should always be in
+
+    <head> --}}
+        {{ghost_head}}
+
+    </head>
+
+<body class="{{body_class}}">
+
+    <div class="gh-viewport">
+
+        {{> extended-header}}
+        {{! Website's Header }}
+        {{>header}}
+
+        {{! All content gets inserted here, index.hbs, post.hbs, etc }}
+        {{{body}}}
+
+        {{! Website's Footer }}
+        {{>footer}}
+
+    </div>
+
+    {{! Scroll to top btn }}
+    <button class="gh-scroll-top-btn" type="button" title="Scroll to top button" aria-label="{{t " Scroll to top
+        button"}}">
+        <svg class="gh-scroll-top-arrow" xmlns="https://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+            fill="none">
+            <path d="M9.59998 19.2L16 12.8L22.4 19.2" stroke="#1D1D1F" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+        <svg class="gh-scroll-top-progress" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </button>
+
+    {{! SwiperJS script }}
+    {{#is "home, post"}}
+    <script src="https://media.spaziocrypto.com/js/swiper-bundle.min.js"></script>
+    {{/is}}
+
+    {{! Main script }}
+    <script src="{{asset 'built/index.js'}}"></script>
+
+    {{! <foot> }}
+        {{ghost_foot}}
+        {{! Outputs important scripts - should always be included before closing body tag }}
+
+</body>
+
+</html>

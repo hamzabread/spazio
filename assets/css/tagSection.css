@@ -1,0 +1,92 @@
+.tag-section{
+
+    &.bg-alt{
+        background-color: var(--color-bg-alt);
+        color: white;
+    }
+
+    .gh-container{
+        padding-block: 48px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+    }
+    
+    .tag-section-title{
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.4;
+
+        @media (max-width: 750px) {
+            font-size: 24px;
+        }
+    }
+
+    .tag-section-description{
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.4;
+
+        @media (max-width: 750px) {
+            font-size: 16px;
+        }
+    }
+
+    .gh-small-slider-container{
+        position: relative;
+
+        .swiper-slide{
+            display: grid;
+        }
+
+        .gh-small-slider-button-next, .gh-small-slider-button-prev{
+            top: 35%;
+            @media (max-width: 550px) {
+                top: 30%;
+            }
+        }
+    }
+
+
+    .gh-small-slider-button-all{
+        margin-left: auto;
+        margin-right: 0;
+
+        @media (max-width: 550px) {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+    }
+}
+
+.tag-filter-section{
+    display: none;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+
+    .gh-tag{
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        /* &:hover{
+            background-color: var(--color-primary-dark);
+        } */
+
+        &.active{
+            background-color: var(--color-primary-dark);
+        }
+    }
+}
+
+.gh-card-meta .filter-tag{
+    display: none;
+}
+
+.tag-filter-enabled .tag-filter-section,.tag-filter-enabled .gh-card-meta .filter-tag{
+    display: flex;
+}

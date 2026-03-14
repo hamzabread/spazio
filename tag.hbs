@@ -1,0 +1,186 @@
+{{!< default}}
+
+  		
+<main class="gh-archive-page gh-container">
+    {{#tag}}
+    {{>breadcrumbs}}
+    <div class="gh-archive-page-header{{#if feature_image}} with-image{{/if}}">
+        {{#if feature_image}}
+        <picture>
+            <source srcset="{{img_url feature_image size="3000" format="webp" }} 3000w, {{img_url feature_image size="2000"
+                format="webp" }} 2000w, {{img_url feature_image size="1600" format="webp" }} 1600w, {{img_url feature_image size="1000" format="webp" }} 1000w, {{img_url feature_image
+                size="800" format="webp" }} 800w, {{img_url feature_image size="600" format="webp" }} 600w, {{img_url feature_image
+                size="500" format="webp" }} 500w" sizes="(min-width: 1680px) 1600px, 95vw" type="image/webp">
+            <img class="gh-archive-page-feature-image" srcset="{{img_url feature_image size="3000"}} 3000w, {{img_url feature_image
+                size="2000" }} 2000w, {{img_url feature_image size="1600" }} 1600w, {{img_url feature_image size="1000" }} 1000w, {{img_url feature_image size="800" }} 800w,
+                {{img_url feature_image size="600" }} 600w, {{img_url feature_image size="500" }} 500w"
+                sizes="(min-width: 1680px) 1600px, 95vw" src="{{img_url feature_image size="3000"}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}} {{t "feature image"}}{{/if}}">
+        </picture>
+        {{/if}}
+        <h1 class="gh-archive-page-title">{{name}}</h1>
+        {{#if description}}
+        <p class="gh-archive-page-excerpt">
+            {{description}}
+        </p>
+        {{/if}}
+        <span class="gh-archive-page-posts-count">
+            {{plural ../pagination.total empty=(t "No Posts") singular=(t "% Post") plural=(t "% Posts")}}
+        </span>
+    </div>
+    
+    <section class="tag-filter-section">
+        <a class="gh-tag" href="{{url}}" data-tag-slug="all" aria-label="{{name}} {{t "tag link"}}">
+            {{t "All"}}
+        </a>
+        {{#get "tags" filter="slug:[hash-beginner, hash-intermediate, hash-advanced]"}}
+            {{#foreach tags visibility="all"}}
+                {{#has slug="hash-beginner"}}
+                    <a class="gh-tag" href="#" data-tag-slug="{{slug}}" aria-label="{{name}} {{t "tag link"}}">
+                        {{> 'icons/dot' }} {{#if meta_title}}{{meta_title}}{{else}}{{name}}{{/if}}
+                    </a>
+                {{else}}
+                    {{#has slug="hash-intermediate"}}
+                        <a class="gh-tag" href="#" data-tag-slug="{{slug}}" aria-label="{{name}} {{t "tag link"}}">
+                            {{> 'icons/dot' }} {{#if meta_title}}{{meta_title}}{{else}}{{name}}{{/if}}
+                        </a>
+                    {{else}}
+                        {{#has slug="hash-advanced"}}
+                            <a class="gh-tag" href="#" data-tag-slug="{{slug}}" aria-label="{{name}} {{t "tag link"}}">
+                                {{> 'icons/dot' }} {{#if meta_title}}{{meta_title}}{{else}}{{name}}{{/if}}
+                            </a>
+                        {{/has}}
+                    {{/has}}
+                {{/has}}
+            {{/foreach}}
+        {{/get}}
+    </section>
+    {{/tag}}
+    {{>posts-layout}}
+    {{^if @member.paid}}
+    {{!-- Ad Unit #2400932 - Tag Page Feed Bottom --}}
+    <div id="frame" style="width: 100%;margin: auto;background: rgba(0, 0, 0, 0.50);position: relative; z-index: 99998;">
+          <iframe data-aa='2400932' src='//acceptable.a-ads.com/2400932/?size=Adaptive'
+                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+    </div>
+    {{/if}}
+</main>
+
+{{#tag}}
+    <script>
+        if(typeof enable_tag_filter != "undefined"){
+            const tagSlugs = enable_tag_filter.split(',');
+            if(tagSlugs.includes('{{slug}}')){
+                document.body.classList.add('tag-filter-enabled');
+                const data_key = document.querySelector('script[data-key]').getAttribute('data-key');
+
+                if(data_key){
+                    const scriptElement = document.createElement("script");
+                    scriptElement.src = 'https://cdn.jsdelivr.net/npm/@tryghost/content-api/umd/content-api.min.js';
+                    scriptElement.addEventListener("load", () => {
+                        const api = new GhostContentAPI({
+                            url: '{{@site.url}}', 
+                            key: data_key,  
+                            version: "v5.0" 
+                        });
+
+                        const feed = document.querySelector('.gh-grid-archive.gh-posts-feed');
+                        const paginationBtn = document.querySelector('.gh-load-more-button');
+                        const filterTagElements = document.querySelectorAll('.tag-filter-section .gh-tag');
+                        filterTagElements.forEach(tagElement => {
+                            tagElement.addEventListener('click', function(event) {
+                                event.preventDefault();
+                                const tagSlug = tagElement.getAttribute('data-tag-slug');
+                                getPostsByFilters(tagSlug);
+                            });
+                        });
+                        
+                        function getPostsByFilters(filterTag) {
+                            if(filterTag){
+                                if(filterTag === 'all'){
+
+                                    var xhr = new window.XMLHttpRequest();
+                                    xhr.responseType = 'document';
+                                    xhr.addEventListener('load', function (){
+                                        if (this.status === 404) {
+                                            return;
+                                        }
+                                        feed.innerHTML = this.response.querySelectorAll('.gh-grid-archive.gh-posts-feed')[0].innerHTML;
+                                        paginationBtn.style.display = 'block';
+                                    });
+                                    xhr.open('GET', '{{url absolute="true"}}');
+                                    xhr.send(null);
+                                } else {
+                                    paginationBtn.style.display = 'none';
+                                    api.posts.browse({
+                                        filter: `tag:{{slug}}+tag:${filterTag}`,
+                                        include: 'tags,authors',
+                                        limit: 'all',
+                                        order: 'published_at desc'
+                                    }).then((posts) => {
+                                        feed.innerHTML = '';
+                                        posts.forEach((post) => {
+                                            const postElement = document.createElement('article');
+                                            let published_at = new Date(post.published_at).toLocaleDateString('{{@site.locale}}', { year: 'numeric', month: 'long', day: 'numeric' });
+                                            postElement.classList.add('gh-post');
+                                            let primaryAuthor = '';
+                                            if(post.primary_author){
+                                                primaryAuthor = `<div class="gh-card-authors"><span>By</span><a class="gh-card-author" href="${post.primary_author.url}">${post.primary_author.name}</a></div>`
+                                            }
+                                            let tagList = '';
+                                            post.tags.forEach((tag) => {
+                                                if(tag.visibility=='public'){
+                                                    tagList += `<a class="gh-tag" href="${tag.url}">${tag.name}</a>`;
+                                                }
+                                            });
+                                            postElement.innerHTML = `
+                                                <article class="gh-card post tag-crypto-guide tag-intermediate">
+                                                    <div class="gh-card-image-video-outer">
+                                                        <div class="gh-card-img-video-wrapper">
+                                                            <a class="gh-card-image-wrapper-link" href="${post.url}" aria-label="">
+                                                                <picture data-cmp-info="9">
+                                                                <img src="${post.feature_image}" alt="${post.feature_image_alt}" class="gh-card-image" data-cmp-info="10">
+                                                                </picture>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="gh-card-content">
+                                                        <div class="gh-card-content-main">
+                                                            <div class="gh-card-meta">
+                                                                ${primaryAuthor}
+                                                                <span class="gh-card-date">
+                                                                    <time datetime=" 2024-06-08">${published_at}</time>
+                                                                </span>
+                                                            </div>
+                                                            <h2 class="gh-card-title">
+                                                                <a class="gh-card-title-link" href="${post.url}" aria-label="">
+                                                                    ${post.title}
+                                                                </a>
+                                                            </h2>
+                                                            <p class="gh-card-excerpt">${post.excerpt}</p>
+                                                        </div>
+                                                        <div class="gh-card-tags">
+                                                            ${tagList} 
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            `;
+                                            feed.appendChild(postElement);
+                                        });
+
+                                    }).catch((err) => {
+                                        console.error(err);
+                                    });
+                                }
+                            }
+                        }
+                        
+                    });
+                    document.body.appendChild(scriptElement);
+                }else{
+                    console.error('Content API key could not be found');
+                }
+            }
+        }
+    </script>
+{{/tag}}

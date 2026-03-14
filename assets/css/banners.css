@@ -1,0 +1,20 @@
+.bnr-container-vertical{
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+        max-width: 100%;
+        margin-block: 32px;
+    }
+}
+.bnr-container-horizontal{
+    display: block;
+    width: 100%;
+    max-width: 728px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 56px;
+}

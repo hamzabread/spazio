@@ -1,0 +1,629 @@
+/*
+pitch v1.0.13
+This is a development CSS file that is compiled to a minified
+production stylesheet in assets/built/screen.css using: npm run dev
+*/
+
+/* Local imports
+/* ---------------------------------------------------------- */
+
+@import "normalize.css";
+@import "vars.css";
+@import "global.css";
+@import "animations.css";
+@import "buttons.css";
+@import "breadcrumbs.css";
+@import "errors.css";
+@import "header.css";
+@import "homePage.css";
+@import "featuredPosts.css";
+@import "posts-layout.css";
+@import "post-card.css";
+@import "sidebar.css";
+@import "footer.css";
+@import "postPage.css";
+@import "postContent.css";
+@import "archivePage.css";
+@import "archiveCard.css";
+@import "authorPage.css";
+@import "membership.css";
+@import "error404Page.css";
+@import "formPages.css";
+@import "accountPage.css";
+@import "media.css";
+@import "memberCard.css";
+@import "multi-language.css";
+@import "languagePopUp.css";
+@import "tagSection.css";
+@import "modal.css";
+@import "banners.css";
+@import "extended-header.css";
+@import "heroSection.css";
+@import "pressRelease.css";
+@import "pressReleaseFeed.css";
+@import "featuredFeed.css";
+@import "categoryFeed.css";
+@import "videoFeed.css";
+@import "advertising.css";
+@import "scam.css";
+@import "aboutUsPage.css";
+
+
+/* Main 
+/* ---------------------------------------------------------- */
+
+html,
+.gh-viewport {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--color-background-main);
+  color: var(--color-main);
+}
+
+.gh-main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.gh-container {
+  width: 100%;
+  max-width: 1680px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: 0 auto;
+}
+
+.lock-scroll {
+  overflow: hidden !important;
+}
+
+/* Social Media Icons */
+/* ---------------------------------------------------------- */
+
+.gh-social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.gh-social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.gh-social-icon-link:first-child {
+  padding: 0 0px 0 0;
+}
+
+.gh-social-icon-link:last-child {
+  padding: 0 0 0 2px;
+}
+
+.gh-social-icon-link svg {
+  width: 26px;
+  height: 26px;
+}
+
+.gh-social-icon-link svg path {
+  fill: var(--color-main);
+  transition: fill 0.3s ease;
+}
+
+.gh-social-icon-link:hover svg path {
+  fill: var(--color-accent);
+}
+
+/* Post Comments */
+/* ---------------------------------------------------------- */
+
+#ghost-comments-root html .ghost-display button {
+  background-color: var(--background-color-button) !important;
+}
+
+#ghost-comments-root iframe[title="comments-frame"] html body button {
+  color: red !important;
+}
+
+/* Animation Styles */
+/* ---------------------------------------------------------- */
+
+.animateRight {
+  animation: moveRight 0.45s ease;
+}
+
+.animateLeft {
+  animation: moveLeft 0.25s ease-in-out forwards;
+}
+
+.animateFade {
+  animation: fadeIn 0.6s cubic-bezier(0.74, 0.01, 0.81, 0.75) forwards;
+}
+
+/* Tags */
+/* ---------------------------------------------------------- */
+
+.gh-transparent-tag {
+  color: #fff;
+  font-family: var(--font-family-tags);
+  font-weight: var(--font-weight-tags);
+  line-height: var(--line-height-tags);
+  font-size: var(--font-size-big-tags);
+  text-transform: var(--text-transform-tags);
+  letter-spacing: var(--letter-spacing-tags);
+  padding: 5px 12px;
+  border-radius: var(--border-radius-tags);
+  background-color: rgba(255, 255, 255, 0.2);
+  width: max-content;
+  height: max-content;
+}
+
+.gh-transparent-tag-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-tags);
+  padding: 7px;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: max-content;
+  position: relative;
+}
+
+.gh-transparent-tag-icon::after {
+  display: none;
+  color: #fff;
+  font-family: var(--font-family-tags);
+  font-weight: var(--font-weight-tags);
+  line-height: var(--line-height-tags);
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: var(--border-radius-tooltips);
+  background-color: var(--tooltip-tag-bg-color);
+  width: max-content;
+  position: absolute;
+  left: 0;
+  bottom: -38px;
+  animation: fadeIn 0.35s ease;
+  width: max-content;
+  z-index: 10000000;
+}
+
+.gh-transparent-tag-icon.featured-tag::after {
+  content: "Featured Post";
+}
+
+.gh-transparent-tag-icon.private-tag::after {
+  content: "Post For Subscribers";
+}
+
+.gh-transparent-tag-icon:hover::after {
+  display: block;
+}
+
+.gh-transparent-tag-icon svg {
+  width: var(--big-tag-icon-size);
+  height: var(--big-tag-icon-size);
+}
+
+.gh-transparent-tag-icon svg path {
+  stroke: #fff;
+  transition: stroke 0.3s ease;
+}
+
+.gh-transparent-tag-icon:hover svg path {
+  stroke: var(--ghost-accent-color);
+}
+
+.gh-transparent-tag.gh-transparent-tag--link {
+  transition: background-color 0.3s ease;
+}
+
+.gh-transparent-tag.gh-transparent-tag--link:hover {
+  background-color: rgba(255, 255, 255, 0.32);
+}
+
+.gh-tag {
+  font-family: var(--font-family-tags);
+  font-weight: var(--font-weight-tags);
+  line-height: var(--line-height-tags);
+  letter-spacing: var(--letter-spacing-tags);
+  font-size: var(--font-size-tags);
+  text-transform: var(--text-transform-tags);
+  color: var(--tag-color);
+  background-color: var(--tag-bg-color);
+  border-radius: var(--border-radius-tags);
+  padding: 6px 12px;
+  transition: background-color 0.3s ease;
+  width: max-content;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap:0.5rem
+}
+
+.gh-tag:hover {
+  background-color: var(--tag-bg-color-hover);
+}
+
+.gh-tag-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-tags);
+  padding: 6px;
+  background-color: var(--tag-bg-color);
+  width: max-content;
+  position: relative;
+}
+
+.gh-tag-icon::after {
+  display: none;
+  font-size: 12px;
+  font-weight: var(--font-weight-tags);
+  font-family: var(--font-family-tags);
+  line-height: var(--line-height-tags);
+  color: #fff;
+  background-color: var(--tooltip-tag-bg-color);
+  padding: 6px 12px;
+  border-radius: var(--border-radius-tooltips);
+  position: absolute;
+  left: 0;
+  bottom: -40px;
+  animation: fadeIn 0.35s ease;
+  width: max-content;
+  z-index: 10000000;
+}
+
+.gh-tag-icon.featured-tag::after {
+  content: "Featured Post";
+}
+
+.gh-tag-icon.private-tag::after {
+  content: "Post For Subscribers";
+}
+
+.gh-tag-icon:hover::after {
+  display: block;
+}
+
+.gh-tag-icon svg {
+  width: var(--tag-icon-size);
+  height: var(--tag-icon-size);
+}
+
+.gh-tag-icon svg path {
+  stroke: var(--tag-color);
+  transition: stroke 0.3s ease;
+}
+
+.gh-tag-icon:hover svg path {
+  stroke: var(--ghost-accent-color);
+}
+
+/* Announcment Bar */
+/* ---------------------------------------------------------- */
+
+#announcement-bar-root {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  border-radius: var(--border-radius-containers);
+  overflow: hidden;
+  z-index: 100000;
+}
+
+#announcement-bar-root .gh-announcement-bar {
+  width: 100%;
+  max-width: 300px;
+  animation: showAnnBar 0.6s ease-in-out;
+  padding: 16px 24px;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.4;
+  transition: font-size 0.4s ease, padding 0.4s ease, max-width 0.4s ease,
+    gap 0.4s ease;
+}
+
+#announcement-bar-root .gh-announcement-bar button {
+  position: relative;
+  top: auto;
+  right: auto;
+  margin: 0;
+  padding: 4px;
+  transition: opacity 0.3s ease, padding 0.4s ease;
+}
+
+#announcement-bar-root .gh-announcement-bar button svg path {
+  stroke-width: 0.1px;
+}
+
+#announcement-bar-root .gh-announcement-bar button:hover {
+  opacity: 0.7;
+}
+
+#announcement-bar-root .gh-announcement-bar-content {
+  text-align: left;
+}
+
+#announcement-bar-root .gh-announcement-bar .gh-announcement-bar-content a {
+  transition: opacity 0.15s ease;
+}
+
+#announcement-bar-root
+  .gh-announcement-bar
+  .gh-announcement-bar-content
+  a:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+/* Scroll To Top Button */
+/* ---------------------------------------------------------- */
+
+.gh-scroll-top-btn {
+  position: fixed;
+  z-index: 1000;
+  right: 30px;
+  bottom: 30px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  height: 46px;
+  width: 46px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.25s ease, transform 0.25s ease,
+    opacity 0.25s ease;
+  background-color: var(--scroll-top-bg-color);
+}
+
+.gh-scroll-top-btn.alignUp {
+  bottom: 100px;
+}
+
+.gh-scroll-top-btn.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.gh-scroll-top-btn.is-active.hide {
+  display: none;
+}
+
+.gh-scroll-top-arrow path {
+  stroke: var(--color-main);
+}
+
+.gh-scroll-top-btn:hover {
+  background-color: var(--scroll-top-bg-color--hover);
+}
+
+.gh-scroll-top-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gh-scroll-top-progress path {
+  stroke: var(--ghost-accent-color);
+  stroke-width: 4;
+  transition: all 0.4s ease;
+  fill: none;
+}
+
+/* Share Block  */
+/* ---------------------------------------------------------- */
+
+.gh-share-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gh-share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: inherit;
+}
+
+.gh-share-btn svg {
+  width: 32px;
+  height: 32px;
+}
+
+.gh-share-btn:not(.copyToClipboardBtn) svg path {
+  fill: var(--color-main);
+  transition: fill 0.3s ease;
+}
+
+.gh-share-btn.copyToClipboardBtn svg path {
+  stroke: var(--color-main);
+  transition: stroke 0.3s ease;
+}
+
+.gh-share-btn:not(.copyToClipboardBtn):hover svg path {
+  fill: var(--ghost-accent-color);
+}
+
+.gh-share-btn.copyToClipboardBtn:hover svg path {
+  stroke: var(--ghost-accent-color);
+}
+
+.copyToClipboardBtn {
+  font-size: 14px;
+  color: var(--color-main);
+  position: relative;
+}
+
+.copyToClipboardBtn::after {
+  display: none;
+  position: absolute;
+  top: calc(-100% - 7px);
+  right: 0;
+  font-family: var(--font-family-tags);
+  font-weight: var(--font-weight-tags);
+  line-height: var(--line-height-tags);
+  font-size: 12px;
+  text-transform: var(--text-transform-tags);
+  color: var(--tag-color);
+  background-color: var(--tag-bg-color);
+  border-radius: var(--border-radius-tags);
+  padding: 5px 12px;
+  width: max-content;
+  animation: fadeIn 0.15s ease;
+}
+
+.gh-post-page-footer .copyToClipboardBtn::after {
+  top: 50%;
+  left: calc(100% + 8px);
+  transform: translateY(-50%);
+}
+
+.copyToClipboardBtn.copied::after {
+  display: flex;
+  content: "Link Copied!";
+}
+
+.copyToClipboardBtn.notCopied::after {
+  display: flex;
+  content: "Oops, Error!";
+}
+
+iframe[title="portal-notification"] {
+  z-index: 1000000000000000000 !important;
+}
+
+/* Comments Section */
+/* ---------------------------------------------------------- */
+
+.gh-comments-section {
+  max-width: 1136px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+/* MEDIA QUERIES */
+/* ---------------------------------------------------------- */
+
+@media (max-width: 1250px) {
+  .copyToClipboardBtn::after {
+    top: 50%;
+    left: calc(100% + 8px);
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 1100px) {
+  .gh-container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 900px) {
+  .gh-social-icon-link:hover svg path {
+    fill: var(--color-main);
+  }
+
+  .gh-site-logo:hover {
+    opacity: 1;
+  }
+
+  .gh-site-title-author:hover,
+  .gh-header-author-image:hover {
+    opacity: 1;
+  }
+
+  .gh-scroll-top-btn:hover {
+    background-color: var(--scroll-top-bg-color);
+  }
+
+  .gh-transparent-tag.gh-transparent-tag--link:hover {
+    background-color: hsla(0, 0%, 100%, 0.2);
+  }
+
+  .gh-tag:hover {
+    background-color: var(--tag-bg-color);
+  }
+}
+
+@media (max-width: 550px) {
+  .gh-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .gh-transparent-tag {
+    padding: 4px 10px;
+    font-size: var(--font-size-big-tags--mobile);
+  }
+
+  .gh-transparent-tag-icon {
+    padding: 4px;
+  }
+
+  .gh-transparent-tag-icon svg {
+    width: var(--big-tag-icon-size--mobile);
+    height: var(--big-tag-icon-size--mobile);
+  }
+
+  .gh-tag {
+    padding: 4px 10px;
+    font-size: var(--font-size-tags--mobile);
+  }
+
+  .gh-tag-icon {
+    padding: 4px;
+  }
+
+  .gh-tag-icon svg {
+    width: var(--tag-icon-size--mobile);
+    height: var(--tag-icon-size--mobile);
+  }
+
+  .gh-share-block {
+    gap: 12px;
+  }
+
+  .gh-share-btn svg {
+    height: 24px;
+    width: 24px;
+  }
+
+  .copyToClipboardBtn::after {
+    padding: 4px 10px;
+  }
+
+  .gh-scroll-top-btn {
+    right: 10px;
+    bottom: 10px;
+    height: 40px;
+    width: 40px;
+  }
+
+  #announcement-bar-root {
+    left: 10px;
+    bottom: 10px;
+    z-index: 100000;
+  }
+
+  #announcement-bar-root .gh-announcement-bar {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 370px) {
+  #announcement-bar-root .gh-announcement-bar {
+    max-width: 250px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+}

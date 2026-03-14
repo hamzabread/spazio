@@ -1,0 +1,107 @@
+<footer class="gh-footer">
+    {{#if @site.members_enabled}}
+    <div class="gh-footer-subscribe{{#if @site.cover_image}} with-image{{/if}}">
+        <div class="gh-footer-subscribe-content gh-container">
+            <span class="gh-footer-subscribe-cta-text">{{@custom.cta_text_for_subscription_section}}</span>
+            <p class="gh-footer-subscribe-cta-subtext">{{@custom.cta_subtext_for_subscription_section}}</p>
+            {{#unless @member}}
+                <a class="gh-main-button gh-footer-cta-btn" href="{{@site.url}}/subscribe" aria-label="{{t "Subscribe button"}}">
+                    {{t "Subscribe"}}
+                </a>
+            {{else}}
+            {{#get "pages" filter="slug:membership"}}
+                    {{#if pages}}
+                        <a class="gh-main-button gh-footer-cta-btn" href="{{@site.url}}/membership" aria-label="{{t "Membership button"}}">
+                            {{t "Membership"}}
+                        </a>
+                    {{/if}}
+            {{/get}}
+            {{/unless}}
+        </div>
+        {{#if @site.cover_image}}
+        <picture>
+            <source srcset="{{img_url @site.cover_image size="3000" format="webp" }} 3000w, {{img_url @site.cover_image size="2000"
+                format="webp" }} 2000w, {{img_url @site.cover_image size="1600" format="webp" }} 1600w, {{img_url @site.cover_image
+                size="1200" format="webp" }} 1200w, {{img_url @site.cover_image size="1000" format="webp" }} 1000w, {{img_url
+                @site.cover_image size="800" format="webp" }} 800w, {{img_url @site.cover_image size="600" format="webp" }} 600w,
+                {{img_url @site.cover_image size="500" format="webp" }} 500w" sizes="100vw" type="image/webp">
+            <img class="gh-footer-cta-image" srcset="{{img_url @site.cover_image size="3000"}} 3000w, {{img_url @site.cover_image
+                size="2000" }} 2000w, {{img_url @site.cover_image size="1600" }} 1600w, {{img_url @site.cover_image size="1200" }}
+                1200w, {{img_url @site.cover_image size="1000" }} 1000w, {{img_url @site.cover_image size="800" }} 800w, {{img_url
+                @site.cover_image size="600" }} 600w, {{img_url @site.cover_image size="500" }} 500w" sizes="100vw"
+                src="{{img_url @site.cover_image size="3000"}}" alt="{{t "Site cover image"}}" loading="lazy">
+        </picture>
+        {{/if}}
+    </div>
+    {{/if}}
+    <div class="gh-footer-main">
+        <div class="gh-footer-main-container gh-container">
+            <div class="gh-footer-main-site-content">
+                <a class="gh-site-logo {{#if @custom.dark_mode_logo}}gh-site-logo-has-DM-logo{{/if}}"
+                    href="{{@site.url}}" aria-label="{{@site.title}} {{t "logo and home page link"}}">
+                    {{#if @site.logo}}
+                    <img src="{{img_url @site.logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img">
+                    {{#if @custom.dark_mode_logo}}
+                    <img src="{{img_url @custom.dark_mode_logo}}" alt="{{@site.title}} {{t "icon"}}"
+                        class="gh-site-logo-img-dark-mode">
+                    {{/if}}
+                    {{else}}
+                    <span class="gh-site-title">{{@site.title}}</span>
+                    {{/if}}
+                </a>
+                {{#if @site.description}}
+                <p class="gh-footer-site-desc">
+                    {{@site.description}}
+                </p>
+                {{/if}}
+
+                    {{#if @site.twitter}}
+                    <div class="gh-footer-socials">
+                        {{>socials}}
+                    </div>
+                    {{else if @site.facebook}}
+                    <div class="gh-footer-socials">
+                        {{>socials}}
+                    </div>
+                    {{/if}}
+            </div>
+            <div class="gh-footer-main-site-content">
+                {{!navigation type="secondary"}}
+        
+                {{! GhostFlow MH }}
+                {{>flexfooter}}
+
+            </div>
+
+            {{! Footer right column }}
+
+            
+            <div class="gf-trustpilot gh-site-logo gh-site-logo-has-DM-logo">
+                <a href="https://it.trustpilot.com/review/spaziocrypto.com" target="_blank" alt="Trustpilot ratings" >
+                    <img src="https://media.spaziocrypto.com/ux/tpilot-light-rev3.svg" alt="Trustpilot rating" class="gh-site-logo-img" width="200" >
+                    <img src="https://media.spaziocrypto.com/ux/tpilot-dark-rev3.svg" alt="Trustpilot rating" class="gh-site-logo-img-dark-mode" width="200" >
+                    <span class="tpilot">4.7 {{t "based on"}} 46 {{t  "reviews"}}</span>
+                </a>
+                
+            </div>    
+            
+                                
+        </div>
+
+        {{! Footer right column }}  
+
+        {{#is "index,post"}}
+        {{> ticker}}
+        {{/is}}
+
+        <div class="gh-footer-copyright gh-container">
+            <span class="gh-footer-copyright-text">{{t "Copyright"}} © 2024 {{@site.title}}. 
+                
+                <A class="gh-footer-copyright-link" href="/terms-and-conditions" > {{t "Terms and Conditions"}}</A> &amp; 
+                <A class="gh-footer-copyright-link" href="/privacy-and-cookie-policy"> {{t "Privacy Policy"}}</A>.<br>
+                
+            </span>
+
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,89 @@
+.gh-archive-page {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 104px;
+}
+
+.gh-archive-page-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 64px;
+    margin-bottom: 64px;
+}
+
+.gh-archive-page-header.with-image {
+    position: relative;
+    padding: 270px 64px 64px;
+    margin-top: 32px;
+    border-radius: var(--border-radius-containers);
+    overflow: hidden;
+}
+
+.gh-archive-page-feature-image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(50%);
+}
+
+.gh-archive-page-title {
+    font-size: 56px;
+    font-family: var(--font-family-headings);
+    font-weight: var(--font-weight-headings);
+    line-height: 1.12;
+}
+
+.gh-archive-page-header.with-image .gh-archive-page-title {
+    color: #FFF;
+    z-index: 1;
+}
+
+.gh-archive-page-excerpt {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 16px;
+    max-width: 800px;
+}
+
+.gh-archive-page-header.with-image .gh-archive-page-excerpt {
+    color: #FFF;
+    z-index: 1;
+}
+
+.gh-archive-page-posts-count {
+    color: #A5A5A5;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-top: 16px;
+}
+
+.gh-archive-page-header.with-image .gh-archive-page-posts-count {
+    color: #FFF;
+    opacity: 0.8;
+}
+
+.gh-archive-page-no-cards-span {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.gh-archive-page-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    row-gap: 32px;
+    column-gap: 32px;
+    width: 100%;
+    height: 100%;
+}

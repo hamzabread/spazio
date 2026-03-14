@@ -1,0 +1,22 @@
+{{! Reusable share block }}
+
+<div class="gh-share-block">
+    <a class="gh-share-btn gh-share-btn--facebook"
+        href="https://www.facebook.com/sharer.php?u={{url absolute='true'}}" target="_blank" rel="noopener"
+        aria-label="{{t "Share on Facebook"}}">
+        {{> "icons/facebook"}}
+    </a>
+    <a class="gh-share-btn"
+        href="https://twitter.com/intent/tweet?url={{url absolute='true'}}&amp;text={{encode title}}" target="_blank"
+        rel="noopener" aria-label="{{t "Share on Twitter"}}">
+        {{> "icons/twitter"}}
+    </a>
+    <a class="gh-share-btn"
+        href="https://reddit.com/submit?url={{url absolute='true'}}&amp;media=&amp;description={{encode title}}"
+        target="_blank" rel="noopener" data-pin-do="none" aria-label="{{t "Share on Reddit"}}">
+        {{> "icons/reddit"}}
+    </a>
+    <button class="gh-share-btn copyToClipboardBtn" aria-label="{{t "Copy to clipboard button"}}">
+        {{> "icons/copy-link"}}
+    </button>
+</div>

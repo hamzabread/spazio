@@ -1,0 +1,62 @@
+   
+        {{#match @site.locale "en"}}                        
+            {{> flags/gb }}
+        {{else match @site.locale "it"}}                                            
+            {{> flags/it }}
+        {{else match @site.locale "de"}}                                            
+            {{> flags/de }}                    
+        {{else match @site.locale "fr"}}                                            
+            {{> flags/fr }}                    
+        {{else match @site.locale "es"}}                                            
+            {{> flags/es }}                    
+        {{else match @site.locale "ru"}}                                            
+            {{> flags/ru }}                    
+        {{else match @site.locale "zh"}}                                            
+            {{> flags/cn }}                    
+        {{else match @site.locale "ja"}}                                            
+            {{> flags/jp }}                    
+        {{else match @site.locale "ko"}}                                            
+            {{> flags/kr }}                    
+        {{/match}}
+                                                                            
+        <ul class="gh-subnav-language-header">
+
+            <li class="gh-subnav-item-lang">
+                <a class="gh-subnav-item-link" href="https://www.spaziocrypto.com/">{{> flags/it }} Italiano</a>
+            </li>
+            <li class="gh-subnav-item-lang">
+                <a class="gh-subnav-item-link" href="https://en.spaziocrypto.com/">{{> flags/gb }} English</a>
+            </li>
+
+            <li class="gh-subnav-item-lang">
+                <a class="gh-subnav-item-link" href="https://fr.spaziocrypto.com/">{{> flags/fr }} Français</a>
+            </li>
+
+            <li class="gh-subnav-item-lang">
+                <a class="gh-subnav-item-link" href="https://es.spaziocrypto.com/">{{> flags/es }} Español</a>
+            </li>
+
+            <li class="gh-subnav-item-lang">
+                <a class="gh-subnav-item-link" href="https://de.spaziocrypto.com/">{{> flags/de }} Deutsch</a>
+            </li>
+
+            <li class="gh-subnav-item-lang">
+                <a class="gh-subnav-item-link" href="https://ru.spaziocrypto.com/">{{> flags/ru }} Русский</a>
+            </li>
+
+            <li class="gh-subnav-item-lang">
+                <a class="gh-subnav-item-link" href="https://ko.spaziocrypto.com/">{{> flags/kr }} 한국어</a>
+            </li>
+
+
+            <li class="gh-subnav-item-lang">
+                <a class="gh-subnav-item-link" href="https://ja.spaziocrypto.com/">{{> flags/jp }} 日本語</a>
+            </li>
+
+            <li class="gh-subnav-item-lang">
+                <a class="gh-subnav-item-link" href="https://zh.spaziocrypto.com/">{{> flags/cn }} 中文</a>
+            </li>
+
+        </ul>
+                
+

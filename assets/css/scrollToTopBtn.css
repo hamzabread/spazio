@@ -1,0 +1,56 @@
+/* Scroll To Top Button */
+/* ---------------------------------------------------------- */
+
+.gh-scroll-top-btn {
+    position: fixed;
+    z-index: 1000;
+    right: 30px;
+    bottom: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    height: 46px;
+    width: 46px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
+    background-color: var(--color-background-elements-main);
+}
+
+.gh-scroll-top-btn.alignUp {
+    bottom: 100px;
+}
+
+.gh-scroll-top-btn.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.gh-scroll-top-btn.is-active.hide {
+    display: none;
+}
+
+.gh-scroll-top-arrow path {
+    stroke: var(---color-main);
+}
+
+.gh-scroll-top-btn:hover {
+    background-color: var(--color-background-elements-main-hover);
+}
+
+.gh-scroll-top-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.gh-scroll-top-progress path {
+    stroke: var(--ghost-accent-color);
+    stroke-width: 4;
+    transition: all .4s ease;
+    fill: none;
+}

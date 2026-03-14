@@ -1,0 +1,170 @@
+.gh-author-page {
+    padding-bottom: 104px;
+}
+
+.gh-author-page .gh-archive-page-header.with-image {
+    padding: 135px 64px 64px
+}
+
+.gh-author-page-head-content {
+    z-index: 1;
+}
+
+.gh-author-page-head-content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.gh-author-page-profile-image {
+    width: 148px;
+    height: 148px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100px;
+}
+
+.gh-author-page-name-socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gh-author-page-name {
+    font-size: 40px;
+    font-family: var(--font-family-headings);
+    font-weight: var(--font-weight-headings);
+    line-height: 1.2;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-name {
+    color: #FFF;
+}
+
+.gh-author-page-socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: fit-content;
+}
+
+.gh-author-page-social-link {
+    margin-top: 16px;
+}
+
+.gh-author-page-social-link svg {
+    width: 32px;
+    height: 32px;
+}
+
+.gh-author-page-social-link svg path {
+    fill: var(--color-main);
+    transition: fill 0.3s ease;
+}
+
+.gh-author-page-social-link:hover svg path {
+    fill: var(--ghost-accent-color);
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-socials {
+    gap: 0;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-social-link {
+    padding: 0 8px;
+    transition: opacity 0.3s ease;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-social-link:first-child {
+    padding: 0 8px 0 0;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-social-link:last-child {
+    padding: 0 0 0 8px;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-social-link svg path {
+    fill: #FFF;
+}
+
+.gh-archive-page-header.with-image .gh-author-page-socials:hover .gh-author-page-social-link:not(:hover) {
+    opacity: 0.7;
+}
+
+.gh-author-page-bio {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 800px;
+    margin-top: 32px;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-bio {
+    color: #FFF;
+    z-index: 1;
+}
+
+.gh-author-page-meta {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    z-index: 1;
+    margin-top: 16px;
+}
+
+.gh-author-page-posts {
+    color: #A5A5A5;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.gh-author-page-location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #A5A5A5;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    position: relative;
+}
+
+.gh-author-page-location svg path {
+    fill: #A5A5A5;
+}
+
+.gh-author-page-location::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    left: -13px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--post-meta-dot);
+    border-radius: 100px;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-meta {
+    z-index: 1;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-posts {
+    color: #FFF;
+    opacity: 0.7;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-location {
+    color: #FFF;
+    opacity: 0.7;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-location svg path {
+    fill: #FFF;
+}
+
+.gh-author-page .gh-archive-page-header.with-image .gh-author-page-location::before {
+    background-color: #FFF;
+    opacity: 0.5;
+}

@@ -1,0 +1,198 @@
+/* Account Page */
+/* ---------------------------------------------------------- */
+
+.gh-account-page {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding-bottom: 104px;
+}
+
+.gh-account-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gh-account-page-inner {
+    display: flex;
+    flex-direction: column;
+    background: var(--account-page-bg-color);
+    border-radius: var(--border-radius-containers);
+    width: 100%;
+    max-width: 1056px;
+    padding: 64px;
+    position: relative;
+}
+
+.gh-account-page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--main-hr-color);
+    width: 100%;
+}
+
+.gh-account-page__image {
+    width: 148px;
+    height: 148px;
+    border-radius: 100%;
+    margin-bottom: 24px;
+}
+
+.gh-account-page__image--default {
+    background-color: var(--color-background-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gh-account-page__image--default svg {
+    height: 36px;
+    width: 36px;
+}
+
+.gh-account-page__name {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: var(--letter-spacing-big);
+    margin-bottom: 16px;
+}
+
+.gh-account-page__desc {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: var(--letter-spacing-small);
+    margin-bottom: 24px;
+    max-width: 75%;
+}
+
+.gh-account-page-billing-info {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--main-hr-color);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.gh-account-page-billing-row {
+    display: flex;
+    gap: 4%;
+    width: 100%;
+}
+
+.gh-account-page-billing-item {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gh-account-page-billing-item__name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #A5A5A5;
+    letter-spacing: var(--letter-spacing-small);
+}
+
+.gh-account-page-billing-item__value {
+    display: flex;
+    word-break: break-all;
+    gap: 12px;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.gh-account-page-billing-item__value svg circle {
+    fill: var(--color-main);
+}
+
+.gh-account-page-buttons {
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.gh-account-page-settings-btn,
+.gh-logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gh-logout-btn {
+    position: absolute;
+    top: 64px;
+    right: 64px;
+}
+
+.gh-account-page-settings-btn span,
+.gh-logout-btn span {
+    color: #8E8E8F;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.gh-account-page-settings-btn:hover span,
+.gh-logout-btn:hover span {
+    color: var(--ghost-accent-color);
+}
+
+.gh-account-page-settings-btn svg path,
+.gh-logout-btn svg path {
+    transition: stroke 0.3s ease;
+}
+
+.gh-account-page-settings-btn:hover svg path,
+.gh-logout-btn:hover svg path {
+    stroke: var(--ghost-accent-color);
+}
+
+.gh-account-page-cancel-btn.loading {
+    pointer-events: none;
+    position: relative;
+    color: var(--color-buttons-secondary);
+}
+
+.gh-account-page-cancel-btn.loading::after {
+    content: 'Processing...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-main);
+    line-height: 1;
+}
+
+.gh-card-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-background-main);
+    margin-right: 4px;
+}
+
+.gh-main-button.gh-account-page-edit-btn svg {
+    display: none;
+}
+
+.gh-main-button.gh-account-page-edit-btn.loading {
+    padding: var(--edit-billing-btn-padding--loading)
+}
+
+.gh-main-button.gh-account-page-edit-btn.loading span {
+    display: none;
+}
+
+.gh-main-button.gh-account-page-edit-btn.loading svg {
+    display: block;
+}

@@ -1,0 +1,216 @@
+{{!< default-contact}} 
+{{#post}} {{#if featured}} {{#match @page.show_title_and_feature_image}} <div
+    class="gh-post-head page-head{{^if feature_image}} without-image{{/if}}">
+    {{#if feature_image}}
+    <picture>
+        <source srcset="{{img_url feature_image size="3000" format="webp" }} 3000w, {{img_url feature_image size="2000"
+            format="webp" }} 2000w, {{img_url feature_image size="1200" format="webp" }} 1200w, {{img_url feature_image
+            size="1000" format="webp" }} 1000w, {{img_url feature_image size="800" format="webp" }} 800w, {{img_url
+            feature_image size="500" format="webp" }} 500w" sizes="100vw" type="image/webp">
+        <img srcset="{{img_url feature_image size=" 1600"}} 3000w, {{img_url feature_image size="2000" }} 2000w,
+            {{img_url feature_image size="1200" }} 1200w, {{img_url feature_image size="1000" }} 1000w, {{img_url
+            feature_image size="800" }} 800w, {{img_url feature_image size="500" }} 500w" sizes="100vw"
+            src="{{img_url feature_image size="3000"}}"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+            class="gh-post-feature-image" />
+    </picture>
+    {{/if}}
+    <div class="gh-post-head-wrapper page-head-wrapper gh-container{{#match @custom.header_type " Logo with bottom
+        navigation" }} with-big-header{{else match @custom.header_type "Author with bottom navigation" }}
+        with-big-header{{/match}}">
+        {{> "breadcrumbs"}}
+        <div class="gh-post-head-content">
+            <div class="gh-post-head-content-container">
+                <h1 class="gh-post-page-title">{{title}}</h1>
+                {{#if excerpt}}
+                <p class="gh-post-page-excerpt">{{excerpt}}</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    </div>
+    {{/match}}
+    {{else}}
+    {{#match @page.show_title_and_feature_image}}
+    <div class="gh-container">
+        {{> "breadcrumbs"}}
+    </div>
+    <div class="gh-post-head gh-container page-head{{^if feature_image}} without-image{{/if}}">
+        <div class="gh-post-head-wrapper page-head-wrapper{{^if feature_image}} without-image{{/if}}">
+            {{#if feature_image}}
+            <picture>
+                <source srcset="{{img_url feature_image size="1600" format="webp" }} 1600w, {{img_url feature_image
+                    size="1200" format="webp" }} 1200w, {{img_url feature_image size="1000" format="webp" }} 1000w,
+                    {{img_url feature_image size="800" format="webp" }} 800w, {{img_url feature_image size="500"
+                    format="webp" }} 500w" sizes="(min-width: 816px) 736px, 90vw" type="image/webp">
+                <img srcset="{{img_url feature_image size=" 1600"}} 1600w, {{img_url feature_image size="1200" }} 1200w,
+                    {{img_url feature_image size="1000" }} 1000w, {{img_url feature_image size="800" }} 800w, {{img_url
+                    feature_image size="500" }} 500w" sizes="(min-width: 816px) 736px, 90vw"
+                    src="{{img_url feature_image size="1600"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                    class="gh-post-feature-image" />
+            </picture>
+            {{/if}}
+            <div class="gh-post-head-content">
+                <div class="gh-post-head-content-container">
+                    <h1 class="gh-post-page-title">{{title}}</h1>
+                    {{#if excerpt}}
+                    <p class="gh-post-page-excerpt">{{excerpt}}</p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/match}}
+    {{/if}}
+
+    {{/post}}
+
+
+    <main class="main flex-1">
+        {{!-- <main class="main"> --}}
+            <div class="container py-14 lg:pt-32 lg:pb-20 template-contact-container">
+                <div class="flex flex-wrap justify-between lg:flex-nowrap">
+                    <div class="contact-form-container lg:w-1/2 lg:max-w-[640px]" style="display: flex;flex-direction: column;justify-content: center;">
+                        <h1 class="mb-6 font-sans font-bold h1 lg:hrt4 lg:mb-7">{{t "Contact Us"}}</h1>
+                        <h2 class="p2 contact-form-subtitle lg:p1 font-body mb-9">
+                            <p>{{t "Intro Contact"}}
+                            </p>
+                        </h2>
+                        <div class="wpcf7 js" id="wpcf7-f407-o2" lang="en-US" dir="ltr">
+                            <div class="screen-reader-response">
+                                <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                <ul></ul>
+                            </div>
+                            {{#post}}
+
+                            {{content}}
+                            {{/post}}
+
+                            {{!-- <form action="https://formspree.io/f/xwkdojlk" method="post" class="wpcf7-form init"
+                                aria-label="Contact form" novalidate="novalidate">
+                                <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-6">
+                                    <div class="mb-6">
+                                        <label for="contact-name">
+                                            {{t "Name"}} <span class="text-bright-red-600 p3 p3--ns">*<span
+                                                    class="sr-only">{{t "Required"}}</span></span>
+                                        </label>
+                                        <span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40"
+                                                class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                                id="contact-name" required="" aria-required="true" aria-invalid="false"
+                                                value="" type="text"
+                                                name="your-name"></span>
+                                    </div>
+                                    <div class="mb-6">
+                                        <label for="contact-email">
+                                            {{t "Email"}} <span class="text-bright-red-600 p3 p3--ns">* <span
+                                                    class="sr-only">{{t "Required"}}</span></span>
+                                        </label>
+                                        <span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40"
+                                                class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
+                                                id="contact-email" required="" aria-required="true" aria-invalid="false"
+                                                value="" type="email"
+                                                name="your-email"></span>
+                                    </div>
+                                </div>
+                                <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-6">
+                                    <div class="mb-6">
+                                        <label for="contact-name">
+                                            {{t "Your telegram @username"}}
+                                        </label>
+                                        <span class="wpcf7-form-control-wrap" data-name="text-telegram-username"><input
+                                                size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false"
+                                                value="" type="text"  name="text-telegram-username"></span>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="contact-reason">
+                                        {{t "How can we help you?"}} <span class="text-bright-red-600 p3 p3--ns">*<span
+                                                class="sr-only">{{t "Required"}}</span></span>
+                                    </label>
+                                    <div class="w-full">
+                                        <span class="wpcf7-form-control-wrap" data-name="menu-130">
+                                            <select
+                                                class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required block w-full"
+                                                id="contact-reason" required="" aria-required="true"
+                                                aria-invalid="false" name="menu-130">
+                                                <option value="">{{t "—Choose an option—"}}</option>
+                                                <option value="Advertising">{{t "Advertising"}}</option>
+                                                <option value="Partnership">{{t "Collaborations"}}</option>
+                                                <option value="Company">{{t "Company"}}</option>
+                                                <option value="Events">{{t "Events"}}</option>
+                                                <option value="Submit an idea">{{t "Submit an idea"}}</option>
+                                            </select></span>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="contact-message">{{t "Your Message"}} <span
+                                            class="text-bright-red-600 p3 p3--ns">*
+                                            <span class="sr-only">{{t "Required"}}</span></span></label>
+                                    <span class="wpcf7-form-control-wrap" data-name="your-message"><textarea cols="40"
+                                            rows="10"
+                                            class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required w-full"
+                                            id="contact-message" required aria-required="true" aria-invalid="false"                                            
+                                            name="your-message"></textarea></span>
+                                </div>
+                                <input
+                                    class="wpcf7-form-control has-spinner wpcf7-submit w-auto table contact-us-btn button-change-color"
+                                    type="submit" value="{{t "Send"}}" data-form-type="action"
+                                    style="width: 100%;min-height:48px;"><span class="wpcf7-spinner"></span>
+                                <div class="wpcf7-response-output" aria-hidden="true"></div>
+                            </form> --}}
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <img src={{asset "/imagesAndIcons/contact-us.webp" }}
+                            class="block relative lg:-right-19 lg:top-5 mt-10 lg:mt-0 top-0" alt="" decoding="async"
+                            loading="lazy" style="width: 100%;">
+                    </div>
+                </div>
+                <div
+                    class="contact-box-color max-w-[1080px] mx-auto flex flex-wrap items-center p-6 mt-6 lg:mt-24 contact-details bg-grey-100 dark:bg-dark-grey-500 rounded-2xl lg:p-10 lg:flex-nowrap lg:justify-between contact-box-text-align">
+                    <div class="contact-address w-full max-w-[480px] lg:w-1/2">
+                        <h2 class="mb-3 font-bold leading-6 p3" style="margin-bottom: 14px;">Spaziocrypto Limited</h2>
+                        <address class="not-italic leading-6 p4 font-body">
+                            <p>Galton Tower, 22, Civic Close, B1 2NW</p>
+                            <p>Birmingham</p>
+                            <p>United Kingdom</p>
+                            <p>Phone: +44 07400250775</p>
+                        </address>
+                    </div>
+                    <ul
+                        class="w-full pt-4 mt-4 border-t lg:mt-0 lg:pt-0 lg:w-1/2 lg:grid lg:grid-cols-2-max gap-y-8 gap-x-20 contact-emails border-t-grey-300 dark:border-t-dark-grey-700 lg:border-none lg:justify-end">
+                        <li class="mb-5 lg:mb-0 last:mb-0">
+                            <h4 class="mb-1 font-sans font-bold leading-6 p3 contact-box-email-title">General</h4>
+                            <address class="not-italic leading-6 p4 font-body custom-email" style="color: #F19021;">
+                                <a href="mailto:info@spaziocrypto.com" target="">info@spaziocrypto.com</a>
+                            </address>
+                        </li>
+                        {{!-- <li class="mb-5 lg:mb-0 last:mb-0">
+                            <h4 class="mb-1 font-sans font-bold leading-6 p3">Editor in Chief</h4>
+                            <address class="not-italic leading-6 text-blue-600 p4 font-body dark:text-lime-600">
+                                <a href="mailto:editorinchief@beincrypto.com"
+                                    target="">editorinchief@spaziocrypto.com</a>
+                            </address>
+                        </li> --}}
+                        <li class="mb-5 lg:mb-0 last:mb-0 contact-box-email">
+                            <h4 class="mb-1 font-sans font-bold leading-6 p3 contact-box-email-title">Marketing and
+                                Sales
+                            </h4>
+                            <address class="not-italic leading-6 p4 font-body custom-email" style="color: #F19021;">
+                                <a href="mailto:marketing@spaziocrypto.com" target="">marketing@spaziocrypto.com</a>
+                            </address>
+                        </li>
+                        {{!-- <li class="mb-5 lg:mb-0 last:mb-0">
+                            <h4 class="mb-1 font-sans font-bold leading-6 p3">Write for us</h4>
+                            <address class="not-italic leading-6 text-blue-600 p4 font-body dark:text-lime-600">
+                                <a href="mailto:expertinsights@beincrypto.com"
+                                    target="">expertinsights@spaziocrypto.com</a>
+                            </address>
+                        </li> --}}
+                    </ul>
+                </div>
+            </div>
+            {{!--
+        </main> --}}
+</main>

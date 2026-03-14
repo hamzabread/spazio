@@ -1,0 +1,58 @@
+<section class="category-feed-container">
+    <div class="gh-container">
+            <div class="crypto-news-section">
+                <div class="news-container">
+                    {{#get "pages" filter="slug:category-feed" include="tags" as |category_feed|}}
+                    {{#category_feed}}
+                        {{#foreach tags  limit="3"  }}
+                            <div class="news-column">
+                            <h2 class="news-title">{{name}} News</h2>
+                            
+                                <div class="news-card">
+                                    {{#get "posts" limit="6" filter="tag:{{slug}}" include="tags,authors"}}
+                                    {{#foreach posts}}
+                                    <ul class="news-list">
+                                    {{#if @first}}
+                                    <li>
+                                        <img class="news-image" srcset="{{img_url feature_image size="300"}} 300w, {{img_url feature_image size="200"}} 200w" sizes="88px"
+                                src="{{img_url feature_image size="300"}}"
+                                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}} {{t "post image"}}{{/if}}"
+                                loading="lazy">
+                                        <a href="{{url}}">{{title}}</a>
+                                        <p class="news-meta">
+                                            {{#if authors}}
+                                                {{#foreach authors limit="1"}}
+                                                
+                                                <a class="gh-sidebar-feat-post-author" href="{{url}}">{{name}}, </a>
+                                                {{/foreach}}
+                                            {{/if}} 
+                                            <time datetime="{{date format=" YYYY-MM-DD"}}"> {{date format="MMM D, YYYY"}}</time>
+                                        </p>
+                                    </li>
+                                    {{/if}}
+                                    <li>
+                                        <a href="#">{{title}}</a>
+                                        <p class="news-meta">
+                                            {{#if authors}}
+                                                {{#foreach authors limit="1"}}
+                                                
+                                                <a class="gh-sidebar-feat-post-author" href="{{url}}">{{name}}, </a>
+                                                {{/foreach}}
+                                            {{/if}} 
+                                            <time datetime="{{date format=" YYYY-MM-DD"}}"> {{date format="MMM D, YYYY"}}</time>
+                                        </p>
+                                    </li>
+                                    
+                                    {{/foreach}}
+                                    {{/get}}
+                                    <a href="{{url}}" class="gh-secondary-button"> More from {{name}} News →</a>
+                                </div>
+                            </div>
+                        {{/foreach}}
+                    {{/category_feed}}
+                    {{/get}}
+                </div>
+            </div>
+    </div>
+
+</section>

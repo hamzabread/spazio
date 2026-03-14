@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" data-color-scheme="light">
+
+<!-- Pipeline check -->
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{meta_title}}</title>
+
+    {{!-- GhostFlow MH --}}
+    <link rel="preconnect" href="https://cdn.spaziocrypto.com">
+    <link rel="preconnect" href="https://media.spaziocrypto.com">
+    <link rel="preconnect" href="https://spazio-multilang.ghostflow.workers.dev">
+    <link rel="preconnect" href="https://cdn.iubenda.com">
+    <link rel="preconnect" href="https://cdn.onesignal.com">
+    
+    
+    {{!-- Main CSS --}}
+    <link rel="stylesheet" href="{{asset 'built/index.css'}}" />       
+    <link rel="stylesheet" href="{{asset 'built/contact-us.css'}}" />
+    
+
+    <link rel="manifest" href="/manifest.json" />     
+    <meta name="apple-mobile-web-app-capable" content="yes">  
+
+
+    {{!-- SwiperJS Min Styles --}}
+    {{#is "home, post"}}
+    <link rel="stylesheet" href="https://media.spaziocrypto.com/css/swiper-bundle.min.css" />
+    {{/is}}
+        
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
+    <script>        
+        const signalIDs = {
+            en: "4e95f8d2-aad0-48b8-b750-4411b326faae",
+            fr: "f80105e7-3bd8-4d70-9d94-f4354df736b5",
+            de: "2396f7af-8abd-4f49-b8b3-201a1e070732",
+            ru: "9197ad17-afa8-4174-95bb-5197d8822e25",
+            zh: "12709e4a-ef55-4f37-ba5e-9a910a59b1b9", 
+            ja: "0d97d6a7-2e2b-4d8c-9c81-5f631bfa3309",
+            es: "4318613b-d7c2-4675-b4cb-ac9cc1e90098",
+            ko: "a8389458-f781-42bc-8067-6177f646c964",
+            it: "6f646893-708e-4ebd-97bb-50510e2c2a4e"
+        };
+
+        // Get the current HTML lang attribute
+        const currentLang = document.documentElement.lang || "en";                
+        // Get the app ID based on the current language
+        const signalAppId = signalIDs[currentLang] || appIDs.en;
+        console.log("AppID ", signalAppId )
+
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(function(OneSignal) {        
+        OneSignal.init({
+            appId: signalAppId,
+            });
+        });    
+        
+
+    </script>
+
+
+    {{!-- JavaScript for Dark Mode --}}
+    
+    
+    <script>
+        const rootElem = document.querySelector("html[data-color-scheme]");
+    
+        const detectSystemTheme = () => {
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                rootElem.setAttribute("data-color-scheme", "dark");                
+            } else {
+                rootElem.setAttribute("data-color-scheme", "light");                
+            }
+        };
+
+        const initTheme = () => {
+            const localStoragePref = localStorage.getItem("color-scheme");
+
+            if (localStoragePref) {
+                rootElem.setAttribute("data-color-scheme", localStoragePref);
+            } else {
+                detectSystemTheme();
+            }
+        }; 
+
+        initTheme();
+
+        window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", () => {
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    rootElem.setAttribute("data-color-scheme", "dark");
+                } else {
+                    rootElem.setAttribute("data-color-scheme", "light");
+                }
+            });
+    </script>
+
+    {{!-- Outputs styles for chosen border-radius setting --}}
+    {{>border-radius}}
+
+    {{!-- Outputs styles and uploads fonts for chosen font-pairing setting --}}
+    {{>font-pairings}}
+
+
+    {{^if @member}}
+    <!-- AdSense Snippet code for https://www.spaziocrypto.com/ -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1457595075687713" crossorigin="anonymous"></script>
+    {{/if}}
+    <link data-categories="essential" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+    {{#get "pages" filter="slug:[glossario,glossary,glossaire,glosario,glossar,glossarii,gurosuari,ci-hui]" limit="1" as |glossaryPage|}}
+    {{#glossaryPage}}
+    <script>
+        const GLOSSARY_URL = '{{url absolute="true"}}';
+    </script>
+    {{/glossaryPage}}
+    {{/get}}
+
+    {{#is "page"}}
+    {{#page}}
+        {{^match slug "~" "ad-units"}}
+        <script data-termly-config>window.TERMLY_CUSTOM_BLOCKING_MAP = {"media.spaziocrypto.com": "essential"}</script>
+        <script type="text/javascript" src="https://app.termly.io/resource-blocker/751cdd51-f06b-469b-8db5-9c35d6b1ae14?autoBlock=on"></script>
+        {{/match}}
+    {{/page}}
+    {{else}}
+        <script data-termly-config>window.TERMLY_CUSTOM_BLOCKING_MAP = {"media.spaziocrypto.com": "essential"}</script>
+        <script type="text/javascript" src="https://app.termly.io/resource-blocker/751cdd51-f06b-469b-8db5-9c35d6b1ae14?autoBlock=on"></script>
+    {{/is}}
+    {{!-- Outputs important meta data and settings, should always be in  <head> --}}
+
+        {{ghost_head}}
+
+<script>
+  (function () {
+    try {
+      var host = location.host.toLowerCase();
+      var path = location.pathname.replace(/\\/+$/, '') || '/';
+      var isITHome = (host === 'www.spaziocrypto.com' || host === 'localhost:2368') && (path === '/' || path === '/index' || path === '/index.html');
+      if (isITHome) {
+        document.documentElement.setAttribute('data-home-it', 'true');
+      }
+    } catch(e){}
+  })();
+</script>
+<script>
+  // Newsletter popup timeout in milliseconds
+  var popupDisplayTimeout = 90000;
+  const enable_tag_filter="guida-web3,guida-crypto,guida-wallet,guida-exchange";
+</script>
+<style>
+.gh-social-icons {
+    gap: 5px;
+}
+.gh-footer-copyright {
+    justify-content: center;
+}
+</style>
+<style>
+.sitelinks-item ul {
+    margin-top: 13px;
+}
+</style>
+<style>
+.gh-footer-main .sitelinks-item strong {
+    text-transform: uppercase;
+}
+.gh-footer-main .sitelinks-item span {
+    text-transform: uppercase;
+}
+</style>
+<!-- <script data-termly-config>window.TERMLY_CUSTOM_BLOCKING_MAP = {"media.spaziocrypto.com": "essential"}</script>
+<script type="text/javascript" src="https://app.termly.io/resource-blocker/751cdd51-f06b-469b-8db5-9c35d6b1ae14?autoBlock=on"></script>
+ -->
+<link rel="stylesheet" data-categories="essential" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
+<style>
+/* ============================= */
+/*  GOOGLE FONTS                 */
+/* ============================= */
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* ============================= */
+/*  VISIBILE SOLO HOME IT        */
+/* ============================= */
+.home-it-only{display:none;}
+html[data-home-it="true"] .home-it-only{display:block;}
+
+/* ============================= */
+/*  ✅ TERMLY SEMPRE SOPRA       */
+/* ============================= */
+.termly-styles-root,
+#termly-code-snippet,
+[class*="termly"]{
+  z-index:2147483647 !important;
+}
+
+/* ============================= */
+/*  ANIMAZIONE DESKTOP           */
+/* ============================= */
+@keyframes slowSlideInRight{
+  from{transform:translateX(120px);opacity:0}
+  to{transform:translateX(0);opacity:1}
+}
+
+/* ============================= */
+/*  WRAPPER BASE                 */
+/* ============================= */
+.video-wrapper-it{
+  position:fixed;
+  bottom:88px;     /* base */
+  right:16px;
+  width:330px;
+  height:187px;
+
+  /* 🔥 sotto Termly */
+  z-index:2147482000;
+
+  overflow:visible;
+  pointer-events:none;
+
+  /* di default: nascosto finchè non c'è consenso */
+  display:none;
+  opacity:0;
+  transform:translateX(120px);
+}
+
+/* ✅ DESKTOP: spostalo più su per NON coprire il banner 970x90 */
+@media (min-width: 769px){
+  .video-wrapper-it{
+    bottom: 150px; /* 90px banner + ~24px label/close + margine */
+  }
+}
+
+/* Desktop: quando attivo */
+.video-wrapper-it.is-visible{
+  display:block;
+  pointer-events:auto;
+  animation:slowSlideInRight .9s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+/* ============================= */
+/*  MOBILE                       */
+/*  - solo dopo consenso + scroll*/
+/*  - no animazioni              */
+/*  - più in basso a destra      */
+/* ============================= */
+@media (max-width:768px){
+  .video-wrapper-it{
+    bottom:16px;
+    right:8px;
+    transform:none!important;
+    animation:none!important;
+  }
+  .video-wrapper-it.is-visible{
+    animation:none!important;
+    transform:none!important;
+    opacity:1!important;
+  }
+}
+
+/* ============================= */
+/*  VIDEO BOX – GLOW ARANCIONE   */
+/* ============================= */
+#videoBox-it{
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+
+  /* 🔥 lascia uscire il glow */
+  overflow:visible;
+
+  background:#000;
+  pointer-events:auto;
+  z-index:2147482001;
+
+  font-family:'Manrope', sans-serif;
+  font-size:14px;
+}
+
+/* bordo */
+#videoBox-it::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:24px;
+  padding:1.5px;
+  pointer-events:none;
+  z-index:2147482002;
+
+  background:linear-gradient(135deg,
+    rgba(255,232,170,.95) 0%,
+    rgba(241,144,33,1)    35%,
+    rgba(255,170,80,.9)   65%,
+    rgba(241,144,33,.95)  100%);
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+}
+
+/* glow */
+#videoBox-it::after{
+  content:"";
+  position:absolute;
+  inset:-12px;
+  border-radius:30px;
+  pointer-events:none;
+  z-index:2147482000;
+
+  background:
+    radial-gradient(120px 80px at 85% 18%,
+      rgba(255,235,180,.55) 0%,
+      rgba(241,144,33,.22) 45%,
+      rgba(241,144,33,0)   70%),
+    linear-gradient(135deg,
+      rgba(255,210,120,.35) 0%,
+      rgba(241,144,33,.28) 35%,
+      rgba(241,144,33,.12) 65%,
+      rgba(255,200,110,.20) 100%);
+
+  filter:blur(14px);
+  opacity:.95;
+}
+
+/* ============================= */
+/*  INNER (CLIP VIDEO)           */
+/* ============================= */
+.video-inner-it{
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  overflow:hidden;            /* clip SOLO qui */
+  background:#000;
+  z-index:2147482001;
+}
+
+/* 🔥 FIX DEFINITIVO SPAZI BIANCHI */
+.video-inner-it iframe{
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  border:0!important;
+  background:#000!important;
+  object-fit:cover;
+}
+
+/* ============================= */
+/*  TYPOGRAPHY                   */
+/* ============================= */
+#videoBox-it .badge-latest,
+#videoBox-it .video-close{
+  font-family:'Epilogue', sans-serif;
+  font-weight:600;
+  letter-spacing:.25px;
+}
+#videoBox-it span,
+#videoBox-it a,
+#videoBox-it button{
+  font-family:'Manrope', sans-serif;
+  font-weight:500;
+}
+
+/* ============================= */
+/*  BADGE ISCRIVITI              */
+/* ============================= */
+.badge-latest{
+  position:absolute;
+  top:9px;
+  left:9px;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:3px 8px;
+  border-radius:9999px;
+  background:#ff2b2b;
+  color:#fff;
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.25px;
+  text-decoration:none;
+  line-height:1.2;
+  z-index:2147482003;
+}
+.badge-latest:hover{background:#cc0000;}
+
+.latest-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#fff;
+  position:relative;
+}
+.latest-dot::after{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,.6);
+  animation:pulse 1.4s ease-out infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(.7);opacity:1}
+  100%{transform:scale(1.4);opacity:0}
+}
+
+/* ============================= */
+/*  CLOSE                        */
+/* ============================= */
+.video-close{
+  position:absolute;
+  top:7px;
+  right:9px;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  border:none;
+  background:rgba(0,0,0,.6);
+  color:#fff;
+  font-size:13px;
+  cursor:pointer;
+  line-height:24px;
+  text-align:center;
+  z-index:2147482003;
+}
+
+/* ============================= */
+/*  SEO NASCOSTO                 */
+/* ============================= */
+.seo-only{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0 0 0 0)!important;
+  clip-path:inset(50%)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+</style>
+
+    </head>
+
+<body class="{{body_class}}">
+
+    <div class="gh-viewport">
+        {{> extended-header}}
+        {{! Website's Header }}
+        {{>header}}
+
+        {{! All content gets inserted here, index.hbs, post.hbs, etc }}
+        {{{body}}}
+
+
+        {{! Website's Footer }}
+        {{>footer}}
+
+<script>
+const domain = location.host.replace('www.', '');
+const links = document.querySelectorAll('.gh-post-content a,.sitelinks-link a, .gh-sidebar-crypto-platforms a');
+
+if (!document.body.classList.contains('tag-hash-glossary')) {
+links.forEach((link) => {
+  let href = link.href;
+
+  if (href.includes('?ref=www.spaziocrypto.com')) {
+    href = href.replace('?ref=www.spaziocrypto.com', '');
+  }
+  if (href.includes('&ref=www.spaziocrypto.com')) {
+    href = href.replace('&ref=www.spaziocrypto.com', '');
+  }
+  if(!href.includes('www.spaziocrypto.com')){
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noreferrer noopener');
+  }
+  link.href = href;
+});
+}
+</script>
+
+<a href="#" class="termly-display-preferences">Consent Preferences</a>
+
+<!-- ITALIANO — www.spaziocrypto.com -->
+<script>
+(function(){
+  try{
+    var host = location.host.toLowerCase();
+    var path = location.pathname.replace(/\\/+$/,'') || '/';
+    var isITHome = (host === 'www.spaziocrypto.com' || host === 'localhost:2368') && (path === '/' || path === '/index' || path === '/index.html');
+    if (isITHome) {
+      document.documentElement.setAttribute('data-home-it','true');
+    }
+  }catch(e){}
+})();
+</script>
+
+<div class="home-it-only">
+
+  <div class="seo-only" lang="it">
+    <h2>Nazioni Crypto: la battaglia per denaro, potere e codice</h2>
+    <p>Documentario su Bitcoin, blockchain e geopolitica globale.</p>
+  </div>
+
+  <div class="video-wrapper-it">
+    <div id="videoBox-it">
+      <div class="video-inner-it">
+
+        <a class="badge-latest"
+           href="https://www.youtube.com/@spaziocrypto?sub_confirmation=1"
+           target="_blank" rel="noopener"
+           aria-label="Ultimo video — Iscriviti">
+          <span class="latest-dot" aria-hidden="true"></span> Iscriviti
+        </a>
+
+        <button class="video-close"
+                type="button"
+                aria-label="Chiudi video"
+                onclick="this.closest('.video-wrapper-it').style.display='none'">✕</button>
+
+        <iframe
+          loading="lazy"
+          data-src="https://www.youtube.com/embed/DSlvs0iXIy8?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1"
+          title="Nazioni Crypto: la battaglia per denaro, potere e codice"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const wrap = document.querySelector('.video-wrapper-it');
+  if(!wrap) return;
+
+  const iframe  = wrap.querySelector('iframe[data-src]');
+  const isMobile = window.matchMedia('(max-width:768px)').matches;
+  const MOBILE_SCROLL_THRESHOLD = 350;
+
+  const CONSENT_KEY = 'sc_termly_choice_it_v1'; // accept | reject
+
+  function getSaved(){
+    try{
+      return localStorage.getItem(CONSENT_KEY) || sessionStorage.getItem(CONSENT_KEY);
+    }catch(e){
+      return sessionStorage.getItem(CONSENT_KEY);
+    }
+  }
+  function setSaved(v){
+    try{ localStorage.setItem(CONSENT_KEY, v); }catch(e){}
+    try{ sessionStorage.setItem(CONSENT_KEY, v); }catch(e){}
+  }
+
+  function loadIframe(){
+    if(iframe && !iframe.getAttribute('src')){
+      iframe.setAttribute('src', iframe.getAttribute('data-src'));
+    }
+  }
+
+  function showDesktop(){
+    wrap.style.display = 'block';
+    requestAnimationFrame(()=>{
+      wrap.classList.add('is-visible');
+      wrap.style.pointerEvents = 'auto';
+      loadIframe();
+    });
+  }
+
+  function showMobileAfterScroll(){
+    wrap.style.display = 'block';
+    wrap.style.opacity = '0';
+    wrap.style.pointerEvents = 'none';
+
+    function reveal(){
+      wrap.classList.add('is-visible');
+      wrap.style.opacity = '1';
+      wrap.style.pointerEvents = 'auto';
+      loadIframe();
+      window.removeEventListener('scroll', onScroll, {passive:true});
+    }
+
+    function onScroll(){
+      if(window.scrollY >= MOBILE_SCROLL_THRESHOLD) reveal();
+    }
+
+    if(window.scrollY >= MOBILE_SCROLL_THRESHOLD) reveal();
+    else window.addEventListener('scroll', onScroll, {passive:true});
+  }
+
+  function startWidgetIfAccepted(){
+    if(isMobile) showMobileAfterScroll();
+    else showDesktop();
+  }
+
+  function stopWidget(){
+    wrap.style.display = 'none';
+    wrap.style.pointerEvents = 'none';
+  }
+
+  const saved = getSaved();
+  if(saved === 'reject'){ stopWidget(); return; }
+  if(saved === 'accept'){ startWidgetIfAccepted(); return; }
+
+  // For demo on localhost, show immediately
+  if(location.host === 'localhost:2368'){
+    startWidgetIfAccepted();
+    return;
+  }
+
+  function getCookieStr(){ return document.cookie || ''; }
+
+  function looksAcceptedFromTermly(){
+    try{
+      const c = getCookieStr().toLowerCase();
+      if(c.includes('termly')){
+        if(c.includes('reject') || c.includes('decline')) return 'reject';
+        if(c.includes('accept') || c.includes('agree') || c.includes('consent') || c.includes('true')) return 'accept';
+      }
+
+      try{
+        for(let i=0;i<localStorage.length;i++){
+          const key = (localStorage.key(i) || '').toLowerCase();
+          if(!key.includes('termly')) continue;
+
+          const raw = localStorage.getItem(localStorage.key(i)) || '';
+          const v = raw.toLowerCase();
+
+          if(v.includes('reject') || v.includes('decline')) return 'reject';
+          if(v.includes('accept') || v.includes('agree')) return 'accept';
+
+          try{
+            const obj = JSON.parse(raw);
+            const s = JSON.stringify(obj).toLowerCase();
+            if(s.includes('reject') || s.includes('decline')) return 'reject';
+            if(s.includes('accept') || s.includes('agree') || s.includes('"consent":true') || s.includes('categories') || s.includes('preferences')) return 'accept';
+          }catch(e){}
+        }
+      }catch(e){}
+
+      return null;
+    }catch(e){
+      return null;
+    }
+  }
+
+  const inferred = looksAcceptedFromTermly();
+  if(inferred === 'reject'){
+    setSaved('reject');
+    stopWidget();
+    return;
+  }
+  if(inferred === 'accept'){
+    setSaved('accept');
+    startWidgetIfAccepted();
+    return;
+  }
+
+  const ACCEPT_WORDS = [
+    'accept','agree','allow','ok','consent',
+    'accetta','accetto','accetta tutto','accetta tutti','accetta e continua',
+    'consenti','va bene','ho capito','ok'
+  ];
+  const REJECT_WORDS = [
+    'reject','decline','disagree','deny','refuse',
+    'rifiuta','rifiuto','nega','non accetto'
+  ];
+
+  function textOf(el){
+    return ((el.getAttribute('aria-label') || '') + ' ' + (el.textContent || '')).trim().toLowerCase();
+  }
+  function matchesAny(t, arr){
+    return arr.some(w => t === w || t.includes(w));
+  }
+
+  function wireTermlyButtons(){
+    const candidates = Array.from(document.querySelectorAll('button, a, [role="button"]'));
+    for(const el of candidates){
+      if(el.__scTermlyBound) continue;
+      const t = textOf(el);
+      if(!t) continue;
+
+      if(matchesAny(t, ACCEPT_WORDS)){
+        el.__scTermlyBound = true;
+        el.addEventListener('click', ()=>{
+          setSaved('accept');
+          setTimeout(startWidgetIfAccepted, 200);
+          setTimeout(startWidgetIfAccepted, 800);
+        }, true);
+      }
+
+      if(matchesAny(t, REJECT_WORDS)){
+        el.__scTermlyBound = true;
+        el.addEventListener('click', ()=>{
+          setSaved('reject');
+          stopWidget();
+        }, true);
+      }
+    }
+  }
+
+  const obs = new MutationObserver(wireTermlyButtons);
+  obs.observe(document.documentElement, {subtree:true, childList:true, attributes:true});
+  wireTermlyButtons();
+
+  stopWidget();
+})();
+</script>
+
+</div>
+
+        {{> modal-section}}
+
+    </div>
+
+    {{! Scroll to top btn }}
+    <button class="gh-scroll-top-btn" type="button" title="Scroll to top button" aria-label="{{t " Scroll to top
+        button"}}">
+        <svg class="gh-scroll-top-arrow" xmlns="https://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+            fill="none">
+            <path d="M9.59998 19.2L16 12.8L22.4 19.2" stroke="#1D1D1F" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+        <svg class="gh-scroll-top-progress" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </button>
+
+    
+    {{! SwiperJS script }}
+    
+    <script data-categories="essential" src="https://media.spaziocrypto.com/js/swiper-bundle.min.js"></script>
+    
+    {{! Main script }}
+    <script type="text/javascript" data-categories="essential" src="{{asset 'built/index.js'}}"></script>
+
+    {{{block "scripts"}}}
+
+    {{! <foot> }}
+        {{ghost_foot}}
+        {{! Outputs important scripts - should always be included before closing body tag }}
+
+</body>
+
+</html>

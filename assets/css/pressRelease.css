@@ -1,0 +1,95 @@
+.press-release{
+            background-color: var(--footer-subscribe-bg);
+        padding-block: 64px;
+       
+}
+
+.press-release .gh-container{
+     margin-inline: auto;
+}
+
+.press_release_section {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 0.5px solid rgba(255, 255, 255, 0.2); 
+    padding: 32px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1); 
+}
+
+
+.press_release_section:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+
+
+.press-release-icon{
+    width: 56px;
+    height: 56px;
+    background-color: #ededed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+}
+
+.media-body h5{
+    font-size: 24px;
+}
+.media-body h5 span{
+    color: var(--ghost-accent-color);
+}
+
+.media-body p{
+    margin-bottom: 0 !important;
+}
+
+
+.press-release-icon svg{
+    width: 24px;
+    height: 24px;
+    fill: var(--ghost-accent-color);
+}
+
+.press_release_section .gh-secondary-button{
+    background-color: var(--ghost-accent-color);
+    color: white;
+    line-height: 1;
+    margin-left: auto;
+    justify-self: flex-end;
+}
+
+@media (max-width: 768px) {
+    .press_release_section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .press-release-icon {
+        margin-bottom: 0;
+    }
+    
+    .media-body h5 {
+        font-size: 22px;
+    }
+    
+    .media-body p {
+        font-size: 16px;
+    }
+    
+    .press_release_section .gh-secondary-button {
+        width: 100%;
+        text-align: center;
+    }
+}

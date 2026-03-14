@@ -1,0 +1,44 @@
+/*
+#language-links {
+    
+    border-radius: 5px;
+    margin-bottom: 10px;
+    
+  }
+
+  #language-links p {
+    margin: 0;
+    padding: 0px 40px 5px;
+    
+  }
+
+  #language-links a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  #language-links a:hover {
+    text-decoration: none;
+  }
+  */
+  
+ #language-links a {
+    color: var(--color-main);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;         
+  }
+
+  #language-links a:hover {
+
+    color: var(--ghost-accent-color);
+    text-decoration: none;    
+
+  }
+
+
+  #language-links p {
+    margin: 0;
+    padding: 0px 0px 5px;
+    font-size: 18px;
+  }

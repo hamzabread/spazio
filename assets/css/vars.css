@@ -1,0 +1,229 @@
+/* Variables
+/* ---------------------------------------------------------- */
+
+:root {
+    --color-background-main: #f5f5f5;
+    --color-bg-alt: #0f1115;
+    --color-main: #1D1D1F;
+    --color-accent: var(--ghost-accent-color, #12c91e);
+
+    /* Header */
+    --color-header-border: #E4E4E4;
+    --search-dm-bg-hover-color: #dfdfdf;
+
+    /* Dark Mode Toggle Btn */
+    --toggle-bg-color: #F4F4F4;
+    --toggle-slider-color: #FFFFFF;
+
+    /* Buttons */
+    --color-buttons-main-text: #FFF;
+    --background-color-button: #1D1D1F;
+    --color-buttons-secondary-text: #1D1D1F;
+    --color-buttons-secondary: var(--ghost-accent-color);
+    --color-buttons-secondary-hover: #d5d5d5;
+
+    /* No Image Slide Plug */
+    --no-image-slide-bg: #F1F1F2;
+    --no-image-slide-bg-hover: #EDEDED;
+
+    /* Tags */
+    --tag-color: #fff;
+    --tag-bg-color: #777;
+    --tag-bg-color-hover: #555;
+    --tooltip-tag-bg-color: rgba(29, 29, 31, 0.60);
+
+    /* Hr */
+    --main-hr-color: #E4E4E4;
+
+    /* Post Card and Post Page */
+    --post-date: #616162;
+    --post-card-author: #616162;
+    --post-card-author-hover: #8a8a8a;
+    --post-meta-dot: #DDDDDD;
+    --post-card-title-hover: #4A4A4C;
+
+    /* Scrollbar */
+    --scrollbar-color: #fdfdfd;
+    --scrollbar-thumb-color: #d9d9d9;
+    --scrollbar-thumb-hover-color: #bfbfbf;
+
+    /* TimeLine */
+    --timeline-color: #EDEDED;
+    --timeline-date-bg-color: #F6F6F6;
+    --timeline-date-border-color: #EDEDED;
+    --timeline-date-month-color: #616162;
+
+    /* Scroll Top Button */
+    --scroll-top-bg-color: #F4F4F4;
+    --scroll-top-bg-color--hover: #EDEDED;
+
+    /* Slider Buttons */
+    --slider-btn-bg-color: #fff;
+
+    /* Sidebar */
+    --sidebar-main-bg-color: #F8F8F8;
+    --sidebar-featured-posts-hr: #E4E4E4;
+    --sidebar-tag-count-color: #616162;
+    --sidebar-tag-count-bg-color: #FFF;
+    --sidebar-tag-count-bg-color--hover: #FFF;
+    --sidebar-tags--bg-color--hover: #EDEDED;
+
+    /* Footer */
+    --footer-subscribe-bg: #F8F8F8;
+    --footer-main-bg: #F1F1F2;
+    --footer-border-color: #DDD;
+    --footer-copyright-text: #616162;
+
+    /* Breadcrumbs */
+    --breadcrumbs-color: #1D1D1F;
+
+    /* Post Content Cards */
+    --toggle-card-icon-color: #1D1D1F;
+    --toggle-card-text-color: #343435;
+    --post-content-card-bg-color: #F6F6F6;
+    --post-content-card-bg-color--hover: #eeeeee;
+    --audio-card-placeholder: #EDEDED;
+    --post-content-button-color: #1D1D1F;
+    --post-content-button-bg-color: #EDEDED;
+    --post-content-product-desc-color: #777779;
+
+    /* Membership Page */
+    --membership-toggle-bg-color: #F4F4F4;
+    --membership-toggle-bg-color--hover: #eee;
+    --membership-card-bg-color: #F4F4F4;
+    --tier-card-hr: #E4E4E4;
+
+    /* Input */
+    --input-bg-color: #F6F6F6;
+
+    /* Account page */
+    --account-page-bg-color: #f8f8f8;
+
+    /* Mobile menu */
+    --mobile-menu-borders-color: #E4E4E4;
+
+    /* Placeholder */
+    --placeholder-color: #111111;
+
+    /* Selection */
+    --selection-color: #cbeafb;
+
+    /* Glossary Tooltip */
+    --glossary-tooltip-bg-color: #222;
+    --glossary-tooltip-text-color: #fff;
+}
+
+/* Dark Theme Variables */
+/* ---------------------------------------------------------- */
+
+:root[data-color-scheme="dark"] {
+    --color-background-main: #1D1D1F;
+    --color-bg-alt: #29292A;
+    --color-main: #EDEDED;
+    --color-accent: var(--ghost-accent-color, #12c91e);
+
+    /* Header */
+    --color-header-border: #343435;
+    --search-dm-bg-hover-color: #343435;
+
+    /* Dark Mode Toggle Btn */
+    --toggle-bg-color: #29292A;
+    --toggle-slider-color: #4A4A4C;
+
+    /* Buttons */
+    --color-buttons-main-text: #F6F6F6;
+    --background-color-button: #343435;
+    --color-buttons-secondary-text: #F6F6F6;
+    --color-buttons-secondary: #343435;
+    --color-buttons-secondary-hover: #29292A;
+
+    /* No Image Slide Plug */
+    --no-image-slide-bg: #29292A;
+    --no-image-slide-bg-hover: #121214;
+
+    /* Tags */
+    --tag-color: #fff;
+    --tag-bg-color: #29292a;
+    --tag-bg-color-hover: #121214;
+    --tooltip-tag-bg-color: rgba(70, 70, 71, 0.6);
+
+    /* Hr */
+    --main-hr-color: #343435;
+
+    /* Post Card */
+    --post-date: #A5A5A5;
+    --post-card-author: #A5A5A5;
+    --post-card-author-hover: #e8e8e8;
+    --post-meta-dot: #777777;
+    --post-card-title-hover: #bbbbbc;
+
+    /* Scrollbar */
+    --scrollbar-color: #1d1d1f;
+    --scrollbar-thumb-color: #343435;
+    --scrollbar-thumb-hover-color: #4a4a4c;
+
+    /* TimeLine */
+    --timeline-color: #3e3e3e;
+    --timeline-date-bg-color: #343435;
+    --timeline-date-border-color: #3e3e3e;
+    --timeline-date-month-color: #a5a5a5;
+
+    /* Scroll Top Button */
+    --scroll-top-bg-color: #343435;
+    --scroll-top-bg-color--hover: #414040;
+
+    /* Slider Buttons */
+    --slider-btn-bg-color: #121214;
+
+    /* Sidebar */
+    --sidebar-main-bg-color: #343435;
+    --sidebar-featured-posts-hr: #616162;
+    --sidebar-tag-count-color: #FFF;
+    --sidebar-tag-count-bg-color: #616162;
+    --sidebar-tag-count-bg-color--hover: #3e3e3e;
+    --sidebar-tags--bg-color--hover: #121214;
+
+    /* Footer */
+    --footer-subscribe-bg: #19191B;
+    --footer-main-bg: #121214;
+    --footer-border-color: #343435;
+    --footer-copyright-text: #a5a5a5;
+
+    /* Breadcrumbs */
+    --breadcrumbs-color: #FFF;
+
+    /* Post Content Cards */
+    --toggle-card-icon-color: #FFF;
+    --toggle-card-text-color: #F6F6F6;
+    --post-content-card-bg-color: #343435;
+    --post-content-card-bg-color--hover: #404041;
+    --audio-card-placeholder: #1D1D1F;
+    --post-content-button-color: #FFF;
+    --post-content-button-bg-color: #343435;
+    --post-content-product-desc-color: #a5a5a5;
+
+    /* Membership Page */
+    --membership-toggle-bg-color: #343435;
+    --membership-toggle-bg-color--hover: #404041;
+    --membership-card-bg-color: #343435;
+    --tier-card-hr: #616162;
+
+    /* Input */
+    --input-bg-color: #292929;
+
+    /* Account page */
+    --account-page-bg-color: #222222;
+
+    /* Mobile menu */
+    --mobile-menu-borders-color: #343435;
+
+    /* Placeholder */
+    --placeholder-color: #f5f5f5;
+
+    /* Selection */
+    --selection-color: #000;
+
+    /* Glossary Tooltip */
+    --glossary-tooltip-bg-color: #4a4a4c;
+    --glossary-tooltip-text-color: #ededed;
+}

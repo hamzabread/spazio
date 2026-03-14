@@ -1,0 +1,128 @@
+<section class="sc-market-dashboard">
+    <div class="sc-market-dashboard-inner">
+        <div class="sc-market-dashboard-header">
+            <h2 class="sc-market-dashboard-title">{{t "Crypto Market"}}</h2>
+            <a class="sc-market-dashboard-viewall" href="{{@site.url}}/tag/markets/">
+                {{t "View full market"}} →
+            </a>
+        </div>
+        <div class="sc-market-dashboard-grid">
+            {{!-- Market Sentiment Gauge --}}
+            <div class="sc-md-card sc-md-sentiment">
+                <div class="sc-md-card-label">{{t "Market Sentiment"}}</div>
+                <div class="sc-md-gauge-wrapper">
+                    <svg class="sc-md-gauge" viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+                        {{!-- Base track --}}
+                        <path d="M 50 150 A 110 110 0 0 1 270 150" stroke="rgba(255,255,255,0.06)" stroke-width="24" fill="none" stroke-linecap="round"/>
+                        {{!-- Smooth color segments --}}
+                        <path d="M 50 150 A 110 110 0 0 1 71 85" stroke="#FF4757" stroke-width="24" fill="none" stroke-linecap="round"/>
+                        <path d="M 78 78 A 110 110 0 0 1 126 45" stroke="#F59E0B" stroke-width="24" fill="none" stroke-linecap="round"/>
+                        <path d="M 136 42 A 110 110 0 0 1 184 42" stroke="#FDE047" stroke-width="24" fill="none" stroke-linecap="round"/>
+                        <path d="M 194 45 A 110 110 0 0 1 242 78" stroke="#84CC16" stroke-width="24" fill="none" stroke-linecap="round"/>
+                        <path d="M 249 85 A 110 110 0 0 1 270 150" stroke="#22C55E" stroke-width="24" fill="none" stroke-linecap="round"/>
+                        {{!-- Indicator at 56 --}}
+                        <circle cx="168" cy="42" r="13" fill="#0B3A57" stroke="#fff" stroke-width="6"/>
+                    </svg>
+                    <div class="sc-md-gauge-value">
+                        <span class="sc-md-gauge-number sc-sentiment-value">56</span>
+                        <span class="sc-md-gauge-label sc-sentiment-label">{{t "Neutral"}}</span>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Crypto Market Cap --}}
+            <div class="sc-md-card sc-md-cap">
+                <div class="sc-md-card-title">{{t "Crypto Market Cap"}}</div>
+                <div class="sc-md-cap-value sc-total-mcap">$2.79T</div>
+                <div class="sc-md-cap-change">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
+                    <span class="sc-md-cap-pct sc-mcap-change">0.79%</span>
+                </div>
+                <div class="sc-md-chart-placeholder">
+                    <svg viewBox="0 0 300 60" preserveAspectRatio="none" class="sc-md-mini-chart">
+                        <defs>
+                            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#F9992A" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#F9992A" stop-opacity="0.02"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M0 45 Q20 40 40 42 T80 35 T120 38 T160 30 T200 25 T240 28 T280 20 L300 18 L300 60 L0 60 Z" fill="url(#chartGrad)"/>
+                        <path d="M0 45 Q20 40 40 42 T80 35 T120 38 T160 30 T200 25 T240 28 T280 20 L300 18" fill="none" stroke="#F9992A" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+
+            {{!-- Top Gainers --}}
+            <div class="sc-md-card sc-md-table-card">
+                <div class="sc-md-card-title">{{t "Top Gainers"}}</div>
+                <div class="sc-md-table">
+                    <div class="sc-md-table-header">
+                        <span>{{t "Trading Pairs"}}</span>
+                        <span>{{t "Last Traded Price"}}</span>
+                        <span>{{t "24H Change"}}</span>
+                    </div>
+                    <div class="sc-md-table-row">
+                        <div class="sc-md-pair">
+                            <img src="{{asset "imagesAndIcons/hon.svg"}}" alt="HON" class="sc-md-pair-icon">
+                            <span>HON/USDT</span>
+                        </div>
+                        <span>0.000230</span>
+                        <span class="sc-md-change-up">+12.08%</span>
+                    </div>
+                    <div class="sc-md-table-row">
+                        <div class="sc-md-pair">
+                            <img src="{{asset "imagesAndIcons/cmp.svg"}}" alt="CMP" class="sc-md-pair-icon">
+                            <span>CMP/USDT</span>
+                        </div>
+                        <span>0.00206</span>
+                        <span class="sc-md-change-down">-6.21%</span>
+                    </div>
+                    <div class="sc-md-table-row">
+                        <div class="sc-md-pair">
+                            <img src="{{asset "imagesAndIcons/shark.svg"}}" alt="SHARK" class="sc-md-pair-icon">
+                            <span>SHARK/USDT</span>
+                        </div>
+                        <span>0.0482</span>
+                        <span class="sc-md-change-up">+21.54%</span>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Trending --}}
+            <div class="sc-md-card sc-md-table-card">
+                <div class="sc-md-card-title">{{t "Trending"}}</div>
+                <div class="sc-md-table">
+                    <div class="sc-md-table-header">
+                        <span>{{t "Trading Pairs"}}</span>
+                        <span>{{t "Last Traded Price"}}</span>
+                        <span>{{t "24H Change"}}</span>
+                    </div>
+                    <div class="sc-md-table-row">
+                        <div class="sc-md-pair">
+                            <img src="{{asset "imagesAndIcons/hon.svg"}}" alt="HON" class="sc-md-pair-icon">
+                            <span>HON/USDT</span>
+                        </div>
+                        <span>0.000230</span>
+                        <span class="sc-md-change-up">+12.08%</span>
+                    </div>
+                    <div class="sc-md-table-row">
+                        <div class="sc-md-pair">
+                            <img src="{{asset "imagesAndIcons/cmp.svg"}}" alt="CMP" class="sc-md-pair-icon">
+                            <span>CMP/USDT</span>
+                        </div>
+                        <span>0.00206</span>
+                        <span class="sc-md-change-down">-6.21%</span>
+                    </div>
+                    <div class="sc-md-table-row">
+                        <div class="sc-md-pair">
+                            <img src="{{asset "imagesAndIcons/shark.svg"}}" alt="SHARK" class="sc-md-pair-icon">
+                            <span>SHARK/USDT</span>
+                        </div>
+                        <span>0.0482</span>
+                        <span class="sc-md-change-up">+21.54%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,472 @@
+/* ========================================= */
+/*  ABOUT US PAGE                            */
+/* ========================================= */
+
+.sc-about-page {
+    background: #07090f;
+}
+
+.sc-about-shell {
+    width: calc(100% - 150px);
+    max-width: 1540px;
+    margin: 0 auto;
+}
+
+.sc-about-hero {
+    padding: 80px 0 26px;
+}
+
+.sc-about-hero-card {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #050608;
+    display: grid;
+    grid-template-columns: 1.18fr 1fr;
+    min-height: 420px;
+}
+
+.sc-about-hero-copy {
+    padding: 26px 34px 30px;
+}
+
+.sc-about-chip {
+    display: inline-flex;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(241, 143, 32, 0.16);
+    border: 1px solid rgba(241, 143, 32, 0.35);
+}
+
+.sc-about-hero-copy h1 {
+    margin: 0 0 14px;
+    color: #f6f8fb;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.6px;
+    max-width: 680px;
+}
+
+.sc-about-hero-copy h1 span {
+    color: #F18F20;
+}
+
+.sc-about-hero-copy p {
+    margin: 0;
+    max-width: 660px;
+    color: rgba(208, 217, 228, 0.76);
+    font-size: 18px;
+    line-height: 1.42;
+}
+
+.sc-about-socials {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sc-about-socials a {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #151a22;
+    color: #f2f6fb;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.sc-about-hero-image-wrap {
+    min-height: 100%;
+}
+
+.sc-about-hero-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.sc-about-mission {
+    padding: 80px 0 82px;
+}
+
+.sc-about-mission-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: #050608;
+    padding: 26px 26px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 34px;
+    align-items: flex-start;
+}
+
+.sc-about-mission-card h2 {
+    margin: 0;
+    color: #f7f9fc;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.4px;
+}
+
+.sc-about-mission-card h2 span {
+    color: #F18F20;
+    display: block;
+}
+
+.sc-about-mission-card p {
+    margin: 0;
+    color: rgba(198, 208, 220, 0.78);
+    font-size: 32px;
+    line-height: 1.35;
+    max-width: 980px;
+}
+
+.sc-about-operate {
+    padding: 8px 0 82px;
+}
+
+.sc-about-operate-head {
+    text-align: center;
+    margin-bottom: 34px;
+}
+
+.sc-about-operate-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(241, 143, 32, 0.35);
+    background: rgba(241, 143, 32, 0.08);
+    color: rgba(241, 143, 32, 0.95);
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.sc-about-operate-head h2 {
+    margin: 0;
+    color: #f5f8fc;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+}
+
+.sc-about-operate-head h2 span {
+    color: #F18F20;
+}
+
+.sc-about-operate-head p {
+    margin: 12px auto 0 !important;
+    max-width: 900px;
+    color: rgba(204, 213, 225, 0.68);
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.sc-about-revenue {
+    padding: 12px 0 96px;
+}
+
+.sc-about-revenue-head {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sc-about-revenue-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(241, 143, 32, 0.35);
+    background: rgba(241, 143, 32, 0.08);
+    color: rgba(241, 143, 32, 0.95);
+    font-size: 12px;
+    margin-bottom: 14px;
+}
+
+.sc-about-revenue-head h2 {
+    margin: 0;
+    color: #f5f8fc;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+}
+
+.sc-about-revenue-head h2 span {
+    color: #F18F20;
+}
+
+.sc-about-revenue-head p {
+    margin: 14px auto 0 !important;
+    max-width: 920px;
+    color: rgba(204, 213, 225, 0.68);
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.sc-about-revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.sc-about-revenue-item {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: #0a0d14;
+    padding: 22px 22px 20px;
+    min-height: 176px;
+}
+
+.sc-about-revenue-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(241, 143, 32, 0.12);
+    border: 1px solid rgba(241, 143, 32, 0.28);
+    color: #F18F20;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.sc-about-revenue-item h3 {
+    margin: 0;
+    color: #f3f7fd;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.sc-about-revenue-item p {
+    margin: 10px 0 0;
+    color: rgba(190, 201, 216, 0.64);
+    font-size: 15px;
+    line-height: 1.35;
+}
+
+.sc-about-operate-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    background: #0a0d14;
+    padding: 36px 38px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 34px;
+}
+
+.sc-about-operate-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.sc-about-operate-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(241, 143, 32, 0.15);
+    color: #F18F20;
+    border: 1px solid rgba(241, 143, 32, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+
+.sc-about-operate-item h3 {
+    margin: 0;
+    color: #f3f7fd;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.sc-about-operate-item p {
+    margin: 5px 0 0;
+    color: rgba(190, 201, 216, 0.64);
+    font-size: 15px;
+    line-height: 1.35;
+}
+
+@media (max-width: 1200px) {
+    .sc-about-shell {
+        width: calc(100% - 48px);
+    }
+
+    .sc-about-hero-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .sc-about-hero-image {
+        max-height: 420px;
+    }
+
+    .sc-about-hero-copy h1 {
+        font-size: 38px;
+    }
+
+    .sc-about-mission-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .sc-about-mission-card h2 {
+        font-size: 42px;
+    }
+
+    .sc-about-mission-card p {
+        font-size: 23px;
+    }
+
+    .sc-about-operate-head h2 {
+        font-size: 34px;
+    }
+
+    .sc-about-operate-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 24px;
+    }
+
+    .sc-about-operate-item h3 {
+        font-size: 24px;
+    }
+
+    .sc-about-revenue-head h2 {
+        font-size: 34px;
+    }
+
+    .sc-about-revenue-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .sc-about-revenue-item h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .sc-about-shell {
+        width: calc(100% - 32px);
+    }
+
+    .sc-about-hero {
+        padding-top: 36px;
+    }
+
+    .sc-about-hero-copy {
+        padding: 18px;
+    }
+
+    .sc-about-hero-copy h1 {
+        font-size: 30px;
+    }
+
+    .sc-about-hero-copy p {
+        font-size: 15px;
+    }
+
+    .sc-about-socials {
+        margin-top: 16px;
+    }
+
+    .sc-about-mission {
+        padding: 40px 0 46px;
+    }
+
+    .sc-about-mission-card {
+        padding: 18px;
+    }
+
+    .sc-about-mission-card h2 {
+        font-size: 34px;
+    }
+
+    .sc-about-mission-card p {
+        font-size: 16px;
+    }
+
+    .sc-about-operate {
+        padding: 4px 0 46px;
+    }
+
+    .sc-about-operate-head h2 {
+        font-size: 26px;
+    }
+
+    .sc-about-operate-head p {
+        font-size: 14px;
+    }
+
+    .sc-about-operate-item {
+        grid-template-columns: 40px 1fr;
+        gap: 10px;
+    }
+
+    .sc-about-operate-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .sc-about-operate-item h3 {
+        font-size: 16px;
+    }
+
+    .sc-about-operate-item p {
+        font-size: 13px;
+    }
+
+    .sc-about-revenue {
+        padding: 8px 0 50px;
+    }
+
+    .sc-about-revenue-head h2 {
+        font-size: 26px;
+    }
+
+    .sc-about-revenue-head p {
+        font-size: 14px;
+    }
+
+    .sc-about-revenue-item {
+        min-height: auto;
+        padding: 16px;
+    }
+
+    .sc-about-revenue-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .sc-about-revenue-item h3 {
+        font-size: 16px;
+    }
+
+    .sc-about-revenue-item p {
+        font-size: 13px;
+    }
+}

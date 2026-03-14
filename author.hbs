@@ -1,0 +1,73 @@
+{{!< default}} 
+
+<main class="gh-container gh-author-page">
+    {{#author}}
+    {{>breadcrumbs}}
+    <div class="gh-archive-page-header{{#if cover_image}} with-image{{/if}}">
+        {{#if cover_image}}
+        <picture>
+            <source srcset="{{img_url cover_image size="3000" format="webp" }} 3000w, {{img_url cover_image size="2000"
+                format="webp" }} 2000w, {{img_url cover_image size="1600" format="webp" }} 1600w, {{img_url cover_image
+                size="1000" format="webp" }} 1000w, {{img_url cover_image size="800" format="webp" }} 800w, {{img_url
+                cover_image size="600" format="webp" }} 600w, {{img_url cover_image size="500" format="webp" }} 500w"
+                sizes="(min-width: 1680px) 1600px, 95vw" type="image/webp">
+            <img class="gh-archive-page-feature-image" srcset="{{img_url cover_image size="3000"}} 3000w, {{img_url cover_image
+                size="2000" }} 2000w, {{img_url cover_image size="1600" }} 1600w, {{img_url cover_image size="1000" }} 1000w,
+                {{img_url cover_image size="800" }} 800w, {{img_url cover_image size="600" }} 600w, {{img_url cover_image
+                size="500" }} 500w" sizes="(min-width: 1680px) 1600px, 95vw" src="{{img_url cover_image size="3000"}}"
+                alt="{{name}} {{t "cover image"}}">
+        </picture>
+        {{/if}}
+        <div class="gh-author-page-head-content">
+            {{#if profile_image}}
+            <picture>
+                <source srcset="{{img_url profile_image size="300" format="webp" }} 300w, {{img_url profile_image size="200"
+                    format="webp" }} 200w, {{img_url profile_image size="100" format="webp" }} 100w"
+                    sizes="(max-width: 550px) 120px, (max-width: 750px) 88px, (max-width: 900px) 120px, (min-width: 901px) 148px"
+                    type="image/webp">
+                <img class="gh-author-page-profile-image" srcset="{{img_url profile_image size="300"}} 300w, {{img_url profile_image
+                    size="200" }} 200w, {{img_url profile_image size="100" }} 100w"
+                    sizes="(max-width: 550px) 120px, (max-width: 750px) 88px, (max-width: 900px) 120px, (min-width: 901px) 148px"
+                    src="{{img_url profile_image size="300"}}" alt="{{name}} {{t "profile image"}}">
+            </picture>
+            {{/if}}
+            <div class="gh-author-page-name-socials">
+                <h1 class="gh-author-page-name">{{name}}</h1>
+                <div class="gh-author-page-socials">
+                    {{#if facebook}}
+                    <a class="gh-author-page-social-link" href="{{facebook_url}}" target="_blank" rel="noopener"
+                        aria-label="{{name}} {{t "Facebook"}}">
+                        {{>icons/facebook}}
+                    </a>
+                    {{/if}}
+                    {{#if twitter}}
+                    <a class="gh-author-page-social-link" href="{{twitter_url}}" target="_blank" rel="noopener"
+                        aria-label="{{name}} {{t "Twitter"}}">
+                        {{>icons/twitter}}
+                    </a>
+                    {{/if}}
+                    {{#if website}}
+                    <a class="gh-author-page-social-link" href="{{website}}" target="_blank" rel="noopener"
+                        aria-label="{{name}} {{t "Website"}}">
+                        {{>icons/globe}}
+                    </a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <p class="gh-author-page-bio">{{bio}}</p>
+        <div class="gh-author-page-meta">
+            <span class="gh-author-page-posts">
+                {{plural ../pagination.total empty=(t "No Posts") singular=(t "% Post") plural=(t "% Posts")}}
+            </span>
+            {{#if location}}
+            <div class="gh-author-page-location">
+                {{> "icons/location-marker"}}
+                {{location}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+    {{/author}}
+    {{>posts-layout}}
+</main>
