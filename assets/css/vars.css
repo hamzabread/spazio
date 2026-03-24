@@ -2,8 +2,8 @@
 /* ---------------------------------------------------------- */
 
 :root {
-    --color-background-main: #f5f5f5;
-    --color-bg-alt: #0f1115;
+    --color-background-main: #F8F9FA;
+    --color-bg-alt: #F9F9F9;
     --color-main: #1D1D1F;
     --color-accent: var(--ghost-accent-color, #12c91e);
 
@@ -117,8 +117,8 @@
 /* ---------------------------------------------------------- */
 
 :root[data-color-scheme="dark"] {
-    --color-background-main: #1D1D1F;
-    --color-bg-alt: #29292A;
+    --color-background-main: #000;
+    --color-bg-alt: #050505;
     --color-main: #EDEDED;
     --color-accent: var(--ghost-accent-color, #12c91e);
 

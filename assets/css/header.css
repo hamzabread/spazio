@@ -77,7 +77,7 @@
 
 .gh-site-logo {
     display: block;
-    width: max-content;
+    width: 322px;
     padding: 10px 0;
     transition: opacity 0.3s ease;
 }
@@ -90,28 +90,11 @@
     padding: 0;
 }
 
-.gh-site-logo-img,
-.gh-site-logo-img-dark-mode {
+.gh-site-logo-img {
     height: 36px;
 }
 
-.gh-site-logo-img-dark-mode {
-    display: none;
-}
-
 .gh-header.transparent .gh-site-logo-img:not(.gh-mobile-menu .gh-site-logo-img) {
-    display: none;
-}
-
-.gh-header.transparent .gh-site-logo-img-dark-mode:not(.gh-mobile-menu .gh-site-logo-img-dark-mode) {
-    display: block;
-}
-
-:root[data-color-scheme="dark"] .gh-site-logo-has-DM-logo .gh-site-logo-img-dark-mode {
-    display: block;
-}
-
-:root[data-color-scheme="dark"] .gh-site-logo-has-DM-logo .gh-site-logo-img {
     display: none;
 }
 
@@ -261,7 +244,7 @@
 .gh-header-actions-buttons {
     display: flex;
     align-items: center;
-    gap: 0px;
+    gap: 12px;
     height: 100%;
 }
 
@@ -280,7 +263,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 0;
     border-radius: 100px;
     transition: background-color 0.3s ease;
 }
@@ -323,7 +306,7 @@
     transition: background-color 0.3s ease;
     border-radius: 100px;
     position: relative;
-    padding: 8px;
+    padding: 0;
 }
 
 .gh-search-btn:hover {
@@ -1236,9 +1219,10 @@
 }
 
 .popup-launcher .caret{
- font-size: 0.8rem;
+ display: inline-flex;
+ align-items: center;
  margin-left: 0.3rem;
-   transition: transform 0.2s ease;
+ transition: transform 0.2s ease;
 }
 
 .popup-launcher:hover .caret {

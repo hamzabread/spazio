@@ -70,8 +70,8 @@ html,
 .gh-container {
   width: 100%;
   max-width: 1680px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 0;
+  padding-right: 0;
   margin: 0 auto;
 }
 
@@ -523,8 +523,8 @@ iframe[title="portal-notification"] {
 
 @media (max-width: 1100px) {
   .gh-container {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -557,8 +557,8 @@ iframe[title="portal-notification"] {
 
 @media (max-width: 550px) {
   .gh-container {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .gh-transparent-tag {

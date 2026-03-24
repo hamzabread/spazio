@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="218" height="48" viewBox="0 0 218 48" fill="none">
+  <defs>
+    <linearGradient id="shortDotsGradient" x1="0" y1="24" x2="218" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F54900"/>
+      <stop offset="1" stop-color="#F9FAFB" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#shortDotsGradient)">
+    <circle cx="1.5" cy="1.5" r="1.5"/>
+    <circle cx="16.5" cy="1.5" r="1.5"/>
+    <circle cx="31.5" cy="1.5" r="1.5"/>
+    <circle cx="46.5" cy="1.5" r="1.5"/>
+    <circle cx="61.5" cy="1.5" r="1.5"/>
+    <circle cx="76.5" cy="1.5" r="1.5"/>
+    <circle cx="91.5" cy="1.5" r="1.5"/>
+    <circle cx="106.5" cy="1.5" r="1.5"/>
+    <circle cx="121.5" cy="1.5" r="1.5"/>
+    <circle cx="136.5" cy="1.5" r="1.5"/>
+    <circle cx="151.5" cy="1.5" r="1.5"/>
+    <circle cx="166.5" cy="1.5" r="1.5"/>
+    <circle cx="181.5" cy="1.5" r="1.5"/>
+    <circle cx="196.5" cy="1.5" r="1.5"/>
+    <circle cx="211.5" cy="1.5" r="1.5"/>
+
+    <circle cx="1.5" cy="16.5" r="1.5"/>
+    <circle cx="16.5" cy="16.5" r="1.5"/>
+    <circle cx="31.5" cy="16.5" r="1.5"/>
+    <circle cx="46.5" cy="16.5" r="1.5"/>
+    <circle cx="61.5" cy="16.5" r="1.5"/>
+    <circle cx="76.5" cy="16.5" r="1.5"/>
+    <circle cx="91.5" cy="16.5" r="1.5"/>
+    <circle cx="106.5" cy="16.5" r="1.5"/>
+    <circle cx="121.5" cy="16.5" r="1.5"/>
+    <circle cx="136.5" cy="16.5" r="1.5"/>
+    <circle cx="151.5" cy="16.5" r="1.5"/>
+    <circle cx="166.5" cy="16.5" r="1.5"/>
+    <circle cx="181.5" cy="16.5" r="1.5"/>
+    <circle cx="196.5" cy="16.5" r="1.5"/>
+    <circle cx="211.5" cy="16.5" r="1.5"/>
+
+    <circle cx="1.5" cy="31.5" r="1.5"/>
+    <circle cx="16.5" cy="31.5" r="1.5"/>
+    <circle cx="31.5" cy="31.5" r="1.5"/>
+    <circle cx="46.5" cy="31.5" r="1.5"/>
+    <circle cx="61.5" cy="31.5" r="1.5"/>
+    <circle cx="76.5" cy="31.5" r="1.5"/>
+    <circle cx="91.5" cy="31.5" r="1.5"/>
+    <circle cx="106.5" cy="31.5" r="1.5"/>
+    <circle cx="121.5" cy="31.5" r="1.5"/>
+    <circle cx="136.5" cy="31.5" r="1.5"/>
+    <circle cx="151.5" cy="31.5" r="1.5"/>
+    <circle cx="166.5" cy="31.5" r="1.5"/>
+    <circle cx="181.5" cy="31.5" r="1.5"/>
+    <circle cx="196.5" cy="31.5" r="1.5"/>
+    <circle cx="211.5" cy="31.5" r="1.5"/>
+
+    <circle cx="1.5" cy="46.5" r="1.5"/>
+    <circle cx="16.5" cy="46.5" r="1.5"/>
+    <circle cx="31.5" cy="46.5" r="1.5"/>
+    <circle cx="46.5" cy="46.5" r="1.5"/>
+    <circle cx="61.5" cy="46.5" r="1.5"/>
+    <circle cx="76.5" cy="46.5" r="1.5"/>
+    <circle cx="91.5" cy="46.5" r="1.5"/>
+    <circle cx="106.5" cy="46.5" r="1.5"/>
+    <circle cx="121.5" cy="46.5" r="1.5"/>
+    <circle cx="136.5" cy="46.5" r="1.5"/>
+    <circle cx="151.5" cy="46.5" r="1.5"/>
+    <circle cx="166.5" cy="46.5" r="1.5"/>
+    <circle cx="181.5" cy="46.5" r="1.5"/>
+    <circle cx="196.5" cy="46.5" r="1.5"/>
+    <circle cx="211.5" cy="46.5" r="1.5"/>
+  </g>
+</svg>

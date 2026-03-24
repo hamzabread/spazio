@@ -44,8 +44,7 @@
         width: 24px;
         height: 24px;
     }
-    .gh-header .gh-site-logo-img,
-    .gh-header .gh-site-logo-img-dark-mode {
+    .gh-header .gh-site-logo-img {
         height: 28px;
     }
     .gh-header-navigation-wrapper{
@@ -168,8 +167,7 @@
         margin: 0;
     }
 
-    .gh-header .gh-site-logo-img,
-    .gh-header .gh-site-logo-img-dark-mode {
+    .gh-header .gh-site-logo-img {
         height: 24px;
     }
 

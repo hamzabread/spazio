@@ -10,44 +10,22 @@
             {{!-- Market Sentiment Gauge --}}
             <div class="sc-md-card sc-md-sentiment">
                 <div class="sc-md-card-label">{{t "Market Sentiment"}}</div>
-                <div class="sc-md-gauge-wrapper">
-                    <svg class="sc-md-gauge" viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
-                        {{!-- Base track --}}
-                        <path d="M 50 150 A 110 110 0 0 1 270 150" stroke="rgba(255,255,255,0.06)" stroke-width="24" fill="none" stroke-linecap="round"/>
-                        {{!-- Smooth color segments --}}
-                        <path d="M 50 150 A 110 110 0 0 1 71 85" stroke="#FF4757" stroke-width="24" fill="none" stroke-linecap="round"/>
-                        <path d="M 78 78 A 110 110 0 0 1 126 45" stroke="#F59E0B" stroke-width="24" fill="none" stroke-linecap="round"/>
-                        <path d="M 136 42 A 110 110 0 0 1 184 42" stroke="#FDE047" stroke-width="24" fill="none" stroke-linecap="round"/>
-                        <path d="M 194 45 A 110 110 0 0 1 242 78" stroke="#84CC16" stroke-width="24" fill="none" stroke-linecap="round"/>
-                        <path d="M 249 85 A 110 110 0 0 1 270 150" stroke="#22C55E" stroke-width="24" fill="none" stroke-linecap="round"/>
-                        {{!-- Indicator at 56 --}}
-                        <circle cx="168" cy="42" r="13" fill="#0B3A57" stroke="#fff" stroke-width="6"/>
-                    </svg>
-                    <div class="sc-md-gauge-value">
-                        <span class="sc-md-gauge-number sc-sentiment-value">56</span>
-                        <span class="sc-md-gauge-label sc-sentiment-label">{{t "Neutral"}}</span>
-                    </div>
-                </div>
+                <img class="sc-md-sentiment-svg" src="{{asset "imagesAndIcons/market-sentiment.svg"}}" alt="{{t "Market Sentiment Gauge"}}" loading="lazy" width="290" height="174">
             </div>
 
             {{!-- Crypto Market Cap --}}
             <div class="sc-md-card sc-md-cap">
-                <div class="sc-md-card-title">{{t "Crypto Market Cap"}}</div>
-                <div class="sc-md-cap-value sc-total-mcap">$2.79T</div>
-                <div class="sc-md-cap-change">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
-                    <span class="sc-md-cap-pct sc-mcap-change">0.79%</span>
+                <div class="sc-md-cap-top">
+                    <div class="sc-md-card-title">{{t "Crypto Market Cap"}}</div>
+                    <div class="sc-md-cap-value sc-total-mcap">$2.79T</div>
+                    <div class="sc-md-cap-change">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
+                        <span class="sc-md-cap-pct sc-mcap-change">0.79%</span>
+                    </div>
                 </div>
                 <div class="sc-md-chart-placeholder">
-                    <svg viewBox="0 0 300 60" preserveAspectRatio="none" class="sc-md-mini-chart">
-                        <defs>
-                            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#F9992A" stop-opacity="0.3"/>
-                                <stop offset="100%" stop-color="#F9992A" stop-opacity="0.02"/>
-                            </linearGradient>
-                        </defs>
-                        <path d="M0 45 Q20 40 40 42 T80 35 T120 38 T160 30 T200 25 T240 28 T280 20 L300 18 L300 60 L0 60 Z" fill="url(#chartGrad)"/>
-                        <path d="M0 45 Q20 40 40 42 T80 35 T120 38 T160 30 T200 25 T240 28 T280 20 L300 18" fill="none" stroke="#F9992A" stroke-width="2"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="289" height="25" viewBox="0 0 289 25" fill="none" class="sc-md-mini-chart">
+                        <path d="M0.386719 15.7097C0.386719 15.7097 13.2427 24.2694 20.5373 24.2694C27.8318 24.2694 51.7457 14.0433 60.0567 14.0433C68.3677 14.0433 95.2333 21.3648 107.046 21.3648C118.858 21.3648 141.441 0.697266 150.474 0.697266C159.507 0.697266 176.655 15.7097 185.006 15.7097C193.356 15.7097 219.264 9.78243 227.602 9.78243C235.94 9.78243 257.48 14.0433 265.818 14.0433C274.156 14.0433 288.053 11.2138 288.053 11.2138" stroke="#F9992A" stroke-width="1.39412"/>
                     </svg>
                 </div>
             </div>

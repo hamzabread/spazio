@@ -5,6 +5,7 @@
         <div class="sc-mn-main">
             <h2 class="sc-mn-heading">More News</h2>
             <div class="sc-mn-grid">
+                {{#get "posts" include="authors,tags" limit="8"}}
                 {{#foreach posts}}
                 <article class="sc-mn-card">
                     {{#if feature_image}}
@@ -47,6 +48,7 @@
                     </div>
                 </article>
                 {{/foreach}}
+                {{/get}}
             </div>
         </div>
 
@@ -73,33 +75,67 @@
                     {{/foreach}}
                 </div>
             </div>
+            {{else}}
+            <div class="sc-mn-widget">
+                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/scams/">
+                    <span>Scam Alerts</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <div class="sc-mn-scam-list">
+                    <a class="sc-mn-scam-item" href="#">
+                        <span class="sc-mn-scam-date">Jan 5, 2026 11:23:16 UTC</span>
+                        <h4 class="sc-mn-scam-title">MetaMask under attack: new 2FA scam steals seed phrase</h4>
+                        <span class="sc-mn-scam-tag">Scams</span>
+                    </a>
+                    <a class="sc-mn-scam-item" href="#">
+                        <span class="sc-mn-scam-date">Dec 25, 2025 11:57:47 UTC</span>
+                        <h4 class="sc-mn-scam-title">Andrew Tate accused of on-chain crypto laundering</h4>
+                        <span class="sc-mn-scam-tag">Scams</span>
+                    </a>
+                    <a class="sc-mn-scam-item" href="#">
+                        <span class="sc-mn-scam-date">Nov 17, 2025 11:46:45 UTC</span>
+                        <h4 class="sc-mn-scam-title">India: maxi raid against a decade-old crypto scam</h4>
+                        <span class="sc-mn-scam-tag">Scams</span>
+                    </a>
+                </div>
+            </div>
             {{/if}}
             {{/get}}
 
             {{!-- Best Exchanges & Wallets --}}
             <div class="sc-mn-widget">
                 <div class="sc-mn-widget-hd sc-mn-widget-hd--dark">
-                    <span>Best Exchanges &amp; Wallets</span>
+                    <div class="sc-mn-widget-hd-copy">
+                        <span class="sc-mn-widget-title">Best Exchanges &amp; Wallets</span>
+                        <p class="sc-mn-exchanges-disclaimer">Informative content with affiliate links. <a href="#">Disclaimer →</a></p>
+                    </div>
                 </div>
-                <p class="sc-mn-exchanges-disclaimer">Informative content with affiliate links. <a href="#">Disclaimer →</a></p>
                 <div class="sc-mn-exchanges">
                     <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
-                        <div class="sc-mn-exchange-icon" style="background:rgba(0,200,100,0.15);color:#00C864;">B</div>
+                        <div class="sc-mn-exchange-icon sc-mn-exchange-icon--bitget">
+                            <img src="{{asset 'imagesAndIcons/bitget.svg'}}" alt="Bitget" loading="lazy" />
+                        </div>
                         <span class="sc-mn-exchange-name">Bitget</span>
                         <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                     <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
-                        <div class="sc-mn-exchange-icon" style="background:rgba(30,140,255,0.15);color:#1E8CFF;">M</div>
+                        <div class="sc-mn-exchange-icon sc-mn-exchange-icon--mexc">
+                            <img src="{{asset 'imagesAndIcons/mexc.svg'}}" alt="MEXC" loading="lazy" />
+                        </div>
                         <span class="sc-mn-exchange-name">MEXC</span>
                         <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                     <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
-                        <div class="sc-mn-exchange-icon" style="background:rgba(249,153,42,0.15);color:#F9992A;">BY</div>
+                        <div class="sc-mn-exchange-icon sc-mn-exchange-icon--bybit">
+                            <img src="{{asset 'imagesAndIcons/bybit.svg'}}" alt="ByBit" loading="lazy" />
+                        </div>
                         <span class="sc-mn-exchange-name">ByBit</span>
                         <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                     <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
-                        <div class="sc-mn-exchange-icon" style="background:rgba(249,153,42,0.15);color:#F9992A;">BY</div>
+                        <div class="sc-mn-exchange-icon sc-mn-exchange-icon--bybit-2">
+                            <img src="{{asset 'imagesAndIcons/bybitsecond.svg'}}" alt="ByBit" loading="lazy" />
+                        </div>
                         <span class="sc-mn-exchange-name">ByBit</span>
                         <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -110,15 +146,14 @@
             <div class="sc-mn-newsletter">
                 <div class="sc-mn-nl-icons">
                     <div class="sc-mn-nl-icon-wrap">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </div>
-                    <div class="sc-mn-nl-icon-wrap sc-mn-nl-icon-wrap--overlap">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="1.5"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+                        <img src="{{asset 'imagesAndIcons/email.svg'}}" alt="Email" loading="lazy" />
                     </div>
                 </div>
-                <h3 class="sc-mn-nl-title">SUBSCRIBE TO THE NEWSLETTER</h3>
-                <p class="sc-mn-nl-desc">Spaziocrypto brings you the weekly summary of major Web3-related news.</p>
-                <a href="#/portal/signup" class="sc-mn-nl-btn">Subscribe</a>
+                <div class="sc-mn-nl-content">
+                    <h3 class="sc-mn-nl-title">SUBSCRIBE TO THE NEWSLETTER</h3>
+                    <p class="sc-mn-nl-desc">Spaziocrypto brings you the weekly summary of major Web3-related news.</p>
+                    <a href="#/portal/signup" class="sc-mn-nl-btn">Subscribe</a>
+                </div>
             </div>
 
         </aside>

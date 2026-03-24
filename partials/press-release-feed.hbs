@@ -1,120 +1,56 @@
-<section class="press-release-feed-container">
-    <div class="gh-container">
-         
-            {{#get "posts" filter="tags:[press-release,comunicato-stampa,communique-de-presse,comunicado-de-prensa,pressemitteilung,priess-rieliz,bodo-jaryo,puresuririsu,xin-wen-gao]" include="tags,authors" order="published_at desc"}}
-                {{#if posts}}
-                <div class="gh-sidebar-featured-posts-wrapper">
-                    <h3 class="gh-sidebar-featured-posts-title">{{t "Sponsored Press Releases"}}</h3>
-                    <div class="gh-small-slider-container">
-                        <div class="gh-sponsored-slider swiper">
-                            <div class="gh-small-slider-wrapper swiper-wrapper">
-                                {{#foreach posts from="1" to="6"}}
-                                        <div class="gh-sidebar-feat-post{{#has tag="#video"}} tag-video{{/has}} {{post_class}}{{#is "post"}} gh-read-next-card{{/is}} swiper-slide">
-                                            <div class="gh-sidebar-feat-post-img-video-wrapper">
-                                                {{#if feature_image}}
-                                                <a class="gh-sidebar-feat-post-image-wrapper-link" href="{{url}}" aria-label="{{title}} {{t "post link"}}">
-                                                    <picture>
-                                                        <source srcset="{{img_url feature_image size="300" format="webp" }} 300w, {{img_url feature_image size="200" format="webp" }} 200w" sizes="88px"
-                                                            type="image/webp">
-                                                        <img class="gh-sidebar-feat-post-image" srcset="{{img_url feature_image size="300"}} 300w, {{img_url feature_image size="200"}} 200w" sizes="88px"
-                                                            src="{{img_url feature_image size="300"}}"
-                                                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}} {{t "post image"}}{{/if}}"
-                                                            loading="lazy">
-                                                    </picture>
-                                                </a>
-                                                {{else}}
-                                                <a class="gh-sidebar-feat-post-image-wrapper-link--noImage" href="{{url}}" aria-label="{{title}} {{t "post link"}}">
-                                                    {{#if @site.icon}}
-                                                    <picture>
-                                                        <source srcset="{{img_url @site.icon size="100" format="webp" }} 100w" sizes="18px"
-                                                            type="image/webp">
-                                                        <img class="gh-sidebar-feat-post-image-wrapper-link--noImage__icon" srcset="{{img_url @site.icon size="100"}} 100w" sizes="18px"
-                                                            src="{{img_url @site.icon size="100"}}"
-                                                            alt="{{@site.title}} {{t "icon"}}">
-                                                    </picture>
-                                                    {{else}}
-                                                    <h2 class="gh-sidebar-feat-post-image-wrapper-link--noImage__name">{{@site.title}}</h3>
-                                                    {{/if}}
-                                                </a>
-                                                {{/if}}
-                                                {{#has tag="#video"}}
-                                                <div class="gh-sidebar-feat-post-video-wrapper">
-                                                    {{content}}
-                                                </div>
-                                                <a class="gh-sidebar-feat-post-video-link" href="{{url}}" aria-label="{{title}} {{t "post link"}}"></a>
-                                                {{/has}}
-                                            </div>
-                                            <div class="gh-sidebar-feat-post-content">
-                                                <div class="gh-sidebar-feat-post-meta">
-                                                    {{#if reading_time}}
-                                                    <div class="gh-sidebar-feat-post-authors">
-                                                        <span class="gh-sidebar-feat-post-author">
-                                                        {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}
-                                                        </span>
-                                                    </div>
-                                                    {{/if}}
-                                                    <span class="gh-sidebar-feat-post-date">
-                                                        <time datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
-                                                    </span>
-                                                    
-                                                    
-                                                    
-                                                </div>
-                                                <h4 class="gh-sidebar-feat-post-title">
-                                                    <a href="{{url}}">{{title}}</a>
-                                                </h4>
-                                                <span class="press-release-tag">{{t "Press Releases"}}</span>
-                                            </div>
-                                </div>
-                                {{/foreach}}
-                            </div>
-                            <div class="gh-small-slider-pagination"></div>
-                        </div>
-                        <button class="gh-small-slider-button-prev gh-sponsored-slider-button-prev">
-                            {{>icons/chevron-left}}
-                        </button>
-                        <button class="gh-small-slider-button-next gh-sponsored-slider-button-next">
-                            {{>icons/chevron-right}}
-                        </button>
-                    </div>
-                    
-        {{!-- <a href="/web3-guide/" class="gh-small-slider-button-all gh-secondary-button" aria-label="All Press Releases →">
-            {{t "All Press Releases"}} →
-        </a> --}}
-    </div>
-    {{/if}}
-    {{/get}}
-        
+<section class="sc-pr-feed">
+    <div class="sc-pr-inner">
+        <h2 class="sc-pr-title">{{t "Sponsored Press Releases"}}</h2>
+
+        <div class="sc-pr-list">
+            <article class="sc-pr-item">
+                <a class="sc-pr-item-image" href="#" aria-label="Press Release">
+                    <img src="{{asset 'imagesAndIcons/press.png'}}" alt="Press Release" loading="lazy" />
+                </a>
+                <div class="sc-pr-item-content">
+                    <span class="sc-pr-item-tag">{{t "Press Releases"}}</span>
+                    <h3 class="sc-pr-item-title"><a href="#">Crypto AI Analysis: Which Tokens Are Driving the Market Rebound</a></h3>
+                    <p class="sc-pr-item-meta">Lorem Ipsum <span>·</span> Jun/5/2026</p>
+                </div>
+            </article>
+
+            <article class="sc-pr-item">
+                <a class="sc-pr-item-image" href="#" aria-label="Press Release">
+                    <img src="{{asset 'imagesAndIcons/press.png'}}" alt="Press Release" loading="lazy" />
+                </a>
+                <div class="sc-pr-item-content">
+                    <span class="sc-pr-item-tag">{{t "Press Releases"}}</span>
+                    <h3 class="sc-pr-item-title"><a href="#">Crypto AI Analysis: Which Tokens Are Driving the Market Rebound</a></h3>
+                    <p class="sc-pr-item-meta">Lorem Ipsum <span>·</span> Jun/5/2026</p>
+                </div>
+            </article>
+
+            <article class="sc-pr-item">
+                <a class="sc-pr-item-image" href="#" aria-label="Press Release">
+                    <img src="{{asset 'imagesAndIcons/press.png'}}" alt="Press Release" loading="lazy" />
+                </a>
+                <div class="sc-pr-item-content">
+                    <span class="sc-pr-item-tag">{{t "Press Releases"}}</span>
+                    <h3 class="sc-pr-item-title"><a href="#">Crypto AI Analysis: Which Tokens Are Driving the Market Rebound</a></h3>
+                    <p class="sc-pr-item-meta">Lorem Ipsum <span>·</span> Jun/5/2026</p>
+                </div>
+            </article>
+        </div>
+
+        <div class="sc-pr-cta">
+            <div class="sc-pr-cta-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M1.82812 7.76603C1.82812 4.56824 3.65543 3.19775 6.3964 3.19775H15.5329C18.2739 3.19775 20.1012 4.56824 20.1012 7.76603V14.1616C20.1012 17.3594 18.2739 18.7299 15.5329 18.7299H6.3964" stroke="#292D32" stroke-width="1.37048" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M15.533 8.22314L12.6733 10.5073C11.7322 11.2565 10.1881 11.2565 9.24708 10.5073L6.39648 8.22314" stroke="#292D32" stroke-width="1.37048" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M1.82812 15.0752H7.31005" stroke="#292D32" stroke-width="1.37048" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M1.82812 11.4209H4.56909" stroke="#292D32" stroke-width="1.37048" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="sc-pr-cta-copy">
+                <h3>{{{t "Submit Your <span>Press Release</span>"}}}</h3>
+                <p>{{t "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to"}}</p>
+            </div>
+            <a href="#" class="sc-pr-cta-btn">{{t "View All Benefits"}}</a>
+        </div>
     </div>
 </section>
-
-<script>
-    //Document ready
-    document.addEventListener("DOMContentLoaded", function () {
-        //Init Swiper
-        var swiper = new Swiper('.gh-sponsored-slider', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            navigation: {
-                nextEl: '.gh-sponsored-slider-button-next',
-                prevEl: '.gh-sponsored-slider-button-prev',
-            },
-            pagination: false,
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                992: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                },
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 30,
-                },
-            },
-        });
-    });
-</script>

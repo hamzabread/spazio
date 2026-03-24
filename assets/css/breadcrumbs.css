@@ -3,7 +3,7 @@
 
 .gh-breadcrumbs {
     display: flex;
-    margin-top: 16px;
+    margin-bottom: 18px;
     gap: 24px;
 }
 
@@ -13,24 +13,23 @@
     justify-content: center;
 }
 
-.gh-breadcrumb-item a {
-    font-size: 13px;
-    font-weight: 500;
+.gh-breadcrumb-item a,
+.gh-breadcrumb-item span {
+    color: #6B7280;
+    font-family: "Helvetica Now Display";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
     transition: opacity 0.25s ease;
-    color: var(--breadcrumbs-color);
-    line-height: 1;
 }
 
 .gh-breadcrumb-item:hover a {
     opacity: 0.6;
 }
 
-.gh-breadcrumb-item:last-child span {
-    font-size: 13px;
-    font-weight: 500;
-    /* opacity: 0.6; */
-    color: var(--breadcrumbs-color);
-    line-height: 1;
+.gh-breadcrumb-item:hover a {
+    opacity: 0.6;
 }
 
 .gh-breadcrumbs li+li::before {

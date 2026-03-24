@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding: 18px 8px 18px 8px;
+  padding: 0;
     position: relative;
 
     svg{
