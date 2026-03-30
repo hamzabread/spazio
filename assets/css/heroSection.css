@@ -353,7 +353,7 @@
 .gh-header-navigation-wrapper .gh-header-navigation {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 24px;
 }
 
 .gh-header-actions {
@@ -1756,6 +1756,12 @@
     align-items: center;
     gap: 4px;
     margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+    .sc-directory-tabs {
+        max-width: 307px;
+    }
 }
 
 .sc-directory-tab {

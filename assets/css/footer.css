@@ -481,15 +481,18 @@ li.sitelinks-link a {
 }
 
 .scf-footer .scf-wrap {
-    padding-top: 22px;
-    padding-bottom: 16px;
+    padding: 20px 50px;
+    background: #101010;
 }
 
 .scf-footer .scf-top {
-    display: grid;
-    grid-template-columns: 420px 1fr;
-    gap: 34px;
-    padding: 10px 50px;
+    display: flex;
+    gap: 88px;
+    padding: 0;
+}
+
+.scf-footer .scf-brand-col {
+    max-width: 348px;
 }
 
 .scf-footer .scf-logo {
@@ -498,11 +501,13 @@ li.sitelinks-link a {
 }
 
 .scf-footer .scf-intel-title {
-    margin: 0;
-    color: #f3f6fa;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.3;
+    margin: 0 0 10px;
+    color: #FFF;
+    font-family: "Helvetica Now Display";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -514,19 +519,24 @@ li.sitelinks-link a {
 }
 
 .scf-footer .scf-intel-sub {
-    margin: 8px 0 12px;
-    color: rgba(206, 215, 227, 0.55);
-    font-size: 14px;
-    line-height: 1.45;
+    margin: 0 0 14px !important;
+    color: #6C757D;
+    font-family: "Helvetica Now Display";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
 }
 
 .scf-footer .scf-inline-form {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background: transparent !important;
     padding: 0 !important;
     margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .scf-footer .scf-inline-form .gh-form__input-wrapper {
@@ -534,45 +544,61 @@ li.sitelinks-link a {
 }
 
 .scf-footer .scf-email-input {
-    width: 246px;
-    max-width: 246px !important;
-    height: 36px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 232px;
+    max-width: 232px !important;
+    border-radius: 4px;
+    border: 1px solid #1B1B1B;
     background: transparent;
-    color: #d0d8e3;
-    padding: 0 12px;
+    color: #FFF;
+    font-family: "Helvetica Now Display";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    padding: 10px 12px;
     text-align: left !important;
 }
 
 .scf-footer .scf-email-input::placeholder {
-    color: rgba(188, 198, 211, 0.6);
+    color: #686868;
+    font-family: "Helvetica Now Display";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
 }
 
 .scf-footer .scf-subscribe-btn {
-    height: 36px;
-    min-width: 92px;
-    border-radius: 11px;
+    border-radius: 10px;
     background: #F18F20 !important;
     color: #fff !important;
     margin: 0 !important;
-    padding: 0 14px;
+    padding: 10px 14px;
     font-size: 14px;
     font-weight: 600;
+    text-transform: none;
 }
 
 .scf-footer .scf-note {
-    margin: 10px 0 14px;
-    font-size: 13px;
-    color: rgba(180, 191, 206, 0.52);
+    margin: 0 0 20px !important;
+    color: #6C757D;
+    font-family: "Helvetica Now Display";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
 }
 
 .scf-footer .scf-connect-title {
-    margin: 0 0 8px;
-    color: #e7ecf3;
-    font-size: 14px;
+    margin: 0 0 12px;
+    color: #99A1AF;
+    font-family: "Helvetica Now Display";
+    font-size: 12px;
+    font-style: normal;
     font-weight: 700;
-    letter-spacing: 0.2px;
+    line-height: 16px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
 }
 
 .scf-footer .scf-socials {
@@ -598,23 +624,34 @@ li.sitelinks-link a {
 }
 
 .scf-footer .scf-links-col {
-    display: grid;
-    grid-template-columns: minmax(360px, 1.25fr) minmax(420px, 1fr);
-    gap: 26px;
+    display: flex;
+    justify-content: space-between;
+    gap: 88px;
 }
 
 .scf-footer .scf-links-left {
     display: grid;
     grid-template-columns: minmax(120px, 1fr) minmax(220px, 1.2fr);
-    gap: 26px;
+    max-width: 378px;
+    row-gap: 20px;
+    column-gap: 117px;
     align-items: start;
 }
 
 .scf-footer .scf-links-right {
     display: grid;
-    grid-template-columns: repeat(3, minmax(120px, 1fr));
-    gap: 26px;
+    grid-template-columns: max-content max-content max-content;
+    column-gap: 67px;
+    max-width: 437px;
     align-items: start;
+}
+
+.scf-footer .scf-col {
+    width: fit-content;
+}
+
+.scf-footer .scf-links-right .scf-col:nth-child(3) {
+    margin-left: 21px;
 }
 
 .scf-footer .scf-trending-sectors {
@@ -623,21 +660,26 @@ li.sitelinks-link a {
 }
 
 .scf-footer .scf-trending-sectors h6 {
-    margin: 0;
-    color: #eff4fb;
+    margin: 0 0 16px;
+    color: #EBEFF2;
+    font-family: "Helvetica Now Display";
     font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.35px;
-    line-height: 1.3;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
 }
 
 .scf-footer .scf-col h5,
 .scf-footer .scf-col h6 {
-    margin: 0 0 8px;
-    color: #eff4fb;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.3;
+    margin: 0 0 16px;
+    color: #EBEFF2;
+    font-family: "Helvetica Now Display";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
 }
 
 .scf-footer .scf-col h6 {
@@ -652,11 +694,19 @@ li.sitelinks-link a {
 
 .scf-footer .scf-col a {
     display: block;
-    margin: 0 0 8px;
-    color: rgba(197, 207, 221, 0.56);
-    font-size: 14px;
-    line-height: 1.3;
+    margin: 0 0 14px;
+    color: #6C757D;
+    font-family: "Helvetica Now Display";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: capitalize;
     text-decoration: none;
+}
+
+.scf-footer .scf-col a:last-child {
+    margin-bottom: 0;
 }
 
 .scf-footer .scf-col a:hover {
@@ -666,19 +716,22 @@ li.sitelinks-link a {
 .scf-footer .scf-chip-grid {
     display: flex;
     flex-wrap: wrap;
+    max-width: 378px;
     gap: 8px;
-    margin-top: 8px;
+    margin-top: 0;
     align-items: flex-start;
 }
 
 .scf-footer .scf-chip-grid span {
-    padding: 6px 10px;
-    border-radius: 6px;
-    background: #11151c;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    color: rgba(216, 224, 234, 0.86);
-    font-size: 12px;
-    line-height: 1;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background: rgba(73, 80, 87, 0.08);
+    color: #FFF;
+    font-family: "Helvetica Now Display";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
     white-space: nowrap;
 }
 
@@ -706,43 +759,64 @@ li.sitelinks-link a {
 }
 
 @media (max-width: 1200px) {
+    .scf-footer .scf-wrap {
+        padding: 20px 24px;
+    }
+
     .scf-footer .scf-top {
+        display: grid;
         grid-template-columns: 1fr;
-        padding: 10px 30px;
+        padding: 0;
+        gap: 24px;
     }
 
     .scf-footer .scf-links-col {
+        display: grid;
         grid-template-columns: 1fr;
+        gap: 32px;
     }
 
     .scf-footer .scf-links-left {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 100%;
+        row-gap: 24px;
+        column-gap: 24px;
     }
 
     .scf-footer .scf-links-right {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+        max-width: 100%;
+    }
+
+    .scf-footer .scf-links-right .scf-col:nth-child(3) {
+        margin-left: 0;
+    }
+
+    .scf-footer .scf-chip-grid {
+        max-width: 100%;
     }
 }
 
 @media (max-width: 767px) {
     .scf-footer .scf-wrap {
-        padding-top: 14px;
+        padding: 20px 16px;
     }
 
     .scf-footer .scf-top {
-        padding: 10px 16px;
-        gap: 24px;
+        padding: 0;
+        gap: 20px;
     }
 
     .scf-footer .scf-inline-form {
-        flex-direction: column;
-        align-items: stretch;
+        align-items: center;
     }
 
-    .scf-footer .scf-email-input,
-    .scf-footer .scf-subscribe-btn {
-        width: 100%;
-        max-width: 100% !important;
+    .scf-footer .scf-brand-col {
+        max-width: 100%;
+    }
+
+    .scf-footer .scf-links-col {
+        gap: 28px;
     }
 
     .scf-footer .scf-links-left,
@@ -751,9 +825,21 @@ li.sitelinks-link a {
         gap: 18px;
     }
 
+    .scf-footer .scf-links-right {
+        max-width: 100%;
+    }
+
+    .scf-footer .scf-links-right .scf-col:nth-child(3) {
+        grid-column: 1 / -1;
+    }
+
     .scf-footer .scf-trending-sectors {
         grid-column: 1 / -1;
         margin-top: 10px;
+    }
+
+    .scf-footer .scf-chip-grid {
+        max-width: 100%;
     }
 
     .scf-footer .scf-chip-grid span {

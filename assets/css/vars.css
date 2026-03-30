@@ -2,6 +2,17 @@
 /* ---------------------------------------------------------- */
 
 :root {
+    /* Font Family */
+    --font-family-body: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-headings: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-navigation: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-buttons: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-tags: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+
+    /* Ghost required font variables */
+    --gh-font-heading: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+    --gh-font-body: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
+
     --color-background-main: #F8F9FA;
     --color-bg-alt: #F9F9F9;
     --color-main: #1D1D1F;

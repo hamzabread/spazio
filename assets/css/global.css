@@ -151,14 +151,6 @@ sub {
     bottom: -0.25em;
 }
 
-ul:not([class]) li+li {
-    margin-top: 10px;
-}
-
-ol:not([class]) li+li {
-    margin-top: 10px;
-}
-
 a {
     text-decoration: none;
     color: var(---color-main);

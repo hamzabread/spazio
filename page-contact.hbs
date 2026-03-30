@@ -1,0 +1,157 @@
+{{!< default-contact}} 
+{{#post}} {{#if featured}} {{#match @page.show_title_and_feature_image}} <div
+    class="gh-post-head page-head{{^if feature_image}} without-image{{/if}}">
+    {{#if feature_image}}
+    <picture>
+        <source srcset="{{img_url feature_image size="3000" format="webp" }} 3000w, {{img_url feature_image size="2000"
+            format="webp" }} 2000w, {{img_url feature_image size="1200" format="webp" }} 1200w, {{img_url feature_image
+            size="1000" format="webp" }} 1000w, {{img_url feature_image size="800" format="webp" }} 800w, {{img_url
+            feature_image size="500" format="webp" }} 500w" sizes="100vw" type="image/webp">
+        <img srcset="{{img_url feature_image size=" 1600"}} 3000w, {{img_url feature_image size="2000" }} 2000w,
+            {{img_url feature_image size="1200" }} 1200w, {{img_url feature_image size="1000" }} 1000w, {{img_url
+            feature_image size="800" }} 800w, {{img_url feature_image size="500" }} 500w" sizes="100vw"
+            src="{{img_url feature_image size="3000"}}"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+            class="gh-post-feature-image" />
+    </picture>
+    {{/if}}
+    <div class="gh-post-head-wrapper page-head-wrapper gh-container{{#match @custom.header_type " Logo with bottom
+        navigation" }} with-big-header{{else match @custom.header_type "Author with bottom navigation" }}
+        with-big-header{{/match}}">
+        {{> "breadcrumbs"}}
+        <div class="gh-post-head-content">
+            <div class="gh-post-head-content-container">
+                <h1 class="gh-post-page-title">{{title}}</h1>
+                {{#if excerpt}}
+                <p class="gh-post-page-excerpt">{{excerpt}}</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    </div>
+    {{/match}}
+    {{else}}
+    {{#match @page.show_title_and_feature_image}}
+    <div class="gh-container">
+        {{> "breadcrumbs"}}
+    </div>
+    <div class="gh-post-head gh-container page-head{{^if feature_image}} without-image{{/if}}">
+        <div class="gh-post-head-wrapper page-head-wrapper{{^if feature_image}} without-image{{/if}}">
+            {{#if feature_image}}
+            <picture>
+                <source srcset="{{img_url feature_image size="1600" format="webp" }} 1600w, {{img_url feature_image
+                    size="1200" format="webp" }} 1200w, {{img_url feature_image size="1000" format="webp" }} 1000w,
+                    {{img_url feature_image size="800" format="webp" }} 800w, {{img_url feature_image size="500"
+                    format="webp" }} 500w" sizes="(min-width: 816px) 736px, 90vw" type="image/webp">
+                <img srcset="{{img_url feature_image size=" 1600"}} 1600w, {{img_url feature_image size="1200" }} 1200w,
+                    {{img_url feature_image size="1000" }} 1000w, {{img_url feature_image size="800" }} 800w, {{img_url
+                    feature_image size="500" }} 500w" sizes="(min-width: 816px) 736px, 90vw"
+                    src="{{img_url feature_image size="1600"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                    class="gh-post-feature-image" />
+            </picture>
+            {{/if}}
+            <div class="gh-post-head-content">
+                <div class="gh-post-head-content-container">
+                    <h1 class="gh-post-page-title">{{title}}</h1>
+                    {{#if excerpt}}
+                    <p class="gh-post-page-excerpt">{{excerpt}}</p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/match}}
+    {{/if}}
+
+    {{/post}}
+
+
+    <section class="sc-contact-hero" aria-labelledby="sc-contact-hero-title">
+        <div class="sc-contact-hero-inner gh-container">
+            <span class="sc-contact-hero-chip">{{t "Contact Us"}}</span>
+            <h1 id="sc-contact-hero-title">{{t "Get in Touch"}} <span>{{t "With Us"}}</span></h1>
+            <p>{{t "To communicate with the administration of Spaziocrypto.com, you have the contact form available within this page."}}</p>
+        </div>
+    </section>
+
+
+    <main class="main flex-1">
+        <section class="sc-contact-touch">
+            <div class="sc-contact-touch-inner gh-container">
+                <div class="sc-contact-touch-grid">
+                    <div class="sc-contact-form-col">
+                        <h2>{{t "Get In Touch"}}</h2>
+                        <p>{{t "Our friendly team would love to hear from you."}}</p>
+
+                        <form action="https://formspree.io/f/xwkdojlk" method="post" class="sc-contact-form" aria-label="Contact form">
+                            <div class="sc-contact-form-row">
+                                <label for="contact-first-name">{{t "First name"}}</label>
+                                <input id="contact-first-name" name="first-name" type="text" placeholder="{{t "First name"}}" required>
+                            </div>
+                            <div class="sc-contact-form-row">
+                                <label for="contact-last-name">{{t "Last name"}}</label>
+                                <input id="contact-last-name" name="last-name" type="text" placeholder="{{t "Last name"}}" required>
+                            </div>
+                            <div class="sc-contact-form-row">
+                                <label for="contact-email">{{t "Email"}}</label>
+                                <input id="contact-email" name="email" type="email" placeholder="marketing@spaziocrypto.com" required>
+                            </div>
+                            <div class="sc-contact-form-row">
+                                <label for="contact-message">{{t "Message"}}</label>
+                                <textarea id="contact-message" name="message" rows="5" required></textarea>
+                            </div>
+                            <label class="sc-contact-consent">
+                                <input type="checkbox" name="privacy" required>
+                                <span>{{t "You agree to our friendly"}} <a href="/privacy-policy/">{{t "privacy policy"}}</a>.</span>
+                            </label>
+                            <button type="submit" class="sc-contact-submit">{{t "Send message"}}</button>
+                        </form>
+                    </div>
+
+                    <div class="sc-contact-media-col">
+                        <div class="sc-contact-media-card">
+                            <img src="{{asset "imagesAndIcons/contact-us.webp"}}" alt="{{t "Spaziocrypto astronaut"}}" loading="lazy" decoding="async">
+                            <div class="sc-contact-direct-card">
+                                <h3>{{t "Prefer a Direct Approach?"}}</h3>
+                                <ul>
+                                                                        <li>
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                                                    <path d="M1.6665 4.16699L7.42735 7.43751C9.53209 8.63241 10.4676 8.63241 12.5723 7.43751L18.3332 4.16699" stroke="#EBEFF2" stroke-linejoin="round"/>
+                                                                                    <path d="M8.74984 16.2497C8.36125 16.2446 7.97219 16.2372 7.5822 16.2273C4.95845 16.1614 3.64657 16.1284 2.70397 15.1817C1.76136 14.2349 1.73412 12.9569 1.67965 10.4008C1.66213 9.57892 1.66212 8.76192 1.67964 7.94003C1.73412 5.38395 1.76135 4.10591 2.70396 3.15917C3.64657 2.21242 4.95845 2.17945 7.58219 2.11349C9.19925 2.07284 10.8004 2.07285 12.4175 2.1135C15.0413 2.17946 16.3531 2.21244 17.2957 3.15918C18.2383 4.10592 18.2656 5.38396 18.32 7.94004C18.3281 8.31843 18.3324 8.49676 18.3331 8.74967" stroke="#EBEFF2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                    <path d="M15.8335 14.167C15.8335 14.8573 15.2738 15.417 14.5835 15.417C13.8932 15.417 13.3335 14.8573 13.3335 14.167C13.3335 13.4767 13.8932 12.917 14.5835 12.917C15.2738 12.917 15.8335 13.4767 15.8335 14.167ZM15.8335 14.167V14.5837C15.8335 15.274 16.3932 15.8337 17.0835 15.8337C17.7738 15.8337 18.3335 15.274 18.3335 14.5837V14.167C18.3335 12.0959 16.6546 10.417 14.5835 10.417C12.5124 10.417 10.8335 12.0959 10.8335 14.167C10.8335 16.2381 12.5124 17.917 14.5835 17.917" stroke="#EBEFF2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                </svg>
+                                                                                <a href="mailto:info@spaziocrypto.com">info@spaziocrypto.com</a>
+                                                                        </li>
+                                                                        <li>
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                                                    <path d="M1.66699 4.16699L7.42784 7.43751C9.53258 8.63241 10.4681 8.63241 12.5728 7.43751L18.3337 4.16699" stroke="#EBEFF2" stroke-linejoin="round"/>
+                                                                                    <path d="M8.75033 16.2497C8.36174 16.2446 7.97268 16.2372 7.58268 16.2273C4.95893 16.1614 3.64706 16.1284 2.70446 15.1817C1.76185 14.2349 1.73461 12.9569 1.68013 10.4008C1.66262 9.57892 1.66261 8.76192 1.68013 7.94003C1.73461 5.38395 1.76184 4.10591 2.70445 3.15917C3.64706 2.21242 4.95893 2.17945 7.58268 2.11349C9.19974 2.07284 10.8009 2.07285 12.418 2.1135C15.0417 2.17946 16.3536 2.21244 17.2962 3.15918C18.2388 4.10592 18.2661 5.38396 18.3205 7.94004C18.3286 8.31843 18.3329 8.49676 18.3336 8.74967" stroke="#EBEFF2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                    <path d="M15.833 14.167C15.833 14.8573 15.2733 15.417 14.583 15.417C13.8927 15.417 13.333 14.8573 13.333 14.167C13.333 13.4767 13.8927 12.917 14.583 12.917C15.2733 12.917 15.833 13.4767 15.833 14.167ZM15.833 14.167V14.5837C15.833 15.274 16.3927 15.8337 17.083 15.8337C17.7733 15.8337 18.333 15.274 18.333 14.5837V14.167C18.333 12.0959 16.6541 10.417 14.583 10.417C12.5119 10.417 10.833 12.0959 10.833 14.167C10.833 16.2381 12.5119 17.917 14.583 17.917" stroke="#EBEFF2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                </svg>
+                                                                                <a href="mailto:marketing@spaziocrypto.com">marketing@spaziocrypto.com</a>
+                                                                        </li>
+                                                                        <li>
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                                                    <path d="M10.833 2.5C14.5149 2.5 17.4997 5.48477 17.4997 9.16667M11.2497 5.41667C13.0906 5.41667 14.583 6.90905 14.583 8.75" stroke="#EBEFF2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                    <path d="M7.63188 4.76019L7.29633 4.00521C7.07693 3.51157 6.96723 3.26473 6.80317 3.07584C6.59756 2.83912 6.32956 2.66495 6.02973 2.57321C5.79048 2.5 5.52038 2.5 4.98018 2.5C4.18993 2.5 3.79479 2.5 3.46311 2.65191C3.07239 2.83085 2.71953 3.2194 2.57894 3.6255C2.45959 3.97024 2.49378 4.32453 2.56215 5.03308C3.28993 12.5752 7.42484 16.7101 14.9669 17.4378C15.6755 17.5062 16.0298 17.5404 16.3745 17.4211C16.7806 17.2805 17.1692 16.9276 17.3481 16.5369C17.5 16.2052 17.5 15.8101 17.5 15.0198C17.5 14.4796 17.5 14.2095 17.4268 13.9702C17.3351 13.6704 17.1609 13.4024 16.9242 13.1968C16.7352 13.0327 16.4884 12.9231 15.9948 12.7037L15.2398 12.3681C14.7052 12.1305 14.4379 12.0117 14.1663 11.9859C13.9063 11.9612 13.6443 11.9977 13.4009 12.0924C13.1467 12.1914 12.9219 12.3787 12.4725 12.7532C12.0251 13.126 11.8014 13.3124 11.5281 13.4122C11.2858 13.5007 10.9655 13.5336 10.7103 13.4959C10.4224 13.4535 10.2019 13.3358 9.76108 13.1001C8.38933 12.3671 7.63294 11.6107 6.89988 10.2389C6.66428 9.79808 6.54648 9.57758 6.50406 9.28975C6.46645 9.0345 6.49923 8.71417 6.58775 8.47192C6.6876 8.19857 6.87401 7.97488 7.24683 7.5275C7.62135 7.07807 7.80862 6.85335 7.90763 6.59909C8.00238 6.35578 8.03884 6.09367 8.01412 5.83373C7.98828 5.5621 7.86948 5.2948 7.63188 4.76019Z" stroke="#EBEFF2" stroke-linecap="round"/>
+                                                                                </svg>
+                                                                                <a href="tel:+4407400250775">+44 07400250775</a>
+                                                                        </li>
+                                </ul>
+                                <h4>{{t "Visit Our Office"}}</h4>
+                                                                <div class="sc-contact-direct-address">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                                            <path d="M12.0837 7.50033C12.0837 8.65091 11.1509 9.58366 10.0003 9.58366C8.84974 9.58366 7.91699 8.65091 7.91699 7.50033C7.91699 6.34973 8.84974 5.41699 10.0003 5.41699C11.1509 5.41699 12.0837 6.34973 12.0837 7.50033Z" stroke="#EBEFF2" stroke-width="1.25"/>
+                                                                            <path d="M11.0482 14.5783C10.7671 14.849 10.3914 15.0003 10.0005 15.0003C9.60949 15.0003 9.23383 14.849 8.95274 14.5783C6.37891 12.0843 2.92965 9.29824 4.61175 5.25343C5.52124 3.06643 7.70444 1.66699 10.0005 1.66699C12.2965 1.66699 14.4797 3.06643 15.3892 5.25343C17.0692 9.29316 13.6283 12.0929 11.0482 14.5783Z" stroke="#EBEFF2" stroke-width="1.25"/>
+                                                                            <path d="M15 16.667C15 17.5875 12.7614 18.3337 10 18.3337C7.23857 18.3337 5 17.5875 5 16.667" stroke="#EBEFF2" stroke-width="1.25" stroke-linecap="round"/>
+                                                                        </svg>
+                                                                        <p>Galton Tower, 22, Civic Close, B1 2NW Birmingham</p>
+                                                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>

@@ -1,0 +1,198 @@
+{{!< default}}
+
+{{#post}}
+<section class="sc-blogs-hero" aria-labelledby="sc-blogs-hero-title">
+    <div class="gh-container sc-blogs-hero-inner">
+        {{#get "posts" limit="1" include="tags,authors" filter="featured:true" order="published_at desc"}}
+            {{#if posts}}
+                {{#foreach posts}}
+                <article class="sc-blogs-featured-card">
+                    <a class="sc-blogs-featured-media" href="{{url}}" aria-label="{{title}}">
+                        <img src="{{asset 'imagesAndIcons/blog-hero.png'}}" alt="Featured blog hero" class="sc-blogs-featured-image" loading="eager" decoding="async">
+                    </a>
+
+                    <a class="sc-blogs-featured-content" href="{{url}}" aria-label="{{title}}">
+                        {{#if tags}}
+                        <div class="sc-blogs-featured-tags">
+                            {{#foreach tags limit="4"}}
+                            <span class="sc-blogs-featured-tag">{{name}}</span>
+                            {{/foreach}}
+                        </div>
+                        {{/if}}
+
+                        <h2 id="sc-blogs-hero-title">{{title}}</h2>
+
+                        {{#if excerpt}}
+                        <p>{{excerpt}}</p>
+                        {{/if}}
+
+                        <div class="sc-blogs-featured-meta">
+                            <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMM D, YYYY"}}</time>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none" aria-hidden="true">
+                                <circle cx="2" cy="2" r="2" fill="#6C757D" fill-opacity="0.4"/>
+                            </svg>
+                            <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
+                        </div>
+                    </a>
+                </article>
+                {{/foreach}}
+            {{else}}
+                <article class="sc-blogs-featured-card">
+                    <img src="{{asset 'imagesAndIcons/blog-hero.png'}}" alt="Featured blog hero" class="sc-blogs-featured-image" loading="eager" decoding="async">
+                    <div class="sc-blogs-featured-content">
+                        <div class="sc-blogs-featured-tags">
+                            <span class="sc-blogs-featured-tag">Crypto</span>
+                            <span class="sc-blogs-featured-tag">AI</span>
+                            <span class="sc-blogs-featured-tag">Trending</span>
+                            <span class="sc-blogs-featured-tag">Token</span>
+                        </div>
+                        <h2 id="sc-blogs-hero-title">Crypto AI rallying: which tokens are driving the market rebound</h2>
+                        <p>The crypto market started 2026 on a more positive note as risk appetite in major assets, meme coins and AI-linked tokens increased. Also, the good regulatory outlook was reinforced by the progress made on the U.S. CLARITY Act.</p>
+                        <div class="sc-blogs-featured-meta">
+                            <time datetime="2026-03-30">Mar 28, 2026</time>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none" aria-hidden="true">
+                                <circle cx="2" cy="2" r="2" fill="#6C757D" fill-opacity="0.4"/>
+                            </svg>
+                            <span>4 min read</span>
+                        </div>
+                    </div>
+                </article>
+            {{/if}}
+        {{/get}}
+    </div>
+</section>
+
+<main class="main flex-1">
+    <section class="gh-container sc-blogs-next-section">
+        <div class="sc-blogs-next-grid">
+            <aside class="sc-blogs-next-col sc-blogs-next-col-left" aria-label="Author details and share">
+                <article class="sc-blogs-author-detail-card">
+                    <img src="{{asset 'imagesAndIcons/joseph.svg'}}" alt="Joseph Alalade" class="sc-blogs-author-avatar" loading="lazy" decoding="async">
+                    <h3>Joseph Alalade</h3>
+                    <p class="sc-blogs-author-role">Senior Editorial Director &amp; Content Strategist</p>
+                    <p class="sc-blogs-author-bio">Dr. Joseph Alalade is an award-winning editorial director with over 15 years of experience in digital publishing and content strategy. He specializes in enterprise content systems and has helped Fortune 500 companies transform their editorial operations.</p>
+                    <div class="sc-blogs-author-links">
+                        <a href="#" aria-label="Joseph on X">
+                            {{> "icons/twitter"}}
+                            <span>@JosephAlalade</span>
+                        </a>
+                        <a href="#" aria-label="Joseph on LinkedIn" class="sc-blogs-author-linkedin">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+                                <path d="M3.63688 4.87419V14.9987H0.200032V4.87419H3.63688ZM3.85539 1.74846C3.85603 1.76658 3.85666 1.78783 3.85666 1.8097C3.85666 2.27775 3.65408 2.69893 3.33047 2.99388L3.32919 2.9945C2.982 3.3057 2.5176 3.49629 2.00733 3.49629C1.97611 3.49629 1.94426 3.49567 1.91304 3.49442H1.9175H1.89648C1.87036 3.49567 1.83978 3.49629 1.80921 3.49629C1.30976 3.49629 0.856187 3.30507 0.519191 2.99388L0.519828 2.9945C0.198758 2.68955 0 2.26337 0 1.79158C0 1.77658 0 1.76158 0.000637044 1.74596V1.74846C0 1.73534 0 1.72034 0 1.70534C0 1.22917 0.206402 0.800492 0.535754 0.499917L0.537028 0.499292C0.88358 0.189968 1.34671 0 1.85444 0C1.88374 0 1.91241 0.000624896 1.94171 0.00187469H1.93789C1.96528 0.000624896 1.9965 0 2.02899 0C2.52906 0 2.98455 0.189343 3.32473 0.498667L3.32346 0.497417C3.65154 0.80799 3.85539 1.24292 3.85539 1.72471V1.75096V1.74971V1.74846ZM15.9987 9.19722V14.9987H12.5727V9.58403C12.5759 9.53466 12.5772 9.47717 12.5772 9.41968C12.5772 8.85977 12.4185 8.33673 12.1427 7.89056L12.1503 7.90368C11.8783 7.53124 11.4388 7.29191 10.9425 7.29191C10.9043 7.29191 10.8661 7.29316 10.8278 7.29628H10.8329C10.8157 7.29566 10.796 7.29503 10.7762 7.29503C10.3813 7.29503 10.0182 7.42814 9.73085 7.65122L9.73467 7.64872C9.44609 7.87806 9.21994 8.17114 9.07724 8.50796L9.07214 8.52233C8.99825 8.74417 8.9562 8.99912 8.9562 9.26408C8.9562 9.29408 8.95684 9.32407 8.95811 9.35406V9.34969V15H5.53209C5.54611 12.2825 5.55311 10.0792 5.55311 8.38985C5.55311 6.70055 5.54972 5.69259 5.54292 5.36598L5.53273 4.87544H8.95875V6.34644H8.93773C9.07406 6.13085 9.21484 5.94401 9.36964 5.76904L9.36455 5.77466C9.54356 5.58157 9.73594 5.40722 9.94298 5.251L9.95318 5.2435C10.2105 5.04916 10.5125 4.89668 10.8399 4.80357L10.8591 4.7992C11.2018 4.69859 11.5961 4.64048 12.0038 4.64048H12.0541H12.0516C12.0968 4.6386 12.1497 4.63735 12.2026 4.63735C13.2735 4.63735 14.2379 5.08353 14.9138 5.79716L14.9157 5.79966C15.6386 6.57286 16 7.70517 16 9.19659L15.9987 9.19722Z" fill="white"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="sc-blogs-share-card" aria-label="Share this article">
+                    <h4>SHARE</h4>
+                    <div class="sc-blogs-share-row">
+                        <a href="#" class="sc-blogs-share-btn" aria-label="Share on Facebook">{{> "icons/facebook"}}</a>
+                        <a href="#" class="sc-blogs-share-btn" aria-label="Share on Telegram">{{> "icons/telegram"}}</a>
+                        <a href="#" class="sc-blogs-share-btn" aria-label="Share on Google News">{{> "icons/googlenews"}}</a>
+                        <a href="#" class="sc-blogs-share-btn" aria-label="Share on X">{{> "icons/twitter"}}</a>
+                        <a href="#" class="sc-blogs-share-btn" aria-label="Share on LinkedIn">{{> "icons/linkedin"}}</a>
+                    </div>
+                </article>
+
+                <article class="sc-blogs-likes-card">
+                    <img src="{{asset 'imagesAndIcons/likes.png'}}" alt="Likes" class="sc-blogs-likes-image" loading="lazy" decoding="async">
+                </article>
+            </aside>
+
+            <section class="sc-blogs-next-col sc-blogs-next-col-center" aria-label="Main blog story">
+                <article class="sc-blogs-main-card">
+                    <img src="{{asset 'imagesAndIcons/blog-banner.png'}}" alt="Blog banner" class="sc-blogs-main-card-image" loading="lazy" decoding="async">
+                </article>
+            </section>
+
+            <aside class="sc-blogs-next-col sc-blogs-next-col-right" aria-label="Article widgets">
+                <article class="sc-blogs-right-card sc-blogs-market-card">
+                    <div class="sc-blogs-market-head">
+                        <div class="sc-blogs-market-coin">
+                            <img src="{{asset 'imagesAndIcons/bitcoin.svg'}}" alt="Bitcoin" loading="lazy" decoding="async">
+                            <div>
+                                <h4>Bitcoin</h4>
+                                <p>BTC/USD</p>
+                            </div>
+                        </div>
+                        <div class="sc-blogs-market-price">
+                            <strong>$82,585.24</strong>
+                            <span>-6%</span>
+                        </div>
+                    </div>
+                    <div class="sc-blogs-market-graph" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="295" height="76" viewBox="0 0 295 76" fill="none">
+                            <path d="M0 76V0L36.875 20L73.75 30L110.625 10L147.5 25L184.375 15L221.25 30L258.125 20L295 25V76H0Z" fill="url(#paint0_linear_683_9152)"/>
+                            <defs>
+                                <linearGradient id="paint0_linear_683_9152" x1="0" y1="0" x2="0" y2="7600" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#90CAF9" stop-opacity="0.4"/>
+                                    <stop offset="1" stop-color="#90CAF9" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="sc-blogs-right-card sc-blogs-newsletter-card">
+                    <div class="sc-blogs-newsletter-inner">
+                        <img src="{{asset 'imagesAndIcons/email.svg'}}" alt="Newsletter" class="sc-blogs-newsletter-icon" loading="lazy" decoding="async">
+                        <div class="sc-blogs-newsletter-copy">
+                            <h4>SUBSCRIBE TO THE NEWSLETTE</h4>
+                            <p>Spaziocrypto brings you the weekly summary of major Web3-related news.</p>
+                            <a href="#" class="sc-blogs-newsletter-btn">Subscribe</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="sc-blogs-right-card sc-blogs-article-tags-card">
+                    <h4>In this Article</h4>
+                    <img src="{{asset 'imagesAndIcons/crypto-row.svg'}}" alt="Article coins" class="sc-blogs-crypto-row-image" loading="lazy" decoding="async">
+                </article>
+
+                <article class="sc-blogs-right-card sc-blogs-language-card" aria-label="Read this article in multiple languages">
+                    <h4 class="sc-blogs-language-head">Read this article in...</h4>
+                    <ul>
+                        <li>
+                            <a href="#" class="is-active">
+                                <span class="sc-blogs-language-left">{{> "flags/us"}}<span>English</span></span>
+                                <span class="sc-blogs-language-current">Current</span>
+                            </a>
+                        </li>
+                        <li><a href="#"><span class="sc-blogs-language-left">{{> "flags/it"}}<span>Italiano</span></span></a></li>
+                        <li><a href="#"><span class="sc-blogs-language-left">{{> "flags/es"}}<span>Español</span></span></a></li>
+                        <li><a href="#"><span class="sc-blogs-language-left">{{> "flags/fr"}}<span>Français</span></span></a></li>
+                        <li><a href="#"><span class="sc-blogs-language-left">{{> "flags/de"}}<span>Deutsch</span></span></a></li>
+                        <li><a href="#"><span class="sc-blogs-language-left">{{> "flags/kr"}}<span>Korean</span></span></a></li>
+                        <li><a href="#"><span class="sc-blogs-language-left">{{> "flags/ru"}}<span>Русский</span></span></a></li>
+                        <li><a href="#"><span class="sc-blogs-language-left">{{> "flags/cn"}}<span>中文</span></span></a></li>
+                        <li><a href="#"><span class="sc-blogs-language-left">{{> "flags/jp"}}<span>日本語</span></span></a></li>
+                    </ul>
+                </article>
+
+                <article class="sc-blogs-right-card sc-blogs-suggested-card">
+                    <h4>Suggested article</h4>
+                    <div class="sc-blogs-suggested-media">
+                        <img src="{{asset 'imagesAndIcons/suggested-article .png'}}" alt="Suggested article" loading="lazy" decoding="async">
+                        <span class="sc-blogs-suggested-badge">AI GENERATED IMAGE</span>
+                    </div>
+                    <div class="sc-blogs-suggested-meta">
+                        <img src="{{asset 'imagesAndIcons/joseph.svg'}}" alt="James Hall" loading="lazy" decoding="async">
+                        <span>James Hall</span>
+                        <span aria-hidden="true">•</span>
+                        <span>2 hours ago</span>
+                    </div>
+                    <h5>Ilya Lichtenstein is free: the spectre of the Bitfinex mega-hack is back in the news</h5>
+                    <p>Ilya Lichtenstein, author of the $10 billion-plus maxi hack at Bitfinex, was released early thanks to the First Step Act. The case reignites the debate on AI...</p>
+                    <div class="sc-blogs-suggested-tags">
+                        <span>Crypto</span>
+                        <span>Hack</span>
+                    </div>
+                </article>
+            </aside>
+        </div>
+
+        {{content}}
+    </section>
+</main>
+{{/post}}

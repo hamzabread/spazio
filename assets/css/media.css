@@ -3910,3 +3910,13 @@
         width: 100%;
     }
 }
+
+@media (max-width: 767px) {
+    .gh-header-actions {
+        display: none !important;
+    }
+
+    .gh-header-navigation-wrapper {
+        display: none !important;
+    }
+}
