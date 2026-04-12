@@ -209,7 +209,7 @@
     content: '';
     width: 100%;
     height: 3px;
-    background-color: var(--ghost-accent-color);
+    background-color: #F18F20;
     position: absolute;
     bottom: -1px;
     left: 0;

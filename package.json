@@ -195,6 +195,104 @@
         "type": "text",
         "default": "https://www.youtube.com/@SpaziocryptoChronicles?sub_confirmation=1"
       },
+      "google_news_link": {
+        "type": "text"
+      },
+      "reddit_link": {
+        "type": "text"
+      },
+      "jobs_source_filter": {
+        "type": "text",
+        "default": "tags:[jobs,careers]",
+        "group": "homepage"
+      },
+      "jobs_source_tag": {
+        "type": "text",
+        "default": "jobs",
+        "group": "homepage"
+      },
+      "events_source_filter": {
+        "type": "text",
+        "default": "tags:[events,event]",
+        "group": "homepage"
+      },
+      "events_source_tag": {
+        "type": "text",
+        "default": "events",
+        "group": "homepage"
+      },
+      "press_release_source_filter": {
+        "type": "text",
+        "default": "tags:[press-release,press-releases,sponsored]",
+        "group": "homepage"
+      },
+      "scam_alerts_source_filter": {
+        "type": "text",
+        "default": "tags:[scams,truffe,arnaques,estafas,betrug,moshennichestvo,sagi,pianju]",
+        "group": "homepage"
+      },
+      "scam_alerts_source_tag": {
+        "type": "text",
+        "default": "scams",
+        "group": "homepage"
+      },
+      "exchanges_source_filter": {
+        "type": "text",
+        "default": "tags:[exchanges,wallets,reviews]",
+        "group": "homepage"
+      },
+      "breaking_news_source_filter": {
+        "type": "text",
+        "default": "tags:[news]",
+        "group": "homepage"
+      },
+      "breaking_news_source_tag": {
+        "type": "text",
+        "default": "news",
+        "group": "homepage"
+      },
+      "directory_companies_source_filter": {
+        "type": "text",
+        "default": "tags:[companies,company]",
+        "group": "homepage"
+      },
+      "directory_products_source_filter": {
+        "type": "text",
+        "default": "tags:[products,product,reviews]",
+        "group": "homepage"
+      },
+      "market_source_tag": {
+        "type": "text",
+        "default": "markets",
+        "group": "homepage"
+      },
+      "market_overview_source_filter": {
+        "type": "text",
+        "default": "tags:[markets,market]",
+        "group": "homepage"
+      },
+      "market_top_gainers_source_filter": {
+        "type": "text",
+        "default": "tags:[gainers,markets]",
+        "group": "homepage"
+      },
+      "market_trending_source_filter": {
+        "type": "text",
+        "default": "tags:[trending,markets]",
+        "group": "homepage"
+      },
+      "article_market_coin_1": {
+        "type": "text",
+        "default": "bitcoin"
+      },
+      "article_market_coin_2": {
+        "type": "text",
+        "default": "ethereum"
+      },
+      "article_market_coin_3": {
+        "type": "text",
+        "default": "cardano"
+      },
       "tiktok_link": {
         "type": "text",
         "default": "https://www.tiktok.com/@spaziocrypto_en"

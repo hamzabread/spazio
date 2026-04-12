@@ -1,11 +1,11 @@
 <section class="sc-more-news">
+    <h2 class="sc-mn-heading">{{t "More News"}}</h2>
     <div class="sc-mn-inner">
 
         {{!-- Main posts grid --}}
         <div class="sc-mn-main">
-            <h2 class="sc-mn-heading">More News</h2>
             <div class="sc-mn-grid">
-                {{#get "posts" include="authors,tags" limit="8"}}
+                {{#get "posts" filter="tag:more-news+(tag:hash-crypto,tag:hash-hack,tag:crypto,tag:hack)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases" include="authors,tags" limit="4" order="published_at desc"}}
                 {{#foreach posts}}
                 <article class="sc-mn-card">
                     {{#if feature_image}}
@@ -38,10 +38,55 @@
                         {{/if}}
                         {{#if tags}}
                         <div class="sc-mn-card-tags">
-                            {{#foreach tags limit="4"}}
-                            {{#unless (match slug "^hash-")}}
+                            {{#foreach tags visibility="all" limit="8"}}
+                            <span class="sc-mn-card-tag">{{name}}</span>
+                            {{/foreach}}
+                        </div>
+                        {{/if}}
+                    </div>
+                </article>
+                {{/foreach}}
+                {{/get}}
+
+                {{#get "posts" filter="(tag:ai,tag:hash-ai,tag:artificial-intelligence,tag:machine-learning,tag:generative-ai)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases" include="authors,tags" limit="4" order="published_at desc"}}
+                {{#foreach posts}}
+                <article class="sc-mn-card">
+                    {{#if feature_image}}
+                    <a class="sc-mn-card-img-wrap" href="{{url}}" aria-label="{{title}}">
+                        <img src="{{img_url feature_image size="2000"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="sc-mn-card-img" loading="lazy" />
+                    </a>
+                    {{else}}
+                    <a class="sc-mn-card-img-wrap sc-mn-card-img-wrap--no-img" href="{{url}}" aria-label="{{title}}">
+                        <span class="sc-mn-card-img-placeholder">{{@site.title}}</span>
+                    </a>
+                    {{/if}}
+                    <div class="sc-mn-card-body">
+                        <div class="sc-mn-card-meta">
+                            {{#primary_author}}
+                            {{#if profile_image}}
+                            <img class="sc-mn-card-avatar" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+                            {{else}}
+                            <div class="sc-mn-card-avatar sc-mn-card-avatar--letter">{{name.[0]}}</div>
+                            {{/if}}
+                            <span class="sc-mn-card-author">{{name}}</span>
+                            {{/primary_author}}
+                            <span class="sc-mn-card-bullet">•</span>
+                            <span class="sc-mn-card-date">{{date format="MMM D, YYYY"}}</span>
+                        </div>
+                        <h3 class="sc-mn-card-title">
+                            <a href="{{url}}">{{title}}</a>
+                        </h3>
+                        {{#if excerpt}}
+                        <p class="sc-mn-card-excerpt">{{excerpt}}</p>
+                        {{/if}}
+                        {{#if tags}}
+                        <div class="sc-mn-card-tags">
+                            {{#foreach tags visibility="all" limit="4"}}
+                            {{#if (match slug "^hash-")}}
+                            <span class="sc-mn-card-tag">{{name}}</span>
+                            {{else}}
                             <a class="sc-mn-card-tag" href="{{url}}">{{name}}</a>
-                            {{/unless}}
+                            {{/if}}
                             {{/foreach}}
                         </div>
                         {{/if}}
@@ -56,6 +101,57 @@
         <aside class="sc-mn-sidebar">
 
             {{!-- Scam Alerts --}}
+            {{#if @custom.scam_alerts_source_filter}}
+            {{#get "posts" include="tags" filter=@custom.scam_alerts_source_filter limit=5 as |scams|}}
+            {{#if scams}}
+            <div class="sc-mn-widget">
+                {{#if @custom.scam_alerts_source_tag}}
+                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/{{@custom.scam_alerts_source_tag}}/">
+                {{else}}
+                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/scams/">
+                {{/if}}
+                    <span>Scam Alerts</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <div class="sc-mn-scam-list">
+                    {{#foreach scams}}
+                    <a class="sc-mn-scam-item" href="{{url}}">
+                        <span class="sc-mn-scam-date"><time datetime="{{date format="YYYY-MM-DDTHH:mm:ss"}}Z">{{date format="MMM D, YYYY HH:mm"}} UTC</time></span>
+                        <h4 class="sc-mn-scam-title">{{title}}</h4>
+                        {{#primary_tag}}
+                        <span class="sc-mn-scam-tag">{{name}}</span>
+                        {{/primary_tag}}
+                    </a>
+                    {{/foreach}}
+                </div>
+            </div>
+            {{else}}
+            <div class="sc-mn-widget">
+                {{#if @custom.scam_alerts_source_tag}}
+                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/{{@custom.scam_alerts_source_tag}}/">
+                {{else}}
+                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/scams/">
+                {{/if}}
+                    <span>{{t "Scam Alerts"}}</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <div class="sc-mn-scam-list">
+                    {{#get "posts" include="tags" limit="3" order="published_at desc"}}
+                        {{#foreach posts}}
+                        <a class="sc-mn-scam-item" href="{{url}}">
+                            <span class="sc-mn-scam-date"><time datetime="{{date format="YYYY-MM-DDTHH:mm:ss"}}Z">{{date format="MMM D, YYYY HH:mm"}} UTC</time></span>
+                            <h4 class="sc-mn-scam-title">{{title}}</h4>
+                            {{#if primary_tag}}
+                            <span class="sc-mn-scam-tag">{{primary_tag.name}}</span>
+                            {{/if}}
+                        </a>
+                        {{/foreach}}
+                    {{/get}}
+                </div>
+            </div>
+            {{/if}}
+            {{/get}}
+            {{else}}
             {{#get "posts" include="tags" filter="tags:[scams,truffe,arnaques,estafas,betrug,moshennichestvo,sagi,pianju]" limit=5 as |scams|}}
             {{#if scams}}
             <div class="sc-mn-widget">
@@ -78,61 +174,58 @@
             {{else}}
             <div class="sc-mn-widget">
                 <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/scams/">
-                    <span>Scam Alerts</span>
+                    <span>{{t "Scam Alerts"}}</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
                 <div class="sc-mn-scam-list">
-                    <a class="sc-mn-scam-item" href="#">
-                        <span class="sc-mn-scam-date">Jan 5, 2026 11:23:16 UTC</span>
-                        <h4 class="sc-mn-scam-title">MetaMask under attack: new 2FA scam steals seed phrase</h4>
-                        <span class="sc-mn-scam-tag">Scams</span>
-                    </a>
-                    <a class="sc-mn-scam-item" href="#">
-                        <span class="sc-mn-scam-date">Dec 25, 2025 11:57:47 UTC</span>
-                        <h4 class="sc-mn-scam-title">Andrew Tate accused of on-chain crypto laundering</h4>
-                        <span class="sc-mn-scam-tag">Scams</span>
-                    </a>
-                    <a class="sc-mn-scam-item" href="#">
-                        <span class="sc-mn-scam-date">Nov 17, 2025 11:46:45 UTC</span>
-                        <h4 class="sc-mn-scam-title">India: maxi raid against a decade-old crypto scam</h4>
-                        <span class="sc-mn-scam-tag">Scams</span>
-                    </a>
+                    {{#get "posts" include="tags" limit="3" order="published_at desc"}}
+                        {{#foreach posts}}
+                        <a class="sc-mn-scam-item" href="{{url}}">
+                            <span class="sc-mn-scam-date"><time datetime="{{date format="YYYY-MM-DDTHH:mm:ss"}}Z">{{date format="MMM D, YYYY HH:mm"}} UTC</time></span>
+                            <h4 class="sc-mn-scam-title">{{title}}</h4>
+                            {{#if primary_tag}}
+                            <span class="sc-mn-scam-tag">{{primary_tag.name}}</span>
+                            {{/if}}
+                        </a>
+                        {{/foreach}}
+                    {{/get}}
                 </div>
             </div>
             {{/if}}
             {{/get}}
+            {{/if}}
 
             {{!-- Best Exchanges & Wallets --}}
             <div class="sc-mn-widget">
                 <div class="sc-mn-widget-hd sc-mn-widget-hd--dark">
                     <div class="sc-mn-widget-hd-copy">
                         <span class="sc-mn-widget-title">Best Exchanges &amp; Wallets</span>
-                        <p class="sc-mn-exchanges-disclaimer">Informative content with affiliate links. <a href="#">Disclaimer →</a></p>
+                        <p class="sc-mn-exchanges-disclaimer">{{t "Informative content with affiliate links."}} <a href="{{@site.url}}/disclaimers/">{{t "Disclaimer"}} →</a></p>
                     </div>
                 </div>
                 <div class="sc-mn-exchanges">
-                    <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
+                    <a class="sc-mn-exchange-item" href="#" rel="noopener">
                         <div class="sc-mn-exchange-icon sc-mn-exchange-icon--bitget">
                             <img src="{{asset 'imagesAndIcons/bitget.svg'}}" alt="Bitget" loading="lazy" />
                         </div>
                         <span class="sc-mn-exchange-name">Bitget</span>
                         <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
+                    <a class="sc-mn-exchange-item" href="#" rel="noopener">
                         <div class="sc-mn-exchange-icon sc-mn-exchange-icon--mexc">
                             <img src="{{asset 'imagesAndIcons/mexc.svg'}}" alt="MEXC" loading="lazy" />
                         </div>
                         <span class="sc-mn-exchange-name">MEXC</span>
                         <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
+                    <a class="sc-mn-exchange-item" href="#" rel="noopener">
                         <div class="sc-mn-exchange-icon sc-mn-exchange-icon--bybit">
                             <img src="{{asset 'imagesAndIcons/bybit.svg'}}" alt="ByBit" loading="lazy" />
                         </div>
                         <span class="sc-mn-exchange-name">ByBit</span>
                         <svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <a class="sc-mn-exchange-item" href="#" rel="nofollow noopener sponsored">
+                    <a class="sc-mn-exchange-item" href="#" rel="noopener">
                         <div class="sc-mn-exchange-icon sc-mn-exchange-icon--bybit-2">
                             <img src="{{asset 'imagesAndIcons/bybitsecond.svg'}}" alt="ByBit" loading="lazy" />
                         </div>
@@ -150,9 +243,9 @@
                     </div>
                 </div>
                 <div class="sc-mn-nl-content">
-                    <h3 class="sc-mn-nl-title">SUBSCRIBE TO THE NEWSLETTER</h3>
-                    <p class="sc-mn-nl-desc">Spaziocrypto brings you the weekly summary of major Web3-related news.</p>
-                    <a href="#/portal/signup" class="sc-mn-nl-btn">Subscribe</a>
+                    <h3 class="sc-mn-nl-title">{{t "SUBSCRIBE TO THE NEWSLETTER"}}</h3>
+                    <p class="sc-mn-nl-desc">{{t "Spaziocrypto brings you the weekly summary of major Web3-related news."}}</p>
+                    <a href="#/portal/signup" class="sc-mn-nl-btn">{{t "Subscribe"}}</a>
                 </div>
             </div>
 

@@ -13,69 +13,87 @@
                 </a>
             </div>
             <div class="sc-market-list">
-                <div class="sc-market-item">
-                    <img class="sc-market-coin-icon" src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="Bitcoin" loading="lazy" width="48" height="48">
+                <a class="sc-market-item" href="https://www.coingecko.com/en/coins/bitcoin" aria-label="Bitcoin" data-market-row="bitcoin" target="_blank" rel="noopener">
+                    <img class="sc-market-coin-icon" src="{{asset "imagesAndIcons/bitcoin.svg"}}" alt="Bitcoin" loading="lazy" width="48" height="48" data-market-icon>
                     <div class="sc-market-coin-info">
-                        <span class="sc-market-coin-name">Bitcoin</span>
-                        <span class="sc-market-coin-symbol">BTC</span>
+                        <span class="sc-market-coin-name" data-market-name>Bitcoin</span>
+                        <span class="sc-market-coin-symbol" data-market-symbol>BTC</span>
                     </div>
                     <div class="sc-market-coin-price">
-                        <span class="sc-market-coin-price-value sc-btc-price">$94,259</span>
-                        <span class="sc-market-coin-change up sc-btc-change">+2.4%</span>
+                        <span class="sc-market-coin-price-value" data-market-price>$93,041.34</span>
+                        <span class="sc-market-coin-change sc-md-change-up" data-market-change>+2.04%</span>
                     </div>
-                </div>
-                <div class="sc-market-item">
-                    <img class="sc-market-coin-icon" src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="Ethereum" loading="lazy" width="48" height="48">
+                </a>
+                <a class="sc-market-item" href="https://www.coingecko.com/en/coins/ethereum" aria-label="Ethereum" data-market-row="ethereum" target="_blank" rel="noopener">
+                    <img class="sc-market-coin-icon" src="{{asset "imagesAndIcons/ethereum.svg"}}" alt="Ethereum" loading="lazy" width="48" height="48" data-market-icon>
                     <div class="sc-market-coin-info">
-                        <span class="sc-market-coin-name">Ethereum</span>
-                        <span class="sc-market-coin-symbol">ETH</span>
+                        <span class="sc-market-coin-name" data-market-name>Ethereum</span>
+                        <span class="sc-market-coin-symbol" data-market-symbol>ETH</span>
                     </div>
                     <div class="sc-market-coin-price">
-                        <span class="sc-market-coin-price-value sc-eth-price">$1,802</span>
-                        <span class="sc-market-coin-change up sc-eth-change">+1.8%</span>
+                        <span class="sc-market-coin-price-value" data-market-price>$3,176.43</span>
+                        <span class="sc-market-coin-change sc-md-change-up" data-market-change>+1.35%</span>
                     </div>
-                </div>
-                <div class="sc-market-item">
-                    <img class="sc-market-coin-icon" src="https://assets.coingecko.com/coins/images/975/small/cardano.png" alt="Cardano" loading="lazy" width="48" height="48">
+                </a>
+                <a class="sc-market-item" href="https://www.coingecko.com/en/coins/cardano" aria-label="Cardano" data-market-row="cardano" target="_blank" rel="noopener">
+                    <img class="sc-market-coin-icon" src="{{asset "imagesAndIcons/cmp.svg"}}" alt="Cardano" loading="lazy" width="48" height="48" data-market-icon>
                     <div class="sc-market-coin-info">
-                        <span class="sc-market-coin-name">Cardano</span>
-                        <span class="sc-market-coin-symbol">ADA</span>
+                        <span class="sc-market-coin-name" data-market-name>Cardano</span>
+                        <span class="sc-market-coin-symbol" data-market-symbol>ADA</span>
                     </div>
                     <div class="sc-market-coin-price">
-                        <span class="sc-market-coin-price-value sc-ada-price">$0.716</span>
-                        <span class="sc-market-coin-change up sc-ada-change">+3.1%</span>
+                        <span class="sc-market-coin-price-value" data-market-price>$0.3992</span>
+                        <span class="sc-market-coin-change sc-md-change-down" data-market-change>-0.50%</span>
                     </div>
-                </div>
+                </a>
 
             </div>
         </div>
 
         {{!-- Sponsored Content --}}
-        <div class="sc-sponsored-card">
-            <img src="{{asset "imagesAndIcons/yuan.png"}}" alt="{{t "Sponsored Content"}}" loading="lazy">
-            <div class="sc-sponsored-card-overlay">
-                <div class="sc-sponsored-label">{{t "Sponsored Content"}}</div>
-                <div class="sc-sponsored-title">{{t "The Digital Yuan Revolution: China Breaks the CBDC Interest Taboo"}}</div>
-            </div>
-        </div>
-    </div>
-
-    {{!-- Center Column: Featured Article --}}
-    <div class="sc-content-grid-center">
-        {{#get "posts" filter="featured:true" limit="1" include="tags,authors"}}
+        {{#get "posts" filter="(tag:sponsored-content,tag:sponsored,tag:press-release)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags" order="published_at desc"}}
             {{#if posts}}
                 {{#foreach posts}}
+                <a class="sc-sponsored-card" href="{{url}}" aria-label="{{title}}">
+                    <img src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/yuan.png"}}{{/if}}" alt="{{title}}" loading="lazy">
+                    <div class="sc-sponsored-card-overlay">
+                        <div class="sc-sponsored-label">{{t "Sponsored Content"}}</div>
+                        <div class="sc-sponsored-title">{{title}}</div>
+                    </div>
+                </a>
+                {{/foreach}}
+            {{else}}
+                {{#get "posts" filter="featured:false+tag:-news+tag:-trending+tag:-markets+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" order="published_at desc"}}
+                    {{#foreach posts}}
+                    <a class="sc-sponsored-card" href="{{url}}" aria-label="{{title}}">
+                        <img src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/yuan.png"}}{{/if}}" alt="{{title}}" loading="lazy">
+                        <div class="sc-sponsored-card-overlay">
+                            <div class="sc-sponsored-label">{{t "Sponsored Content"}}</div>
+                            <div class="sc-sponsored-title">{{title}}</div>
+                        </div>
+                    </a>
+                    {{/foreach}}
+                {{/get}}
+            {{/if}}
+        {{/get}}
+    </div>
+
+    {{#get "posts" filter="(tag:hero-center,tag:elon-center,tag:elon-musk)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags,authors" order="published_at desc"}}
+        {{#if posts}}
+            {{#foreach posts}}
+            {{!-- Center Column: Featured Article --}}
+            <div class="sc-content-grid-center">
                 <article class="sc-featured-article">
                     <img class="sc-featured-article-img" src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/elon.png"}}{{/if}}" alt="{{title}}" loading="lazy">
                     <div class="sc-featured-article-content">
                         <h2 class="sc-featured-article-title">
                             <a href="{{url}}">{{title}}</a>
                         </h2>
-                        <p class="sc-featured-article-excerpt">{{excerpt words="30"}}</p>
+                        <p class="sc-featured-article-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="42"}}{{/if}}</p>
                         <div class="sc-featured-article-bottom">
                             <div class="sc-featured-article-meta">
                                 {{#if primary_author.profile_image}}
-                                <img class="sc-featured-article-author-img" src="{{img_url primary_author.profile_image size="xxs"}}" alt="{{primary_author.name}}" loading="lazy">
+                                <img class="sc-featured-article-author-img" src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" loading="lazy">
                                 {{/if}}
                                 <span class="sc-featured-article-author-name">{{primary_author.name}}</span>
                                 <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
@@ -88,153 +106,163 @@
                         </div>
                     </div>
                 </article>
-                {{/foreach}}
-            {{else}}
-                <article class="sc-featured-article">
-                    <img class="sc-featured-article-img" src="{{asset "imagesAndIcons/elon.png"}}" alt="Crypto AI rallying" loading="lazy">
-                    <div class="sc-featured-article-content">
-                        <h2 class="sc-featured-article-title">
-                            <a href="#">{{t "Crypto AI rallying: which tokens are driving the market rebound"}}</a>
-                        </h2>
-                        <p class="sc-featured-article-excerpt">{{t "The crypto market started 2026 on a more positive note as risk appetite in major assets, meme coins and AI-linked tokens increased. Also, the good regulatory outlook was reinforced by the progress made on the U.S. CLARITY Act."}}</p>
-                        <div class="sc-featured-article-bottom">
-                            <div class="sc-featured-article-meta">
-                                <img class="sc-featured-article-author-img" src="{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}" alt="Joseph Alalade" loading="lazy">
-                                <span class="sc-featured-article-author-name">Joseph Alalade</span>
-                                <span class="sc-featured-article-date">2 hours ago</span>
-                            </div>
-                            <div class="sc-featured-article-tags">
-                                <a class="sc-featured-article-tag" href="#">Crypto</a>
-                                <a class="sc-featured-article-tag" href="#">AI</a>
-                                <a class="sc-featured-article-tag" href="#">Trending</a>
-                                <a class="sc-featured-article-tag" href="#">Token</a>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            {{/if}}
-        {{/get}}
-    </div>
-
-    {{!-- Right Column: Featured Posts --}}
-    <div class="sc-content-grid-right">
-        <div class="sc-featured-posts-card">
-            <div class="sc-featured-posts-header">
-                <span>{{t "Featured Posts"}}</span>
-                <a href="{{@site.url}}/tag/featured/" aria-label="{{t "View all featured posts"}}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M7.11588 2.91699L11.1992 7.00033L7.11588 11.0837" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3.03255 7L11.1992 7" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
             </div>
-            {{#get "posts" filter="featured:true" limit="5" include="tags" order="published_at desc"}}
-                {{#if posts}}
-                    {{#foreach posts}}
-                        {{#if @first}}
-                        <div class="sc-fp-main">
-                            <img class="sc-fp-main-img" src="{{#if feature_image}}{{img_url feature_image size="m"}}{{else}}{{asset "imagesAndIcons/metamask.png"}}{{/if}}" alt="{{title}}" loading="lazy">
-                            <div class="sc-fp-main-overlay">
-                                {{#if primary_tag}}
-                                <div class="sc-fp-main-category">{{primary_tag.name}}</div>
+
+            {{!-- Right Column: Featured Posts (excluding center hero post) --}}
+            <div class="sc-content-grid-right">
+                <div class="sc-featured-posts-card">
+                    <div class="sc-featured-posts-header">
+                        <span>{{t "Featured Posts"}}</span>
+                        <a href="{{@site.url}}/tag/featured/" aria-label="{{t "View all featured posts"}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M7.11588 2.91699L11.1992 7.00033L7.11588 11.0837" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3.03255 7L11.1992 7" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    {{#get "posts" filter="featured:true+id:-{{id}}+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="5" include="tags" order="published_at desc"}}
+                        {{#if posts}}
+                            {{#foreach posts}}
+                                {{#if @first}}
+                                <div class="sc-fp-main">
+                                    <img class="sc-fp-main-img" src="{{#if feature_image}}{{img_url feature_image size="m"}}{{else}}{{asset "imagesAndIcons/metamask.png"}}{{/if}}" alt="{{title}}" loading="lazy">
+                                    <div class="sc-fp-main-overlay">
+                                        {{#if primary_tag}}
+                                        <div class="sc-fp-main-category">{{primary_tag.name}}</div>
+                                        {{/if}}
+                                        <div class="sc-fp-main-title"><a href="{{url}}">{{title}}</a></div>
+                                    </div>
+                                </div>
+                                {{else}}
+                                {{#if @second}}
+                                <div class="sc-fp-list">
                                 {{/if}}
-                                <div class="sc-fp-main-title"><a href="{{url}}">{{title}}</a></div>
-                            </div>
-                        </div>
+                                    <div class="sc-fp-item">
+                                        <span class="sc-fp-item-num">{{@number}}</span>
+                                        <div class="sc-fp-item-content">
+                                            {{#if primary_tag}}
+                                            <div class="sc-fp-item-category">{{primary_tag.name}}</div>
+                                            {{/if}}
+                                            <div class="sc-fp-item-title"><a href="{{url}}">{{title}}</a></div>
+                                        </div>
+                                    </div>
+                                {{#if @last}}
+                                </div>
+                                {{/if}}
+                                {{/if}}
+                            {{/foreach}}
                         {{else}}
-                        {{#if @second}}
-                        <div class="sc-fp-list">
-                        {{/if}}
-                            <div class="sc-fp-item">
-                                <span class="sc-fp-item-num">{{@number}}</span>
-                                <div class="sc-fp-item-content">
-                                    {{#if primary_tag}}
-                                    <div class="sc-fp-item-category">{{primary_tag.name}}</div>
+                            {{#get "posts" filter="featured:true+id:-{{id}}+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="5" include="tags" order="published_at desc"}}
+                                {{#foreach posts}}
+                                    {{#if @first}}
+                                    <div class="sc-fp-main">
+                                        <img class="sc-fp-main-img" src="{{#if feature_image}}{{img_url feature_image size="m"}}{{else}}{{asset "imagesAndIcons/metamask.png"}}{{/if}}" alt="{{title}}" loading="lazy">
+                                        <div class="sc-fp-main-overlay">
+                                            {{#if primary_tag}}
+                                            <div class="sc-fp-main-category">{{primary_tag.name}}</div>
+                                            {{/if}}
+                                            <div class="sc-fp-main-title"><a href="{{url}}">{{title}}</a></div>
+                                        </div>
+                                    </div>
+                                    {{else}}
+                                    {{#if @second}}
+                                    <div class="sc-fp-list">
                                     {{/if}}
-                                    <div class="sc-fp-item-title"><a href="{{url}}">{{title}}</a></div>
+                                        <div class="sc-fp-item">
+                                            <span class="sc-fp-item-num">{{@number}}</span>
+                                            <div class="sc-fp-item-content">
+                                                {{#if primary_tag}}
+                                                <div class="sc-fp-item-category">{{primary_tag.name}}</div>
+                                                {{/if}}
+                                                <div class="sc-fp-item-title"><a href="{{url}}">{{title}}</a></div>
+                                            </div>
+                                        </div>
+                                    {{#if @last}}
+                                    </div>
+                                    {{/if}}
+                                    {{/if}}
+                                {{/foreach}}
+                            {{/get}}
+                        {{/if}}
+                    {{/get}}
+                </div>
+            </div>
+            {{/foreach}}
+        {{else}}
+            <div class="sc-content-grid-center">
+                {{#get "posts" filter="featured:true+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags,authors" order="published_at desc"}}
+                    {{#foreach posts}}
+                    <article class="sc-featured-article">
+                        <img class="sc-featured-article-img" src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/elon.png"}}{{/if}}" alt="{{title}}" loading="lazy">
+                        <div class="sc-featured-article-content">
+                            <h2 class="sc-featured-article-title">
+                                <a href="{{url}}">{{title}}</a>
+                            </h2>
+                            <p class="sc-featured-article-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="42"}}{{/if}}</p>
+                            <div class="sc-featured-article-bottom">
+                                <div class="sc-featured-article-meta">
+                                    {{#if primary_author.profile_image}}
+                                    <img class="sc-featured-article-author-img" src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" loading="lazy">
+                                    {{/if}}
+                                    <span class="sc-featured-article-author-name">{{primary_author.name}}</span>
+                                    <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
+                                </div>
+                                <div class="sc-featured-article-tags">
+                                    {{#foreach tags limit="3"}}
+                                    <a class="sc-featured-article-tag" href="{{url}}">{{name}}</a>
+                                    {{/foreach}}
                                 </div>
                             </div>
-                        {{#if @last}}
                         </div>
-                        {{/if}}
-                        {{/if}}
+                    </article>
                     {{/foreach}}
-                {{else}}
-                    <div class="sc-fp-main">
-                        <img class="sc-fp-main-img" src="{{asset "imagesAndIcons/metamask.png"}}" alt="MetaMask" loading="lazy">
-                        <div class="sc-fp-main-overlay">
-                            <div class="sc-fp-main-category">Trending</div>
-                            <div class="sc-fp-main-title"><a href="#">{{t "MetaMask under attack: new 2FA scam steals seed phrase"}}</a></div>
-                        </div>
+                {{/get}}
+            </div>
+            <div class="sc-content-grid-right">
+                <div class="sc-featured-posts-card">
+                    <div class="sc-featured-posts-header">
+                        <span>{{t "Featured Posts"}}</span>
+                        <a href="{{@site.url}}/tag/featured/" aria-label="{{t "View all featured posts"}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M7.11588 2.91699L11.1992 7.00033L7.11588 11.0837" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3.03255 7L11.1992 7" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
                     </div>
-                    <div class="sc-fp-list">
-                        <div class="sc-fp-item">
-                            <span class="sc-fp-item-num">2.</span>
-                            <div class="sc-fp-item-content">
-                                <div class="sc-fp-item-category">News</div>
-                                <div class="sc-fp-item-title"><a href="#">{{t "The 5 richest Italian billionaires in 2026: crypto on the rise"}}</a></div>
+                    {{#get "posts" filter="featured:true+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="5" include="tags" order="published_at desc"}}
+                        {{#foreach posts}}
+                            {{#if @first}}
+                            <div class="sc-fp-main">
+                                <img class="sc-fp-main-img" src="{{#if feature_image}}{{img_url feature_image size="m"}}{{else}}{{asset "imagesAndIcons/metamask.png"}}{{/if}}" alt="{{title}}" loading="lazy">
+                                <div class="sc-fp-main-overlay">
+                                    {{#if primary_tag}}
+                                    <div class="sc-fp-main-category">{{primary_tag.name}}</div>
+                                    {{/if}}
+                                    <div class="sc-fp-main-title"><a href="{{url}}">{{title}}</a></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="sc-fp-item">
-                            <span class="sc-fp-item-num">3.</span>
-                            <div class="sc-fp-item-content">
-                                <div class="sc-fp-item-category">AI</div>
-                                <div class="sc-fp-item-title"><a href="#">{{t "Turkmenistan legalises crypto mining and exchanges from 2026"}}</a></div>
+                            {{else}}
+                            {{#if @second}}
+                            <div class="sc-fp-list">
+                            {{/if}}
+                                <div class="sc-fp-item">
+                                    <span class="sc-fp-item-num">{{@number}}</span>
+                                    <div class="sc-fp-item-content">
+                                        {{#if primary_tag}}
+                                        <div class="sc-fp-item-category">{{primary_tag.name}}</div>
+                                        {{/if}}
+                                        <div class="sc-fp-item-title"><a href="{{url}}">{{title}}</a></div>
+                                    </div>
+                                </div>
+                            {{#if @last}}
                             </div>
-                        </div>
-                        <div class="sc-fp-item">
-                            <span class="sc-fp-item-num">4.</span>
-                            <div class="sc-fp-item-content">
-                                <div class="sc-fp-item-category">Crypto</div>
-                                <div class="sc-fp-item-title"><a href="#">{{t "The 6 Most Talked About Crypto And Smart Money Moves"}}</a></div>
-                            </div>
-                        </div>
-                        <div class="sc-fp-item">
-                            <span class="sc-fp-item-num">5.</span>
-                            <div class="sc-fp-item-content">
-                                <div class="sc-fp-item-category">Token</div>
-                                <div class="sc-fp-item-title"><a href="#">{{t "The Digital Yuan Revolution: China Breaks the CBDC Interest Taboo"}}</a></div>
-                            </div>
-                        </div>
-                    </div>
-                {{/if}}
-            {{/get}}
-        </div>
-    </div>
+                            {{/if}}
+                            {{/if}}
+                        {{/foreach}}
+                    {{/get}}
+                </div>
+            </div>
+        {{/if}}
+    {{/get}}
 
 </section>
-
-<script>
-(function() {
-    // Live crypto prices from CoinGecko free API
-    async function fetchPrices() {
-        try {
-            const resp = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,cardano&vs_currencies=usd&include_24hr_change=true');
-            if (!resp.ok) return;
-            const data = await resp.json();
-            const coins = [
-                { id: 'bitcoin', cls: 'btc' },
-                { id: 'ethereum', cls: 'eth' },
-                { id: 'cardano', cls: 'ada' }
-            ];
-            coins.forEach(function(c) {
-                if (!data[c.id]) return;
-                var price = data[c.id].usd;
-                var change = data[c.id].usd_24h_change;
-                var priceEl = document.querySelector('.sc-' + c.cls + '-price');
-                var changeEl = document.querySelector('.sc-' + c.cls + '-change');
-                if (priceEl) {
-                    priceEl.textContent = price >= 1000 ? '$' + price.toLocaleString('en-US', {maximumFractionDigits: 0}) : '$' + price.toLocaleString('en-US', {maximumFractionDigits: 3});
-                }
-                if (changeEl) {
-                    var pct = change.toFixed(1);
-                    changeEl.textContent = (change >= 0 ? '+' : '') + pct + '%';
-                    changeEl.className = 'sc-market-coin-change ' + (change >= 0 ? 'up' : 'down');
-                }
-            });
-        } catch(e) { /* silently fail */ }
-    }
-    fetchPrices();
-    setInterval(fetchPrices, 60000);
-})();
-</script>

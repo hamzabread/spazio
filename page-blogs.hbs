@@ -29,7 +29,7 @@
                         <div class="sc-blogs-featured-meta">
                             <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMM D, YYYY"}}</time>
                             <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none" aria-hidden="true">
-                                <circle cx="2" cy="2" r="2" fill="#6C757D" fill-opacity="0.4"/>
+                                <circle cx="2" cy="2" r="2" fill="var(--color-muted-legacy)" fill-opacity="0.4"/>
                             </svg>
                             <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
                         </div>
@@ -51,7 +51,7 @@
                         <div class="sc-blogs-featured-meta">
                             <time datetime="2026-03-30">Mar 28, 2026</time>
                             <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none" aria-hidden="true">
-                                <circle cx="2" cy="2" r="2" fill="#6C757D" fill-opacity="0.4"/>
+                                <circle cx="2" cy="2" r="2" fill="var(--color-muted-legacy)" fill-opacity="0.4"/>
                             </svg>
                             <span>4 min read</span>
                         </div>
@@ -103,6 +103,105 @@
             <section class="sc-blogs-next-col sc-blogs-next-col-center" aria-label="Main blog story">
                 <article class="sc-blogs-main-card">
                     <img src="{{asset 'imagesAndIcons/blog-banner.png'}}" alt="Blog banner" class="sc-blogs-main-card-image" loading="lazy" decoding="async">
+                </article>
+
+                <article class="sc-blogs-main-content sc-blogs-main-content-fallback" aria-label="Blog article content">
+                    <h2>Vel rerum dolor id pariatur cupiditate non minima perspiciatis vel sapiente magni est nihil nihil quo</h2>
+                    <p>Lorem ipsum dolor sit amet. Vel esse doloremque est quaerat commodi sit laudantium itaque qui rerum repellat in unde dolore. Sit facere veniam qui dolores autem aut nihil laborum. Vel molestiae ipsa est animi repudiandae et fugit quisquam. Ut rerum velit ab odio aliquid in perferendis consequatur a possimus consequatur qui mollitia saepe ut nostrum adipisci.</p>
+
+                    <figure>
+                        <img src="{{asset 'imagesAndIcons/newspaper.png'}}" alt="Business newspaper layout" loading="lazy" decoding="async">
+                        <figcaption>Modern enterprise editorial teams collaborate to create authoritative content</figcaption>
+                    </figure>
+
+                    <h3>Eos voluptatem dolores id</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                    <p>Lorem ipsum dolor sit amet. Vel esse doloremque est quaerat commodi sit laudantium itaque qui rerum repellat in unde dolore. Sit facere veniam qui dolores autem aut nihil laborum. Vel molestiae ipsa est animi repudiandae et fugit quisquam. Ut rerum velit ab odio aliquid in perferendis consequatur a possimus consequatur qui mollitia saepe ut nostrum adipisci.</p>
+                    <p>Lorem ipsum dolor sit amet. Vel esse doloremque est quaerat commodi sit laudantium itaque qui rerum repellat in unde dolore. Sit facere veniam qui dolores autem aut nihil laborum. Vel molestiae ipsa est animi repudiandae et fugit quisquam. Ut rerum velit ab odio aliquid in perferendis consequatur a possimus consequatur qui mollitia saepe ut nostrum adipisci.</p>
+
+                    <blockquote>
+                        <p>"Blockchain's cryptographic security makes it nearly impossible to alter historical records, providing an unprecedented level of trust in digital transactions."</p>
+                        <cite>Dr. Sarah Chen, Blockchain Security Expert</cite>
+                    </blockquote>
+
+                    <h2>Et tempore mollitia nam molestias</h2>
+                    <p>Eros dictum ante class sagittis dolor suspendisse pretium. Rutrum amet penatibus velit amet arcu sociosqu vivamus id.</p>
+
+                    <p>Lorem ipsum dolor sit amet. Vel esse doloremque est quaerat commodi sit laudantium itaque qui rerum repellat in unde dolore. Sit facere veniam qui dolores autem aut nihil laborum. Vel molestiae ipsa est animi repudiandae et fugit quisquam. Ut rerum velit ab odio aliquid in perferendis consequatur a possimus consequatur qui mollitia saepe ut nostrum adipisci.</p>
+
+                    <p>Lorem ipsum dolor sit amet. Vel esse doloremque est quaerat commodi sit laudantium itaque qui rerum repellat in unde dolore. Sit facere veniam qui dolores autem aut nihil laborum. Vel molestiae ipsa est animi repudiandae et fugit quisquam. Ut rerum velit ab odio aliquid in perferendis consequatur a possimus consequatur qui mollitia saepe ut nostrum adipisci.</p>
+
+                    <figure>
+                        <img src="{{asset 'imagesAndIcons/setup.png'}}" alt="Market analysis setup" loading="lazy" decoding="async">
+                        <figcaption>Market analysis showing blockchain adoption trends across financial sectors</figcaption>
+                    </figure>
+
+                    <h3>Aut beatae nihil ex odit laudantium</h3>
+                    <p>At praesent consectetur elit etiam quam vitae. Morbi litora dictum iaculis enim lectus pretium. Dis hendrerit cras platea facilisis a rutrum. Tristique ligula vivamus habitasse imperdiet fringilla dapibus. Aliquet cursus convallis nisi rhoncus tortor neque. Placerat praesent maecenas; primis et eu tincidunt mattis. Aenean dis luctus magnis; potenti augue amet velit.</p>
+                    <p>Lorem ipsum dolor sit amet. Vel esse doloremque est quaerat commodi sit laudantium itaque qui rerum repellat in unde dolore. Sit facere veniam qui dolores autem aut nihil laborum. Vel molestiae ipsa est animi repudiandae et fugit quisquam. Ut rerum velit ab odio aliquid in perferendis consequatur a possimus consequatur qui mollitia saepe ut nostrum adipisci.</p>
+                    <p>Usto molestie orci habitant vehicula sodales phasellus. Nullam neque nisl platea. Sem conubia arcu eleifend aptent adipiscing.</p>
+
+                    <section class="sc-blogs-related" aria-label="Related Articles">
+                        <h4>Related Articles</h4>
+
+                        <div class="sc-blogs-related-grid">
+                            <article class="sc-blogs-related-card sc-blogs-related-card-large">
+                                <img src="{{asset 'imagesAndIcons/metamask.png'}}" alt="MetaMask security article" loading="lazy" decoding="async">
+                                <div class="sc-blogs-related-body">
+                                    <div class="sc-blogs-related-meta">
+                                        <img src="{{asset 'imagesAndIcons/kima.svg'}}" alt="Kimberly Mastrangelo" loading="lazy" decoding="async">
+                                        <span>Kimberly Mastrangelo</span>
+                                        <span aria-hidden="true">•</span>
+                                        <span>1 hours ago</span>
+                                    </div>
+                                    <h5>MetaMask under attack: new 2FA scam steals seed phrase</h5>
+                                    <p>The blockchain security industry is on high alert. A new and insidious phishing campaign is targeting users of MetaMask, the popular cryptocurrency wallet...</p>
+                                </div>
+                            </article>
+
+                            <article class="sc-blogs-related-card sc-blogs-related-card-large">
+                                <img src="{{asset 'imagesAndIcons/secondarticle.png'}}" alt="Smart money moves article" loading="lazy" decoding="async">
+                                <div class="sc-blogs-related-body">
+                                    <div class="sc-blogs-related-meta">
+                                        <img src="{{asset 'imagesAndIcons/joseph.svg'}}" alt="John Dukes" loading="lazy" decoding="async">
+                                        <span>John Dukes</span>
+                                        <span aria-hidden="true">•</span>
+                                        <span>1 hours ago</span>
+                                    </div>
+                                    <h5>The 6 Most Talked About Crypto And Smart Money Moves</h5>
+                                    <p>Bitcoin gets all the headlines when people talk about cryptocurrencies, but there are literally thousands of other options when it comes to these...</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="sc-blogs-related-mini-grid">
+                            <article class="sc-blogs-related-card sc-blogs-related-mini-card">
+                                <img src="{{asset 'imagesAndIcons/firstarticle.png'}}" alt="Top italian billionaires" loading="lazy" decoding="async">
+                                <div class="sc-blogs-related-mini-copy">
+                                    <h6>The 5 richest Italian billionaires in 2026: crypto on the rise</h6>
+                                    <div class="sc-blogs-related-meta">
+                                        <img src="{{asset 'imagesAndIcons/riccardo.svg'}}" alt="Rhonda Rhodes" loading="lazy" decoding="async">
+                                        <span>Rhonda Rhodes</span>
+                                        <span aria-hidden="true">•</span>
+                                        <span>2 hours ago</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="sc-blogs-related-card sc-blogs-related-mini-card">
+                                <img src="{{asset 'imagesAndIcons/firstarticle.png'}}" alt="Top italian billionaires" loading="lazy" decoding="async">
+                                <div class="sc-blogs-related-mini-copy">
+                                    <h6>The 5 richest Italian billionaires in 2026: crypto on the rise</h6>
+                                    <div class="sc-blogs-related-meta">
+                                        <img src="{{asset 'imagesAndIcons/riccardo.svg'}}" alt="Rhonda Rhodes" loading="lazy" decoding="async">
+                                        <span>Rhonda Rhodes</span>
+                                        <span aria-hidden="true">•</span>
+                                        <span>2 hours ago</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
                 </article>
             </section>
 
@@ -192,7 +291,6 @@
             </aside>
         </div>
 
-        {{content}}
     </section>
 </main>
 {{/post}}

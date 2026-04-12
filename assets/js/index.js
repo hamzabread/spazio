@@ -22,6 +22,8 @@ import { calcHeight } from './membershipCard';
 import { initMobileMenu } from './mobileMenu';
 import { changeTwitterCardTheme } from './twitterTheme';
 import { footerExternalLinks } from './footerExternalLinks';
+import { initMarketDashboard } from './marketDashboard';
+import { normalizeEventMeta } from './eventMeta';
 
 // import { createPopUp } from './languagePopUp';
 
@@ -43,6 +45,8 @@ initMobileMenu();
 toggleAccordion();
 footerExternalLinks();
 vibrator();
+initMarketDashboard();
+normalizeEventMeta();
 
 // GhostFlow MH
 moveWidget();

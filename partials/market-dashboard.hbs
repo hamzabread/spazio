@@ -1,26 +1,63 @@
-<section class="sc-market-dashboard">
+<section class="sc-market-dashboard" data-market-dashboard="coingecko">
     <div class="sc-market-dashboard-inner">
         <div class="sc-market-dashboard-header">
             <h2 class="sc-market-dashboard-title">{{t "Crypto Market"}}</h2>
+            {{#if @custom.market_source_tag}}
+            <a class="sc-market-dashboard-viewall" href="{{@site.url}}/tag/{{@custom.market_source_tag}}/">
+                {{t "View full market"}} →
+            </a>
+            {{else}}
             <a class="sc-market-dashboard-viewall" href="{{@site.url}}/tag/markets/">
                 {{t "View full market"}} →
             </a>
+            {{/if}}
         </div>
         <div class="sc-market-dashboard-grid">
             {{!-- Market Sentiment Gauge --}}
-            <div class="sc-md-card sc-md-sentiment">
+            <div class="sc-md-card sc-md-sentiment" data-md-sentiment-card>
                 <div class="sc-md-card-label">{{t "Market Sentiment"}}</div>
                 <img class="sc-md-sentiment-svg" src="{{asset "imagesAndIcons/market-sentiment.svg"}}" alt="{{t "Market Sentiment Gauge"}}" loading="lazy" width="290" height="174">
+                <div class="sc-md-card-meta" data-md-sentiment-meta>
+                    {{#if @custom.market_overview_source_filter}}
+                    {{#get "posts" filter=@custom.market_overview_source_filter limit="1" include="tags" order="published_at desc"}}
+                        {{#if posts}}
+                            {{#foreach posts}}
+                            <a href="{{url}}">{{title}}</a>
+                            {{/foreach}}
+                        {{else}}
+                            {{#get "posts" limit="1" include="tags" order="published_at desc"}}
+                                {{#foreach posts}}
+                                <a href="{{url}}">{{title}}</a>
+                                {{/foreach}}
+                            {{/get}}
+                        {{/if}}
+                    {{/get}}
+                    {{else}}
+                    {{#get "posts" filter="tags:[markets,market]" limit="1" include="tags" order="published_at desc"}}
+                        {{#if posts}}
+                            {{#foreach posts}}
+                            <a href="{{url}}">{{title}}</a>
+                            {{/foreach}}
+                        {{else}}
+                            {{#get "posts" limit="1" include="tags" order="published_at desc"}}
+                                {{#foreach posts}}
+                                <a href="{{url}}">{{title}}</a>
+                                {{/foreach}}
+                            {{/get}}
+                        {{/if}}
+                    {{/get}}
+                    {{/if}}
+                </div>
             </div>
 
             {{!-- Crypto Market Cap --}}
-            <div class="sc-md-card sc-md-cap">
+            <div class="sc-md-card sc-md-cap" data-md-cap-card>
                 <div class="sc-md-cap-top">
                     <div class="sc-md-card-title">{{t "Crypto Market Cap"}}</div>
-                    <div class="sc-md-cap-value sc-total-mcap">$2.79T</div>
+                    <div class="sc-md-cap-value sc-total-mcap" data-md-total-mcap>$2.79T</div>
                     <div class="sc-md-cap-change">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
-                        <span class="sc-md-cap-pct sc-mcap-change">0.79%</span>
+                        <span class="sc-md-cap-pct sc-mcap-change sc-md-change-up" data-md-mcap-change>+0.79%</span>
                     </div>
                 </div>
                 <div class="sc-md-chart-placeholder">
@@ -33,35 +70,44 @@
             {{!-- Top Gainers --}}
             <div class="sc-md-card sc-md-table-card">
                 <div class="sc-md-card-title">{{t "Top Gainers"}}</div>
-                <div class="sc-md-table">
+                <div class="sc-md-table sc-md-gainers-table" data-md-gainers-table>
                     <div class="sc-md-table-header">
                         <span>{{t "Trading Pairs"}}</span>
                         <span>{{t "Last Traded Price"}}</span>
                         <span>{{t "24H Change"}}</span>
                     </div>
-                    <div class="sc-md-table-row">
+                    <div class="sc-md-table-row" data-md-gainers-row>
                         <div class="sc-md-pair">
-                            <img src="{{asset "imagesAndIcons/hon.svg"}}" alt="HON" class="sc-md-pair-icon">
-                            <span>HON/USDT</span>
+                            <img src="{{asset "imagesAndIcons/bitcoin.svg"}}" alt="Bitcoin" class="sc-md-pair-icon">
+                            <div class="sc-md-pair-text">
+                                <span class="sc-md-pair-name">Bitcoin</span>
+                                <span class="sc-md-pair-symbol">BTC</span>
+                            </div>
                         </div>
-                        <span>0.000230</span>
-                        <span class="sc-md-change-up">+12.08%</span>
+                        <span class="sc-md-price">$93,041.34</span>
+                        <span class="sc-md-change-up">+2.04%</span>
                     </div>
-                    <div class="sc-md-table-row">
+                    <div class="sc-md-table-row" data-md-gainers-row>
                         <div class="sc-md-pair">
-                            <img src="{{asset "imagesAndIcons/cmp.svg"}}" alt="CMP" class="sc-md-pair-icon">
-                            <span>CMP/USDT</span>
+                            <img src="{{asset "imagesAndIcons/ethereum.svg"}}" alt="Ethereum" class="sc-md-pair-icon">
+                            <div class="sc-md-pair-text">
+                                <span class="sc-md-pair-name">Ethereum</span>
+                                <span class="sc-md-pair-symbol">ETH</span>
+                            </div>
                         </div>
-                        <span>0.00206</span>
-                        <span class="sc-md-change-down">-6.21%</span>
+                        <span class="sc-md-price">$3,176.43</span>
+                        <span class="sc-md-change-up">+1.35%</span>
                     </div>
-                    <div class="sc-md-table-row">
+                    <div class="sc-md-table-row" data-md-gainers-row>
                         <div class="sc-md-pair">
-                            <img src="{{asset "imagesAndIcons/shark.svg"}}" alt="SHARK" class="sc-md-pair-icon">
-                            <span>SHARK/USDT</span>
+                            <img src="{{asset "imagesAndIcons/cmp.svg"}}" alt="Cardano" class="sc-md-pair-icon">
+                            <div class="sc-md-pair-text">
+                                <span class="sc-md-pair-name">Cardano</span>
+                                <span class="sc-md-pair-symbol">ADA</span>
+                            </div>
                         </div>
-                        <span>0.0482</span>
-                        <span class="sc-md-change-up">+21.54%</span>
+                        <span class="sc-md-price">$0.3992</span>
+                        <span class="sc-md-change-down">-0.50%</span>
                     </div>
                 </div>
             </div>
@@ -69,34 +115,43 @@
             {{!-- Trending --}}
             <div class="sc-md-card sc-md-table-card">
                 <div class="sc-md-card-title">{{t "Trending"}}</div>
-                <div class="sc-md-table">
+                <div class="sc-md-table sc-md-trending-table" data-md-trending-table>
                     <div class="sc-md-table-header">
                         <span>{{t "Trading Pairs"}}</span>
                         <span>{{t "Last Traded Price"}}</span>
                         <span>{{t "24H Change"}}</span>
                     </div>
-                    <div class="sc-md-table-row">
+                    <div class="sc-md-table-row" data-md-trending-row>
                         <div class="sc-md-pair">
-                            <img src="{{asset "imagesAndIcons/hon.svg"}}" alt="HON" class="sc-md-pair-icon">
-                            <span>HON/USDT</span>
+                            <img src="{{asset "imagesAndIcons/hon.svg"}}" alt="Hon" class="sc-md-pair-icon">
+                            <div class="sc-md-pair-text">
+                                <span class="sc-md-pair-name">HON</span>
+                                <span class="sc-md-pair-symbol">HON/USDT</span>
+                            </div>
                         </div>
-                        <span>0.000230</span>
+                        <span class="sc-md-price">$0.000230</span>
                         <span class="sc-md-change-up">+12.08%</span>
                     </div>
-                    <div class="sc-md-table-row">
+                    <div class="sc-md-table-row" data-md-trending-row>
                         <div class="sc-md-pair">
                             <img src="{{asset "imagesAndIcons/cmp.svg"}}" alt="CMP" class="sc-md-pair-icon">
-                            <span>CMP/USDT</span>
+                            <div class="sc-md-pair-text">
+                                <span class="sc-md-pair-name">CMP</span>
+                                <span class="sc-md-pair-symbol">CMP/USDT</span>
+                            </div>
                         </div>
-                        <span>0.00206</span>
+                        <span class="sc-md-price">$0.00206</span>
                         <span class="sc-md-change-down">-6.21%</span>
                     </div>
-                    <div class="sc-md-table-row">
+                    <div class="sc-md-table-row" data-md-trending-row>
                         <div class="sc-md-pair">
-                            <img src="{{asset "imagesAndIcons/shark.svg"}}" alt="SHARK" class="sc-md-pair-icon">
-                            <span>SHARK/USDT</span>
+                            <img src="{{asset "imagesAndIcons/shark.svg"}}" alt="Shark" class="sc-md-pair-icon">
+                            <div class="sc-md-pair-text">
+                                <span class="sc-md-pair-name">SHARK</span>
+                                <span class="sc-md-pair-symbol">SHARK/USDT</span>
+                            </div>
                         </div>
-                        <span>0.0482</span>
+                        <span class="sc-md-price">$0.0482</span>
                         <span class="sc-md-change-up">+21.54%</span>
                     </div>
                 </div>

@@ -3,38 +3,111 @@
         <h2 class="sc-pr-title">{{t "Sponsored Press Releases"}}</h2>
 
         <div class="sc-pr-list">
-            <article class="sc-pr-item">
-                <a class="sc-pr-item-image" href="#" aria-label="Press Release">
-                    <img src="{{asset 'imagesAndIcons/press.png'}}" alt="Press Release" loading="lazy" />
-                </a>
-                <div class="sc-pr-item-content">
-                    <span class="sc-pr-item-tag">{{t "Press Releases"}}</span>
-                    <h3 class="sc-pr-item-title"><a href="#">Crypto AI Analysis: Which Tokens Are Driving the Market Rebound</a></h3>
-                    <p class="sc-pr-item-meta">Lorem Ipsum <span>·</span> Jun/5/2026</p>
-                </div>
-            </article>
-
-            <article class="sc-pr-item">
-                <a class="sc-pr-item-image" href="#" aria-label="Press Release">
-                    <img src="{{asset 'imagesAndIcons/press.png'}}" alt="Press Release" loading="lazy" />
-                </a>
-                <div class="sc-pr-item-content">
-                    <span class="sc-pr-item-tag">{{t "Press Releases"}}</span>
-                    <h3 class="sc-pr-item-title"><a href="#">Crypto AI Analysis: Which Tokens Are Driving the Market Rebound</a></h3>
-                    <p class="sc-pr-item-meta">Lorem Ipsum <span>·</span> Jun/5/2026</p>
-                </div>
-            </article>
-
-            <article class="sc-pr-item">
-                <a class="sc-pr-item-image" href="#" aria-label="Press Release">
-                    <img src="{{asset 'imagesAndIcons/press.png'}}" alt="Press Release" loading="lazy" />
-                </a>
-                <div class="sc-pr-item-content">
-                    <span class="sc-pr-item-tag">{{t "Press Releases"}}</span>
-                    <h3 class="sc-pr-item-title"><a href="#">Crypto AI Analysis: Which Tokens Are Driving the Market Rebound</a></h3>
-                    <p class="sc-pr-item-meta">Lorem Ipsum <span>·</span> Jun/5/2026</p>
-                </div>
-            </article>
+            {{#if @custom.press_release_source_filter}}
+            {{#get "posts" filter=@custom.press_release_source_filter limit="3" include="authors,tags" order="published_at desc"}}
+                {{#if posts}}
+                    {{#foreach posts}}
+                    <article class="sc-pr-item">
+                        <a class="sc-pr-item-image" href="{{url}}" aria-label="{{title}}">
+                            <img src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset 'imagesAndIcons/press.png'}}{{/if}}" alt="{{title}}" loading="lazy" />
+                        </a>
+                        <div class="sc-pr-item-content">
+                            <span class="sc-pr-item-tag">{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Press Releases"}}{{/if}}</span>
+                            <h3 class="sc-pr-item-title"><a href="{{url}}">{{title}}</a></h3>
+                            <p class="sc-pr-item-meta">
+                                <span class="sc-pr-meta-fallback">{{#if primary_author}}{{primary_author.name}}{{else}}{{@site.title}}{{/if}}</span>
+                                <span class="sc-pr-meta-fallback">{{date format="MMM D, YYYY"}}</span>
+                                <span class="sc-pr-meta-flags">
+                                    {{#foreach tags visibility="all"}}
+                                        {{#match slug "^hash-"}}
+                                        <span class="sc-pr-internal-flag">{{name}}</span>
+                                        {{/match}}
+                                    {{/foreach}}
+                                </span>
+                            </p>
+                        </div>
+                    </article>
+                    {{/foreach}}
+                {{else}}
+                    {{#get "posts" filter="(tag:sponsored-content,tag:sponsored-press-release,tag:press-release,tag:press-releases,tag:sponsored)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="3" include="authors,tags" order="published_at desc"}}
+                        {{#foreach posts}}
+                        <article class="sc-pr-item">
+                            <a class="sc-pr-item-image" href="{{url}}" aria-label="{{title}}">
+                                <img src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset 'imagesAndIcons/press.png'}}{{/if}}" alt="{{title}}" loading="lazy" />
+                            </a>
+                            <div class="sc-pr-item-content">
+                                <span class="sc-pr-item-tag">{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Latest"}}{{/if}}</span>
+                                <h3 class="sc-pr-item-title"><a href="{{url}}">{{title}}</a></h3>
+                                <p class="sc-pr-item-meta">
+                                    <span class="sc-pr-meta-fallback">{{#if primary_author}}{{primary_author.name}}{{else}}{{@site.title}}{{/if}}</span>
+                                    <span class="sc-pr-meta-fallback">{{date format="MMM D, YYYY"}}</span>
+                                    <span class="sc-pr-meta-flags">
+                                        {{#foreach tags visibility="all"}}
+                                            {{#match slug "^hash-"}}
+                                            <span class="sc-pr-internal-flag">{{name}}</span>
+                                            {{/match}}
+                                        {{/foreach}}
+                                    </span>
+                                </p>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{/get}}
+                {{/if}}
+            {{/get}}
+            {{else}}
+            {{#get "posts" filter="(tag:sponsored-content,tag:sponsored-press-release,tag:press-release,tag:press-releases,tag:sponsored)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="3" include="authors,tags" order="published_at desc"}}
+                {{#if posts}}
+                    {{#foreach posts}}
+                    <article class="sc-pr-item">
+                        <a class="sc-pr-item-image" href="{{url}}" aria-label="{{title}}">
+                            <img src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset 'imagesAndIcons/press.png'}}{{/if}}" alt="{{title}}" loading="lazy" />
+                        </a>
+                        <div class="sc-pr-item-content">
+                            <span class="sc-pr-item-tag">{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Press Releases"}}{{/if}}</span>
+                            <h3 class="sc-pr-item-title"><a href="{{url}}">{{title}}</a></h3>
+                            <p class="sc-pr-item-meta">
+                                <span class="sc-pr-meta-fallback">{{#if primary_author}}{{primary_author.name}}{{else}}{{@site.title}}{{/if}}</span>
+                                <span class="sc-pr-meta-fallback">{{date format="MMM D, YYYY"}}</span>
+                                <span class="sc-pr-meta-flags">
+                                    {{#foreach tags visibility="all"}}
+                                        {{#match slug "^hash-"}}
+                                        <span class="sc-pr-internal-flag">{{name}}</span>
+                                        {{/match}}
+                                    {{/foreach}}
+                                </span>
+                            </p>
+                        </div>
+                    </article>
+                    {{/foreach}}
+                {{else}}
+                    {{#get "posts" filter="(tag:press-release,tag:press-releases)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="3" include="authors,tags" order="published_at desc"}}
+                        {{#foreach posts}}
+                        <article class="sc-pr-item">
+                            <a class="sc-pr-item-image" href="{{url}}" aria-label="{{title}}">
+                                <img src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset 'imagesAndIcons/press.png'}}{{/if}}" alt="{{title}}" loading="lazy" />
+                            </a>
+                            <div class="sc-pr-item-content">
+                                <span class="sc-pr-item-tag">{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Latest"}}{{/if}}</span>
+                                <h3 class="sc-pr-item-title"><a href="{{url}}">{{title}}</a></h3>
+                                <p class="sc-pr-item-meta">
+                                    <span class="sc-pr-meta-fallback">{{#if primary_author}}{{primary_author.name}}{{else}}{{@site.title}}{{/if}}</span>
+                                    <span class="sc-pr-meta-fallback">{{date format="MMM D, YYYY"}}</span>
+                                    <span class="sc-pr-meta-flags">
+                                        {{#foreach tags visibility="all"}}
+                                            {{#match slug "^hash-"}}
+                                            <span class="sc-pr-internal-flag">{{name}}</span>
+                                            {{/match}}
+                                        {{/foreach}}
+                                    </span>
+                                </p>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{/get}}
+                {{/if}}
+            {{/get}}
+            {{/if}}
         </div>
 
         <div class="sc-pr-cta">
@@ -50,7 +123,7 @@
                 <h3>{{{t "Submit Your <span>Press Release</span>"}}}</h3>
                 <p>{{t "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to"}}</p>
             </div>
-            <a href="#" class="sc-pr-cta-btn">{{t "View All Benefits"}}</a>
+            <a href="{{@site.url}}/advertise/" class="sc-pr-cta-btn">{{t "View All Benefits"}}</a>
         </div>
     </div>
 </section>

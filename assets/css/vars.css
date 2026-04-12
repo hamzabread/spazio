@@ -14,6 +14,10 @@
     --gh-font-body: 'Helvetica Now Display', 'Helvetica Neue', Arial, sans-serif;
 
     --color-background-main: #F8F9FA;
+    --color-muted-legacy: #4A5565;
+    --color-surface-101010: #FFF;
+    --color-border-strong-adaptive: #F2F4F5;
+    --color-ebeff2-adaptive: #022538;
     --color-bg-alt: #F9F9F9;
     --color-main: #1D1D1F;
     --color-accent: var(--ghost-accent-color, #12c91e);
@@ -129,6 +133,10 @@
 
 :root[data-color-scheme="dark"] {
     --color-background-main: #000;
+    --color-muted-legacy: #6C757D;
+    --color-surface-101010: #101010;
+    --color-border-strong-adaptive: #1B1B1B;
+    --color-ebeff2-adaptive: var(--color-ebeff2-adaptive);
     --color-bg-alt: #050505;
     --color-main: #EDEDED;
     --color-accent: var(--ghost-accent-color, #12c91e);

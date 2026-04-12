@@ -8,55 +8,197 @@
             <button class="sc-directory-tab" type="button" role="tab" aria-selected="false" data-tab-target="products">{{t "Products"}}</button>
         </div>
 
-        <div class="sc-directory-filters">
-            <span class="sc-directory-chip">All</span>
-            <span class="sc-directory-chip">Exchanges</span>
-            <span class="sc-directory-chip">Wallets</span>
-            <span class="sc-directory-chip">Analytics</span>
-            <span class="sc-directory-chip">DeFi Apps</span>
-            <span class="sc-directory-chip">On-Chain</span>
-            <span class="sc-directory-chip">AI</span>
-            <span class="sc-directory-chip">NFT</span>
-            <span class="sc-directory-chip">News</span>
-            <span class="sc-directory-chip">Research</span>
-            <span class="sc-directory-chip">Launchpads</span>
-            <span class="sc-directory-chip">Lorem Ipsum</span>
-            <span class="sc-directory-chip">DeFi Apps</span>
-            <span class="sc-directory-chip">NFT</span>
+        <div class="sc-directory-filters" role="tablist" aria-label="Directory category filters">
+            <button class="sc-directory-chip is-active" type="button" data-directory-filter="all">{{t "All"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="exchanges">{{t "Exchanges"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="wallets">{{t "Wallets"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="analytics">{{t "Analytics"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="defi">{{t "DeFi Apps"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="on-chain">{{t "On-Chain"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="ai">{{t "AI"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="nft">{{t "NFT"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="news">{{t "News"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="research">{{t "Research"}}</button>
+            <button class="sc-directory-chip" type="button" data-directory-filter="launchpads">{{t "Launchpads"}}</button>
         </div>
 
         <div class="sc-directory-panel is-active" data-tab-panel="people">
             <div class="sc-directory-grid">
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}" alt="Jerry Helfer"><div class="sc-directory-info"><h3 class="sc-directory-name">Jerry Helfer<span class="sc-directory-badge"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.1702 8.05492L15.1502 6.86992C14.9552 6.64492 14.7977 6.22492 14.7977 5.92492V4.64992C14.7977 3.85492 14.1452 3.20242 13.3502 3.20242H12.0752C11.7827 3.20242 11.3552 3.04492 11.1302 2.84992L9.94516 1.82992C9.42766 1.38742 8.58016 1.38742 8.05516 1.82992L6.87766 2.85742C6.65266 3.04492 6.22516 3.20242 5.93266 3.20242H4.63516C3.84016 3.20242 3.18766 3.85492 3.18766 4.64992V5.93242C3.18766 6.22492 3.03016 6.64492 2.84266 6.86992L1.83016 8.06242C1.39516 8.57992 1.39516 9.41992 1.83016 9.93742L2.84266 11.1299C3.03016 11.3549 3.18766 11.7749 3.18766 12.0674V13.3499C3.18766 14.1449 3.84016 14.7974 4.63516 14.7974H5.93266C6.22516 14.7974 6.65266 14.9549 6.87766 15.1499L8.06266 16.1699C8.58016 16.6124 9.42766 16.6124 9.95266 16.1699L11.1377 15.1499C11.3627 14.9549 11.7827 14.7974 12.0827 14.7974H13.3577C14.1527 14.7974 14.8052 14.1449 14.8052 13.3499V12.0749C14.8052 11.7824 14.9627 11.3549 15.1577 11.1299L16.1777 9.94492C16.6127 9.42742 16.6127 8.57242 16.1702 8.05492ZM12.1202 7.58242L8.49766 11.2049C8.39266 11.3099 8.25016 11.3699 8.10016 11.3699C7.95016 11.3699 7.80766 11.3099 7.70266 11.2049L5.88766 9.38992C5.67016 9.17242 5.67016 8.81242 5.88766 8.59492C6.10516 8.37742 6.46516 8.37742 6.68266 8.59492L8.10016 10.0124L11.3252 6.78742C11.5427 6.56992 11.9027 6.56992 12.1202 6.78742C12.3377 7.00492 12.3377 7.36492 12.1202 7.58242Z" fill="#00A3FF"/></svg></span></h3><p class="sc-directory-role">CIO · ProCap BTC</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/elon.png"}}" alt="Chris Glasser"><div class="sc-directory-info"><h3 class="sc-directory-name">Chris Glasser</h3><p class="sc-directory-role">CEO · WhiteBIT</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/metamask.png"}}" alt="Joshua Jones"><div class="sc-directory-info"><h3 class="sc-directory-name">Joshua Jones</h3><p class="sc-directory-role">CEO & Founder · Securitize</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/yuan.png"}}" alt="Autumn Phillips"><div class="sc-directory-info"><h3 class="sc-directory-name">Autumn Phillips</h3><p class="sc-directory-role">CTO · Kerberus</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}" alt="Bradley Lawlor"><div class="sc-directory-info"><h3 class="sc-directory-name">Bradley Lawlor</h3><p class="sc-directory-role">Founder · O.xyz</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/elon.png"}}" alt="Frances Swann"><div class="sc-directory-info"><h3 class="sc-directory-name">Frances Swann</h3><p class="sc-directory-role">Founder & CEO · Block</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/metamask.png"}}" alt="Paula Mora"><div class="sc-directory-info"><h3 class="sc-directory-name">Paula Mora<span class="sc-directory-badge"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.1702 8.05492L15.1502 6.86992C14.9552 6.64492 14.7977 6.22492 14.7977 5.92492V4.64992C14.7977 3.85492 14.1452 3.20242 13.3502 3.20242H12.0752C11.7827 3.20242 11.3552 3.04492 11.1302 2.84992L9.94516 1.82992C9.42766 1.38742 8.58016 1.38742 8.05516 1.82992L6.87766 2.85742C6.65266 3.04492 6.22516 3.20242 5.93266 3.20242H4.63516C3.84016 3.20242 3.18766 3.85492 3.18766 4.64992V5.93242C3.18766 6.22492 3.03016 6.64492 2.84266 6.86992L1.83016 8.06242C1.39516 8.57992 1.39516 9.41992 1.83016 9.93742L2.84266 11.1299C3.03016 11.3549 3.18766 11.7749 3.18766 12.0674V13.3499C3.18766 14.1449 3.84016 14.7974 4.63516 14.7974H5.93266C6.22516 14.7974 6.65266 14.9549 6.87766 15.1499L8.06266 16.1699C8.58016 16.6124 9.42766 16.6124 9.95266 16.1699L11.1377 15.1499C11.3627 14.9549 11.7827 14.7974 12.0827 14.7974H13.3577C14.1527 14.7974 14.8052 14.1449 14.8052 13.3499V12.0749C14.8052 11.7824 14.9627 11.3549 15.1577 11.1299L16.1777 9.94492C16.6127 9.42742 16.6127 8.57242 16.1702 8.05492ZM12.1202 7.58242L8.49766 11.2049C8.39266 11.3099 8.25016 11.3699 8.10016 11.3699C7.95016 11.3699 7.80766 11.3099 7.70266 11.2049L5.88766 9.38992C5.67016 9.17242 5.67016 8.81242 5.88766 8.59492C6.10516 8.37742 6.46516 8.37742 6.68266 8.59492L8.10016 10.0124L11.3252 6.78742C11.5427 6.56992 11.9027 6.56992 12.1202 6.78742C12.3377 7.00492 12.3377 7.36492 12.1202 7.58242Z" fill="#00A3FF"/></svg></span></h3><p class="sc-directory-role">Growth Lead · Kraken</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/yuan.png"}}" alt="Katie Sims"><div class="sc-directory-info"><h3 class="sc-directory-name">Katie Sims<span class="sc-directory-badge"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.1702 8.05492L15.1502 6.86992C14.9552 6.64492 14.7977 6.22492 14.7977 5.92492V4.64992C14.7977 3.85492 14.1452 3.20242 13.3502 3.20242H12.0752C11.7827 3.20242 11.3552 3.04492 11.1302 2.84992L9.94516 1.82992C9.42766 1.38742 8.58016 1.38742 8.05516 1.82992L6.87766 2.85742C6.65266 3.04492 6.22516 3.20242 5.93266 3.20242H4.63516C3.84016 3.20242 3.18766 3.85492 3.18766 4.64992V5.93242C3.18766 6.22492 3.03016 6.64492 2.84266 6.86992L1.83016 8.06242C1.39516 8.57992 1.39516 9.41992 1.83016 9.93742L2.84266 11.1299C3.03016 11.3549 3.18766 11.7749 3.18766 12.0674V13.3499C3.18766 14.1449 3.84016 14.7974 4.63516 14.7974H5.93266C6.22516 14.7974 6.65266 14.9549 6.87766 15.1499L8.06266 16.1699C8.58016 16.6124 9.42766 16.6124 9.95266 16.1699L11.1377 15.1499C11.3627 14.9549 11.7827 14.7974 12.0827 14.7974H13.3577C14.1527 14.7974 14.8052 14.1449 14.8052 13.3499V12.0749C14.8052 11.7824 14.9627 11.3549 15.1577 11.1299L16.1777 9.94492C16.6127 9.42742 16.6127 8.57242 16.1702 8.05492ZM12.1202 7.58242L8.49766 11.2049C8.39266 11.3099 8.25016 11.3699 8.10016 11.3699C7.95016 11.3699 7.80766 11.3099 7.70266 11.2049L5.88766 9.38992C5.67016 9.17242 5.67016 8.81242 5.88766 8.59492C6.10516 8.37742 6.46516 8.37742 6.68266 8.59492L8.10016 10.0124L11.3252 6.78742C11.5427 6.56992 11.9027 6.56992 12.1202 6.78742C12.3377 7.00492 12.3377 7.36492 12.1202 7.58242Z" fill="#00A3FF"/></svg></span></h3><p class="sc-directory-role">Retired · Cryptographer</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}" alt="Lorri Warf"><div class="sc-directory-info"><h3 class="sc-directory-name">Lorri Warf</h3><p class="sc-directory-role">CEO & Founder · Strike</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/elon.png"}}" alt="Katie Sims"><div class="sc-directory-info"><h3 class="sc-directory-name">Katie Sims</h3><p class="sc-directory-role">President · Argentina</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/metamask.png"}}" alt="Daniel Harrison"><div class="sc-directory-info"><h3 class="sc-directory-name">Daniel Harrison</h3><p class="sc-directory-role">CEO & Founder · Overbit</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/yuan.png"}}" alt="Stephanie Sharkey"><div class="sc-directory-info"><h3 class="sc-directory-name">Stephanie Sharkey</h3><p class="sc-directory-role">CEO · Nifty Football</p></div></article>
+                {{#if @custom.directory_people_source_filter}}
+                {{#get "posts" filter=@custom.directory_people_source_filter include="authors,tags" limit="12" order="published_at desc"}}
+                    {{#if posts}}
+                        {{#foreach posts}}
+                        <article class="sc-directory-card" data-tags="all {{#foreach tags visibility="all"}}{{slug}} {{/foreach}}">
+                            <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}{{/if}}" alt="{{title}}">
+                            <div class="sc-directory-info">
+                                <h3 class="sc-directory-name">{{title}}
+                                    {{#has tag="#verified,verified"}}
+                                    <span class="sc-directory-badge" aria-label="Verified">
+                                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="10" cy="10" r="10" fill="#00A9FF"/>
+                                            <path d="M6 10.3L8.5 12.8L14 7.3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    {{/has}}
+                                </h3>
+                                <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Contributor"}}{{/if}}{{/if}}</p>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{/if}}
+                {{/get}}
+                {{else}}
+                {{#get "posts" filter="tags:[people,person,founder,founders,ceo,cto]" include="authors,tags" limit="12" order="published_at desc"}}
+                    {{#if posts}}
+                        {{#foreach posts}}
+                        <article class="sc-directory-card" data-tags="all {{#foreach tags visibility="all"}}{{slug}} {{/foreach}}">
+                            <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}{{/if}}" alt="{{title}}">
+                            <div class="sc-directory-info">
+                                <h3 class="sc-directory-name">{{title}}
+                                    {{#has tag="#verified,verified"}}
+                                    <span class="sc-directory-badge" aria-label="Verified">
+                                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="10" cy="10" r="10" fill="#00A9FF"/>
+                                            <path d="M6 10.3L8.5 12.8L14 7.3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    {{/has}}
+                                </h3>
+                                <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Contributor"}}{{/if}}{{/if}}</p>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{else}}
+                        {{#get "authors" include="count.posts" limit="12" order="count.posts desc"}}
+                            {{#foreach authors}}
+                            <article class="sc-directory-card" data-tags="all">
+                                <img class="sc-directory-avatar" src="{{#if profile_image}}{{img_url profile_image size="s"}}{{else}}{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}{{/if}}" alt="{{name}}">
+                                <div class="sc-directory-info">
+                                    <h3 class="sc-directory-name">{{name}}</h3>
+                                    <p class="sc-directory-role">{{#if bio}}{{bio}}{{else}}{{t "Contributor"}}{{/if}}</p>
+                                </div>
+                            </article>
+                            {{/foreach}}
+                        {{/get}}
+                    {{/if}}
+                {{/get}}
+                {{/if}}
             </div>
         </div>
 
         <div class="sc-directory-panel" data-tab-panel="companies">
             <div class="sc-directory-grid">
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/hon.svg"}}" alt="Hon Labs"><div class="sc-directory-info"><h3 class="sc-directory-name">Hon Labs</h3><p class="sc-directory-role">Layer-2 Infrastructure</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/cmp.svg"}}" alt="CMP Group"><div class="sc-directory-info"><h3 class="sc-directory-name">CMP Group</h3><p class="sc-directory-role">Exchange Platform</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/shark.svg"}}" alt="Shark Ventures"><div class="sc-directory-info"><h3 class="sc-directory-name">Shark Ventures</h3><p class="sc-directory-role">Crypto Venture Studio</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/bitcoin.svg"}}" alt="BitCore"><div class="sc-directory-info"><h3 class="sc-directory-name">BitCore</h3><p class="sc-directory-role">On-chain Analytics</p></div></article>
+                {{#if @custom.directory_companies_source_filter}}
+                {{#get "posts" filter=@custom.directory_companies_source_filter include="authors,tags" limit="8" order="published_at desc"}}
+                    {{#if posts}}
+                        {{#foreach posts}}
+                        <article class="sc-directory-card">
+                            <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}">
+                            <div class="sc-directory-info">
+                                <h3 class="sc-directory-name">{{title}}</h3>
+                                <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Company"}}{{/if}}{{/if}}</p>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{else}}
+                        {{#get "posts" include="authors,tags" limit="8" order="published_at desc"}}
+                            {{#foreach posts}}
+                            <article class="sc-directory-card">
+                                <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}">
+                                <div class="sc-directory-info">
+                                    <h3 class="sc-directory-name">{{title}}</h3>
+                                    <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Company"}}{{/if}}{{/if}}</p>
+                                </div>
+                            </article>
+                            {{/foreach}}
+                        {{/get}}
+                    {{/if}}
+                {{/get}}
+                {{else}}
+                {{#get "posts" filter="tags:[companies,company]" include="authors,tags" limit="8" order="published_at desc"}}
+                    {{#if posts}}
+                        {{#foreach posts}}
+                        <article class="sc-directory-card">
+                            <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}">
+                            <div class="sc-directory-info">
+                                <h3 class="sc-directory-name">{{title}}</h3>
+                                <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Company"}}{{/if}}{{/if}}</p>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{else}}
+                        {{#get "posts" include="authors,tags" limit="8" order="published_at desc"}}
+                            {{#foreach posts}}
+                            <article class="sc-directory-card">
+                                <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}">
+                                <div class="sc-directory-info">
+                                    <h3 class="sc-directory-name">{{title}}</h3>
+                                    <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Company"}}{{/if}}{{/if}}</p>
+                                </div>
+                            </article>
+                            {{/foreach}}
+                        {{/get}}
+                    {{/if}}
+                {{/get}}
+                {{/if}}
             </div>
         </div>
 
         <div class="sc-directory-panel" data-tab-panel="products">
             <div class="sc-directory-grid">
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/defi.svg"}}" alt="DeFi Pro"><div class="sc-directory-info"><h3 class="sc-directory-name">DeFi Pro</h3><p class="sc-directory-role">Portfolio Tracking Suite</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/ethereum.svg"}}" alt="ETH Signal"><div class="sc-directory-info"><h3 class="sc-directory-name">ETH Signal</h3><p class="sc-directory-role">Market Intelligence Tool</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/stablecoin.svg"}}" alt="StableFlow"><div class="sc-directory-info"><h3 class="sc-directory-name">StableFlow</h3><p class="sc-directory-role">Treasury Automation</p></div></article>
-                <article class="sc-directory-card"><img class="sc-directory-avatar" src="{{asset "imagesAndIcons/sec.svg"}}" alt="Reg Intel"><div class="sc-directory-info"><h3 class="sc-directory-name">Reg Intel</h3><p class="sc-directory-role">Compliance Monitoring</p></div></article>
+                {{#if @custom.directory_products_source_filter}}
+                {{#get "posts" filter=@custom.directory_products_source_filter include="authors,tags" limit="8" order="published_at desc"}}
+                    {{#if posts}}
+                        {{#foreach posts}}
+                        <article class="sc-directory-card">
+                            <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/defi.svg"}}{{/if}}" alt="{{title}}">
+                            <div class="sc-directory-info">
+                                <h3 class="sc-directory-name">{{title}}</h3>
+                                <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Product"}}{{/if}}{{/if}}</p>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{else}}
+                        {{#get "posts" include="authors,tags" limit="8" order="published_at desc"}}
+                            {{#foreach posts}}
+                            <article class="sc-directory-card">
+                                <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/defi.svg"}}{{/if}}" alt="{{title}}">
+                                <div class="sc-directory-info">
+                                    <h3 class="sc-directory-name">{{title}}</h3>
+                                    <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Product"}}{{/if}}{{/if}}</p>
+                                </div>
+                            </article>
+                            {{/foreach}}
+                        {{/get}}
+                    {{/if}}
+                {{/get}}
+                {{else}}
+                {{#get "posts" filter="tags:[products,product,reviews]" include="authors,tags" limit="8" order="published_at desc"}}
+                    {{#if posts}}
+                        {{#foreach posts}}
+                        <article class="sc-directory-card">
+                            <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/defi.svg"}}{{/if}}" alt="{{title}}">
+                            <div class="sc-directory-info">
+                                <h3 class="sc-directory-name">{{title}}</h3>
+                                <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Product"}}{{/if}}{{/if}}</p>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{else}}
+                        {{#get "posts" include="authors,tags" limit="8" order="published_at desc"}}
+                            {{#foreach posts}}
+                            <article class="sc-directory-card">
+                                <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/defi.svg"}}{{/if}}" alt="{{title}}">
+                                <div class="sc-directory-info">
+                                    <h3 class="sc-directory-name">{{title}}</h3>
+                                    <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Product"}}{{/if}}{{/if}}</p>
+                                </div>
+                            </article>
+                            {{/foreach}}
+                        {{/get}}
+                    {{/if}}
+                {{/get}}
+                {{/if}}
             </div>
         </div>
     </div>
@@ -66,7 +208,31 @@
 (function () {
     var tabs = document.querySelectorAll('.sc-directory-tab');
     var panels = document.querySelectorAll('.sc-directory-panel');
+    var chips = document.querySelectorAll('.sc-directory-chip');
+    var activeFilter = 'all';
+
     if (!tabs.length || !panels.length) return;
+
+    function applyFilter() {
+        var activePanel = document.querySelector('.sc-directory-panel.is-active');
+        if (!activePanel) return;
+
+        var cards = activePanel.querySelectorAll('.sc-directory-card');
+        cards.forEach(function (card) {
+            if (activeFilter === 'all') {
+                card.style.display = '';
+                return;
+            }
+
+            var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+            if (!tags) {
+                card.style.display = '';
+                return;
+            }
+
+            card.style.display = tags.indexOf(activeFilter.toLowerCase()) > -1 ? '' : 'none';
+        });
+    }
 
     tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
@@ -85,8 +251,26 @@
             tab.setAttribute('aria-selected', 'true');
 
             var nextPanel = document.querySelector('.sc-directory-panel[data-tab-panel="' + target + '"]');
-            if (nextPanel) nextPanel.classList.add('is-active');
+            if (nextPanel) {
+                nextPanel.classList.add('is-active');
+                applyFilter();
+            }
         });
     });
+
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            activeFilter = chip.getAttribute('data-directory-filter') || 'all';
+
+            chips.forEach(function (c) {
+                c.classList.remove('is-active');
+            });
+            chip.classList.add('is-active');
+
+            applyFilter();
+        });
+    });
+
+    applyFilter();
 })();
 </script>

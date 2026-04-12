@@ -164,45 +164,7 @@
     {{/if}}
     {{/get}}
     {{else}}
-    {{#get "posts" filter="featured:true" include="tags,authors" order="published_at desc"}}
-    {{#if posts}}
-    <div class="gh-sidebar-featured-posts-wrapper">
-        <h3 class="gh-sidebar-featured-posts-title">{{t "Featured Posts"}}</h3>
-        <div class="gh-sidebar-featured-posts">
-            {{#match @custom.featured_posts "Medium Slider" }}
-            {{#foreach posts from="4" to="7"}}
-            {{>widget-featured-post}}
-            {{/foreach}}
-            {{/match}}
-            {{#match @custom.featured_posts "Large Slider" }}
-            {{#foreach posts from="4" to="7"}}
-            {{>widget-featured-post}}
-            {{/foreach}}
-            {{/match}}
-            {{#match @custom.featured_posts "Small Slider" }}
-            {{#foreach posts from="4" to="7"}}
-            {{>widget-featured-post}}
-            {{/foreach}}
-            {{/match}}
-            {{#match @custom.featured_posts "Tiles" }}
-            {{#foreach posts from="5" to="8"}}
-            {{>widget-featured-post}}
-            {{/foreach}}
-            {{/match}}
-            {{#match @custom.featured_posts "Fullscreen Tiles" }}
-            {{#foreach posts from="5" to="8"}}
-            {{>widget-featured-post}}
-            {{/foreach}}
-            {{/match}}
-            {{#match @custom.featured_posts "None" }}
-            {{#foreach posts from="1" to="4"}}
-            {{>widget-featured-post}}
-            {{/foreach}}
-            {{/match}}
-        </div>
-    </div>
-    {{/if}}
-    {{/get}}
+    
     {{/is}}
     {{> widget-scam}}
     {{!-- Categories Widget --}}

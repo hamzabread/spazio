@@ -247,7 +247,7 @@
 /* ---------------------------------------------------------- */
 
 .sc-contact-hero {
-    background: #000;
+    background: var(--color-surface-101010);
     position: relative;
     overflow: hidden;
     padding: 80px 75px;
@@ -295,7 +295,7 @@
 
 .sc-contact-hero-inner h1 {
     margin: 0;
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     text-align: center;
     font-family: "Helvetica Now Display";
     font-size: 48px;
@@ -311,7 +311,7 @@
 .sc-contact-hero-inner p {
     margin: 14px 0 0 0 !important;
     max-width: 632px;
-    color: #6C757D;
+    color: var(--color-muted-legacy);
     text-align: center;
     font-family: "Helvetica Now Display";
     font-size: 18px;
@@ -321,7 +321,7 @@
 }
 
 .sc-contact-touch {
-    background: #000;
+    background: var(--color-surface-101010);
     padding: 80px 75px;
 }
 
@@ -343,7 +343,7 @@
 
 .sc-contact-form-col h2 {
     margin: 0 0 20px;
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
     font-size: 40px;
     font-style: normal;
@@ -354,7 +354,7 @@
 
 .sc-contact-form-col > p {
     margin: 0 0 48px !important;
-    color: #6C757D;
+    color: var(--color-muted-legacy);
     font-family: "Helvetica Now Display";
     font-size: 18px;
     font-style: normal;
@@ -386,10 +386,10 @@
 
 .sc-contact-form-row input,
 .sc-contact-form-row textarea {
-    background: #050505;
-    border: 1px solid #1f2024 !important;
+    background: var(--color-surface-101010);
+    border: 1px solid var(--color-border-strong-adaptive) !important;
     border-radius: 8px !important;
-    color: #ebeff2 !important;
+    color: var(--color-ebeff2-adaptive) !important;
     font-family: Helvetica Now Display !important;
     font-size: 16px !important;
     font-style: normal;
@@ -407,14 +407,14 @@
 #contact-first-name {
     padding: 12px 16px !important;
     border-radius: 8px !important;
-    border: 1px solid #1B1B1B !important;
-    background: #050505 !important;
+    border: 1px solid var(--color-border-strong-adaptive) !important;
+    background: var(--color-surface-101010) !important;
     box-shadow: 0 1px 2px 0 rgba(10, 13, 18, 0.05) !important;
 }
 
 .sc-contact-form-row input::placeholder,
 .sc-contact-form-row textarea::placeholder {
-    color: #6C757D;
+    color: var(--color-muted-legacy);
 }
 
 .sc-contact-consent {
@@ -422,7 +422,7 @@
     align-items: center;
     gap: 10px;
     margin: 0;
-    color: #6C757D;
+    color: var(--color-muted-legacy);
     font-family: "Helvetica Now Display";
     font-size: 16px;
     font-style: normal;
@@ -438,8 +438,8 @@
     height: 16px;
     margin: 0;
     border-radius: 4px;
-    border: 1px solid #6C757D;
-    background: #050505;
+    border: 1px solid var(--color-muted-legacy);
+    background: var(--color-surface-101010);
     cursor: pointer;
 }
 
@@ -498,7 +498,7 @@
     width: 100%;
     min-height: 711px;
     border-radius: 20px;
-    background: #000;
+    background: var(--color-surface-101010);
 }
 
 .sc-contact-media-card img {
@@ -515,7 +515,7 @@
     right: 14px;
     bottom: 14px;
     border-radius: 16px;
-    background: #000;
+    background: var(--color-surface-101010);
     border: 0;
     padding: 20px;
 }
@@ -523,13 +523,13 @@
 .sc-contact-direct-card h3,
 .sc-contact-direct-card h4 {
     margin: 0;
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
     font-style: normal;
 }
 
 .sc-contact-direct-card h3 {
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
     font-size: 20px;
     font-style: normal;
@@ -558,7 +558,7 @@
 }
 
 .sc-contact-direct-card p {
-    color: #6C757D;
+    color: var(--color-muted-legacy);
     font-family: "Helvetica Now Display";
     font-size: 18px;
     font-style: normal;
@@ -578,7 +578,7 @@
 }
 
 .sc-contact-direct-card a {
-    color: #6C757D;
+    color: var(--color-muted-legacy);
     font-family: "Helvetica Now Display";
     font-size: 18px;
     font-style: normal;
@@ -588,7 +588,7 @@
 }
 
 .sc-contact-direct-card h4 {
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
     font-size: 20px;
     font-style: normal;

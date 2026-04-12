@@ -1,8 +1,12 @@
 .sc-pr-feed {
     padding: 50px;
-    background: #000;
-    border-top: 1px solid #1B1B1B;
-    border-bottom: 1px solid #1B1B1B;
+    background: #FFF;
+    border-top: 1px solid var(--color-border-strong-adaptive);
+    border-bottom: 1px solid var(--color-border-strong-adaptive);
+}
+
+:root[data-color-scheme="dark"] .sc-pr-feed {
+    background: #000000;
 }
 
 .sc-pr-inner {
@@ -11,7 +15,7 @@
 }
 
 .sc-pr-title {
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
     font-size: 26px;
     font-style: normal;
@@ -26,21 +30,23 @@
     gap: 12px;
     align-self: stretch;
     padding-bottom: 40px;
-    border-bottom: 1px solid #1B1B1B;
+    border-bottom: 1px solid var(--color-border-strong-adaptive);
     margin-bottom: 44px;
 }
 
 .sc-pr-item {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     flex: 1;
+    width: 100%;
+    max-width: 438.6px;
     min-width: 0;
 }
 
 .sc-pr-item-image {
-    width: 104px;
-    height: 104px;
+    width: 98px;
+    height: 98px;
     border-radius: 10px;
     overflow: hidden;
     flex-shrink: 0;
@@ -66,21 +72,23 @@
     font-weight: 500;
     line-height: 100%;
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .sc-pr-item-title {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
 }
 
 .sc-pr-item-title a {
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
     text-decoration: none;
+    display: block;
+    max-width: 277px;
 }
 
 .sc-pr-item-title a:hover {
@@ -89,16 +97,32 @@
 
 .sc-pr-item-meta {
     margin: 0;
-    color: #6C757D;
+    color: var(--color-muted-legacy);
     font-family: "Helvetica Now Display";
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
 }
 
 .sc-pr-item-meta span {
-    margin: 0 8px;
+    margin: 0;
+}
+
+.sc-pr-item-meta span:last-child {
+    margin-left: 10px;
+}
+
+.sc-pr-meta-flags {
+    margin: 0;
+}
+
+.sc-pr-meta-flags .sc-pr-internal-flag {
+    margin: 0;
+}
+
+.sc-pr-meta-flags .sc-pr-internal-flag + .sc-pr-internal-flag {
+    margin-left: 24px;
 }
 
 .sc-pr-cta {
@@ -109,7 +133,11 @@
     gap: 16px;
     width: 100%;
     border-radius: 14px;
-    background: #0E0E0E;
+    background: #F5F6F7;
+}
+
+:root[data-color-scheme="dark"] .sc-pr-cta {
+    background: var(--color-surface-101010);
 }
 
 .sc-pr-cta-icon {
@@ -128,7 +156,7 @@
 }
 
 .sc-pr-cta-copy h3 {
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     font-feature-settings: 'dlig' on;
     font-family: "Helvetica Now Display";
     font-size: 18px;
@@ -143,7 +171,7 @@
 }
 
 .sc-pr-cta-copy p {
-    color: #6C757D;
+    color: var(--color-muted-legacy);
     font-feature-settings: 'dlig' on;
     font-family: "Helvetica Now Display";
     font-size: 14px;
@@ -173,7 +201,7 @@
 
 .sc-pr-cta-btn:hover {
     opacity: 0.9;
-    color: #101010;
+    color: var(--color-surface-101010);
 }
 
 @media (max-width: 1200px) {
@@ -190,14 +218,6 @@
 
     .sc-pr-item {
         flex: 1 1 calc(50% - 8px);
-    }
-
-    .sc-pr-item-title a {
-        font-size: 16px;
-    }
-
-    .sc-pr-item-meta {
-        font-size: 14px;
     }
 
     .sc-pr-cta {
@@ -230,11 +250,6 @@
         align-items: flex-start;
     }
 
-    .sc-pr-item-image {
-        width: 90px;
-        height: 90px;
-    }
-
     .sc-pr-item-tag {
         font-size: 12px;
         margin-bottom: 8px;
@@ -245,12 +260,7 @@
     }
 
     .sc-pr-item-title a {
-        font-size: 15px;
         line-height: 125%;
-    }
-
-    .sc-pr-item-meta {
-        font-size: 13px;
     }
 
     .sc-pr-cta {

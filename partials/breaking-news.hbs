@@ -6,85 +6,112 @@
                 <h2 class="sc-breaking-news-title">{{t "Breaking News"}}</h2>
                 <span class="sc-breaking-news-live">{{t "Live"}}</span>
             </div>
+            {{#if @custom.breaking_news_source_tag}}
+            <a class="sc-breaking-news-viewall" href="{{@site.url}}/tag/{{@custom.breaking_news_source_tag}}/">
+            {{else}}
             <a class="sc-breaking-news-viewall" href="{{@site.url}}/tag/news/">
+            {{/if}}
                 {{t "View All"}} →
             </a>
         </div>
         <div class="sc-breaking-news-grid">
-            {{!-- Row 1 --}}
-            <div class="sc-bn-card">
-                <img class="sc-bn-card-img" src="{{asset "imagesAndIcons/sec.svg"}}" alt="SEC" loading="lazy">
-                <div class="sc-bn-card-content">
-                    <span class="sc-bn-category sc-bn-cat-regulation">{{t "Regulation"}}</span>
-                    <h3 class="sc-bn-card-title">{{t "SEC Approves Multiple Bitcoin ETFs, Opening Doors for Institutional Investment"}}</h3>
-                    <div class="sc-bn-card-meta">
-                        <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span>{{t "15 mins ago"}}</span>
-                        <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="sc-bn-card">
-                <img class="sc-bn-card-img" src="{{asset "imagesAndIcons/ethereum.svg"}}" alt="Ethereum" loading="lazy">
-                <div class="sc-bn-card-content">
-                    <span class="sc-bn-category sc-bn-cat-technology">{{t "Technology"}}</span>
-                    <h3 class="sc-bn-card-title">{{t "Ethereum Network Upgrade Successfully Implemented, Gas Fees Drop 40%"}}</h3>
-                    <div class="sc-bn-card-meta">
-                        <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span>{{t "1 hour ago"}}</span>
-                        <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="sc-bn-card">
-                <img class="sc-bn-card-img" src="{{asset "imagesAndIcons/defi.svg"}}" alt="DeFi" loading="lazy">
-                <div class="sc-bn-card-content">
-                    <span class="sc-bn-category sc-bn-cat-defi">{{t "DeFi"}}</span>
-                    <h3 class="sc-bn-card-title">{{t "Major DeFi Protocol Launches Layer 2 Solution for Faster Transactions"}}</h3>
-                    <div class="sc-bn-card-meta">
-                        <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span>{{t "2 hours ago"}}</span>
-                        <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                    </div>
-                </div>
-            </div>
-            {{!-- Row 2 --}}
-            <div class="sc-bn-card">
-                <img class="sc-bn-card-img" src="{{asset "imagesAndIcons/survery.svg"}}" alt="Business" loading="lazy">
-                <div class="sc-bn-card-content">
-                    <span class="sc-bn-category sc-bn-cat-business">{{t "Business"}}</span>
-                    <h3 class="sc-bn-card-title">{{t "Survey Shows 60% of Fortune 500 Companies Exploring Blockchain Integration"}}</h3>
-                    <div class="sc-bn-card-meta">
-                        <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span>{{t "3 hours ago"}}</span>
-                        <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="sc-bn-card">
-                <img class="sc-bn-card-img" src="{{asset "imagesAndIcons/bitcoin.svg"}}" alt="Mining" loading="lazy">
-                <div class="sc-bn-card-content">
-                    <span class="sc-bn-category sc-bn-cat-mining">{{t "Mining"}}</span>
-                    <h3 class="sc-bn-card-title">{{t "Bitcoin Hashrate Reaches All-Time High as Mining Expands"}}</h3>
-                    <div class="sc-bn-card-meta">
-                        <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span>{{t "4 hours ago"}}</span>
-                        <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                    </div>
-                </div>
-            </div>
-            <div class="sc-bn-card">
-                <img class="sc-bn-card-img" src="{{asset "imagesAndIcons/stablecoin.svg"}}" alt="Regulation" loading="lazy">
-                <div class="sc-bn-card-content">
-                    <span class="sc-bn-category sc-bn-cat-regulation">{{t "Regulation"}}</span>
-                    <h3 class="sc-bn-card-title">{{t "New Stablecoin Regulation Framework Announced by EU"}}</h3>
-                    <div class="sc-bn-card-meta">
-                        <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span>{{t "4 hours ago"}}</span>
-                        <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                    </div>
-                </div>
-            </div>
+            {{#if @custom.breaking_news_source_filter}}
+            {{#get "posts" filter="(tag:breaking-news,tag:hash-breaking-news)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring+slug:-coming-soon" include="authors,tags" limit="6" order="published_at desc"}}
+                {{#if posts}}
+                    {{#foreach posts}}
+                    <article class="sc-bn-card">
+                        <a href="{{url}}" aria-label="{{title}}">
+                            <img class="sc-bn-card-img" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}" loading="lazy">
+                        </a>
+                        <div class="sc-bn-card-content">
+                            <span class="sc-bn-category sc-bn-internal-only">
+                                {{#foreach tags visibility="all"}}
+                                <span class="sc-bn-tag-candidate" data-slug="{{slug}}">{{name}}</span>
+                                {{/foreach}}
+                            </span>
+                            <h3 class="sc-bn-card-title"><a href="{{url}}">{{title}}</a></h3>
+                            <div class="sc-bn-card-meta">
+                                <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span>{{date published_at timeago="true"}}</span>
+                                <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                            </div>
+                        </div>
+                    </article>
+                    {{/foreach}}
+                {{else}}
+                    {{#get "posts" filter="(tag:breaking-news,tag:hash-breaking-news)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring+slug:-coming-soon" include="authors,tags" limit="6" order="published_at desc"}}
+                        {{#foreach posts}}
+                        <article class="sc-bn-card">
+                            <a href="{{url}}" aria-label="{{title}}">
+                                <img class="sc-bn-card-img" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}" loading="lazy">
+                            </a>
+                            <div class="sc-bn-card-content">
+                                <span class="sc-bn-category sc-bn-internal-only">
+                                    {{#foreach tags visibility="all"}}
+                                    <span class="sc-bn-tag-candidate" data-slug="{{slug}}">{{name}}</span>
+                                    {{/foreach}}
+                                </span>
+                                <h3 class="sc-bn-card-title"><a href="{{url}}">{{title}}</a></h3>
+                                <div class="sc-bn-card-meta">
+                                    <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    <span>{{date published_at timeago="true"}}</span>
+                                    <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                                </div>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{/get}}
+                {{/if}}
+            {{/get}}
+            {{else}}
+            {{#get "posts" filter="(tag:breaking-news,tag:hash-breaking-news)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring+slug:-coming-soon" include="authors,tags" limit="6" order="published_at desc"}}
+                {{#if posts}}
+                    {{#foreach posts}}
+                    <article class="sc-bn-card">
+                        <a href="{{url}}" aria-label="{{title}}">
+                            <img class="sc-bn-card-img" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}" loading="lazy">
+                        </a>
+                        <div class="sc-bn-card-content">
+                            <span class="sc-bn-category sc-bn-internal-only">
+                                {{#foreach tags visibility="all"}}
+                                <span class="sc-bn-tag-candidate" data-slug="{{slug}}">{{name}}</span>
+                                {{/foreach}}
+                            </span>
+                            <h3 class="sc-bn-card-title"><a href="{{url}}">{{title}}</a></h3>
+                            <div class="sc-bn-card-meta">
+                                <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span>{{date published_at timeago="true"}}</span>
+                                <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                            </div>
+                        </div>
+                    </article>
+                    {{/foreach}}
+                {{else}}
+                    {{#get "posts" filter="(tag:breaking-news,tag:hash-breaking-news)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring+slug:-coming-soon" include="authors,tags" limit="6" order="published_at desc"}}
+                        {{#foreach posts}}
+                        <article class="sc-bn-card">
+                            <a href="{{url}}" aria-label="{{title}}">
+                                <img class="sc-bn-card-img" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}" loading="lazy">
+                            </a>
+                            <div class="sc-bn-card-content">
+                                <span class="sc-bn-category sc-bn-internal-only">
+                                    {{#foreach tags visibility="all"}}
+                                    <span class="sc-bn-tag-candidate" data-slug="{{slug}}">{{name}}</span>
+                                    {{/foreach}}
+                                </span>
+                                <h3 class="sc-bn-card-title"><a href="{{url}}">{{title}}</a></h3>
+                                <div class="sc-bn-card-meta">
+                                    <svg class="sc-bn-clock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    <span>{{date published_at timeago="true"}}</span>
+                                    <svg class="sc-bn-trending" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                                </div>
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    {{/get}}
+                {{/if}}
+            {{/get}}
+            {{/if}}
         </div>
     </div>
 </section>

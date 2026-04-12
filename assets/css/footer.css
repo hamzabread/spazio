@@ -476,13 +476,13 @@ li.sitelinks-link a {
 /* ========================================= */
 
 .scf-footer {
-    background: #07090f;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: #FFFFFF;
+    border-top: 1px solid #E9ECEF;
 }
 
 .scf-footer .scf-wrap {
     padding: 20px 50px;
-    background: #101010;
+    background: #F5F6F7;
 }
 
 .scf-footer .scf-top {
@@ -502,7 +502,7 @@ li.sitelinks-link a {
 
 .scf-footer .scf-intel-title {
     margin: 0 0 10px;
-    color: #FFF;
+    color: #022538;
     font-family: "Helvetica Now Display";
     font-size: 14px;
     font-style: normal;
@@ -520,7 +520,7 @@ li.sitelinks-link a {
 
 .scf-footer .scf-intel-sub {
     margin: 0 0 14px !important;
-    color: #6C757D;
+    color: #99A1AF;
     font-family: "Helvetica Now Display";
     font-size: 12px;
     font-style: normal;
@@ -547,9 +547,9 @@ li.sitelinks-link a {
     width: 232px;
     max-width: 232px !important;
     border-radius: 4px;
-    border: 1px solid #1B1B1B;
-    background: transparent;
-    color: #FFF;
+    border: 1px solid #E9ECEF;
+    background: #FFF;
+    color: #364153;
     font-family: "Helvetica Now Display";
     font-size: 12px;
     font-style: normal;
@@ -560,7 +560,7 @@ li.sitelinks-link a {
 }
 
 .scf-footer .scf-email-input::placeholder {
-    color: #686868;
+    color: #6A7282;
     font-family: "Helvetica Now Display";
     font-size: 12px;
     font-style: normal;
@@ -581,7 +581,7 @@ li.sitelinks-link a {
 
 .scf-footer .scf-note {
     margin: 0 0 20px !important;
-    color: #6C757D;
+    color: var(--color-muted-legacy);
     font-family: "Helvetica Now Display";
     font-size: 10px;
     font-style: normal;
@@ -661,7 +661,7 @@ li.sitelinks-link a {
 
 .scf-footer .scf-trending-sectors h6 {
     margin: 0 0 16px;
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
     font-size: 12px;
     font-style: normal;
@@ -674,7 +674,7 @@ li.sitelinks-link a {
 .scf-footer .scf-col h5,
 .scf-footer .scf-col h6 {
     margin: 0 0 16px;
-    color: #EBEFF2;
+    color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
     font-size: 14px;
     font-style: normal;
@@ -726,7 +726,7 @@ li.sitelinks-link a {
     padding: 8px 12px;
     border-radius: 4px;
     background: rgba(73, 80, 87, 0.08);
-    color: #FFF;
+    color: #495057;
     font-family: "Helvetica Now Display";
     font-size: 10px;
     font-style: normal;
@@ -736,10 +736,10 @@ li.sitelinks-link a {
 }
 
 .scf-footer .scf-disclaimer {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid #E9ECEF;
+    border-bottom: 1px solid #E9ECEF;
     padding: 14px 0;
-    color: rgba(180, 190, 202, 0.52);
+    color: #6A7282;
     font-size: 12px;
     line-height: 1.45;
 }
@@ -749,13 +749,59 @@ li.sitelinks-link a {
     align-items: center;
     gap: 6px;
     padding: 14px 0 8px;
-    color: rgba(188, 198, 211, 0.7);
+    color: #364153;
     font-size: 13px;
 }
 
 .scf-footer .scf-bottom a {
-    color: rgba(188, 198, 211, 0.82);
+    color: #364153;
     text-decoration: none;
+}
+
+:root[data-color-scheme="dark"] .scf-footer {
+    background: #07090f;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-wrap {
+    background: var(--color-surface-101010);
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-intel-title {
+    color: #FFF;
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-intel-sub {
+    color: var(--color-muted-legacy);
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-email-input {
+    border: 1px solid #1B1B1B;
+    background: transparent;
+    color: #FFF;
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-email-input::placeholder {
+    color: #686868;
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-col a {
+    color: var(--color-muted-legacy);
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-chip-grid span {
+    color: #FFF;
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-disclaimer {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: rgba(180, 190, 202, 0.52);
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-bottom,
+:root[data-color-scheme="dark"] .scf-footer .scf-bottom a {
+    color: rgba(188, 198, 211, 0.82);
 }
 
 @media (max-width: 1200px) {

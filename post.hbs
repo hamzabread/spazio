@@ -1,233 +1,279 @@
-{{!< default}} 
+{{!< default}}
 
-{{#post}} 
-
-<main class="gh-post-page-wrapper">
-    <article class="gh-post-page with-sidebar {{post_class}}">
-        {{#if featured}}
-        <div class="gh-post-head">
-
+{{#post}}
+<section class="sc-blogs-hero" aria-labelledby="sc-blogs-hero-title">
+    <div class="gh-container sc-blogs-hero-inner">
+        <article class="sc-blogs-featured-card">
             {{#if feature_image}}
-
-            <picture>
-            <img src="{{img_url feature_image size="2000" }}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="gh-post-feature-image" />
-            </picture>
-            
+            <div class="sc-blogs-featured-media" aria-hidden="true">
+                <img src="{{img_url feature_image size="2000"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="sc-blogs-featured-image" loading="eager" decoding="async">
+            </div>
             {{else}}
-            <div class="gh-post-feature-image-plug"></div>
+            <div class="sc-blogs-featured-noimage" aria-hidden="true"></div>
             {{/if}}
-            <div class="gh-post-head-wrapper gh-container{{#match @custom.header_type "Logo with bottom navigation" }}
-                with-big-header{{else match @custom.header_type "Author with bottom navigation" }} with-big-header{{/match}}">
-                {{> "breadcrumbs"}}
-                <div class="gh-post-head-content">
-                    <div class="gh-post-head-content-container">
-                        <div class="gh-post-head-meta">
-                            {{#if authors}}
-                            <div class="gh-post-head-authors">
-                                <span class="gh-post-head-author-span">{{t "By"}}</span>
-                                {{#foreach authors}}
-                                <a class="gh-post-head-author" href="{{url}}">
-                                    {{#if profile_image}}
-                                    <picture>
-                                        <source srcset="{{img_url profile_image size="200" format="webp" }} 200w, {{img_url
-                                            profile_image size="100" format="webp" }} 100w" sizes="36px" type="image/webp">
-                                        <img class="gh-post-head-author-image" srcset="{{img_url profile_image size="200"}}
-                                            200w, {{img_url profile_image size="100" }} 100w" sizes="36px"
-                                            src="{{img_url profile_image size="200"}}" alt="{{name}} {{t "profile image"}}" />
-                                    </picture>
-                                    {{else}}
-                                    <img class="gh-post-head-author-image" src="{{asset "
-                                        imagesAndIcons/AuthorAvatarDefault.jpg"}}" alt="{{name}} {{t "profile image"}}">
-                                    {{/if}}
-                                    <span class="gh-post-head-author-name">{{name}}</span>
-                                </a>
-                                {{/foreach}}
-                            </div>
-                            {{/if}}
-                            <span class="gh-post-head-date">
-                                <time datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
-                            </span>
-                            {{#if reading_time}}
-                            <span class="gh-post-head-read-time">{{reading_time}}</span>
-                            {{/if}}
-                        </div>
-                        <h1 class="gh-post-page-title">{{title}}</h1>
-                        {{#if excerpt}}
-                        <p class="gh-post-page-excerpt">{{excerpt}}</p>
-                        {{/if}}
-                    </div>
-                    <div class="gh-post-head-share-block">
-                        {{>share-block}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{else}}
-        <div class="gh-container">
-            {{> "breadcrumbs"}}
-        </div>
-        <div class="gh-post-head gh-container">
-            <div class="gh-post-head-wrapper">
-                {{#if feature_image}}
-                 <picture>
-                    <source srcset="{{img_url feature_image size="3000" format="webp" }} 3000w, {{img_url feature_image size="2400"
-                        format="webp" }} 2400w, {{img_url feature_image size="2000" format="webp" }} 2000w, {{img_url feature_image
-                        size="1600" format="webp" }} 1600w, {{img_url feature_image size="1000" format="webp" }} 1000w, {{img_url
-                        feature_image size="800" format="webp" }} 800w, {{img_url feature_image size="500" format="webp" }} 500w"
-                        sizes="(max-width: 1680px) 95vw, (min-width: 1681px) 1600px" type="image/webp">
-                    <img srcset="{{img_url feature_image size="3000" }} 3000w, {{img_url feature_image size="2400" }} 2400w, {{img_url
-                        feature_image size="2000" }} 2000w, {{img_url feature_image size="1600" }} 1600w, {{img_url feature_image
-                        size="1000" }} 1000w, {{img_url feature_image size="800" }} 800w, {{img_url feature_image size="500" }} 500w"
-                        sizes="(max-width: 1680px) 95vw, (min-width: 1681px) 1600px" src="{{img_url feature_image size="3000"}}"
-                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="gh-post-feature-image" />
-                </picture>
-                {{else}}
-                <div class="gh-post-feature-image-plug"></div>
-                {{/if}}
-                <div class="gh-post-head-content">
-                    <div class="gh-post-head-content-container">
-                        <div class="gh-post-head-meta">
-                            {{#if authors}}
-                            <div class="gh-post-head-authors">
-                                <span class="gh-post-head-author-span">{{t "By"}}</span>
-                                {{#foreach authors}}
-                                <a class="gh-post-head-author" href="{{url}}">
-                                    {{#if profile_image}}
-                                    <picture>
-                                        <source srcset="{{img_url profile_image size="200" format="webp" absolute="true" }} 200w, {{img_url
-                                            profile_image size="100" format="webp" absolute="true" }} 100w" sizes="36px" type="image/webp">
-                                        <img class="gh-post-head-author-image" srcset="{{img_url profile_image size="200" absolute="true" }}
-                                            200w, {{img_url profile_image size="100" absolute="true" }} 100w" sizes="36px"
-                                            src="{{img_url profile_image size="200" absolute="true" }}" alt="{{name}} {{t "profile image"}}" />
-                                    </picture>
-                                    {{else}}
-                                    <img class="gh-post-head-author-image" src="{{asset " imagesAndIcons/AuthorAvatarDefault.jpg"}}"
-                                        alt="{{name}} {{t "profile image"}}">
-                                    {{/if}}
-                                    <span class="gh-post-head-author-name">{{name}}</span>
-                                </a>
-                                {{/foreach}}
-                            </div>
-                            {{/if}}
-                            <span class="gh-post-head-date">
-                                <time datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
-                            </span>
-                            {{#if reading_time}}
-                            <span class="gh-post-head-read-time">{{reading_time}}</span>
-                            {{/if}}
-                        </div>
-                        <h1 class="gh-post-page-title">{{title}}</h1>
-                        {{#if excerpt}}
-                        <p class="gh-post-page-excerpt">{{excerpt}}</p>
-                        {{/if}}
-                    </div>
-                    <div class="gh-post-head-share-block">
-                        {{>share-block}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{/if}}
-        <div class="gh-post-main-wrapper with-sidebar">
-            <div class="gh-post-page-main{{#if comments}} with-comments{{/if}}">
-                <div class="gh-post-content with-sidebar">
-                    {{content}}
-                    {{^if @member.paid}}
-                    {{!-- Ad Unit #2400928 - Post Content Bottom --}}
-                    <iframe data-aa='2400928' src='//acceptable.a-ads.com/2400928' style='border:0px; padding:0; width: calc(100% - 80px); height:100%; overflow:hidden; background-color: transparent;'></iframe>
-                    {{/if}}
-                </div>
-                 <div class="gh-post-page-footer">
-                    <div class="gh-post-page-meta">
-                        <div class="gh-post-page-meta-main">
-                            {{#if authors}}
-                            <div class="gh-post-page-authors">
-                                <span class="gh-post-page-authors-span">{{t "By"}}</span>
-                                {{#foreach authors}}
-                                <a class="gh-post-page-author" href="{{url}}">
-                                    {{#if profile_image}}
-                                    <picture>
-                                        <source srcset="{{img_url profile_image size="200" format="webp" absolute="true" }} 200w, {{img_url profile_image
-                                            size="112" format="webp" absolute="true" }} 112w" sizes="112px" type="image/webp">
-                                        <img class="gh-post-page-author-image" srcset="{{img_url profile_image size="200" absolute="true" }} 200w, {{img_url
-                                            profile_image size="112" absolute="true" }} 112w" sizes="112px" src="{{img_url profile_image size="200" absolute="true"}}"
-                                            alt="{{name}} {{t "profile image"}}" />
-                                    </picture>
-                                    {{else}}
-                                    <img class="gh-post-page-author-image" src="{{asset " imagesAndIcons/AuthorAvatarDefault.jpg"}}"
-                                        alt="{{name}} {{t "profile image"}}">
-                                    {{/if}}
-                                    <span class="gh-post-page-author-name">{{name}}</span>
-                                </a>
-                                {{/foreach}}
-                            </div>
-                            {{/if}}
-                            <span class="gh-post-page-date">
-                                {{t "Updated on"}} <time datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
-                            </span>
-                        </div>
-                        {{>share-block}}
-                    </div>
-                    {{#if tags}}
-                        <div class="gh-post-page-tags">
-                            {{#foreach tags}}
-                            <a href="{{url}}" class="gh-tag {{#if accent_color}} gh-tag-accent {{/if}}" 
-                            {{#if accent_color}} 
-                                style="--accent: {{accent_color}}; 
-                                        background: color-mix(in srgb, {{accent_color}} 80%, transparent); 
-                                        " 
-                            {{/if}} >{{name}}</a>
-                            {{/foreach}}
-                        </div>
-                    {{/if}}
-                </div>
-                {{!-- 
-                <div class="bnr-container-horizontal">
-                    {{> "ads/horizontal"}}
-                </div>
-                --}}
 
-                {{#if comments}}
-                <div class="gh-container gh-comments-section">
-                {{comments title="Comments" count="true" mode="auto" saturation="80"}}
+            <div class="sc-blogs-featured-content">
+                {{#if tags}}
+                <div class="sc-blogs-featured-tags">
+                    {{#foreach tags visibility="all" limit="4"}}
+                    <span class="sc-blogs-featured-tag">{{name}}</span>
+                    {{/foreach}}
                 </div>
                 {{/if}}
+
+                <h2 id="sc-blogs-hero-title">{{title}}</h2>
+
+                {{#if excerpt}}
+                <p>{{excerpt}}</p>
+                {{/if}}
+
+                <div class="sc-blogs-featured-meta">
+                    {{#primary_author}}
+                    <span>{{name}}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none" aria-hidden="true">
+                        <circle cx="2" cy="2" r="2" fill="var(--color-muted-legacy)" fill-opacity="0.4"/>
+                    </svg>
+                    {{/primary_author}}
+                    <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMM D, YYYY"}}</time>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none" aria-hidden="true">
+                        <circle cx="2" cy="2" r="2" fill="var(--color-muted-legacy)" fill-opacity="0.4"/>
+                    </svg>
+                    <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<main class="main flex-1">
+    <section class="gh-container sc-blogs-next-section">
+        <div class="sc-blogs-next-grid">
+            <aside class="sc-blogs-next-col sc-blogs-next-col-left" aria-label="Author details and share">
+                <article class="sc-blogs-author-detail-card">
+                    {{#primary_author}}
+                    <img src="{{#if profile_image}}{{img_url profile_image size='s'}}{{else}}{{asset 'imagesAndIcons/AuthorAvatarDefault.jpg'}}{{/if}}" alt="{{name}}" class="sc-blogs-author-avatar" loading="lazy" decoding="async">
+                    <h3>{{name}}</h3>
+                    <p class="sc-blogs-author-role">{{t "Contributor"}}</p>
+                    <p class="sc-blogs-author-bio">{{#if bio}}{{bio}}{{else}}{{t "Editorial contributor at"}} {{@site.title}}{{/if}}</p>
+                    <div class="sc-blogs-author-links">
+                        {{#if website}}
+                        <a href="{{website}}" target="_blank" rel="noopener" aria-label="Author website">
+                            {{> "icons/external"}}
+                            <span>{{t "Website"}}</span>
+                        </a>
+                        {{/if}}
+                        {{#if twitter}}
+                        <a href="https://x.com/{{twitter}}" target="_blank" rel="noopener" aria-label="Author on X">
+                            {{> "icons/twitter"}}
+                            <span>@{{twitter}}</span>
+                        </a>
+                        {{/if}}
+                    </div>
+                    {{/primary_author}}
+                </article>
+
+                <article class="sc-blogs-share-card" aria-label="Share this article">
+                    <h4>{{t "SHARE"}}</h4>
+                    <div class="sc-blogs-share-row">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute='true'}}" class="sc-blogs-share-btn" aria-label="Share on Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                        <a href="https://t.me/share/url?url={{url absolute='true'}}&text={{title}}" class="sc-blogs-share-btn" aria-label="Share on Telegram" target="_blank" rel="noopener">{{> "icons/telegram"}}</a>
+                        <a href="https://news.google.com/search?q={{title}}" class="sc-blogs-share-btn" aria-label="Open in Google News" target="_blank" rel="noopener">{{> "icons/googlenews"}}</a>
+                        <a href="https://x.com/intent/post?url={{url absolute='true'}}&text={{title}}" class="sc-blogs-share-btn" aria-label="Share on X" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute='true'}}" class="sc-blogs-share-btn" aria-label="Share on LinkedIn" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
+                    </div>
+                </article>
+            </aside>
+
+            <section class="sc-blogs-next-col sc-blogs-next-col-center" aria-label="Main blog story">
+                <article class="sc-blogs-main-content gh-content" aria-label="Blog article content">
+                    {{content}}
+                </article>
 
                 {{#if primary_tag}}
-                    {{#get "posts" filter="tags:[{{primary_tag.slug}}]+id:-{{id}}" limit="4" order="published_at desc" include="authors,tags"}}
-                    {{#if posts}}
-                    <div class="gh-read-next-section">
-                        <h2 class="gh-read-next-title">{{t "Read Next"}}</h2>
-                        <div class="gh-read-next-posts{{#match @custom.archive_type "List" }} list{{/match}}">
-                            {{#foreach posts}}
-                            {{>post-card}}
-                            {{/foreach}}
-                        </div>
-                    </div>
-                    {{/if}}
-                    {{/get}}
-                {{else}}
-                    {{#get "posts" filter="id:-{{id}}" limit="4" order="published_at desc" include="authors,tags"}}
-                    {{#if posts}}
-                    <div class="gh-read-next-section">
-                        <h2 class="gh-read-next-title">{{t "Read Next"}}</h2>
-                        <div class="gh-read-next-posts{{#match @custom.archive_type "List" }} list{{/match}}">
-                            {{#foreach posts}}
-                            {{>post-card}}
-                            {{/foreach}}
-                        </div>
-                    </div>
-                    {{/if}}
+                    {{#get "posts" filter="id:-{{id}}+tag:{{primary_tag.slug}}" limit="4" include="authors,tags" order="published_at desc"}}
+                        {{#if posts}}
+                        <section class="sc-blogs-related" aria-label="Related Articles">
+                            <h4>{{t "Related Articles"}}</h4>
+
+                            <div class="sc-blogs-related-grid">
+                                {{#foreach posts from="1" to="2"}}
+                                <article class="sc-blogs-related-card sc-blogs-related-card-large">
+                                    {{#if feature_image}}
+                                    <a href="{{url}}"><img src="{{img_url feature_image size='m'}}" alt="{{title}}" loading="lazy" decoding="async"></a>
+                                    {{/if}}
+                                    <div class="sc-blogs-related-body">
+                                        <div class="sc-blogs-related-meta">
+                                            {{#primary_author}}
+                                            <img src="{{#if profile_image}}{{img_url profile_image size='xs'}}{{else}}{{asset 'imagesAndIcons/AuthorAvatarDefault.jpg'}}{{/if}}" alt="{{name}}" loading="lazy" decoding="async">
+                                            <span>{{name}}</span>
+                                            {{/primary_author}}
+                                            <span aria-hidden="true">•</span>
+                                            <span>{{date timeago="true"}}</span>
+                                        </div>
+                                        <h5><a href="{{url}}">{{title}}</a></h5>
+                                        {{#if excerpt}}<p>{{excerpt words="22"}}</p>{{/if}}
+                                    </div>
+                                </article>
+                                {{/foreach}}
+                            </div>
+
+                            <div class="sc-blogs-related-mini-grid">
+                                {{#foreach posts from="3" to="4"}}
+                                <article class="sc-blogs-related-card sc-blogs-related-mini-card">
+                                    {{#if feature_image}}
+                                    <a href="{{url}}"><img src="{{img_url feature_image size='s'}}" alt="{{title}}" loading="lazy" decoding="async"></a>
+                                    {{/if}}
+                                    <div class="sc-blogs-related-mini-copy">
+                                        <h6><a href="{{url}}">{{title}}</a></h6>
+                                        <div class="sc-blogs-related-meta">
+                                            {{#primary_author}}
+                                            <img src="{{#if profile_image}}{{img_url profile_image size='xs'}}{{else}}{{asset 'imagesAndIcons/AuthorAvatarDefault.jpg'}}{{/if}}" alt="{{name}}" loading="lazy" decoding="async">
+                                            <span>{{name}}</span>
+                                            {{/primary_author}}
+                                            <span aria-hidden="true">•</span>
+                                            <span>{{date timeago="true"}}</span>
+                                        </div>
+                                    </div>
+                                </article>
+                                {{/foreach}}
+                            </div>
+                        </section>
+                        {{/if}}
                     {{/get}}
                 {{/if}}
-            </div>
-            {{>sidebar}}
-        </div>
-    </article>
-   
-</main>
-{{^has tag="#no-glossary"}}
-    {{> "activate-glossary"}}
-{{/has}}
+            </section>
 
+            <aside class="sc-blogs-next-col sc-blogs-next-col-right" aria-label="Article widgets">
+                <article class="sc-blogs-right-card sc-blogs-newsletter-card">
+                    <div class="sc-blogs-newsletter-inner">
+                        <img src="{{asset 'imagesAndIcons/email.svg'}}" alt="Newsletter" class="sc-blogs-newsletter-icon" loading="lazy" decoding="async">
+                        <div class="sc-blogs-newsletter-copy">
+                            <h4>{{t "SUBSCRIBE TO THE NEWSLETTER"}}</h4>
+                            <p>{{t "Spaziocrypto brings you the weekly summary of major Web3-related news."}}</p>
+                            <a href="#/portal/signup" class="sc-blogs-newsletter-btn">{{t "Subscribe"}}</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="sc-blogs-right-card sc-market-card" data-market-dashboard="coingecko" aria-label="Crypto market overview">
+                    <div class="sc-market-header">
+                        <span>{{t "Crypto Market"}}</span>
+                        {{#if @custom.market_source_tag}}
+                        <a href="{{@site.url}}/tag/{{@custom.market_source_tag}}/" aria-label="{{t "View all markets"}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                <path d="M7.11588 2.91699L11.1992 7.00033L7.11588 11.0837" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3.03255 7L11.1992 7" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        {{else}}
+                        <a href="{{@site.url}}/tag/markets/" aria-label="{{t "View all markets"}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                <path d="M7.11588 2.91699L11.1992 7.00033L7.11588 11.0837" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3.03255 7L11.1992 7" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        {{/if}}
+                    </div>
+
+                    <div class="sc-market-list">
+                        <a class="sc-market-item" href="https://www.coingecko.com/en/coins/{{#if @custom.article_market_coin_1}}{{@custom.article_market_coin_1}}{{else}}bitcoin{{/if}}" aria-label="Market coin 1" data-market-row="{{#if @custom.article_market_coin_1}}{{@custom.article_market_coin_1}}{{else}}bitcoin{{/if}}" target="_blank" rel="noopener">
+                            <img class="sc-market-coin-icon" src="{{asset 'imagesAndIcons/bitcoin.svg'}}" alt="Coin" loading="lazy" width="48" height="48" data-market-icon>
+                            <div class="sc-market-coin-info">
+                                <span class="sc-market-coin-name" data-market-name>{{#if @custom.article_market_coin_1}}{{@custom.article_market_coin_1}}{{else}}bitcoin{{/if}}</span>
+                                <span class="sc-market-coin-symbol" data-market-symbol>--</span>
+                            </div>
+                            <div class="sc-market-coin-price">
+                                <span class="sc-market-coin-price-value" data-market-price>--</span>
+                                <span class="sc-market-coin-change sc-md-change-up" data-market-change>--</span>
+                            </div>
+                        </a>
+
+                        <a class="sc-market-item" href="https://www.coingecko.com/en/coins/{{#if @custom.article_market_coin_2}}{{@custom.article_market_coin_2}}{{else}}ethereum{{/if}}" aria-label="Market coin 2" data-market-row="{{#if @custom.article_market_coin_2}}{{@custom.article_market_coin_2}}{{else}}ethereum{{/if}}" target="_blank" rel="noopener">
+                            <img class="sc-market-coin-icon" src="{{asset 'imagesAndIcons/bitcoin.svg'}}" alt="Coin" loading="lazy" width="48" height="48" data-market-icon>
+                            <div class="sc-market-coin-info">
+                                <span class="sc-market-coin-name" data-market-name>{{#if @custom.article_market_coin_2}}{{@custom.article_market_coin_2}}{{else}}ethereum{{/if}}</span>
+                                <span class="sc-market-coin-symbol" data-market-symbol>--</span>
+                            </div>
+                            <div class="sc-market-coin-price">
+                                <span class="sc-market-coin-price-value" data-market-price>--</span>
+                                <span class="sc-market-coin-change sc-md-change-up" data-market-change>--</span>
+                            </div>
+                        </a>
+
+                        <a class="sc-market-item" href="https://www.coingecko.com/en/coins/{{#if @custom.article_market_coin_3}}{{@custom.article_market_coin_3}}{{else}}cardano{{/if}}" aria-label="Market coin 3" data-market-row="{{#if @custom.article_market_coin_3}}{{@custom.article_market_coin_3}}{{else}}cardano{{/if}}" target="_blank" rel="noopener">
+                            <img class="sc-market-coin-icon" src="{{asset 'imagesAndIcons/bitcoin.svg'}}" alt="Coin" loading="lazy" width="48" height="48" data-market-icon>
+                            <div class="sc-market-coin-info">
+                                <span class="sc-market-coin-name" data-market-name>{{#if @custom.article_market_coin_3}}{{@custom.article_market_coin_3}}{{else}}cardano{{/if}}</span>
+                                <span class="sc-market-coin-symbol" data-market-symbol>--</span>
+                            </div>
+                            <div class="sc-market-coin-price">
+                                <span class="sc-market-coin-price-value" data-market-price>--</span>
+                                <span class="sc-market-coin-change sc-md-change-up" data-market-change>--</span>
+                            </div>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="sc-blogs-right-card sc-blogs-article-tags-card">
+                    <h4>{{t "In this Article"}}</h4>
+                    <div class="sc-blogs-suggested-tags">
+                        {{#foreach tags visibility="all" limit="8"}}
+                        <span>{{name}}</span>
+                        {{/foreach}}
+                    </div>
+                </article>
+
+                <article class="sc-blogs-right-card sc-blogs-language-card" aria-label="Read this article in multiple languages">
+                    <h4 class="sc-blogs-language-head">{{t "Read this article in..."}}</h4>
+                    <ul>
+                        <li>
+                            <a href="{{url}}" class="is-active">
+                                <span class="sc-blogs-language-left"><span>{{locale}}</span></span>
+                                <span class="sc-blogs-language-current">{{t "Current"}}</span>
+                            </a>
+                        </li>
+                        {{#foreach translations}}
+                        <li>
+                            <a href="{{url}}">
+                                <span class="sc-blogs-language-left"><span>{{locale}}</span></span>
+                            </a>
+                        </li>
+                        {{/foreach}}
+                    </ul>
+                </article>
+
+                {{#get "posts" filter="id:-{{id}}" limit="1" include="authors,tags" order="published_at desc"}}
+                {{#if posts}}
+                {{#foreach posts}}
+                <article class="sc-blogs-right-card sc-blogs-suggested-card">
+                    <h4>{{t "Suggested article"}}</h4>
+                    <div class="sc-blogs-suggested-media">
+                        {{#if feature_image}}
+                        <a href="{{url}}"><img src="{{img_url feature_image size='m'}}" alt="{{title}}" loading="lazy" decoding="async"></a>
+                        {{/if}}
+                    </div>
+                    <div class="sc-blogs-suggested-meta">
+                        {{#primary_author}}
+                        <img src="{{#if profile_image}}{{img_url profile_image size='xs'}}{{else}}{{asset 'imagesAndIcons/AuthorAvatarDefault.jpg'}}{{/if}}" alt="{{name}}" loading="lazy" decoding="async">
+                        <span>{{name}}</span>
+                        {{/primary_author}}
+                        <span aria-hidden="true">•</span>
+                        <span>{{date timeago="true"}}</span>
+                    </div>
+                    <h5><a href="{{url}}">{{title}}</a></h5>
+                    {{#if excerpt}}<p>{{excerpt words="26"}}</p>{{/if}}
+                    <div class="sc-blogs-suggested-tags">
+                        {{#foreach tags visibility="all" limit="3"}}
+                        <span>{{name}}</span>
+                        {{/foreach}}
+                    </div>
+                </article>
+                {{/foreach}}
+                {{/if}}
+                {{/get}}
+            </aside>
+        </div>
+
+    </section>
+</main>
 {{/post}}

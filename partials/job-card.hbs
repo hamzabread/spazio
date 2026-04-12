@@ -1,0 +1,47 @@
+<article class="sc-job-card">
+    <img class="sc-job-logo" src="{{#if feature_image}}{{img_url feature_image size="xs"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}" loading="lazy" width="60" height="60">
+    <div class="sc-job-info">
+        <h3 class="sc-job-title">{{title}}</h3>
+        <p class="sc-job-desc">{{excerpt words="18"}}</p>
+
+        <div class="sc-job-meta">
+            <span class="sc-job-meta-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                {{#has tag="#remote"}}Remote{{else}}{{#has tag="#hybrid"}}Hybrid{{else}}{{#has tag="#onsite"}}On-site{{else}}{{#has tag="#on-site"}}On-site{{else}}{{t "Remote"}}{{/has}}{{/has}}{{/has}}{{/has}}
+            </span>
+
+            <span class="sc-job-meta-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+                {{#has tag="#full-time"}}Full-time{{else}}{{#has tag="#part-time"}}Part-time{{else}}{{#has tag="#contract"}}Contract{{else}}{{#has tag="#internship"}}Internship{{else}}{{#has tag="#freelance"}}Freelance{{else}}{{t "Full-time"}}{{/has}}{{/has}}{{/has}}{{/has}}{{/has}}
+            </span>
+
+            <span class="sc-job-meta-item sc-job-salary">
+                {{#has tag="#salary-40k-60k"}}$40K - $60K{{else}}{{#has tag="#salary-60k-90k"}}$60K - $90K{{else}}{{#has tag="#salary-90k-120k"}}$90K - $120K{{else}}{{#has tag="#salary-90k-180k"}}$90K - $180K{{else}}{{#has tag="#salary-120k-plus"}}$120K+{{else}}{{#has tag="#salary-negotiable"}}{{t "Salary negotiable"}}{{else}}{{t "Salary negotiable"}}{{/has}}{{/has}}{{/has}}{{/has}}{{/has}}{{/has}}
+            </span>
+
+            <span class="sc-job-meta-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                {{date published_at timeago="true"}}
+            </span>
+        </div>
+
+        <div class="sc-job-tags">
+            {{#has tag="crypto"}}
+                <span class="sc-job-tag">Crypto</span>
+            {{/has}}
+
+            {{#has tag="web3"}}
+                <span class="sc-job-tag">Web 3</span>
+            {{else}}
+                {{#has tag="web-3"}}
+                    <span class="sc-job-tag">Web 3</span>
+                {{/has}}
+            {{/has}}
+
+            {{#has tag="defi"}}
+                <span class="sc-job-tag">Defi</span>
+            {{/has}}
+        </div>
+    </div>
+    <a class="sc-job-apply" href="{{url}}">{{t "Apply Now"}}</a>
+</article>
