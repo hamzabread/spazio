@@ -271,7 +271,7 @@
 /* --------------------------------------------------- */
 
 .gh-sidebar-featured-posts-wrapper {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 28px;
     padding-top: 40px;

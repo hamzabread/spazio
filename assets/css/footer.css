@@ -476,8 +476,17 @@ li.sitelinks-link a {
 /* ========================================= */
 
 .scf-footer {
-    background: #FFFFFF;
+    background: transparent;
     border-top: 1px solid #E9ECEF;
+}
+
+:root[data-color-scheme="dark"] .scf-footer {
+    background: transparent;
+    border-top: 1px solid #1B1B1B;
+}
+
+:root[data-color-scheme="dark"] .scf-footer .scf-wrap {
+    background: #000000;
 }
 
 .scf-footer .scf-wrap {

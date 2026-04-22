@@ -164,7 +164,32 @@
     fill: #FFF;
 }
 
-.gh-author-page .gh-archive-page-header.with-image .gh-author-page-location::before {
+.gh-author-page . gh-archive-page-header.with-image .gh-author-page-location::before {
     background-color: #FFF;
     opacity: 0.5;
+}
+
+/* Light mode for author page */
+:root:not([data-color-scheme="dark"]) .gh-author-page-name {
+    color: #022538;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-author-page-bio {
+    color: #495057;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-author-page-posts {
+    color: #495057;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-author-page-location {
+    color: #495057;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-author-page-location svg path {
+    fill: #495057;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-author-page-location::before {
+    background-color: #495057;
 }

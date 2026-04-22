@@ -10,7 +10,7 @@
 }
 
 .sc-pr-inner {
-    max-width: 1550px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
@@ -211,7 +211,7 @@
 
     .sc-pr-list {
         flex-wrap: wrap;
-        gap: 16px;
+        gap: 12px;
         padding-bottom: 32px;
         margin-bottom: 32px;
     }
@@ -240,7 +240,7 @@
     }
 
     .sc-pr-list {
-        gap: 14px;
+        gap: 12px;
         padding-bottom: 24px;
         margin-bottom: 24px;
     }
@@ -293,5 +293,19 @@
         justify-content: center;
         padding: 12px 18px;
         font-size: 13px;
+    }
+}
+
+@media (max-width: 767px) {
+    .sc-pr-feed {
+        padding: 40px 20px;
+    }
+
+    .sc-pr-cta-copy h3 {
+        font-size: 18px;
+    }
+
+    .sc-pr-cta-copy p {
+        font-size: 14px;
     }
 }

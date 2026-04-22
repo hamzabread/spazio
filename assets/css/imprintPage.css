@@ -2,8 +2,20 @@
 /* ---------------------------------------------------------- */
 
 .sc-imprint-disclaimer {
-    background: var(--color-surface-101010);
+    background: #000000;
     padding: 80px 75px;
+}
+
+:root[data-color-scheme="light"] .sc-imprint-disclaimer {
+    background: #FFFFFF;
+}
+
+.sc-imprint-page .sc-contact-hero {
+    background: #000000;
+}
+
+:root[data-color-scheme="light"] .sc-imprint-page .sc-contact-hero {
+    background: #F8F9FA;
 }
 
 .sc-imprint-disclaimer-inner {
@@ -35,6 +47,10 @@
     background: var(--color-surface-101010);
     padding: 24px;
     margin-bottom: 40px;
+}
+
+:root[data-color-scheme="light"] .sc-imprint-owner-card {
+    background: #F9FAFB;
 }
 
 .sc-imprint-owner-main {
@@ -100,6 +116,10 @@
     flex-shrink: 0;
 }
 
+:root[data-color-scheme="light"] .sc-imprint-owner-meta li svg {
+    filter: brightness(0);
+}
+
 .sc-imprint-owner-meta a {
     color: var(--color-muted-legacy);
     font-family: "Helvetica Now Display";
@@ -118,15 +138,21 @@
     margin-bottom: 0;
 }
 
+.sc-imprint-content-block h1,
 .sc-imprint-content-block h2 {
     margin: 0 0 24px;
-    color: var(--color-ebeff2-adaptive);
+    color: #EBEFF2;
     font-family: "Helvetica Now Display";
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
     text-transform: capitalize;
+}
+
+:root[data-color-scheme="light"] .sc-imprint-content-block h1,
+:root[data-color-scheme="light"] .sc-imprint-content-block h2 {
+    color: #101828;
 }
 
 .sc-imprint-content-block h3 {
@@ -141,12 +167,25 @@
 
 .sc-imprint-content-block p,
 .sc-imprint-class-list li {
-    color: var(--color-muted-legacy);
+    color: #6C757D;
     font-family: "Helvetica Now Display";
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
+}
+
+:root[data-color-scheme="light"] .sc-imprint-content-block p,
+:root[data-color-scheme="light"] .sc-imprint-class-list li {
+    color: #4A5565;
+}
+
+.sc-imprint-class-list li {
+    color: #EBEFF2;
+}
+
+:root[data-color-scheme="light"] .sc-imprint-class-list li {
+    color: #101828;
 }
 
 .sc-imprint-content-block p {
@@ -157,10 +196,22 @@
     margin: 0 0 10px !important;
 }
 
-.sc-imprint-content-block strong,
-.sc-imprint-class-list strong {
-    color: var(--color-ebeff2-adaptive);
+.sc-imprint-content-block p strong {
+    color: #EBEFF2;
     font-weight: 700;
+}
+
+:root[data-color-scheme="light"] .sc-imprint-content-block p strong {
+    color: #4A5565;
+}
+
+.sc-imprint-class-list strong {
+    color: #EBEFF2;
+    font-weight: 700;
+}
+
+:root[data-color-scheme="light"] .sc-imprint-class-list strong {
+    color: #101828;
 }
 
 .sc-imprint-class-list {

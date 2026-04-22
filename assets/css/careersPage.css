@@ -2,8 +2,36 @@
 /* ---------------------------------------------------------- */
 
 .sc-careers-jobs {
-    background: var(--color-surface-101010);
+    background: #000000;
     padding: 80px 75px;
+}
+
+:root[data-color-scheme="light"] .sc-careers-jobs {
+    background: var(--color-surface-101010);
+}
+
+.sc-career-hero {
+    background: #000000;
+}
+
+:root[data-color-scheme="light"] .sc-career-hero {
+    background: #F8F9FA;
+}
+
+.sc-career-hero-inner h1 {
+    margin: 0;
+    color: var(--color-ebeff2-adaptive);
+    text-align: center;
+    font-family: "Helvetica Now Display";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+}
+
+.sc-career-hero-inner h1 span {
+    color: #f18f20;
+    display: block;
 }
 
 .sc-careers-jobs-inner {
@@ -31,11 +59,19 @@
 }
 
 .sc-careers-job-card {
-    background: var(--color-surface-101010);
+    background: #050505;
     border-radius: 14px;
-    padding: 30px 20px;
+    padding: 40px;
     margin-bottom: 20px;
     transition: background-color 0.25s ease;
+}
+
+:root[data-color-scheme="light"] .sc-careers-job-card {
+    background: #F9FAFB;
+}
+
+:root[data-color-scheme="light"] .sc-careers-job-card:hover {
+    background: rgba(241, 143, 32, 0.10);
 }
 
 .sc-careers-job-card:last-child {
@@ -82,6 +118,10 @@
     white-space: nowrap;
 }
 
+.sc-careers-job-link-mobile {
+    display: none;
+}
+
 .sc-careers-job-card p {
     margin: 0 0 25px !important;
     color: var(--color-muted-legacy);
@@ -90,6 +130,10 @@
     font-style: normal;
     font-weight: 400;
     line-height: 140%;
+}
+
+:root[data-color-scheme="light"] .sc-careers-job-card p {
+    color: #4F4F4F;
 }
 
 .sc-careers-job-meta {
@@ -118,13 +162,33 @@
     line-height: 1;
 }
 
+:root[data-color-scheme="light"] .sc-careers-job-meta li {
+    background: rgba(0, 0, 0, 0.06);
+    color: #000000;
+}
+
 .sc-careers-job-meta li svg {
     flex-shrink: 0;
+}
+
+:root[data-color-scheme="light"] .sc-careers-job-meta li svg {
+    filter: brightness(0);
 }
 
 @media (max-width: 767px) {
     .sc-careers-jobs {
         padding: 40px 20px 60px 20px;
+    }
+
+    .sc-contact-hero-inner h1 {
+        font-size: 36px !important;
+    }
+
+    .sc-careers-job-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        padding: 30px 20px;
     }
 
     .sc-careers-jobs-title {
@@ -133,7 +197,6 @@
     }
 
     .sc-careers-job-card {
-        padding: 30px 20px;
         border-radius: 12px;
     }
 
@@ -147,8 +210,13 @@
     }
 
     .sc-careers-job-link {
+        display: none;
+    }
+
+    .sc-careers-job-link-mobile {
+        display: flex;
         font-size: 18px;
-        margin: 40px 0 0 0;
+        margin-top: 40px;
     }
 
     .sc-careers-job-card p {

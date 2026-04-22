@@ -90,3 +90,26 @@
 .tag-filter-enabled .tag-filter-section,.tag-filter-enabled .gh-card-meta .filter-tag{
     display: flex;
 }
+
+/* Light mode for tag filter section */
+:root:not([data-color-scheme="dark"]) .tag-filter-section {
+    display: flex;
+}
+
+:root:not([data-color-scheme="dark"]) .tag-filter-section .gh-tag {
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #495057;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:root:not([data-color-scheme="dark"]) .tag-filter-section .gh-tag:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+:root:not([data-color-scheme="dark"]) .tag-filter-section .gh-tag.active {
+    background-color: #F18F20;
+    color: #FFF;
+    border-color: #F18F20;
+}

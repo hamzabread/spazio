@@ -97,3 +97,25 @@
     line-height: var(--line-height-card-headings);
     letter-spacing: var(--letter-spacing-small);
 }
+
+/* Light mode for archive cards */
+:root:not([data-color-scheme="dark"]) .gh-archive-card-image-plug {
+    background-color: #e8e8e8;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-archive-card:hover .gh-archive-card-image-plug {
+    background-color: #d9d9d9;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-archive-card-posts-count {
+    background: rgba(0, 0, 0, 0.08);
+    color: #022538;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-archive-card-location-name {
+    color: #022538;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-archive-card-title {
+    color: #022538;
+}

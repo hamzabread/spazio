@@ -87,3 +87,20 @@
     width: 100%;
     height: 100%;
 }
+
+/* Light mode for archive page */
+:root:not([data-color-scheme="dark"]) .gh-archive-page-title {
+    color: #022538;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-archive-page-excerpt {
+    color: #495057;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-archive-page-posts-count {
+    color: #495057;
+}
+
+:root:not([data-color-scheme="dark"]) .gh-archive-page-no-cards-span {
+    color: #495057;
+}

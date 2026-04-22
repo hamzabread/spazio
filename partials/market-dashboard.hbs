@@ -56,13 +56,23 @@
                     <div class="sc-md-card-title">{{t "Crypto Market Cap"}}</div>
                     <div class="sc-md-cap-value sc-total-mcap" data-md-total-mcap>$2.79T</div>
                     <div class="sc-md-cap-change">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
-                        <span class="sc-md-cap-pct sc-mcap-change sc-md-change-up" data-md-mcap-change>+0.79%</span>
+                        <svg class="sc-md-cap-arrow" data-md-cap-arrow width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
+                        <span class="sc-md-cap-pct sc-mcap-change sc-md-cap-change-up" data-md-mcap-change>+0.79%</span>
                     </div>
                 </div>
                 <div class="sc-md-chart-placeholder">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="289" height="25" viewBox="0 0 289 25" fill="none" class="sc-md-mini-chart">
-                        <path d="M0.386719 15.7097C0.386719 15.7097 13.2427 24.2694 20.5373 24.2694C27.8318 24.2694 51.7457 14.0433 60.0567 14.0433C68.3677 14.0433 95.2333 21.3648 107.046 21.3648C118.858 21.3648 141.441 0.697266 150.474 0.697266C159.507 0.697266 176.655 15.7097 185.006 15.7097C193.356 15.7097 219.264 9.78243 227.602 9.78243C235.94 9.78243 257.48 14.0433 265.818 14.0433C274.156 14.0433 288.053 11.2138 288.053 11.2138" stroke="#F9992A" stroke-width="1.39412"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="288" height="35" viewBox="0 0 288 35" fill="none" class="sc-md-mini-chart" data-md-mini-chart>
+                        <path data-md-mini-chart-area fill-rule="evenodd" clip-rule="evenodd" d="M0 34.3182L0 14.995C0 14.995 16.0053 23.809 18.7609 23.5447C33.6309 22.1184 51.359 13.3306 59.67 13.3306C67.981 13.3306 94.8466 20.6436 106.659 20.6436C118.471 20.6436 141.054 0 150.087 0C159.12 0 176.269 14.995 184.619 14.995C192.969 14.995 218.877 9.07461 227.215 9.07461C235.553 9.07461 257.093 13.3306 265.432 13.3306C268.428 13.3306 287.667 10.5043 287.667 10.5043V34.3182H0Z" fill="url(#mdMiniChartGradientUp)"/>
+                        <defs>
+                            <linearGradient id="mdMiniChartGradientUp" x1="2.89569" y1="-16.7515" x2="2.89569" y2="39.3346" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#F9992A"/>
+                                <stop offset="1" stop-color="#F9992A" stop-opacity="0.01"/>
+                            </linearGradient>
+                            <linearGradient id="mdMiniChartGradientDown" x1="2.89569" y1="-16.7515" x2="2.89569" y2="39.3346" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#EF4444"/>
+                                <stop offset="1" stop-color="#EF4444" stop-opacity="0.01"/>
+                            </linearGradient>
+                        </defs>
                     </svg>
                 </div>
             </div>
@@ -85,7 +95,7 @@
                             </div>
                         </div>
                         <span class="sc-md-price">$93,041.34</span>
-                        <span class="sc-md-change-up">+2.04%</span>
+                        <span class="sc-md-table-change-up">+2.04%</span>
                     </div>
                     <div class="sc-md-table-row" data-md-gainers-row>
                         <div class="sc-md-pair">
@@ -96,7 +106,7 @@
                             </div>
                         </div>
                         <span class="sc-md-price">$3,176.43</span>
-                        <span class="sc-md-change-up">+1.35%</span>
+                        <span class="sc-md-table-change-up">+1.35%</span>
                     </div>
                     <div class="sc-md-table-row" data-md-gainers-row>
                         <div class="sc-md-pair">
@@ -107,7 +117,7 @@
                             </div>
                         </div>
                         <span class="sc-md-price">$0.3992</span>
-                        <span class="sc-md-change-down">-0.50%</span>
+                        <span class="sc-md-table-change-down">-0.50%</span>
                     </div>
                 </div>
             </div>
@@ -130,7 +140,7 @@
                             </div>
                         </div>
                         <span class="sc-md-price">$0.000230</span>
-                        <span class="sc-md-change-up">+12.08%</span>
+                        <span class="sc-md-table-change-up">+12.08%</span>
                     </div>
                     <div class="sc-md-table-row" data-md-trending-row>
                         <div class="sc-md-pair">
@@ -141,7 +151,7 @@
                             </div>
                         </div>
                         <span class="sc-md-price">$0.00206</span>
-                        <span class="sc-md-change-down">-6.21%</span>
+                        <span class="sc-md-table-change-down">-6.21%</span>
                     </div>
                     <div class="sc-md-table-row" data-md-trending-row>
                         <div class="sc-md-pair">
@@ -152,7 +162,7 @@
                             </div>
                         </div>
                         <span class="sc-md-price">$0.0482</span>
-                        <span class="sc-md-change-up">+21.54%</span>
+                        <span class="sc-md-table-change-up">+21.54%</span>
                     </div>
                 </div>
             </div>

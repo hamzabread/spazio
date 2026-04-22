@@ -17,62 +17,10 @@
 }
 
 .sc-about-page-dynamic .sc-about-mission-card-dynamic {
-    display: block;
-    padding: 28px;
-}
-
-.sc-about-page-dynamic .sc-about-mission-card-dynamic > * {
-    max-width: 980px;
-}
-
-.sc-about-page-dynamic .sc-about-mission-card-dynamic h1,
-.sc-about-page-dynamic .sc-about-mission-card-dynamic h2,
-.sc-about-page-dynamic .sc-about-mission-card-dynamic h3,
-.sc-about-page-dynamic .sc-about-mission-card-dynamic h4 {
-    margin: 0 0 12px;
-    color: var(--color-ebeff2-adaptive);
-    font-family: "Helvetica Now Display";
-    line-height: 120%;
-}
-
-.sc-about-page-dynamic .sc-about-mission-card-dynamic h2 {
-    font-size: 40px;
-    font-weight: 700;
-}
-
-.sc-about-page-dynamic .sc-about-mission-card-dynamic h3 {
-    font-size: 30px;
-    font-weight: 700;
-}
-
-.sc-about-page-dynamic .sc-about-mission-card-dynamic p,
-.sc-about-page-dynamic .sc-about-mission-card-dynamic li,
-.sc-about-page-dynamic .sc-about-mission-card-dynamic blockquote {
-    margin: 0 0 16px;
-    color: var(--color-muted-legacy);
-    font-family: "Helvetica Now Display";
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 145%;
-    max-width: 980px;
-}
-
-.sc-about-page-dynamic .sc-about-mission-card-dynamic ul,
-.sc-about-page-dynamic .sc-about-mission-card-dynamic ol {
-    margin: 0 0 20px;
-    padding-left: 22px;
-}
-
-.sc-about-page-dynamic .sc-about-mission-card-dynamic .kg-card {
-    margin: 18px 0;
-}
-
-.sc-about-page-dynamic .sc-about-mission-card-dynamic .kg-toggle-card,
-.sc-about-page-dynamic .sc-about-mission-card-dynamic .kg-callout-card {
-    border: 1px solid var(--color-border-strong-adaptive);
-    border-radius: 12px;
-    background: var(--color-surface-101010);
-    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 34px;
 }
 
 .sc-about-page-dynamic .sc-about-operate-item p,
@@ -107,6 +55,14 @@
     padding: 80px 75px;
     position: relative;
     overflow: hidden;
+}
+
+.sc-about-hero {
+    background: #000000 !important;
+}
+
+:root[data-color-scheme="light"] .sc-about-hero {
+    background: #F8F9FA !important;
 }
 
 .sc-about-hero-glow {
@@ -155,9 +111,15 @@
     border: 1px solid rgba(231, 132, 38, 0.13);
 }
 
+:root[data-color-scheme="light"] .sc-about-chip {
+    border: 1px solid #FFD6A7;
+    background: #FFEDD4;
+    color: #CA3500;
+}
+
 .sc-about-hero-copy h1 {
     margin-bottom: 14px;
-    color: var(--color-ebeff2-adaptive);
+    color: #EBEFF2 !important;
     font-family: "Helvetica Now Display";
     font-size: 48px;
     font-style: normal;
@@ -167,16 +129,26 @@
 }
 
 .sc-about-hero-copy h1 span {
-    color: #F18F20;
+    color: #F18F20 !important;
+    -webkit-text-fill-color: #F18F20;
 }
 
 :root[data-color-scheme="light"] .sc-about-hero-copy h1 {
-    color: #EBEFF2;
+    background: linear-gradient(90deg, #101828 0%, #364153 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent !important;
 }
 
 :root[data-color-scheme="light"] .sc-about-hero-copy h1 span,
 :root[data-color-scheme="dark"] .sc-about-hero-copy h1 span {
     color: #F18F20;
+}
+
+.sc-about-hero-copy h1 .sc-about-hero-last-word {
+    color: #F18F20 !important;
+    -webkit-text-fill-color: #F18F20;
 }
 
 .sc-about-hero-copy {
@@ -189,29 +161,43 @@
 }
 
 .sc-about-hero-copy p {
-    margin: 0;
-    margin-bottom: 18px !important;
-    max-width: 660px;
+    color: #6C757D !important;
+    font-family: "Helvetica Now Display";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    margin: 0 !important;
+    max-width: 632px;
+}
+
+:root[data-color-scheme="light"] .sc-about-hero-copy p {
+    color: #4A5565 !important;
 }
 
 .sc-about-socials {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: 18px;
 }
 
 .sc-about-socials a {
-    width: 34px;
-    height: 34px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    background: #151a22;
     color: #f2f6fb;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
+}
+
+.sc-about-socials a svg,
+.sc-about-riccardo-socials a svg,
+.sc-about-team-socials a svg {
+    width: 30px;
+    height: 30px;
 }
 
 .sc-about-hero-image-wrap {
@@ -227,15 +213,19 @@
 }
 
 .sc-about-mission {
-    background: var(--color-surface-101010);
+    background: #000000;
     padding: 80px 75px;
 }
 
+:root[data-color-scheme="light"] .sc-about-mission {
+    background: #FFFFFF;
+}
+
 .sc-about-mission-card {
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 0;
     border-radius: 10px;
-    background: var(--color-surface-101010);
-    padding: 26px 26px;
+    background: transparent;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     gap: 34px;
@@ -272,8 +262,14 @@
 }
 
 .sc-about-operate {
-    background: var(--color-surface-101010);
+    background: #000000;
     padding: 80px 75px;
+}
+
+:root[data-color-scheme="light"] .sc-about-operate {
+    background: #FFFFFF;
+    border-top: 1px solid #E9ECEF;
+    border-bottom: 1px solid #E9ECEF;
 }
 
 .sc-about-operate-head {
@@ -312,6 +308,13 @@
     -webkit-text-fill-color: transparent;
 }
 
+.sc-about-operate-last-word,
+.sc-about-revenue-last-word,
+.sc-about-team-last-word {
+    color: #F18F20;
+    -webkit-text-fill-color: #F18F20;
+}
+
 .sc-about-operate-head p {
     margin: 12px auto 0 !important;
     max-width: 824px;
@@ -327,8 +330,12 @@
 .sc-about-revenue {
     border-top: 1px solid var(--color-border-strong-adaptive);
     border-bottom: 1px solid var(--color-border-strong-adaptive);
-    background: var(--color-surface-101010);
+    background: #000000;
     padding: 80px 75px;
+}
+
+:root[data-color-scheme="light"] .sc-about-revenue {
+    background: #F8F9FA;
 }
 
 .sc-about-revenue-head {
@@ -366,7 +373,10 @@
 }
 
 .sc-about-revenue-head h2 span {
-    color: #E98527;
+    background: var(--Gradient, linear-gradient(180deg, #F9992A 0%, #E27C26 100%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .sc-about-revenue-head p {
@@ -393,6 +403,11 @@
     background: var(--color-surface-101010);
     padding: 24px;
     min-height: 176px;
+    transition: border-color 0.2s ease;
+}
+
+.sc-about-revenue-item:hover {
+    border: 1px solid rgba(241, 143, 32, 0.50);
 }
 
 .sc-about-revenue-icon {
@@ -434,6 +449,10 @@
     gap: 42px 32px;
 }
 
+:root[data-color-scheme="light"] .sc-about-operate-card {
+    background: #F9FAFB;
+}
+
 .sc-about-operate-item {
     display: grid;
     grid-template-columns: 48px 1fr;
@@ -455,10 +474,9 @@
 }
 
 .sc-about-icon-image {
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
-    border-radius: 4px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
 }
 
 .sc-about-operate-item h3 {
@@ -482,8 +500,12 @@
 }
 
 .sc-about-riccardo {
-    background: var(--color-surface-101010);
+    background: #000000;
     padding: 80px 75px;
+}
+
+:root[data-color-scheme="light"] .sc-about-riccardo {
+    background: #FFFFFF;
 }
 
 .sc-about-riccardo-wrap {
@@ -543,10 +565,7 @@
 }
 
 .sc-about-riccardo-socials a {
-    width: 30px;
-    height: 30px;
     border-radius: 50%;
-    background: #2C2C2C;
     color: #F5F7FA;
     text-decoration: none;
     display: inline-flex;
@@ -670,12 +689,17 @@
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid var(--color-border-strong-adaptive);
-    background: var(--color-surface-101010);
+    background: #1B1B1B;
+}
+
+:root[data-color-scheme="light"] .sc-about-riccardo-article-card {
+    background: #F2F4F5;
+    border: 1px solid #F2F4F5;
 }
 
 .sc-about-article-image {
-    width: 115px;
-    height: 84.076px;
+    width: 205px;
+    height: 113px;
     flex-shrink: 0;
     border-radius: 10px;
     background-size: cover;
@@ -684,8 +708,12 @@
 }
 
 .sc-about-team {
-    background: var(--color-surface-101010);
+    background: #000000;
     padding: 44px 75px 84px;
+}
+
+:root[data-color-scheme="light"] .sc-about-team {
+    background: #FFFFFF;
 }
 
 .sc-about-team-head {
@@ -744,7 +772,7 @@
 
 .sc-about-team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 18px;
 }
 
@@ -770,13 +798,22 @@
 .sc-about-team-card {
     border-radius: 20px;
     border: 1px solid var(--color-border-strong-adaptive);
-    background: var(--color-surface-101010);
+    background: #101010;
     padding: 26px 26px 34px 26px;
     display: flex;
     flex-direction: column;
     gap: 0;
     text-decoration: none;
     min-height: 248px;
+    transition: border-color 0.2s ease;
+}
+
+.sc-about-team-card:hover {
+    border: 1px solid rgba(241, 143, 32, 0.50);
+}
+
+:root[data-color-scheme="light"] .sc-about-team-card {
+    background: #F9FAFB;
 }
 
 .sc-about-team-card img {
@@ -836,11 +873,8 @@
 }
 
 .sc-about-team-socials a {
-    width: 20px;
-    height: 20px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.06);
     color: var(--color-ebeff2-adaptive);
     text-decoration: none;
     display: inline-flex;
@@ -849,11 +883,19 @@
     font-size: 10px;
 }
 
+
+
 .sc-about-faq {
-    background: var(--color-surface-101010);
+    background: #000000;
     border-top: 1px solid rgba(233, 27, 27, 0.11);
     border-bottom: 1px solid rgba(233, 27, 27, 0.11);
     padding: 80px 75px;
+}
+
+:root[data-color-scheme="light"] .sc-about-faq {
+    background: #FFFFFF;
+    border-top: 1px solid #E9ECEF;
+    border-bottom: 1px solid #E9ECEF;
 }
 
 .sc-about-faq-wrap {
@@ -909,9 +951,19 @@
     width: 100%;
     padding: 20px;
     border-radius: 20px;
-    border: 0;
+    border: 1px solid transparent;
     background: var(--color-surface-101010);
     overflow: hidden;
+    transition: border-color 0.2s ease;
+}
+
+.sc-about-faq-item:hover,
+.sc-about-faq-item.is-open {
+    border: 1px solid rgba(241, 143, 32, 0.50);
+}
+
+:root[data-color-scheme="light"] .sc-about-faq-item {
+    background: #F9FAFB;
 }
 
 .sc-about-faq-trigger {
@@ -946,6 +998,10 @@
 
 .sc-about-faq-icon svg {
     display: block;
+}
+
+:root[data-color-scheme="light"] .sc-about-faq-icon svg path {
+    stroke: #000000;
 }
 
 .sc-about-faq-icon-open {
@@ -987,6 +1043,7 @@
     display: flex;
     flex-direction: column;
     gap: 0;
+    max-width: 367px;
 }
 
 .sc-about-article-meta {
@@ -1018,6 +1075,11 @@
     font-weight: 500;
     line-height: 110%;
     margin-bottom: 6px;
+    max-height: 40px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .sc-about-article-footer {
@@ -1041,6 +1103,12 @@
     font-weight: 400;
     line-height: 140%;
     margin: 0 !important;
+}
+
+.sc-about-article-author .sc-publication-name {
+    color: #F18F20;
+    text-decoration: underline;
+    font-weight: 500;
 }
 
 .sc-about-article-publication {
@@ -1243,7 +1311,7 @@
     }
 
     .sc-about-mission-card p {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .sc-about-operate {
@@ -1259,13 +1327,13 @@
     }
 
     .sc-about-operate-item {
-        grid-template-columns: 40px 1fr;
+        grid-template-columns: 50px 1fr;
         gap: 16px;
     }
 
     .sc-about-operate-icon {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         font-size: 16px;
     }
 
@@ -1314,9 +1382,21 @@
         font-size: 16px;
     }
 
+    .sc-about-riccardo-list {
+        gap: 16px;
+    }
+
     .sc-about-riccardo-content h3,
     .sc-about-riccardo-articles h3 {
         font-size: 24px;
+    }
+
+    .sc-about-riccardo-articles h3 {
+        font-size: 26px;
+    }
+
+    .sc-about-riccardo-wrap {
+        gap: 40px;
     }
 
     .sc-about-team {
@@ -1337,14 +1417,15 @@
 
     .sc-about-team-card {
         min-height: auto;
+        background: #101010;
     }
 
     .sc-about-faq {
-        padding: 0 16px 46px;
+        padding: 20px;
     }
 
     .sc-about-faq-head h3 {
-        font-size: 34px;
+        font-size: 30px;
     }
 
     .sc-about-faq-head p,
@@ -1385,7 +1466,11 @@
     }
 
     .sc-about-revenue-item h3 {
-        font-size: 16px;
+        font-size: 20px;
+    }
+
+    .sc-about-riccardo-article-card {
+        background: #1B1B1B;
     }
 
     .sc-about-revenue-item p {

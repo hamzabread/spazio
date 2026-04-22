@@ -27,6 +27,140 @@ import { normalizeEventMeta } from './eventMeta';
 
 // import { createPopUp } from './languagePopUp';
 
+function normalizeLocaleLabels() {
+	const localeMap = {
+		en: 'English',
+		it: 'Italiano',
+		es: 'Espanol',
+		fr: 'Francais',
+		de: 'Deutsch',
+		ko: 'Korean',
+		ru: 'Russian',
+		zh: 'Chinese',
+		ja: 'Japanese'
+	};
+
+	const localeNodes = Array.from(document.querySelectorAll('[data-locale-label]'));
+	if (!localeNodes.length) return;
+
+	localeNodes.forEach((node) => {
+		const rawCode = (node.getAttribute('data-locale-code') || node.textContent || '').trim();
+		if (!rawCode) return;
+
+		const normalizedCode = rawCode.toLowerCase().split(/[-_]/)[0];
+		node.textContent = localeMap[normalizedCode] || rawCode;
+	});
+}
+
+function accentAboutHeroLastWord() {
+	const titles = Array.from(document.querySelectorAll('.sc-about-hero-copy h1'));
+	if (!titles.length) return;
+
+	titles.forEach((title) => {
+		if (title.querySelector('.sc-about-hero-last-word')) return;
+
+		const existingSpans = title.querySelectorAll('span');
+		if (existingSpans.length) {
+			existingSpans[existingSpans.length - 1].classList.add('sc-about-hero-last-word');
+			return;
+		}
+
+		const rawText = (title.textContent || '').trim().replace(/\s+/g, ' ');
+		if (!rawText) return;
+
+		const splitAt = rawText.lastIndexOf(' ');
+		if (splitAt <= 0) return;
+
+		const leadText = rawText.slice(0, splitAt);
+		const lastWord = rawText.slice(splitAt + 1);
+
+		title.textContent = '';
+		title.append(document.createTextNode(`${leadText} `));
+
+		const accentSpan = document.createElement('span');
+		accentSpan.className = 'sc-about-hero-last-word';
+		accentSpan.textContent = lastWord;
+		title.append(accentSpan);
+	});
+}
+
+function accentLastWord(selector, className) {
+	const elements = Array.from(document.querySelectorAll(selector));
+	if (!elements.length) return;
+
+	elements.forEach((el) => {
+		if (el.querySelector(`.${className}`)) return;
+
+		const existingSpans = el.querySelectorAll('span');
+		if (existingSpans.length) {
+			existingSpans[existingSpans.length - 1].classList.add(className);
+			return;
+		}
+
+		const rawText = (el.textContent || '').trim().replace(/\s+/g, ' ');
+		if (!rawText) return;
+
+		const splitAt = rawText.lastIndexOf(' ');
+		if (splitAt <= 0) return;
+
+		const leadText = rawText.slice(0, splitAt);
+		const lastWord = rawText.slice(splitAt + 1);
+
+		el.textContent = '';
+		el.append(document.createTextNode(`${leadText} `));
+
+		const accentSpan = document.createElement('span');
+		accentSpan.className = className;
+		accentSpan.textContent = lastWord;
+		el.append(accentSpan);
+	});
+}
+
+function initMoreNewsLoadMore() {
+	const cardsPerPage = 3;
+	const mobileMq = window.matchMedia('(max-width: 767px)');
+	const sections = Array.from(document.querySelectorAll('.sc-mn-main'));
+	if (!sections.length) return;
+
+	const syncState = () => {
+		sections.forEach((section) => {
+			const grid = section.querySelector('.sc-mn-grid');
+			const button = section.querySelector('.sc-mn-load-more');
+			if (!grid || !button) return;
+
+			const cards = grid.querySelectorAll('.sc-mn-card');
+			const hasMoreThanInitial = cards.length > cardsPerPage;
+
+			if (!mobileMq.matches || !hasMoreThanInitial) {
+				grid.classList.remove('sc-mn-grid--collapsed', 'sc-mn-grid--expanded');
+				button.classList.add('is-hidden');
+				return;
+			}
+
+			if (!grid.classList.contains('sc-mn-grid--expanded')) {
+				grid.classList.add('sc-mn-grid--collapsed');
+				button.classList.remove('is-hidden');
+			}
+		});
+	};
+
+	sections.forEach((section) => {
+		const grid = section.querySelector('.sc-mn-grid');
+		const button = section.querySelector('.sc-mn-load-more');
+		if (!grid || !button || button.dataset.scBound === 'true') return;
+
+		button.dataset.scBound = 'true';
+		button.addEventListener('click', () => {
+			grid.classList.remove('sc-mn-grid--collapsed');
+			grid.classList.add('sc-mn-grid--expanded');
+			button.classList.add('is-hidden');
+		});
+	});
+
+	syncState();
+	window.addEventListener('resize', syncState);
+}
+
 showSubNav();
 //createPopUp();
 
@@ -47,6 +181,12 @@ footerExternalLinks();
 vibrator();
 initMarketDashboard();
 normalizeEventMeta();
+normalizeLocaleLabels();
+accentAboutHeroLastWord();
+accentLastWord('.sc-about-operate-head h2', 'sc-about-operate-last-word');
+accentLastWord('.sc-about-revenue-head h2', 'sc-about-revenue-last-word');
+accentLastWord('.sc-about-team-head h3', 'sc-about-team-last-word');
+initMoreNewsLoadMore();
 
 // GhostFlow MH
 moveWidget();

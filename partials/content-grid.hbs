@@ -190,32 +190,62 @@
             {{/foreach}}
         {{else}}
             <div class="sc-content-grid-center">
-                {{#get "posts" filter="featured:true+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags,authors" order="published_at desc"}}
-                    {{#foreach posts}}
-                    <article class="sc-featured-article">
-                        <img class="sc-featured-article-img" src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/elon.png"}}{{/if}}" alt="{{title}}" loading="lazy">
-                        <div class="sc-featured-article-content">
-                            <h2 class="sc-featured-article-title">
-                                <a href="{{url}}">{{title}}</a>
-                            </h2>
-                            <p class="sc-featured-article-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="42"}}{{/if}}</p>
-                            <div class="sc-featured-article-bottom">
-                                <div class="sc-featured-article-meta">
-                                    {{#if primary_author.profile_image}}
-                                    <img class="sc-featured-article-author-img" src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" loading="lazy">
-                                    {{/if}}
-                                    <span class="sc-featured-article-author-name">{{primary_author.name}}</span>
-                                    <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
-                                </div>
-                                <div class="sc-featured-article-tags">
-                                    {{#foreach tags limit="3"}}
-                                    <a class="sc-featured-article-tag" href="{{url}}">{{name}}</a>
-                                    {{/foreach}}
+                {{#get "posts" filter="tag:elon-musk+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags,authors" order="published_at desc"}}
+                    {{#if posts}}
+                        {{#foreach posts}}
+                        <article class="sc-featured-article">
+                            <img class="sc-featured-article-img" src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/elon.png"}}{{/if}}" alt="{{title}}" loading="lazy">
+                            <div class="sc-featured-article-content">
+                                <h2 class="sc-featured-article-title">
+                                    <a href="{{url}}">{{title}}</a>
+                                </h2>
+                                <p class="sc-featured-article-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="42"}}{{/if}}</p>
+                                <div class="sc-featured-article-bottom">
+                                    <div class="sc-featured-article-meta">
+                                        {{#if primary_author.profile_image}}
+                                        <img class="sc-featured-article-author-img" src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" loading="lazy">
+                                        {{/if}}
+                                        <span class="sc-featured-article-author-name">{{primary_author.name}}</span>
+                                        <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
+                                    </div>
+                                    <div class="sc-featured-article-tags">
+                                        {{#foreach tags limit="3"}}
+                                        <a class="sc-featured-article-tag" href="{{url}}">{{name}}</a>
+                                        {{/foreach}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                    {{/foreach}}
+                        </article>
+                        {{/foreach}}
+                    {{else}}
+                        {{#get "posts" filter="featured:true+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags,authors" order="published_at desc"}}
+                            {{#foreach posts}}
+                            <article class="sc-featured-article">
+                                <img class="sc-featured-article-img" src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/elon.png"}}{{/if}}" alt="{{title}}" loading="lazy">
+                                <div class="sc-featured-article-content">
+                                    <h2 class="sc-featured-article-title">
+                                        <a href="{{url}}">{{title}}</a>
+                                    </h2>
+                                    <p class="sc-featured-article-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="42"}}{{/if}}</p>
+                                    <div class="sc-featured-article-bottom">
+                                        <div class="sc-featured-article-meta">
+                                            {{#if primary_author.profile_image}}
+                                            <img class="sc-featured-article-author-img" src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" loading="lazy">
+                                            {{/if}}
+                                            <span class="sc-featured-article-author-name">{{primary_author.name}}</span>
+                                            <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
+                                        </div>
+                                        <div class="sc-featured-article-tags">
+                                            {{#foreach tags limit="3"}}
+                                            <a class="sc-featured-article-tag" href="{{url}}">{{name}}</a>
+                                            {{/foreach}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            {{/foreach}}
+                        {{/get}}
+                    {{/if}}
                 {{/get}}
             </div>
             <div class="sc-content-grid-right">

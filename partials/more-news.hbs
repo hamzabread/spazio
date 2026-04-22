@@ -95,22 +95,18 @@
                 {{/foreach}}
                 {{/get}}
             </div>
+            <button type="button" class="sc-mn-load-more is-hidden">Load More</button>
         </div>
 
         {{!-- Sidebar --}}
         <aside class="sc-mn-sidebar">
 
             {{!-- Scam Alerts --}}
-            {{#if @custom.scam_alerts_source_filter}}
-            {{#get "posts" include="tags" filter=@custom.scam_alerts_source_filter limit=5 as |scams|}}
+            {{#get "posts" filter="tag:scams" include="tags" limit="5" as |scams|}}
             {{#if scams}}
             <div class="sc-mn-widget">
-                {{#if @custom.scam_alerts_source_tag}}
-                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/{{@custom.scam_alerts_source_tag}}/">
-                {{else}}
                 <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/scams/">
-                {{/if}}
-                    <span>Scam Alerts</span>
+                    <span>{{t "Scam Alerts"}}</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
                 <div class="sc-mn-scam-list">
@@ -125,75 +121,8 @@
                     {{/foreach}}
                 </div>
             </div>
-            {{else}}
-            <div class="sc-mn-widget">
-                {{#if @custom.scam_alerts_source_tag}}
-                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/{{@custom.scam_alerts_source_tag}}/">
-                {{else}}
-                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/scams/">
-                {{/if}}
-                    <span>{{t "Scam Alerts"}}</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <div class="sc-mn-scam-list">
-                    {{#get "posts" include="tags" limit="3" order="published_at desc"}}
-                        {{#foreach posts}}
-                        <a class="sc-mn-scam-item" href="{{url}}">
-                            <span class="sc-mn-scam-date"><time datetime="{{date format="YYYY-MM-DDTHH:mm:ss"}}Z">{{date format="MMM D, YYYY HH:mm"}} UTC</time></span>
-                            <h4 class="sc-mn-scam-title">{{title}}</h4>
-                            {{#if primary_tag}}
-                            <span class="sc-mn-scam-tag">{{primary_tag.name}}</span>
-                            {{/if}}
-                        </a>
-                        {{/foreach}}
-                    {{/get}}
-                </div>
-            </div>
             {{/if}}
             {{/get}}
-            {{else}}
-            {{#get "posts" include="tags" filter="tags:[scams,truffe,arnaques,estafas,betrug,moshennichestvo,sagi,pianju]" limit=5 as |scams|}}
-            {{#if scams}}
-            <div class="sc-mn-widget">
-                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/scams/">
-                    <span>Scam Alerts</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <div class="sc-mn-scam-list">
-                    {{#foreach scams}}
-                    <a class="sc-mn-scam-item" href="{{url}}">
-                        <span class="sc-mn-scam-date"><time datetime="{{date format="YYYY-MM-DDTHH:mm:ss"}}Z">{{date format="MMM D, YYYY HH:mm"}} UTC</time></span>
-                        <h4 class="sc-mn-scam-title">{{title}}</h4>
-                        {{#primary_tag}}
-                        <span class="sc-mn-scam-tag">{{name}}</span>
-                        {{/primary_tag}}
-                    </a>
-                    {{/foreach}}
-                </div>
-            </div>
-            {{else}}
-            <div class="sc-mn-widget">
-                <a class="sc-mn-widget-hd sc-mn-widget-hd--orange" href="{{@site.url}}/tag/scams/">
-                    <span>{{t "Scam Alerts"}}</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <div class="sc-mn-scam-list">
-                    {{#get "posts" include="tags" limit="3" order="published_at desc"}}
-                        {{#foreach posts}}
-                        <a class="sc-mn-scam-item" href="{{url}}">
-                            <span class="sc-mn-scam-date"><time datetime="{{date format="YYYY-MM-DDTHH:mm:ss"}}Z">{{date format="MMM D, YYYY HH:mm"}} UTC</time></span>
-                            <h4 class="sc-mn-scam-title">{{title}}</h4>
-                            {{#if primary_tag}}
-                            <span class="sc-mn-scam-tag">{{primary_tag.name}}</span>
-                            {{/if}}
-                        </a>
-                        {{/foreach}}
-                    {{/get}}
-                </div>
-            </div>
-            {{/if}}
-            {{/get}}
-            {{/if}}
 
             {{!-- Best Exchanges & Wallets --}}
             <div class="sc-mn-widget">

@@ -253,6 +253,10 @@
     padding: 80px 75px;
 }
 
+:root[data-color-scheme="light"] .sc-contact-hero {
+    background: #F8F9FA;
+}
+
 .sc-contact-hero::before {
     content: "";
     position: absolute;
@@ -291,6 +295,10 @@
     font-weight: 400;
     line-height: 100%;
     margin-bottom: 18px;
+}
+
+:root[data-color-scheme="light"] .sc-contact-hero-chip {
+    color: #CA3500;
 }
 
 .sc-contact-hero-inner h1 {
@@ -384,19 +392,31 @@
     margin-bottom: 0;
 }
 
+:root[data-color-scheme="light"] .sc-contact-form-row label {
+    color: #414651;
+}
+
 .sc-contact-form-row input,
 .sc-contact-form-row textarea {
     background: var(--color-surface-101010);
     border: 1px solid var(--color-border-strong-adaptive) !important;
     border-radius: 8px !important;
     color: var(--color-ebeff2-adaptive) !important;
-    font-family: Helvetica Now Display !important;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif !important;
     font-size: 16px !important;
     font-style: normal;
     font-weight: 400;
     line-height: 130% !important;
     padding: 13px 14px !important;
     width: 100%;
+}
+
+.sc-contact-form-row input:hover,
+.sc-contact-form-row input:focus,
+.sc-contact-form-row textarea:hover,
+.sc-contact-form-row textarea:focus {
+    border: 1px solid rgba(241, 143, 32, 0.50) !important;
+    outline: none;
 }
 
 .sc-contact-form-row textarea {
@@ -415,6 +435,11 @@
 .sc-contact-form-row input::placeholder,
 .sc-contact-form-row textarea::placeholder {
     color: var(--color-muted-legacy);
+}
+
+:root[data-color-scheme="light"] .sc-contact-form-row input::placeholder,
+:root[data-color-scheme="light"] .sc-contact-form-row textarea::placeholder {
+    color: #717680;
 }
 
 .sc-contact-consent {
@@ -465,6 +490,10 @@
     text-decoration: underline;
 }
 
+:root[data-color-scheme="light"] .sc-contact-consent a {
+    color: #535862;
+}
+
 .sc-contact-submit {
     margin-top: 8px;
     width: 100%;
@@ -481,6 +510,11 @@
     line-height: 150%;
     padding: 18px 20px;
     cursor: pointer;
+}
+
+:root[data-color-scheme="light"] .sc-contact-submit {
+    background: #000000 !important;
+    color: #FFFFFF;
 }
 
 .sc-contact-submit:hover {
@@ -507,6 +541,10 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
+}
+
+:root[data-color-scheme="light"] .sc-contact-media-card img {
+    background: #F9FAFB;
 }
 
 .sc-contact-direct-card {
@@ -630,7 +668,7 @@
     }
 
     .sc-contact-hero-inner h1 {
-        font-size: 36px;
+        font-size: 36px !important;
     }
 
     .sc-contact-hero-inner p {

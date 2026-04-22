@@ -82,68 +82,100 @@
                         <a href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute='true'}}" class="sc-blogs-share-btn" aria-label="Share on LinkedIn" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
                     </div>
                 </article>
+
+                <article class="sc-blogs-likes-card" aria-label="Article reactions preview">
+                    <img src="{{asset 'imagesAndIcons/likes.png'}}" alt="Article reactions" class="sc-blogs-likes-image" loading="lazy" decoding="async">
+                </article>
             </aside>
 
             <section class="sc-blogs-next-col sc-blogs-next-col-center" aria-label="Main blog story">
                 <article class="sc-blogs-main-content gh-content" aria-label="Blog article content">
                     {{content}}
+                    {{#if primary_tag}}
+                        {{#get "posts" filter="id:-{{id}}+tag:{{primary_tag.slug}}" limit="4" include="authors,tags" order="published_at desc"}}
+                            {{#if posts}}
+                            <section class="sc-blogs-related" aria-label="Related Articles">
+                                <h4>{{t "Related Articles"}}</h4>
+
+                                <div class="sc-blogs-related-grid">
+                                    {{#foreach posts from="1" to="2"}}
+                                    <article class="sc-blogs-related-card sc-blogs-related-card-large">
+                                        {{#if feature_image}}
+                                        <a href="{{url}}"><img src="{{img_url feature_image size='m'}}" alt="{{title}}" loading="lazy" decoding="async"></a>
+                                        {{/if}}
+                                        <div class="sc-blogs-related-body">
+                                            <div class="sc-blogs-related-meta">
+                                                {{#primary_author}}
+                                                <img src="{{#if profile_image}}{{img_url profile_image size='xs'}}{{else}}{{asset 'imagesAndIcons/AuthorAvatarDefault.jpg'}}{{/if}}" alt="{{name}}" loading="lazy" decoding="async">
+                                                <span>{{name}}</span>
+                                                {{/primary_author}}
+                                                <span aria-hidden="true">•</span>
+                                                <span>{{date timeago="true"}}</span>
+                                            </div>
+                                            <h5><a href="{{url}}">{{title}}</a></h5>
+                                            {{#if excerpt}}<p>{{excerpt words="22"}}</p>{{/if}}
+                                        </div>
+                                    </article>
+                                    {{/foreach}}
+                                </div>
+
+                                <div class="sc-blogs-related-mini-grid">
+                                    {{#foreach posts from="3" to="4"}}
+                                    <article class="sc-blogs-related-card sc-blogs-related-mini-card">
+                                        {{#if feature_image}}
+                                        <a href="{{url}}"><img src="{{img_url feature_image size='s'}}" alt="{{title}}" loading="lazy" decoding="async"></a>
+                                        {{/if}}
+                                        <div class="sc-blogs-related-mini-copy">
+                                            <h6><a href="{{url}}">{{title}}</a></h6>
+                                            <div class="sc-blogs-related-meta">
+                                                {{#primary_author}}
+                                                <img src="{{#if profile_image}}{{img_url profile_image size='xs'}}{{else}}{{asset 'imagesAndIcons/AuthorAvatarDefault.jpg'}}{{/if}}" alt="{{name}}" loading="lazy" decoding="async">
+                                                <span>{{name}}</span>
+                                                {{/primary_author}}
+                                                <span aria-hidden="true">•</span>
+                                                <span>{{date timeago="true"}}</span>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    {{/foreach}}
+                                </div>
+                            </section>
+                            {{/if}}
+                        {{/get}}
+                    {{/if}}
                 </article>
-
-                {{#if primary_tag}}
-                    {{#get "posts" filter="id:-{{id}}+tag:{{primary_tag.slug}}" limit="4" include="authors,tags" order="published_at desc"}}
-                        {{#if posts}}
-                        <section class="sc-blogs-related" aria-label="Related Articles">
-                            <h4>{{t "Related Articles"}}</h4>
-
-                            <div class="sc-blogs-related-grid">
-                                {{#foreach posts from="1" to="2"}}
-                                <article class="sc-blogs-related-card sc-blogs-related-card-large">
-                                    {{#if feature_image}}
-                                    <a href="{{url}}"><img src="{{img_url feature_image size='m'}}" alt="{{title}}" loading="lazy" decoding="async"></a>
-                                    {{/if}}
-                                    <div class="sc-blogs-related-body">
-                                        <div class="sc-blogs-related-meta">
-                                            {{#primary_author}}
-                                            <img src="{{#if profile_image}}{{img_url profile_image size='xs'}}{{else}}{{asset 'imagesAndIcons/AuthorAvatarDefault.jpg'}}{{/if}}" alt="{{name}}" loading="lazy" decoding="async">
-                                            <span>{{name}}</span>
-                                            {{/primary_author}}
-                                            <span aria-hidden="true">•</span>
-                                            <span>{{date timeago="true"}}</span>
-                                        </div>
-                                        <h5><a href="{{url}}">{{title}}</a></h5>
-                                        {{#if excerpt}}<p>{{excerpt words="22"}}</p>{{/if}}
-                                    </div>
-                                </article>
-                                {{/foreach}}
-                            </div>
-
-                            <div class="sc-blogs-related-mini-grid">
-                                {{#foreach posts from="3" to="4"}}
-                                <article class="sc-blogs-related-card sc-blogs-related-mini-card">
-                                    {{#if feature_image}}
-                                    <a href="{{url}}"><img src="{{img_url feature_image size='s'}}" alt="{{title}}" loading="lazy" decoding="async"></a>
-                                    {{/if}}
-                                    <div class="sc-blogs-related-mini-copy">
-                                        <h6><a href="{{url}}">{{title}}</a></h6>
-                                        <div class="sc-blogs-related-meta">
-                                            {{#primary_author}}
-                                            <img src="{{#if profile_image}}{{img_url profile_image size='xs'}}{{else}}{{asset 'imagesAndIcons/AuthorAvatarDefault.jpg'}}{{/if}}" alt="{{name}}" loading="lazy" decoding="async">
-                                            <span>{{name}}</span>
-                                            {{/primary_author}}
-                                            <span aria-hidden="true">•</span>
-                                            <span>{{date timeago="true"}}</span>
-                                        </div>
-                                    </div>
-                                </article>
-                                {{/foreach}}
-                            </div>
-                        </section>
-                        {{/if}}
-                    {{/get}}
-                {{/if}}
             </section>
 
             <aside class="sc-blogs-next-col sc-blogs-next-col-right" aria-label="Article widgets">
+                <article class="sc-blogs-right-card sc-blogs-market-card" data-market-dashboard="coingecko" data-btc-market-card aria-label="Bitcoin market overview">
+                    <a class="sc-blogs-market-link" href="https://www.coingecko.com/en/coins/bitcoin" target="_blank" rel="noopener" aria-label="Bitcoin market details">
+                        <div class="sc-blogs-market-head">
+                            <div class="sc-blogs-market-coin">
+                                <img src="{{asset 'imagesAndIcons/bitcoin.svg'}}" alt="Bitcoin" loading="lazy" decoding="async" data-btc-icon>
+                                <div>
+                                    <h4 data-btc-name>Bitcoin</h4>
+                                    <p data-btc-symbol>BTC (24H)</p>
+                                </div>
+                            </div>
+                            <div class="sc-blogs-market-price">
+                                <strong data-btc-price>$82,585.24</strong>
+                                <span class="sc-blogs-market-change sc-blogs-market-change-down" data-btc-change>-6%</span>
+                            </div>
+                        </div>
+                        <div class="sc-blogs-market-graph" data-btc-graph aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="295" height="76" viewBox="0 0 295 76" fill="none">
+                                <path d="M0 76V0L36.875 20L73.75 30L110.625 10L147.5 25L184.375 15L221.25 30L258.125 20L295 25V76H0Z" fill="url(#paint0_linear_683_9152)"/>
+                                <defs>
+                                    <linearGradient id="paint0_linear_683_9152" x1="0" y1="0" x2="0" y2="7600" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#90CAF9" stop-opacity="0.4"/>
+                                        <stop offset="1" stop-color="#90CAF9" stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </a>
+                </article>
+
                 <article class="sc-blogs-right-card sc-blogs-newsletter-card">
                     <div class="sc-blogs-newsletter-inner">
                         <img src="{{asset 'imagesAndIcons/email.svg'}}" alt="Newsletter" class="sc-blogs-newsletter-icon" loading="lazy" decoding="async">
@@ -155,72 +187,9 @@
                     </div>
                 </article>
 
-                <article class="sc-blogs-right-card sc-market-card" data-market-dashboard="coingecko" aria-label="Crypto market overview">
-                    <div class="sc-market-header">
-                        <span>{{t "Crypto Market"}}</span>
-                        {{#if @custom.market_source_tag}}
-                        <a href="{{@site.url}}/tag/{{@custom.market_source_tag}}/" aria-label="{{t "View all markets"}}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                                <path d="M7.11588 2.91699L11.1992 7.00033L7.11588 11.0837" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M3.03255 7L11.1992 7" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                        {{else}}
-                        <a href="{{@site.url}}/tag/markets/" aria-label="{{t "View all markets"}}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                                <path d="M7.11588 2.91699L11.1992 7.00033L7.11588 11.0837" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M3.03255 7L11.1992 7" stroke="#F18F20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                        {{/if}}
-                    </div>
-
-                    <div class="sc-market-list">
-                        <a class="sc-market-item" href="https://www.coingecko.com/en/coins/{{#if @custom.article_market_coin_1}}{{@custom.article_market_coin_1}}{{else}}bitcoin{{/if}}" aria-label="Market coin 1" data-market-row="{{#if @custom.article_market_coin_1}}{{@custom.article_market_coin_1}}{{else}}bitcoin{{/if}}" target="_blank" rel="noopener">
-                            <img class="sc-market-coin-icon" src="{{asset 'imagesAndIcons/bitcoin.svg'}}" alt="Coin" loading="lazy" width="48" height="48" data-market-icon>
-                            <div class="sc-market-coin-info">
-                                <span class="sc-market-coin-name" data-market-name>{{#if @custom.article_market_coin_1}}{{@custom.article_market_coin_1}}{{else}}bitcoin{{/if}}</span>
-                                <span class="sc-market-coin-symbol" data-market-symbol>--</span>
-                            </div>
-                            <div class="sc-market-coin-price">
-                                <span class="sc-market-coin-price-value" data-market-price>--</span>
-                                <span class="sc-market-coin-change sc-md-change-up" data-market-change>--</span>
-                            </div>
-                        </a>
-
-                        <a class="sc-market-item" href="https://www.coingecko.com/en/coins/{{#if @custom.article_market_coin_2}}{{@custom.article_market_coin_2}}{{else}}ethereum{{/if}}" aria-label="Market coin 2" data-market-row="{{#if @custom.article_market_coin_2}}{{@custom.article_market_coin_2}}{{else}}ethereum{{/if}}" target="_blank" rel="noopener">
-                            <img class="sc-market-coin-icon" src="{{asset 'imagesAndIcons/bitcoin.svg'}}" alt="Coin" loading="lazy" width="48" height="48" data-market-icon>
-                            <div class="sc-market-coin-info">
-                                <span class="sc-market-coin-name" data-market-name>{{#if @custom.article_market_coin_2}}{{@custom.article_market_coin_2}}{{else}}ethereum{{/if}}</span>
-                                <span class="sc-market-coin-symbol" data-market-symbol>--</span>
-                            </div>
-                            <div class="sc-market-coin-price">
-                                <span class="sc-market-coin-price-value" data-market-price>--</span>
-                                <span class="sc-market-coin-change sc-md-change-up" data-market-change>--</span>
-                            </div>
-                        </a>
-
-                        <a class="sc-market-item" href="https://www.coingecko.com/en/coins/{{#if @custom.article_market_coin_3}}{{@custom.article_market_coin_3}}{{else}}cardano{{/if}}" aria-label="Market coin 3" data-market-row="{{#if @custom.article_market_coin_3}}{{@custom.article_market_coin_3}}{{else}}cardano{{/if}}" target="_blank" rel="noopener">
-                            <img class="sc-market-coin-icon" src="{{asset 'imagesAndIcons/bitcoin.svg'}}" alt="Coin" loading="lazy" width="48" height="48" data-market-icon>
-                            <div class="sc-market-coin-info">
-                                <span class="sc-market-coin-name" data-market-name>{{#if @custom.article_market_coin_3}}{{@custom.article_market_coin_3}}{{else}}cardano{{/if}}</span>
-                                <span class="sc-market-coin-symbol" data-market-symbol>--</span>
-                            </div>
-                            <div class="sc-market-coin-price">
-                                <span class="sc-market-coin-price-value" data-market-price>--</span>
-                                <span class="sc-market-coin-change sc-md-change-up" data-market-change>--</span>
-                            </div>
-                        </a>
-                    </div>
-                </article>
-
                 <article class="sc-blogs-right-card sc-blogs-article-tags-card">
                     <h4>{{t "In this Article"}}</h4>
-                    <div class="sc-blogs-suggested-tags">
-                        {{#foreach tags visibility="all" limit="8"}}
-                        <span>{{name}}</span>
-                        {{/foreach}}
-                    </div>
+                    <img src="{{asset 'imagesAndIcons/crypto-row.svg'}}" alt="Article coins" class="sc-blogs-crypto-row-image" loading="lazy" decoding="async">
                 </article>
 
                 <article class="sc-blogs-right-card sc-blogs-language-card" aria-label="Read this article in multiple languages">
@@ -228,21 +197,25 @@
                     <ul>
                         <li>
                             <a href="{{url}}" class="is-active">
-                                <span class="sc-blogs-language-left"><span>{{locale}}</span></span>
+                                <span class="sc-blogs-language-left">
+                                    <span class="sc-blogs-language-pill" data-locale-label data-locale-code="{{#if locale}}{{locale}}{{else}}{{@site.locale}}{{/if}}">{{#if locale}}{{locale}}{{else}}{{@site.locale}}{{/if}}</span>
+                                </span>
                                 <span class="sc-blogs-language-current">{{t "Current"}}</span>
                             </a>
                         </li>
                         {{#foreach translations}}
                         <li>
                             <a href="{{url}}">
-                                <span class="sc-blogs-language-left"><span>{{locale}}</span></span>
+                                <span class="sc-blogs-language-left">
+                                    <span class="sc-blogs-language-pill" data-locale-label data-locale-code="{{locale}}">{{locale}}</span>
+                                </span>
                             </a>
                         </li>
                         {{/foreach}}
                     </ul>
                 </article>
 
-                {{#get "posts" filter="id:-{{id}}" limit="1" include="authors,tags" order="published_at desc"}}
+                {{#get "posts" filter="slug:ilya-lichtenstein-is-free-the-spectre-of-the-bitfinex-mega-hack-is-back-in-the-news+id:-{{id}}" limit="1" include="authors,tags" order="published_at desc"}}
                 {{#if posts}}
                 {{#foreach posts}}
                 <article class="sc-blogs-right-card sc-blogs-suggested-card">
@@ -269,6 +242,36 @@
                     </div>
                 </article>
                 {{/foreach}}
+                {{else}}
+                    {{#get "posts" filter="id:-{{id}}+tag:hack" limit="1" include="authors,tags" order="published_at desc"}}
+                    {{#if posts}}
+                    {{#foreach posts}}
+                    <article class="sc-blogs-right-card sc-blogs-suggested-card">
+                        <h4>{{t "Suggested article"}}</h4>
+                        <div class="sc-blogs-suggested-media">
+                            {{#if feature_image}}
+                            <a href="{{url}}"><img src="{{img_url feature_image size='m'}}" alt="{{title}}" loading="lazy" decoding="async"></a>
+                            {{/if}}
+                        </div>
+                        <div class="sc-blogs-suggested-meta">
+                            {{#primary_author}}
+                            <img src="{{#if profile_image}}{{img_url profile_image size='xs'}}{{else}}{{asset 'imagesAndIcons/AuthorAvatarDefault.jpg'}}{{/if}}" alt="{{name}}" loading="lazy" decoding="async">
+                            <span>{{name}}</span>
+                            {{/primary_author}}
+                            <span aria-hidden="true">•</span>
+                            <span>{{date timeago="true"}}</span>
+                        </div>
+                        <h5><a href="{{url}}">{{title}}</a></h5>
+                        {{#if excerpt}}<p>{{excerpt words="26"}}</p>{{/if}}
+                        <div class="sc-blogs-suggested-tags">
+                            {{#foreach tags visibility="all" limit="3"}}
+                            <span>{{name}}</span>
+                            {{/foreach}}
+                        </div>
+                    </article>
+                    {{/foreach}}
+                    {{/if}}
+                    {{/get}}
                 {{/if}}
                 {{/get}}
             </aside>
