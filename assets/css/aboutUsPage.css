@@ -46,7 +46,7 @@
 }
 
 .sc-about-shell {
-    max-width: 1540px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
@@ -109,6 +109,12 @@
     color: rgba(255, 255, 255, 0.8);
     background: rgba(231, 132, 38, 0.10);
     border: 1px solid rgba(231, 132, 38, 0.13);
+}
+
+:root[data-color-scheme="dark"] .sc-about-chip {
+    color: #F9992A;
+    background: rgba(249, 153, 42, 0.15);
+    border: 1px solid rgba(249, 153, 42, 0.3);
 }
 
 :root[data-color-scheme="light"] .sc-about-chip {
@@ -264,12 +270,19 @@
 .sc-about-operate {
     background: #000000;
     padding: 80px 75px;
+    border-top: 1px solid #1B1B1B;
+    border-bottom: 1px solid #1B1B1B;
 }
 
 :root[data-color-scheme="light"] .sc-about-operate {
     background: #FFFFFF;
     border-top: 1px solid #E9ECEF;
     border-bottom: 1px solid #E9ECEF;
+}
+
+:root[data-color-scheme="dark"] .sc-about-operate {
+    border-top: 1px solid #1B1B1B;
+    border-bottom: 1px solid #1B1B1B;
 }
 
 .sc-about-operate-head {
@@ -412,6 +425,11 @@
     padding: 24px;
     min-height: 176px;
     transition: border-color 0.2s ease;
+}
+
+:root[data-color-scheme="dark"] .sc-about-revenue-item {
+    border: 1px solid #1B1B1B;
+    background: #050505;
 }
 
 .sc-about-revenue-item:hover {
@@ -692,6 +710,7 @@
 .sc-about-riccardo-article-card {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: space-between;
     gap: 24px;
     padding: 20px;
     border-radius: 10px;
@@ -923,7 +942,7 @@
     margin: 0 0 24px;
     color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
-    font-size: 30px;
+    font-size: 40px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
@@ -1243,6 +1262,10 @@
 
     .sc-about-faq-head h3 {
         font-size: 30px;
+    }
+
+    .sc-about-riccardo-article-card {
+        justify-content: space-between;
     }
 
     .sc-about-faq-head p,

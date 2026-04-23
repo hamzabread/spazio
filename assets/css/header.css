@@ -940,7 +940,14 @@
 
 .main-menu .main-menu_block {
     padding-top: 24px;
-    padding-bottom: 15px
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.main-menu .main-menu_block:first-child,
+.main-menu .main-menu_block:nth-child(3) {
+    display: none;
 }
 
 .main-menu .main-menu_block:last-child {
@@ -1340,9 +1347,8 @@
 }
 
 .gh-head-actions{
-    padding: 24px;
+    padding: 24px 0;
     border-bottom: 1px solid var(--mobile-menu-borders-color);
-    padding-left: 51px;
 }
 
 .gh-head-members{

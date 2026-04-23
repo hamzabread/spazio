@@ -74,6 +74,10 @@ html,
   background-position: center;
 }
 
+:root:not([data-color-scheme="dark"]) .gh-main {
+  background-image: none;
+}
+
 @media (max-width: 767px) {
   .gh-main {
     background-image: none;
