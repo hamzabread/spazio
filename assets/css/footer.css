@@ -481,7 +481,7 @@ li.sitelinks-link a {
 }
 
 :root[data-color-scheme="dark"] .scf-footer {
-    background: transparent;
+    background: #101010;
     border-top: 1px solid #1B1B1B;
 }
 
@@ -768,7 +768,7 @@ li.sitelinks-link a {
 }
 
 :root[data-color-scheme="dark"] .scf-footer {
-    background: #07090f;
+    background: #101010;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
