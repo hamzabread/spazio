@@ -22,6 +22,12 @@ function formatPct(value) {
     return `${sign}${value.toFixed(2)}%`;
 }
 
+function formatPctWithArrows(value) {
+    if (typeof value !== 'number' || Number.isNaN(value)) return 'N/A';
+    const arrow = value >= 0 ? '↑' : '↓';
+    return `${arrow}${Math.abs(value).toFixed(2)}%`;
+}
+
 function formatPctCompact(value) {
     if (typeof value !== 'number' || Number.isNaN(value)) return 'N/A';
     const sign = value > 0 ? '+' : '';
@@ -154,7 +160,7 @@ function updateContentGridMarketRows(coins) {
 
         if (changeEl) {
             const change = coin.price_change_percentage_24h;
-            changeEl.textContent = formatPct(change);
+            changeEl.textContent = formatPctWithArrows(change);
             changeEl.classList.remove('sc-md-change-up', 'sc-md-change-down');
             changeEl.classList.add((typeof change === 'number' && change >= 0) ? 'sc-md-change-up' : 'sc-md-change-down');
         }

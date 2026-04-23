@@ -74,6 +74,12 @@ html,
   background-position: center;
 }
 
+@media (max-width: 767px) {
+  .gh-main {
+    background-image: none;
+  }
+}
+
 .gh-container {
   width: 100%;
   max-width: 1440px;
