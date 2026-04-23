@@ -68,7 +68,7 @@
     padding: 12px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 990px) {
     .gh-header .lang-switch-mobile {
         display: none !important;
     }
@@ -975,7 +975,7 @@
     font-size: 10px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 990px) {
     .gh-header-container {
         padding-left: 16px;
         padding-right: 16px;

@@ -290,6 +290,14 @@
     margin-bottom: 12px;
 }
 
+:root[data-color-scheme="light"] .sc-about-operate-chip,
+:root[data-color-scheme="light"] .sc-about-revenue-chip,
+:root[data-color-scheme="light"] .sc-about-riccardo-chip {
+    color: #CA3500;
+    border: 1px solid #FFD6A7;
+    background: #FFEDD4;
+}
+
 .sc-about-operate-head h2 {
     margin: 0;
     color: var(--color-ebeff2-adaptive);
@@ -466,7 +474,7 @@
     border-radius: 50%;
     background: rgba(241, 143, 32, 0.15);
     color: #F18F20;
-    border: 1px solid rgba(241, 143, 32, 0.35);
+    border: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -814,6 +822,7 @@
 
 :root[data-color-scheme="light"] .sc-about-team-card {
     background: #F9FAFB;
+    border: 1px solid #f9fafb;
 }
 
 .sc-about-team-card img {
@@ -1297,6 +1306,10 @@
         margin-top: 16px;
     }
 
+    .sc-about-hero .gh-breadcrumbs {
+        display: flex;
+    }
+
     .sc-about-mission {
         padding: 20px;
     }
@@ -1316,6 +1329,8 @@
 
     .sc-about-operate {
         padding: 40px 20px;
+        border-top: none;
+        border-bottom: none;
     }
 
     .sc-about-operate-head h2 {
@@ -1422,6 +1437,8 @@
 
     .sc-about-faq {
         padding: 20px;
+        border-top: none;
+        border-bottom: none;
     }
 
     .sc-about-faq-head h3 {

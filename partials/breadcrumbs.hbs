@@ -42,6 +42,10 @@
 {{#is "page"}}
     <ul class="gh-breadcrumbs">
         <li class="gh-breadcrumb-item"><a href="{{@site.url}}" aria-label="{{t "Home page link"}}">{{t "Home"}}</a></li>
+        {{#if breadcrumb_title}}
+        <li class="gh-breadcrumb-item"><span>{{breadcrumb_title}}</span></li>
+        {{/if}}
+        {{#unless breadcrumb_title}}
         {{#if page.title}}
         <li class="gh-breadcrumb-item"><span>{{page.title}}</span></li>
         {{/if}}
@@ -49,6 +53,7 @@
             {{#if title}}
             <li class="gh-breadcrumb-item"><span>{{title}}</span></li>
             {{/if}}
+        {{/unless}}
         {{/unless}}
     </ul>
 {{/is}} 

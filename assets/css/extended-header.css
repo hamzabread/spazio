@@ -80,3 +80,7 @@
         }
     }
 }
+
+:root[data-color-scheme="light"] .extended-header {
+    background-color: #fff;
+}
