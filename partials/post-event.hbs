@@ -1,0 +1,114 @@
+<div class="sc-ev-post-page">
+    <div class="sc-ev-post-breadcrumbs">
+        <nav class="sc-ev-post-bc gh-container" aria-label="{{t "Breadcrumb"}}">
+            <a class="sc-ev-post-bc-link" href="{{@site.url}}">{{t "Home"}}</a>
+            <span class="sc-ev-post-bc-sep" aria-hidden="true">›</span>
+            <a class="sc-ev-post-bc-link" href="{{@site.url}}/events/">{{t "Crypto Events listing title"}}</a>
+            <span class="sc-ev-post-bc-sep" aria-hidden="true">›</span>
+            <span class="sc-ev-post-bc-current">{{title}}</span>
+        </nav>
+    </div>
+
+    <main class="main flex-1 sc-ev-post-main">
+        <div class="gh-container sc-ev-post-layout">
+            <article class="sc-ev-post-primary" aria-labelledby="sc-ev-post-title">
+                <div class="sc-ev-post-card">
+                    {{#if feature_image}}
+                    <div class="sc-ev-post-hero">
+                        <img src="{{img_url feature_image size="2000"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="sc-ev-post-hero-img" loading="eager" decoding="async">
+                    </div>
+                    {{/if}}
+                    <div class="sc-ev-post-card-inner">
+                        <div class="sc-ev-post-card-head">
+                            <span class="sc-ev-post-card-cat">
+                                {{#foreach tags visibility="public"}}
+                                {{#match slug "event"}}{{else}}
+                                {{#match slug "events"}}{{else}}
+                                <span class="sc-ev-post-cat-opt">{{name}}</span>
+                                {{/match}}
+                                {{/match}}
+                                {{/foreach}}
+                            </span>
+                        </div>
+                        <h1 id="sc-ev-post-title" class="sc-ev-post-title">{{title}}</h1>
+                        {{#if excerpt}}
+                        <p class="sc-ev-post-lede">{{excerpt}}</p>
+                        {{else if custom_excerpt}}
+                        <p class="sc-ev-post-lede">{{custom_excerpt}}</p>
+                        {{/if}}
+                        <h2 class="sc-ev-post-about-heading">{{t "About Event"}}</h2>
+                        <div class="sc-ev-post-body gh-content">
+                            {{{content}}}
+                        </div>
+                    </div>
+                </div>
+
+                {{#get "posts" filter="tags:[event,events]+id:-{{id}}+tag:-jobs+tag:-careers+tag:-hiring+tag:-press-releases+tag:-people" limit="4" include="authors,tags" order="published_at desc"}}
+                {{#if posts}}
+                <section class="sc-ev-post-related" aria-labelledby="sc-ev-post-related-title">
+                    <h2 id="sc-ev-post-related-title" class="sc-ev-post-related-title">{{t "Related events"}}</h2>
+                    <div class="sc-ev-post-related-grid">
+                        {{#foreach posts}}
+                        <article class="sc-ev-related-card">
+                            <a class="sc-ev-related-thumb" href="{{url}}" aria-hidden="true" tabindex="-1">
+                                {{#if feature_image}}
+                                <img src="{{img_url feature_image size="m"}}" alt="" loading="lazy" decoding="async">
+                                {{else}}
+                                <span class="sc-ev-related-thumb-ph" aria-hidden="true"></span>
+                                {{/if}}
+                            </a>
+                            <div class="sc-ev-related-body">
+                                <h3 class="sc-ev-related-title"><a href="{{url}}">{{title}}</a></h3>
+                                {{#if excerpt}}<p class="sc-ev-related-excerpt">{{excerpt words="28"}}</p>{{/if}}
+                            </div>
+                        </article>
+                        {{/foreach}}
+                    </div>
+                </section>
+                {{/if}}
+                {{/get}}
+            </article>
+
+            <aside class="sc-pr-post-sidebar sc-ev-post-sidebar" aria-label="{{t "Event post sidebar"}}">
+                <section class="sc-pr-sidebar-card sc-pr-sidebar-share">
+                    <h2 class="sc-pr-sidebar-heading">{{t "SHARE"}}</h2>
+                    <div class="sc-pr-sidebar-share-row">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute='true'}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Share on Facebook"}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                        <a href="https://t.me/share/url?url={{url absolute='true'}}&text={{title}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Share on Telegram"}}" target="_blank" rel="noopener">{{> "icons/telegram"}}</a>
+                        <a href="https://news.google.com/search?q={{title}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Open in Google News"}}" target="_blank" rel="noopener">{{> "icons/googlenews"}}</a>
+                        <a href="https://x.com/intent/post?url={{url absolute='true'}}&text={{title}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Share on X"}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute='true'}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Share on LinkedIn"}}" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
+                    </div>
+                </section>
+
+                <section class="sc-pr-sidebar-card sc-ev-event-details">
+                    <h2 class="sc-ev-event-details-heading">{{t "Event Details"}}</h2>
+                    <dl class="sc-ev-details-list">
+                        <div class="sc-ev-detail-row">
+                            <dt>{{t "Date"}}</dt>
+                            <dd>{{#foreach tags visibility="internal" limit="1"}}{{name}}{{else}}—{{/foreach}}</dd>
+                        </div>
+                        <div class="sc-ev-detail-row">
+                            <dt>{{t "Location"}}</dt>
+                            <dd>{{#foreach tags visibility="internal" from="2" to="2"}}{{name}}{{else}}—{{/foreach}}</dd>
+                        </div>
+                        <div class="sc-ev-detail-row">
+                            <dt>{{t "Attendees"}}</dt>
+                            <dd>{{#foreach tags visibility="internal" from="3" to="3"}}{{name}}{{else}}—{{/foreach}}</dd>
+                        </div>
+                    </dl>
+                </section>
+            </aside>
+        </div>
+    </main>
+</div>
+<script>
+(function () {
+    document.querySelectorAll('.sc-ev-post-page .sc-ev-detail-row dd').forEach(function (el) {
+        var t = (el.textContent || '').trim();
+        if (t.charAt(0) === '#') {
+            el.textContent = t.slice(1).trim();
+        }
+    });
+})();
+</script>

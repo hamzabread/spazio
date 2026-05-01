@@ -1,5 +1,7 @@
 export const normalizeEventMeta = () => {
-    const metaItems = document.querySelectorAll('.sc-events .sc-event-meta-row span');
+    const metaItems = document.querySelectorAll(
+        '.sc-events .sc-event-meta-row span, .sc-events-page .sc-evl-meta-row span'
+    );
     const aiTags = document.querySelectorAll('.sc-ai-slide-tag');
     const prMetaRows = document.querySelectorAll('.sc-pr-item-meta');
     const breakingNewsCategories = document.querySelectorAll('.sc-bn-category');

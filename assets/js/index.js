@@ -24,6 +24,15 @@ import { changeTwitterCardTheme } from './twitterTheme';
 import { footerExternalLinks } from './footerExternalLinks';
 import { initMarketDashboard } from './marketDashboard';
 import { normalizeEventMeta } from './eventMeta';
+import { initAdvertisingToc } from './advertisingToc';
+import { initPressReleasesListing } from './pressReleasesListing';
+import { initEventsListing } from './eventsListing';
+import { initPostPressReleasePage } from './postPressReleasePage';
+import { initPostJobPage } from './postJobPage';
+import { initPeoplePostPage } from './peoplePostPage';
+import { initCompanyPostPage } from './companyPostPage';
+import { initProductPostPage } from './productPostPage';
+import { initCryptoPricesPage } from './cryptoPricesPage';
 
 // import { createPopUp } from './languagePopUp';
 
@@ -161,6 +170,51 @@ function initMoreNewsLoadMore() {
 	window.addEventListener('resize', syncState);
 }
 
+function initJobsLoadMore() {
+	const cardsPerPage = 3;
+	const mobileMq = window.matchMedia('(max-width: 767px)');
+	const sections = Array.from(document.querySelectorAll('.sc-jobs-inner'));
+	if (!sections.length) return;
+
+	const syncState = () => {
+		sections.forEach((section) => {
+			const grid = section.querySelector('.sc-jobs-grid');
+			const button = section.querySelector('.sc-jobs-load-more-btn');
+			if (!grid || !button) return;
+
+			const cards = grid.querySelectorAll('.sc-job-card');
+			const hasMoreThanInitial = cards.length > cardsPerPage;
+
+			if (!mobileMq.matches || !hasMoreThanInitial) {
+				grid.classList.remove('sc-jobs-grid--collapsed', 'sc-jobs-grid--expanded');
+				button.classList.add('is-hidden');
+				return;
+			}
+
+			if (!grid.classList.contains('sc-jobs-grid--expanded')) {
+				grid.classList.add('sc-jobs-grid--collapsed');
+				button.classList.remove('is-hidden');
+			}
+		});
+	};
+
+	sections.forEach((section) => {
+		const grid = section.querySelector('.sc-jobs-grid');
+		const button = section.querySelector('.sc-jobs-load-more-btn');
+		if (!grid || !button || button.dataset.scBound === 'true') return;
+
+		button.dataset.scBound = 'true';
+		button.addEventListener('click', () => {
+			grid.classList.remove('sc-jobs-grid--collapsed');
+			grid.classList.add('sc-jobs-grid--expanded');
+			button.classList.add('is-hidden');
+		});
+	});
+
+	syncState();
+	window.addEventListener('resize', syncState);
+}
+
 showSubNav();
 //createPopUp();
 
@@ -181,12 +235,22 @@ footerExternalLinks();
 vibrator();
 initMarketDashboard();
 normalizeEventMeta();
+initAdvertisingToc();
+initPressReleasesListing();
+initEventsListing();
+initPostPressReleasePage();
+initPostJobPage();
+initPeoplePostPage();
+initCompanyPostPage();
+initProductPostPage();
+initCryptoPricesPage();
 normalizeLocaleLabels();
 accentAboutHeroLastWord();
 accentLastWord('.sc-about-operate-head h2', 'sc-about-operate-last-word');
 accentLastWord('.sc-about-revenue-head h2', 'sc-about-revenue-last-word');
 accentLastWord('.sc-about-team-head h3', 'sc-about-team-last-word');
 initMoreNewsLoadMore();
+initJobsLoadMore();
 
 // GhostFlow MH
 moveWidget();

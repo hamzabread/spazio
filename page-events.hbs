@@ -1,0 +1,26 @@
+{{!< default}}
+
+{{#post}}
+<div class="sc-events-page">
+    <section class="sc-contact-hero" aria-labelledby="sc-events-hero-title">
+        <div class="sc-contact-hero-inner gh-container">
+            <span class="sc-contact-hero-chip">{{t "Events chip"}}</span>
+            <h1 id="sc-events-hero-title">{{t "Events hero before"}} <span>{{t "Events hero accent"}}</span></h1>
+            {{#if excerpt}}
+            <p>{{excerpt}}</p>
+            {{else}}
+            <p>{{t "Events hero lede"}}</p>
+            {{/if}}
+        </div>
+    </section>
+
+    <main class="main flex-1">
+        {{> "events-listing"}}
+        <div class="gh-container sc-events-main">
+            <div class="gh-post-content sc-events-cms">
+                {{{content}}}
+            </div>
+        </div>
+    </main>
+</div>
+{{/post}}

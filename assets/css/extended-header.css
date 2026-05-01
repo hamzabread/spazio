@@ -1,12 +1,13 @@
 .extended-header{
     padding: 0.5rem 0;
-    background-color: var(--color-background-main);
-    border-bottom: 1px solid var(--color-header-border);
+    background-color: #101010;
+    border-bottom: 1px solid #1B1B1B;
 
     .gh-container{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        max-width: none;
 
         @media (max-width: 550px) {
             justify-content: center;
@@ -18,7 +19,7 @@
 
         .left{
             overflow: hidden;
-            padding-right: 1rem;
+            padding-right: 0;
         }
 
         .right{
@@ -82,5 +83,6 @@
 }
 
 :root[data-color-scheme="light"] .extended-header {
-    background-color: #fff;
+    background-color: #ffffff;
+    border-bottom: 1px solid #E9ECEF;
 }

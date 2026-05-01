@@ -11,11 +11,11 @@
 }
 
 .sc-career-hero {
-    background: #000000;
+    background-color: #000000;
 }
 
 :root[data-color-scheme="light"] .sc-career-hero {
-    background: #F8F9FA;
+    background-color: #F8F9FA;
 }
 
 .sc-career-hero-inner h1 {

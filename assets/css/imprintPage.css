@@ -11,15 +11,15 @@
 }
 
 .sc-imprint-page .sc-contact-hero {
-    background: #000000;
+    background-color: #000000;
 }
 
 :root[data-color-scheme="light"] .sc-imprint-page .sc-contact-hero {
-    background: #F8F9FA;
+    background-color: #F8F9FA;
 }
 
 .sc-imprint-disclaimer-inner {
-    border-bottom: 1px solid var(--color-border-strong-adaptive);
+    border-bottom: none;
     padding: 0;
 }
 
@@ -41,8 +41,7 @@
 .sc-imprint-owner-card {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+    gap: 80px;
     border-radius: 15px;
     background: var(--color-surface-101010);
     padding: 24px;
@@ -192,6 +191,10 @@
     margin: 0 0 20px !important;
 }
 
+.sc-imprint-content-block:first-of-type p:first-of-type {
+    display: none;
+}
+
 .sc-imprint-class-list li {
     margin: 0 0 10px !important;
 }
@@ -199,6 +202,11 @@
 .sc-imprint-content-block p strong {
     color: #EBEFF2;
     font-weight: 700;
+    margin-right: 14px;
+}
+
+.sc-imprint-content-block:nth-of-type(2) h1 {
+    margin-top: 20px;
 }
 
 :root[data-color-scheme="light"] .sc-imprint-content-block p strong {
@@ -289,7 +297,7 @@
     }
 
     .sc-imprint-owner-meta li {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .sc-imprint-content-block {
@@ -299,6 +307,14 @@
     .sc-imprint-content-block h2 {
         font-size: 30px;
         margin-bottom: 24px;
+    }
+
+    .sc-imprint-content-block h1 {
+        font-size: 30px;
+    }
+
+    .sc-imprint-content-block:nth-of-type(2) h1 {
+        margin-top: 0;
     }
 
     .sc-imprint-content-block h3 {

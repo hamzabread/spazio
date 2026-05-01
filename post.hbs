@@ -1,6 +1,27 @@
 {{!< default}}
 
 {{#post}}
+{{!-- Jobs check must be directly inside #post so #has can read tags from the current post context. --}}
+{{#has tag="jobs,careers,job,hiring"}}
+{{> "post-job"}}
+{{else}}
+{{#has tag="people"}}
+{{> "post-people"}}
+{{else}}
+{{#has tag="product"}}
+{{> "post-product"}}
+{{else}}
+{{#has tag="company,companies"}}
+{{> "post-company"}}
+{{else}}
+{{#has tag="event,events"}}
+{{> "post-event"}}
+{{else}}
+{{!-- Press releases go through dedicated template, everything else uses default blog layout --}}
+{{#has tag="press-releases,press-release,#press-releases,#press-release,sponsored-press-release"}}
+{{> "post-press-release"}}
+{{else}}
+{{!-- Default blog layout --}}
 <section class="sc-blogs-hero" aria-labelledby="sc-blogs-hero-title">
     <div class="gh-container sc-blogs-hero-inner">
         <article class="sc-blogs-featured-card">
@@ -110,7 +131,7 @@
                                                 <span>{{name}}</span>
                                                 {{/primary_author}}
                                                 <span aria-hidden="true">•</span>
-                                                <span>{{date timeago="true"}}</span>
+                                                <span>{{date published_at timeago="true"}}</span>
                                             </div>
                                             <h5><a href="{{url}}">{{title}}</a></h5>
                                             {{#if excerpt}}<p>{{excerpt words="22"}}</p>{{/if}}
@@ -133,7 +154,7 @@
                                                 <span>{{name}}</span>
                                                 {{/primary_author}}
                                                 <span aria-hidden="true">•</span>
-                                                <span>{{date timeago="true"}}</span>
+                                                <span>{{date published_at timeago="true"}}</span>
                                             </div>
                                         </div>
                                     </article>
@@ -231,7 +252,7 @@
                         <span>{{name}}</span>
                         {{/primary_author}}
                         <span aria-hidden="true">•</span>
-                        <span>{{date timeago="true"}}</span>
+                        <span>{{date published_at timeago="true"}}</span>
                     </div>
                     <h5><a href="{{url}}">{{title}}</a></h5>
                     {{#if excerpt}}<p>{{excerpt words="26"}}</p>{{/if}}
@@ -259,7 +280,7 @@
                             <span>{{name}}</span>
                             {{/primary_author}}
                             <span aria-hidden="true">•</span>
-                            <span>{{date timeago="true"}}</span>
+                            <span>{{date published_at timeago="true"}}</span>
                         </div>
                         <h5><a href="{{url}}">{{title}}</a></h5>
                         {{#if excerpt}}<p>{{excerpt words="26"}}</p>{{/if}}
@@ -279,4 +300,10 @@
 
     </section>
 </main>
+{{/has}}
+{{/has}}
+{{/has}}
+{{/has}}
+{{/has}}
+{{/has}}
 {{/post}}

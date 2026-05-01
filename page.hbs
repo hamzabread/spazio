@@ -1,7 +1,13 @@
 {{!< default}}
- 
-{{#post}} 
 
+{{#post}}
+{{#match slug "directory"}}
+{{> "directory-page-body"}}
+{{else match slug "jobs"}}
+{{> "jobs-page-body"}}
+{{else match slug "crypto-prices"}}
+{{> "crypto-prices-page-body"}}
+{{else}}
 <main class="gh-post-page-wrapper">
     <article class="gh-post-page {{post_class}}{{^if feature_image}} without-image{{/if}}{{^match @page.show_title_and_feature_image}} without-title-image{{/match}}">
         {{#if featured}}
@@ -79,4 +85,5 @@
 
 {{> glossary}}
 
+{{/match}}
 {{/post}}

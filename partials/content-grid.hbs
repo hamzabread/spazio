@@ -51,25 +51,25 @@
         </div>
 
         {{!-- Sponsored Content --}}
-        {{#get "posts" filter="(tag:sponsored-content,tag:sponsored,tag:press-release)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags" order="published_at desc"}}
+        {{#get "posts" filter="tag:sponsored-content+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags" order="published_at desc"}}
             {{#if posts}}
                 {{#foreach posts}}
                 <a class="sc-sponsored-card" href="{{url}}" aria-label="{{title}}">
                     <img src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/yuan.png"}}{{/if}}" alt="{{title}}" loading="lazy">
                     <div class="sc-sponsored-card-overlay">
                         <div class="sc-sponsored-label">{{t "Sponsored Content"}}</div>
-                        <div class="sc-sponsored-title">{{title}}</div>
+                        <div class="sc-sponsored-title">The digital yuan revolution</div>
                     </div>
                 </a>
                 {{/foreach}}
             {{else}}
-                {{#get "posts" filter="featured:false+tag:-news+tag:-trending+tag:-markets+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" order="published_at desc"}}
+                {{#get "posts" filter="tag:sponsored-content+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" order="published_at desc"}}
                     {{#foreach posts}}
                     <a class="sc-sponsored-card" href="{{url}}" aria-label="{{title}}">
                         <img src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/yuan.png"}}{{/if}}" alt="{{title}}" loading="lazy">
                         <div class="sc-sponsored-card-overlay">
                             <div class="sc-sponsored-label">{{t "Sponsored Content"}}</div>
-                            <div class="sc-sponsored-title">{{title}}</div>
+                            <div class="sc-sponsored-title">The digital yuan revolution</div>
                         </div>
                     </a>
                     {{/foreach}}
@@ -96,6 +96,7 @@
                                 <img class="sc-featured-article-author-img" src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" loading="lazy">
                                 {{/if}}
                                 <span class="sc-featured-article-author-name">{{primary_author.name}}</span>
+                                <span class="sc-featured-article-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none"><circle cx="2" cy="2" r="2" fill="white" fill-opacity="0.4"/></svg></span>
                                 <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
                             </div>
                             <div class="sc-featured-article-tags">
@@ -206,6 +207,7 @@
                                         <img class="sc-featured-article-author-img" src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" loading="lazy">
                                         {{/if}}
                                         <span class="sc-featured-article-author-name">{{primary_author.name}}</span>
+                                        <span class="sc-featured-article-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none"><circle cx="2" cy="2" r="2" fill="white" fill-opacity="0.4"/></svg></span>
                                         <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
                                     </div>
                                     <div class="sc-featured-article-tags">
@@ -233,6 +235,7 @@
                                             <img class="sc-featured-article-author-img" src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}" loading="lazy">
                                             {{/if}}
                                             <span class="sc-featured-article-author-name">{{primary_author.name}}</span>
+                                            <span class="sc-featured-article-separator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none"><circle cx="2" cy="2" r="2" fill="white" fill-opacity="0.4"/></svg></span>
                                             <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
                                         </div>
                                         <div class="sc-featured-article-tags">

@@ -1,0 +1,311 @@
+<div class="sc-people-page sc-product-page">
+    <nav class="sc-people-bc" aria-label="{{t "Breadcrumb"}}">
+        <ol class="sc-people-bc-list">
+            <li class="sc-people-bc-item"><a class="sc-people-bc-link" href="{{@site.url}}">{{t "Home"}}</a></li>
+            <li class="sc-people-bc-item" aria-hidden="true"><span class="sc-people-bc-sep">›</span></li>
+            <li class="sc-people-bc-item">
+                {{#get "pages" filter="slug:directory" limit="1"}}
+                    {{#if pages}}
+                        {{#foreach pages}}
+                        <a class="sc-people-bc-link" href="{{url}}">{{t "Directory"}}</a>
+                        {{/foreach}}
+                    {{else}}
+                        <a class="sc-people-bc-link" href="{{@site.url}}/directory/">{{t "Directory"}}</a>
+                    {{/if}}
+                {{/get}}
+            </li>
+            <li class="sc-people-bc-item" aria-hidden="true"><span class="sc-people-bc-sep">›</span></li>
+            <li class="sc-people-bc-item">
+                {{#get "tags" filter="slug:products" limit="1"}}
+                    {{#if tags}}
+                        {{#foreach tags}}
+                        <a class="sc-people-bc-link" href="{{url}}">{{t "Products"}}</a>
+                        {{/foreach}}
+                    {{else}}
+                        <a class="sc-people-bc-link" href="{{@site.url}}/tag/product/">{{t "Products"}}</a>
+                    {{/if}}
+                {{/get}}
+            </li>
+            {{#primary_tag}}
+            {{#match slug "!=" "product"}}
+            <li class="sc-people-bc-item" aria-hidden="true"><span class="sc-people-bc-sep">›</span></li>
+            <li class="sc-people-bc-item"><a class="sc-people-bc-link" href="{{url}}">{{name}}</a></li>
+            {{/match}}
+            {{/primary_tag}}
+            <li class="sc-people-bc-item" aria-hidden="true"><span class="sc-people-bc-sep">›</span></li>
+            <li class="sc-people-bc-item"><span class="sc-people-bc-current">{{title}}</span></li>
+        </ol>
+    </nav>
+
+    <main class="main flex-1 sc-people-main">
+        <div class="gh-container sc-people-layout">
+            <aside class="sc-people-col sc-people-col-left" aria-label="{{t "Product profile sidebar"}}">
+                <div class="sc-people-card sc-people-profile-card">
+                    {{#if feature_image}}
+                    <img class="sc-people-avatar" src="{{img_url feature_image size="m"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" width="96" height="96" loading="eager" decoding="async">
+                    {{else}}
+                    <img class="sc-people-avatar sc-people-avatar--placeholder" src="{{asset "imagesAndIcons/bitcoin.svg"}}" alt="" width="96" height="96" loading="eager" decoding="async">
+                    {{/if}}
+                    <h1 class="sc-people-name">{{title}}</h1>
+                    {{#if excerpt}}<p class="sc-people-sub">{{excerpt}}</p>{{/if}}
+                    {{#if primary_author}}
+                    {{#primary_author}}
+                    <div class="sc-people-social-block" aria-label="{{t "Social profiles"}}">
+                        {{#if twitter}}
+                        <a class="sc-people-social-pill" href="{{twitter_url}}" target="_blank" rel="noopener noreferrer">
+                            <img class="sc-people-social-pill-icon" src="{{asset "imagesAndIcons/x.svg"}}" alt="" width="18" height="18" loading="lazy" decoding="async">
+                            <span class="sc-people-social-pill-label">@{{twitter}}</span>
+                        </a>
+                        {{/if}}
+                        <div class="sc-people-social-icons">
+                            {{#if facebook}}
+                            <a class="sc-people-social-btn" href="{{facebook_url}}" target="_blank" rel="noopener noreferrer" aria-label="{{t "Facebook"}}">
+                                <img src="{{asset "imagesAndIcons/facebook.svg"}}" alt="" width="20" height="20" loading="lazy" decoding="async">
+                            </a>
+                            {{/if}}
+                            {{#if linkedin}}
+                            <a class="sc-people-social-btn" href="{{linkedin}}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                {{> "icons/linkedin"}}
+                            </a>
+                            {{/if}}
+                            {{#if website}}
+                            <a class="sc-people-social-btn" href="{{website}}" target="_blank" rel="noopener noreferrer" aria-label="{{t "Website"}}">
+                                {{> "icons/globe"}}
+                            </a>
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{/primary_author}}
+                    {{else}}
+                    {{#foreach authors limit="1"}}
+                    <div class="sc-people-social-block" aria-label="{{t "Social profiles"}}">
+                        {{#if twitter}}
+                        <a class="sc-people-social-pill" href="{{twitter_url}}" target="_blank" rel="noopener noreferrer">
+                            <img class="sc-people-social-pill-icon" src="{{asset "imagesAndIcons/x.svg"}}" alt="" width="18" height="18" loading="lazy" decoding="async">
+                            <span class="sc-people-social-pill-label">@{{twitter}}</span>
+                        </a>
+                        {{/if}}
+                        <div class="sc-people-social-icons">
+                            {{#if facebook}}
+                            <a class="sc-people-social-btn" href="{{facebook_url}}" target="_blank" rel="noopener noreferrer" aria-label="{{t "Facebook"}}">
+                                <img src="{{asset "imagesAndIcons/facebook.svg"}}" alt="" width="20" height="20" loading="lazy" decoding="async">
+                            </a>
+                            {{/if}}
+                            {{#if linkedin}}
+                            <a class="sc-people-social-btn" href="{{linkedin}}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                {{> "icons/linkedin"}}
+                            </a>
+                            {{/if}}
+                            {{#if website}}
+                            <a class="sc-people-social-btn" href="{{website}}" target="_blank" rel="noopener noreferrer" aria-label="{{t "Website"}}">
+                                {{> "icons/globe"}}
+                            </a>
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{/foreach}}
+                    {{/if}}
+                    <div class="sc-people-tag-row">
+                        {{#foreach tags visibility="public"}}
+                            {{#match slug "product"}}{{else}}
+                            <span class="sc-people-tag-pill">{{name}}</span>
+                            {{/match}}
+                        {{/foreach}}
+                        {{#foreach tags visibility="internal"}}
+                            <span class="sc-people-tag-pill sc-company-internal-tag">{{name}}</span>
+                        {{/foreach}}
+                    </div>
+                    {{#if primary_author}}
+                    {{#primary_author}}
+                    {{#if website}}
+                    <a class="sc-company-cta" href="{{website}}" target="_blank" rel="noopener noreferrer">
+                        <span>{{t "Visit website"}}</span>
+                        <svg class="sc-company-cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                    {{/if}}
+                    {{/primary_author}}
+                    {{else}}
+                    {{#foreach authors limit="1"}}
+                    {{#if website}}
+                    <a class="sc-company-cta" href="{{website}}" target="_blank" rel="noopener noreferrer">
+                        <span>{{t "Visit website"}}</span>
+                        <svg class="sc-company-cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                    {{/if}}
+                    {{/foreach}}
+                    {{/if}}
+                    <template class="sc-official-url-pool">
+                        {{#foreach authors}}{{#if website}}<span>{{website}}</span>{{/if}}{{/foreach}}
+                        {{#if feature_image_caption}}<span>{{feature_image_caption}}</span>{{/if}}
+                    </template>
+                    <a class="sc-company-cta sc-company-cta--autofill" href="about:blank" target="_blank" rel="noopener noreferrer" hidden>
+                        <span>{{t "Visit website"}}</span>
+                        <svg class="sc-company-cta-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                </div>
+
+                <div class="sc-people-card sc-product-info-card">
+                    <h2 class="sc-company-section-heading">{{t "Product info"}}</h2>
+                    <dl class="sc-product-info-dl">
+                        <div class="sc-product-info-row">
+                            <dt>{{t "Product"}}</dt>
+                            <dd>{{title}}</dd>
+                        </div>
+                        <div class="sc-product-info-row">
+                            <dt>{{t "Parent Company"}}</dt>
+                            <dd data-product-info-parent-company>--</dd>
+                        </div>
+                        <div class="sc-product-info-row">
+                            <dt>{{t "Ticker"}}</dt>
+                            <dd data-product-info-ticker>--</dd>
+                        </div>
+                        <div class="sc-product-info-row">
+                            <dt>{{t "Supported Cryptos"}}</dt>
+                            <dd data-product-info-supported-cryptos>--</dd>
+                        </div>
+                    </dl>
+                    <div class="sc-product-info-source" hidden>
+                        {{#foreach tags visibility="internal"}}
+                        <span data-product-info-source data-slug="{{slug}}"></span>
+                        {{/foreach}}
+                    </div>
+                </div>
+
+                <div class="sc-people-card sc-company-team-card">
+                    <h2 class="sc-company-section-heading">{{title}} {{t "Team"}}</h2>
+                    {{#get "posts" filter="tag:people+(tag:hash-{{slug}},tag:{{slug}})" limit="8" include="authors,tags" order="published_at desc"}}
+                        {{#if posts}}
+                        <ul class="sc-people-similar-list">
+                            {{#foreach posts}}
+                            <li>
+                                <a class="sc-people-similar-row" href="{{url}}">
+                                    <img class="sc-people-similar-avatar" src="{{#if feature_image}}{{img_url feature_image size="xs"}}{{else}}{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}{{/if}}" alt="" width="50" height="50" loading="lazy" decoding="async">
+                                    <div class="sc-people-similar-text">
+                                        <span class="sc-people-similar-name">{{title}}
+                                            {{#has tag="#verified,verified"}}
+                                            <span class="sc-directory-badge sc-people-similar-badge" aria-label="{{t "Verified"}}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                                                    <path d="M16.1702 8.05492L15.1502 6.86992C14.9552 6.64492 14.7977 6.22492 14.7977 5.92492V4.64992C14.7977 3.85492 14.1452 3.20242 13.3502 3.20242H12.0752C11.7827 3.20242 11.3552 3.04492 11.1302 2.84992L9.94516 1.82992C9.42766 1.38742 8.58016 1.38742 8.05516 1.82992L6.87766 2.85742C6.65266 3.04492 6.22516 3.20242 5.93266 3.20242H4.63516C3.84016 3.20242 3.18766 3.85492 3.18766 4.64992V5.93242C3.18766 6.22492 3.03016 6.64492 2.84266 6.86992L1.83016 8.06242C1.39516 8.57992 1.39516 9.41992 1.83016 9.93742L2.84266 11.1299C3.03016 11.3549 3.18766 11.7749 3.18766 12.0674V13.3499C3.18766 14.1449 3.84016 14.7974 4.63516 14.7974H5.93266C6.22516 14.7974 6.65266 14.9549 6.87766 15.1499L8.06266 16.1699C8.58016 16.6124 9.42766 16.6124 9.95266 16.1699L11.1377 15.1499C11.3627 14.9549 11.7827 14.7974 12.0827 14.7974H13.3577C14.1527 14.7974 14.8052 14.1449 14.8052 13.3499V12.0749C14.8052 11.7824 14.9627 11.3549 15.1577 11.1299L16.1777 9.94492C16.6127 9.42742 16.6127 8.57242 16.1702 8.05492ZM12.1202 7.58242L8.49766 11.2049C8.39266 11.3099 8.25016 11.3699 8.10016 11.3699C7.95016 11.3699 7.80766 11.3099 7.70266 11.2049L5.88766 9.38992C5.67016 9.17242 5.67016 8.81242 5.88766 8.59492C6.10516 8.37742 6.46516 8.37742 6.68266 8.59492L8.10016 10.0124L11.3252 6.78742C11.5427 6.56992 11.9027 6.56992 12.1202 6.78742C12.3377 7.00492 12.3377 7.36492 12.1202 7.58242Z" fill="#00A3FF"/>
+                                                </svg>
+                                            </span>
+                                            {{/has}}
+                                        </span>
+                                        <span class="sc-people-similar-role">{{#if excerpt}}{{excerpt words="12"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{/if}}{{/if}}</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {{/foreach}}
+                        </ul>
+                        {{else}}
+                        <p class="sc-company-team-empty">{{t "Company team empty"}}</p>
+                        {{/if}}
+                    {{/get}}
+                </div>
+
+                <div class="sc-people-card sc-people-similar-card sc-company-similar-below-team">
+                    <div class="sc-product-similar-head">
+                        <h2 class="sc-people-similar-title">{{t "Similar Products"}}</h2>
+                        <a class="sc-product-similar-viewall" href="{{@site.url}}/tag/product/">{{t "View all"}}</a>
+                    </div>
+                    {{#get "posts" filter="tag:product+id:-{{id}}" limit="6" include="authors,tags" order="published_at desc"}}
+                        {{#if posts}}
+                        <ul class="sc-people-similar-list">
+                            {{#foreach posts}}
+                            <li>
+                                <a class="sc-people-similar-row" href="{{url}}">
+                                    <img class="sc-people-similar-avatar" src="{{#if feature_image}}{{img_url feature_image size="xs"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="" width="50" height="50" loading="lazy" decoding="async">
+                                    <div class="sc-people-similar-text">
+                                        <span class="sc-people-similar-name">{{title}}</span>
+                                        <span class="sc-people-similar-role">{{#if excerpt}}{{excerpt words="12"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{/if}}{{/if}}</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {{/foreach}}
+                        </ul>
+                        {{else}}
+                        <p class="sc-company-empty">{{t "No similar products yet"}}</p>
+                        {{/if}}
+                    {{/get}}
+                </div>
+
+                <div class="sc-people-sidebar-slot" id="sc-people-sidebar-slot"></div>
+            </aside>
+
+            <div class="sc-product-center-stack">
+                <div class="sc-product-chart-top">
+                    <div class="sc-people-card sc-product-chart-card">
+                        <div class="sc-product-chart-head">
+                            <h2 class="sc-product-chart-title"><span class="sc-product-chart-dollar">$</span> <span class="sc-product-chart-slug">{{slug}}</span> {{t "Price chart"}}</h2>
+                            <div class="sc-product-chart-meta">
+                                <span class="sc-product-chart-label">{{t "Indicators"}}</span>
+                                <span class="sc-product-chart-change" data-sc-chart-change>+0.00%</span>
+                            </div>
+                        </div>
+                        <div class="sc-product-chart-canvas" aria-hidden="true">
+                            <img class="sc-product-chart-image" src="{{asset "imagesAndIcons/graph-product.svg"}}" alt="" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sc-people-col sc-people-col-center">
+
+                    <h2 class="sc-people-bio-heading sc-product-about-heading">{{t "About"}} {{title}}</h2>
+                    <article class="sc-people-bio gh-content">
+                        {{{content}}}
+                    </article>
+                </div>
+            </div>
+
+            <aside class="sc-people-col sc-people-col-right" aria-label="{{t "Company news sidebar"}}">
+                <div class="sc-people-card sc-company-news-card">
+                    <h2 class="sc-company-news-title">{{title}} {{t "News"}}</h2>
+                    {{#get "posts" filter="(tag:more-news,tag:hash-more-news)+id:-{{id}}+tag:-people+tag:-company+tag:-companies+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-product" limit="12" include="authors,tags" order="published_at desc"}}
+                        {{#if posts}}
+                        <ul class="sc-company-news-list" data-sc-news-shuffle>
+                            {{#foreach posts}}
+                            <li>
+                                <a class="sc-company-news-row" href="{{url}}">
+                                    <div class="sc-company-news-thumb-wrap">
+                                        {{#if feature_image}}
+                                        <img class="sc-company-news-thumb" src="{{img_url feature_image size="s"}}" alt="" width="85" height="75" loading="lazy" decoding="async">
+                                        {{else}}
+                                        <div class="sc-company-news-thumb sc-company-news-thumb--placeholder" aria-hidden="true"></div>
+                                        {{/if}}
+                                    </div>
+                                    <div class="sc-company-news-body">
+                                        <p class="sc-company-news-headline">{{title}}</p>
+                                        <div class="sc-company-news-meta">
+                                            {{#if primary_author}}
+                                            {{#if primary_author.profile_image}}
+                                            <img class="sc-company-news-author-avatar" src="{{img_url primary_author.profile_image size="xs"}}" alt="" width="24" height="24" loading="lazy" decoding="async">
+                                            {{else}}
+                                            <span class="sc-company-news-author-avatar sc-company-news-author-avatar--placeholder" aria-hidden="true"></span>
+                                            {{/if}}
+                                            <span class="sc-company-news-author-name">{{primary_author.name}}</span>
+                                            {{else}}
+                                            {{#foreach authors limit="1"}}
+                                            {{#if profile_image}}
+                                            <img class="sc-company-news-author-avatar" src="{{img_url profile_image size="xs"}}" alt="" width="24" height="24" loading="lazy" decoding="async">
+                                            {{else}}
+                                            <span class="sc-company-news-author-avatar sc-company-news-author-avatar--placeholder" aria-hidden="true"></span>
+                                            {{/if}}
+                                            <span class="sc-company-news-author-name">{{name}}</span>
+                                            {{/foreach}}
+                                            {{/if}}
+                                            <span class="sc-company-news-meta-sep" aria-hidden="true">•</span>
+                                            <time class="sc-company-news-time" datetime="{{date published_at format='YYYY-MM-DDTHH:mm:ss'}}Z">{{date published_at timeago="true"}}</time>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {{/foreach}}
+                        </ul>
+                        {{else}}
+                        <p class="sc-company-empty">{{t "No company news yet"}}</p>
+                        {{/if}}
+                    {{/get}}
+                </div>
+            </aside>
+        </div>
+    </main>
+</div>

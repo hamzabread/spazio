@@ -11,7 +11,7 @@
         {{#if primary_tag.url}}
             <li class="gh-breadcrumb-item"><a href="{{primary_tag.url}}" aria-label="{{primary_tag.name}} {{t "page link"}}">{{primary_tag.name}}</a></li>
         {{/if}}
-        <li class="gh-breadcrumb-item"><span>{{title}}</span></li>
+        <li class="gh-breadcrumb-item"><span>{{#if breadcrumb_title}}{{breadcrumb_title}}{{else}}{{title}}{{/if}}</span></li>
     </ul>
 {{/is}}
 

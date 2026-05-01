@@ -1,0 +1,33 @@
+<div class="sc-directory-page">
+    <section class="sc-contact-hero" aria-labelledby="sc-directory-hero-title">
+        <div class="sc-contact-hero-inner gh-container">
+            <span class="sc-contact-hero-chip">{{t "Directory"}}</span>
+            <h1 id="sc-directory-hero-title">{{t "Directory hero title before"}} <span>{{t "Directory hero title accent"}}</span></h1>
+            {{#if excerpt}}
+            <p>{{excerpt}}</p>
+            {{else}}
+            <p>{{t "Directory hero default lede"}}</p>
+            {{/if}}
+        </div>
+    </section>
+
+    <main class="main flex-1 sc-directory-page-main">
+        <div class="gh-container sc-directory-page-layout">
+            <aside class="sc-directory-page-sidebar" aria-label="{{t "Directory filters"}}">
+                {{> "directory-filters-tabs"}}
+            </aside>
+            <div class="sc-directory-page-content">
+                <header class="sc-directory-page-list-head">
+                    <h2 class="sc-directory-page-list-title">{{t "All People"}}</h2>
+                    <p class="sc-directory-page-list-lede">{{t "Directory people lede"}}</p>
+                </header>
+                {{> "directory-panels"}}
+            </div>
+        </div>
+        <div class="gh-container sc-directory-cms">
+            {{{content}}}
+        </div>
+    </main>
+</div>
+
+{{> "directory-interactions"}}

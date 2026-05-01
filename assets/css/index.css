@@ -41,6 +41,9 @@ production stylesheet in assets/built/screen.css using: npm run dev
 @import "heroSection.css";
 @import "pressRelease.css";
 @import "pressReleaseFeed.css";
+@import "postPressRelease.css";
+@import "postEvent.css";
+@import "postJob.css";
 @import "featuredFeed.css";
 @import "categoryFeed.css";
 @import "videoFeed.css";
@@ -48,6 +51,13 @@ production stylesheet in assets/built/screen.css using: npm run dev
 @import "scam.css";
 @import "aboutUsPage.css";
 @import "careersPage.css";
+@import "jobsPage.css";
+@import "eventsPage.css";
+@import "directoryPage.css";
+@import "cryptoPricesPage.css";
+@import "peoplePostPage.css";
+@import "postCompany.css";
+@import "postProduct.css";
 @import "imprintPage.css";
 @import "blogsPage.css";
 
@@ -74,6 +84,10 @@ html,
   background-position: center;
 }
 
+:root[data-color-scheme="light"] .gh-main {
+  background-image: none;
+}
+
 @media (max-width: 767px) {
   .gh-main {
     background-image: none;
@@ -90,6 +104,10 @@ html,
 
 .lock-scroll {
   overflow: hidden !important;
+}
+
+.termly-display-preferences {
+  display: none !important;
 }
 
 /* Social Media Icons */

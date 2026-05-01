@@ -1,0 +1,26 @@
+{{!< default}}
+
+{{#post}}
+<div class="sc-press-releases-page">
+    <section class="sc-contact-hero" aria-labelledby="sc-press-releases-hero-title">
+        <div class="sc-contact-hero-inner gh-container">
+            <span class="sc-contact-hero-chip">{{t "Press Releases"}}</span>
+            <h1 id="sc-press-releases-hero-title">{{t "Press releases hero title before"}} <span>{{t "Press releases hero title accent"}}</span></h1>
+            {{#if excerpt}}
+            <p>{{excerpt}}</p>
+            {{else}}
+            <p>{{t "Press releases hero default lede"}}</p>
+            {{/if}}
+        </div>
+    </section>
+
+    <main class="main flex-1">
+        {{> "press-releases-listing"}}
+        <div class="gh-container sc-press-releases-main">
+            <div class="gh-post-content sc-press-releases-cms">
+                {{{content}}}
+            </div>
+        </div>
+    </main>
+</div>
+{{/post}}

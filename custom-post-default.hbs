@@ -1,7 +1,28 @@
-{{!< default}} 
+{{!< default}}
 
-{{#post}} 
-
+{{#post}}
+{{!-- Same job routing as post.hbs — posts using this custom template must still get the job layout. --}}
+{{#get "posts" filter="id:{{id}}+(tag:jobs,tag:careers,tag:job,tag:hiring)" limit="1" include="authors,tags"}}
+{{#if posts}}
+{{#foreach posts}}
+{{> "post-job"}}
+{{/foreach}}
+{{else}}
+{{#has tag="people"}}
+{{> "post-people"}}
+{{else}}
+{{#has tag="product"}}
+{{> "post-product"}}
+{{else}}
+{{#has tag="company,companies"}}
+{{> "post-company"}}
+{{else}}
+{{#has tag="event,events"}}
+{{> "post-event"}}
+{{else}}
+{{#has tag="press-releases,press-release,#press-releases,#press-release,sponsored-press-release"}}
+{{> "post-press-release"}}
+{{else}}
 <main class="gh-post-page-wrapper">
     <article class="gh-post-page {{post_class}}">
         {{#if featured}}
@@ -221,4 +242,11 @@
     </article>
 </main>
 
+{{/has}}
+{{/has}}
+{{/has}}
+{{/has}}
+{{/has}}
+{{/if}}
+{{/get}}
 {{/post}}

@@ -15,7 +15,10 @@
                             <path d="M32 34H16" stroke="#F54900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <img class="sc-platform-dot-svg sc-platform-dot-svg--news" src="{{asset "imagesAndIcons/platform-dots.svg"}}" alt="" aria-hidden="true">
+                    <picture>
+                        <source media="(max-width: 767px)" srcset="{{asset "imagesAndIcons/dots-mobile.png"}}">
+                        <img class="sc-platform-dot-svg sc-platform-dot-svg--news" src="{{asset "imagesAndIcons/platform-dots.svg"}}" alt="" aria-hidden="true">
+                    </picture>
                 </div>
                 <div class="sc-platform-card-text">
                     <h3>Read News</h3>
@@ -62,13 +65,16 @@
 
             <a class="sc-platform-card sc-platform-card--wide sc-platform-card--jobs" href="{{@site.url}}/jobs/">
                 <div class="sc-platform-card-media">
-                    <img class="sc-platform-dot-svg sc-platform-dot-svg--jobs" src="{{asset "imagesAndIcons/platform-dots-jobs.svg"}}" alt="" aria-hidden="true">
-                    <div class="sc-platform-card-icon sc-platform-card-icon--top-right">
+                    <div class="sc-platform-card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                             <path d="M32 40V8C32 6.93913 31.5786 5.92172 30.8284 5.17157C30.0783 4.42143 29.0609 4 28 4H20C18.9391 4 17.9217 4.42143 17.1716 5.17157C16.4214 5.92172 16 6.93913 16 8V40" stroke="#F54900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M40 12H8C5.79086 12 4 13.7909 4 16V36C4 38.2091 5.79086 40 8 40H40C42.2091 40 44 38.2091 44 36V16C44 13.7909 42.2091 12 40 12Z" stroke="#F54900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
+                    <picture>
+                        <source media="(max-width: 767px)" srcset="{{asset "imagesAndIcons/dots-mobile.png"}}">
+                        <img class="sc-platform-dot-svg sc-platform-dot-svg--jobs" src="{{asset "imagesAndIcons/platform-dots-jobs.svg"}}" alt="" aria-hidden="true">
+                    </picture>
                 </div>
                 <div class="sc-platform-card-text">
                     <h3>Find Jobs</h3>
@@ -77,8 +83,12 @@
             </a>
 
             <a class="sc-platform-card sc-platform-card--wide sc-platform-card--events" href="{{@site.url}}/events/">
+                <div class="sc-platform-card-text">
+                    <h3>Attend Events</h3>
+                    <p>Join webinars, conferences, and crypto community events</p>
+                </div>
                 <div class="sc-platform-card-media">
-                    <div class="sc-platform-card-icon sc-platform-card-icon--bottom-left">
+                    <div class="sc-platform-card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                             <path d="M16 4V12" stroke="#F54900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M32 4V12" stroke="#F54900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -86,11 +96,10 @@
                             <path d="M6 20H42" stroke="#F54900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <img class="sc-platform-dot-svg sc-platform-dot-svg--events" src="{{asset "imagesAndIcons/platform-dots.svg"}}" alt="" aria-hidden="true">
-                </div>
-                <div class="sc-platform-card-text sc-platform-card-text--top">
-                    <h3>Attend Events</h3>
-                    <p>Join webinars, conferences, and crypto community events</p>
+                    <picture>
+                        <source media="(max-width: 767px)" srcset="{{asset "imagesAndIcons/dots-mobile.png"}}">
+                        <img class="sc-platform-dot-svg sc-platform-dot-svg--events" src="{{asset "imagesAndIcons/platform-dots.svg"}}" alt="" aria-hidden="true">
+                    </picture>
                 </div>
             </a>
         </div>

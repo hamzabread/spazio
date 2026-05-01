@@ -1,0 +1,11 @@
+/* Ghost page slug: jobs — tighter section padding than homepage .sc-jobs */
+
+.sc-jobs-page .sc-jobs {
+    padding: 40px 75px 80px 75px;
+}
+
+@media (max-width: 767px) {
+    .sc-jobs-page .sc-jobs {
+        padding: 40px 20px 60px;
+    }
+}

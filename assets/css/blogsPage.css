@@ -147,6 +147,10 @@
     margin: 0 auto;
 }
 
+:root[data-color-scheme="dark"] .sc-blogs-next-grid {
+    background: #000000;
+}
+
 .sc-blogs-next-col {
     width: 100%;
 }

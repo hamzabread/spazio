@@ -1,0 +1,222 @@
+/* Product directory posts (tag: product) — layout matches company; center adds chart */
+
+.sc-product-center-stack {
+    grid-column: 2 / 3;
+    width: 611px;
+    max-width: 100%;
+}
+
+.sc-product-center-stack .sc-product-chart-top,
+.sc-product-center-stack .sc-people-col-center {
+    width: 100%;
+    max-width: 100%;
+}
+
+.sc-product-page .sc-people-profile-card .sc-people-avatar,
+.sc-product-page .sc-people-profile-card .sc-people-avatar.sc-people-avatar--placeholder {
+    width: 96px;
+    height: 96px;
+    max-width: 96px;
+}
+
+.sc-product-info-card {
+    margin-top: 16px;
+}
+
+.sc-product-info-dl {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sc-product-info-row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 10px 16px;
+    align-items: baseline;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.sc-product-info-row dt {
+    margin: 0;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.sc-product-info-row dd {
+    margin: 0;
+    color: #ebeff2;
+    font-feature-settings: "dlig" on;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    text-align: right;
+    word-break: break-word;
+}
+
+.sc-product-info-slug {
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 12px;
+}
+
+:root[data-color-scheme="light"] .sc-product-info-row dd {
+    color: #022538;
+}
+
+.sc-product-similar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.sc-product-similar-head .sc-people-similar-title {
+    margin: 0;
+}
+
+.sc-product-similar-viewall {
+    flex-shrink: 0;
+    color: #9aa4b2;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.sc-product-similar-viewall:hover {
+    color: #f18f20;
+}
+
+.sc-product-chart-card {
+    margin: 0 0 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #101010;
+    padding: 24px 20px;
+    box-sizing: border-box;
+}
+
+.sc-product-chart-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding: 0;
+}
+
+.sc-product-chart-title {
+    margin: 0;
+    color: #ebeff2;
+    text-align: center;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+}
+
+.sc-product-chart-dollar {
+    color: #ebeff2;
+    margin-right: 2px;
+}
+
+.sc-product-chart-slug {
+    text-align: center;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+.sc-product-chart-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.sc-product-chart-label {
+    color: #6c757d;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sc-product-chart-change {
+    color: #3ddc84;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sc-product-chart-change--neg {
+    color: #ff6b6b;
+}
+
+.sc-product-chart-canvas {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.sc-product-chart-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 15px 20px 20px;
+    box-sizing: border-box;
+}
+
+.sc-product-about-heading {
+    margin-top: 0;
+}
+
+:root[data-color-scheme="light"] .sc-product-chart-card {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-color-scheme="light"] .sc-product-chart-title {
+    color: #022538;
+}
+
+:root[data-color-scheme="light"] .sc-product-chart-dollar {
+    color: #101828;
+}
+
+:root[data-color-scheme="light"] .sc-product-chart-image {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 991px) {
+    .sc-product-center-stack {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .sc-product-chart-title {
+        font-size: 26px;
+    }
+}

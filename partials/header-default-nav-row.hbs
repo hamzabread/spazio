@@ -1,0 +1,16 @@
+{{^match @custom.header_type "Logo with bottom navigation" }}
+{{^match @custom.header_type "Author with bottom navigation" }}
+{{> "header-main-nav"}}
+{{/match}}
+{{/match}}
+<div class="gh-header-actions">
+    {{> "header-actions-buttons"}}
+    <div class="sc-header-cta">
+        <a class="sc-btn-outline" href="{{@site.url}}/post-a-job" aria-label="{{t "Post a Job"}}">
+            {{t "Post a Job"}}
+        </a>
+        <a class="sc-btn-filled" href="{{@site.url}}/list-your-company" aria-label="{{t "List Your Company"}}">
+            {{t "List Your Company"}}
+        </a>
+    </div>
+</div>

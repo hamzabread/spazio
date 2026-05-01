@@ -1,0 +1,34 @@
+{{!< default}}
+
+{{#post}}
+<div class="sc-press-releases-page sc-blockchain-press-releases-page">
+    <div class="sc-bc-pr-bc-wrap gh-container">
+        <nav class="sc-ev-post-bc" aria-label="{{t "Breadcrumb"}}">
+            <a class="sc-ev-post-bc-link" href="{{@site.url}}/press-releases/">{{t "Press Releases"}}</a>
+            <span class="sc-ev-post-bc-sep" aria-hidden="true">›</span>
+            <span class="sc-ev-post-bc-current" aria-current="page">{{t "Blockchain"}}</span>
+        </nav>
+    </div>
+
+    <section class="sc-contact-hero" aria-labelledby="sc-bc-pr-hero-title">
+        <div class="sc-contact-hero-inner gh-container">
+            <span class="sc-contact-hero-chip">{{t "Press Releases"}}</span>
+            <h1 id="sc-bc-pr-hero-title">{{t "Blockchain press hero before"}} <span>{{t "Blockchain press hero accent"}}</span></h1>
+            {{#if excerpt}}
+            <p>{{excerpt}}</p>
+            {{else}}
+            <p>{{t "Blockchain press hero default lede"}}</p>
+            {{/if}}
+        </div>
+    </section>
+
+    <main class="main flex-1">
+        {{> "blockchain-press-releases-listing"}}
+        <div class="gh-container sc-press-releases-main">
+            <div class="gh-post-content sc-press-releases-cms">
+                {{{content}}}
+            </div>
+        </div>
+    </main>
+</div>
+{{/post}}

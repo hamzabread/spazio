@@ -1,0 +1,536 @@
+/* Crypto prices page — matches other pages: `.sc-contact-hero` + shared `.sc-jobs-*` toolbar */
+
+.sc-crypto-prices-page {
+    background: #000;
+    padding-bottom: 48px;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page {
+    background: #FFF;
+}
+
+/* Hero — same treatment as directory / press releases */
+:root[data-color-scheme="dark"] .sc-crypto-prices-page .sc-contact-hero {
+    background-color: #000;
+    background-image: url("/assets/imagesAndIcons/contact-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 776px) {
+    :root[data-color-scheme="dark"] .sc-crypto-prices-page .sc-contact-hero {
+        background-image: url("/assets/imagesAndIcons/contact-mobile.png");
+    }
+}
+
+.sc-crypto-prices-page .sc-contact-hero-chip {
+    color: #f18f20;
+    border-color: rgba(241, 143, 32, 0.25);
+    background: rgba(241, 143, 32, 0.12);
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page .sc-contact-hero-chip {
+    border: 1px solid #ffd6a7;
+    background: #ffedd4;
+    color: #ca3500;
+}
+
+.sc-crypto-prices-page .sc-contact-hero-inner h1 {
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 110%;
+    letter-spacing: -0.02em;
+    color: #ebeff2;
+}
+
+.sc-crypto-prices-page .sc-contact-hero-inner h1 span {
+    color: #f18f20;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page .sc-contact-hero-inner h1 {
+    color: #18181b;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page .sc-contact-hero-inner h1 span {
+    color: #f18f20;
+}
+
+.sc-crypto-prices-page .sc-contact-hero-inner p {
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 130%;
+    color: #6c757d !important;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page .sc-contact-hero-inner p {
+    color: #52525b !important;
+}
+
+/* Listing toolbar — reuse `.sc-jobs`; section padding matches Figma */
+.sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs {
+    padding: 40px 75px 80px 75px;
+    max-width: 1440px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs {
+    background: #fff;
+}
+
+.sc-crypto-prices-page .sc-jobs-chips {
+    gap: 0;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-jobs-top {
+    margin-bottom: 30px;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-jobs-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 16px;
+    color: #6a7282;
+    text-align: center;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    background: none !important;
+    border: none !important;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-jobs-chip .sc-crypto-prices-tab-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    color: inherit;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-jobs-chip .sc-crypto-prices-tab-icon svg {
+    display: block;
+    width: 14px;
+    height: 14px;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-jobs-chip.is-active {
+    color: #f18f20;
+    border: none !important;
+    border-bottom: 1px solid #f18f20 !important;
+    border-radius: 0;
+    background: none !important;
+    box-shadow: none;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-jobs-chip:hover {
+    background: none !important;
+    border: none !important;
+    color: #ebeff2;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-jobs-chip.is-active:hover {
+    color: #f18f20;
+    border-bottom: 1px solid #f18f20 !important;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-jobs-chip:hover {
+    color: #6a7282;
+    background: none !important;
+    border: none !important;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-jobs-chip.is-active:hover {
+    color: #f18f20;
+    background: none !important;
+    border: none !important;
+    border-bottom: 1px solid #f18f20 !important;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing .sc-jobs-title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 110%;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing .sc-jobs-search {
+    flex: 1;
+    width: auto;
+    min-width: 280px;
+    max-width: 560px;
+}
+
+.sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs .sc-crypto-prices-content {
+    padding: 0 !important;
+    margin-top: 18px;
+    max-width: none;
+}
+
+.sc-crypto-prices-table-wrap {
+    width: 100%;
+    overflow: auto;
+    border-radius: 14px;
+    border: 1px solid #1b1b1b;
+    background: none;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-table-wrap {
+    border: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.sc-crypto-prices-table {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    min-width: 0;
+}
+
+.sc-crypto-prices-table .sc-crypto-prices-col-rank {
+    width: 44px;
+}
+
+.sc-crypto-prices-table .sc-crypto-prices-col-name {
+    width: 349px;
+}
+
+.sc-crypto-prices-table thead th {
+    text-align: right;
+    color: #6c757d;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 16px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sc-crypto-prices-table thead th:nth-child(2) {
+    text-align: left;
+}
+
+.sc-crypto-prices-table tbody td {
+    color: rgba(235, 239, 242, 0.7);
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 16px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    vertical-align: middle;
+    text-align: right;
+}
+
+.sc-crypto-prices-table tbody td:nth-child(2) {
+    text-align: left;
+}
+
+.sc-crypto-prices-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.sc-crypto-prices-td-num {
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.sc-crypto-prices-td-pct {
+    text-align: right;
+}
+
+.sc-crypto-prices-td-graph {
+    text-align: right;
+}
+
+
+.sc-crypto-prices-td-vol small {
+    display: block;
+    color: #6c757d;
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.sc-crypto-prices-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.sc-crypto-prices-coin-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.sc-crypto-prices-coin-meta strong {
+    color: #ebeff2;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+.sc-crypto-prices-coin-meta span {
+    color: #6c757d;
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+.sc-crypto-prices-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: Inter, system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    white-space: nowrap;
+}
+
+.sc-crypto-prices-change-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.sc-crypto-prices-change-icon svg {
+    display: block;
+}
+
+.sc-crypto-prices-change.up {
+    color: #16c784;
+}
+
+.sc-crypto-prices-change.up .sc-crypto-prices-change-value {
+    color: #16c784;
+}
+
+.sc-crypto-prices-change.down {
+    color: #ea3943;
+}
+
+.sc-crypto-prices-change.down .sc-crypto-prices-change-value {
+    color: #ea3943;
+}
+
+.sc-crypto-prices-mini-graph {
+    width: 70px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sc-crypto-prices-pager {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    border: 1px solid #1b1b1b;
+    padding: 20px 15px;
+    box-sizing: border-box;
+}
+
+.sc-crypto-prices-pager-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #6c757d;
+    font-size: 12px;
+}
+
+.sc-crypto-prices-page-size-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.sc-crypto-prices-pager-left select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 8px;
+    border: none;
+    background: #101010;
+    color: #ebeff2;
+    text-align: center;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    padding: 8px 32px 8px 12px;
+    cursor: pointer;
+    min-width: 64px;
+}
+
+.sc-crypto-prices-pager-left select::-ms-expand {
+    display: none;
+}
+
+.sc-crypto-prices-select-chevron {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-pager-left select {
+    background: #f4f4f5;
+    color: #18181b;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-select-chevron path {
+    stroke: #18181b;
+}
+
+.sc-crypto-prices-pager-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Prev / next only (page numbers live inside `.sc-crypto-prices-page-numbers`) */
+.sc-crypto-prices-pager-right > .sc-crypto-prices-page-btn {
+    border: 1px solid #f18f20;
+}
+
+.sc-crypto-prices-page-numbers {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sc-crypto-prices-page-btn {
+    border-radius: 8px;
+    background: #101010;
+    padding: 8px 10px;
+    border: none;
+    color: #ebeff2;
+    cursor: pointer;
+    font-size: 0;
+    line-height: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sc-crypto-prices-page-btn svg {
+    display: block;
+}
+
+.sc-crypto-prices-page-btn:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.sc-crypto-prices-page-btn.sc-crypto-prices-page-num {
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 100%;
+    min-width: 0;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: #101010;
+    color: #ebeff2;
+}
+
+.sc-crypto-prices-page-btn.sc-crypto-prices-page-num.is-active {
+    background: rgba(241, 143, 32, 0.12);
+    color: #f18f20;
+    border-color: transparent;
+}
+
+.sc-crypto-prices-page-ellipsis {
+    color: #ebeff2;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 4px;
+    line-height: 100%;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-pager {
+    border-color: #e9ecef;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page-btn.sc-crypto-prices-page-num {
+    background: #fff;
+    color: #18181b;
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page-btn.sc-crypto-prices-page-num.is-active {
+    background: rgba(241, 143, 32, 0.12);
+    color: #f18f20;
+    border-color: transparent;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-page-btn {
+    background: #f4f4f5;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-table thead th,
+:root[data-color-scheme="light"] .sc-crypto-prices-table tbody td {
+    color: rgba(24, 24, 27, 0.75);
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-coin-meta strong {
+    color: #18181b;
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-table tbody td {
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+:root[data-color-scheme="light"] .sc-crypto-prices-table thead th {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991px) {
+    .sc-crypto-prices-page .sc-crypto-prices-listing.sc-jobs {
+        padding: 32px 24px 48px;
+    }
+
+    .sc-crypto-prices-page .sc-crypto-prices-listing .sc-jobs-title {
+        font-size: 32px;
+    }
+
+    .sc-crypto-prices-page .sc-crypto-prices-listing .sc-jobs-top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sc-crypto-prices-page .sc-crypto-prices-listing .sc-jobs-controls {
+        width: 100%;
+    }
+
+    .sc-crypto-prices-page .sc-crypto-prices-listing .sc-jobs-search {
+        max-width: none;
+    }
+}

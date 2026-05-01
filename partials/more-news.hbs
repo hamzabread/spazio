@@ -48,7 +48,7 @@
                 {{/foreach}}
                 {{/get}}
 
-                {{#get "posts" filter="(tag:ai,tag:hash-ai,tag:artificial-intelligence,tag:machine-learning,tag:generative-ai)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases" include="authors,tags" limit="4" order="published_at desc"}}
+                {{#get "posts" filter="(tag:ai,tag:artificial-intelligence,tag:machine-learning,tag:generative-ai)+tag:-hash-ai+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases" include="authors,tags" limit="4" order="published_at desc"}}
                 {{#foreach posts}}
                 <article class="sc-mn-card">
                     {{#if feature_image}}

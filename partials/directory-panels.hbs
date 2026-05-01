@@ -1,0 +1,166 @@
+<div class="sc-directory-panel is-active" data-tab-panel="people">
+    <div class="sc-directory-grid">
+        {{#if @custom.directory_people_source_filter}}
+        {{#get "posts" filter=@custom.directory_people_source_filter include="authors,tags" limit="18" order="published_at desc"}}
+            {{#if posts}}
+                {{#foreach posts}}
+                <a href="{{url}}" class="sc-directory-card sc-directory-card--link" data-tags="all {{#foreach tags visibility="all"}}{{slug}} {{/foreach}}">
+                    <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}{{/if}}" alt="{{title}}">
+                    <div class="sc-directory-info">
+                        <h3 class="sc-directory-name">{{title}}
+                            {{#has tag="#verified,verified"}}
+                            <span class="sc-directory-badge" aria-label="Verified">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path d="M16.1702 8.05492L15.1502 6.86992C14.9552 6.64492 14.7977 6.22492 14.7977 5.92492V4.64992C14.7977 3.85492 14.1452 3.20242 13.3502 3.20242H12.0752C11.7827 3.20242 11.3552 3.04492 11.1302 2.84992L9.94516 1.82992C9.42766 1.38742 8.58016 1.38742 8.05516 1.82992L6.87766 2.85742C6.65266 3.04492 6.22516 3.20242 5.93266 3.20242H4.63516C3.84016 3.20242 3.18766 3.85492 3.18766 4.64992V5.93242C3.18766 6.22492 3.03016 6.64492 2.84266 6.86992L1.83016 8.06242C1.39516 8.57992 1.39516 9.41992 1.83016 9.93742L2.84266 11.1299C3.03016 11.3549 3.18766 11.7749 3.18766 12.0674V13.3499C3.18766 14.1449 3.84016 14.7974 4.63516 14.7974H5.93266C6.22516 14.7974 6.65266 14.9549 6.87766 15.1499L8.06266 16.1699C8.58016 16.6124 9.42766 16.6124 9.95266 16.1699L11.1377 15.1499C11.3627 14.9549 11.7827 14.7974 12.0827 14.7974H13.3577C14.1527 14.7974 14.8052 14.1449 14.8052 13.3499V12.0749C14.8052 11.7824 14.9627 11.3549 15.1577 11.1299L16.1777 9.94492C16.6127 9.42742 16.6127 8.57242 16.1702 8.05492ZM12.1202 7.58242L8.49766 11.2049C8.39266 11.3099 8.25016 11.3699 8.10016 11.3699C7.95016 11.3699 7.80766 11.3099 7.70266 11.2049L5.88766 9.38992C5.67016 9.17242 5.67016 8.81242 5.88766 8.59492C6.10516 8.37742 6.46516 8.37742 6.68266 8.59492L8.10016 10.0124L11.3252 6.78742C11.5427 6.56992 11.9027 6.56992 12.1202 6.78742C12.3377 7.00492 12.3377 7.36492 12.1202 7.58242Z" fill="#00A3FF"/>
+                                </svg>
+                            </span>
+                            {{/has}}
+                        </h3>
+                        <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Contributor"}}{{/if}}{{/if}}</p>
+                    </div>
+                </a>
+                {{/foreach}}
+            {{/if}}
+        {{/get}}
+        {{else}}
+        {{!-- Same as homepage: only posts tagged `people` (public tag slug: people) --}}
+        {{#get "posts" filter="tag:people" include="authors,tags" limit="18" order="published_at desc"}}
+            {{#if posts}}
+                {{#foreach posts}}
+                <a href="{{url}}" class="sc-directory-card sc-directory-card--link" data-tags="all {{#foreach tags visibility="all"}}{{slug}} {{/foreach}}">
+                    <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/AuthorAvatarDefault.jpg"}}{{/if}}" alt="{{title}}">
+                    <div class="sc-directory-info">
+                        <h3 class="sc-directory-name">{{title}}
+                            {{#has tag="#verified,verified"}}
+                            <span class="sc-directory-badge" aria-label="Verified">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path d="M16.1702 8.05492L15.1502 6.86992C14.9552 6.64492 14.7977 6.22492 14.7977 5.92492V4.64992C14.7977 3.85492 14.1452 3.20242 13.3502 3.20242H12.0752C11.7827 3.20242 11.3552 3.04492 11.1302 2.84992L9.94516 1.82992C9.42766 1.38742 8.58016 1.38742 8.05516 1.82992L6.87766 2.85742C6.65266 3.04492 6.22516 3.20242 5.93266 3.20242H4.63516C3.84016 3.20242 3.18766 3.85492 3.18766 4.64992V5.93242C3.18766 6.22492 3.03016 6.64492 2.84266 6.86992L1.83016 8.06242C1.39516 8.57992 1.39516 9.41992 1.83016 9.93742L2.84266 11.1299C3.03016 11.3549 3.18766 11.7749 3.18766 12.0674V13.3499C3.18766 14.1449 3.84016 14.7974 4.63516 14.7974H5.93266C6.22516 14.7974 6.65266 14.9549 6.87766 15.1499L8.06266 16.1699C8.58016 16.6124 9.42766 16.6124 9.95266 16.1699L11.1377 15.1499C11.3627 14.9549 11.7827 14.7974 12.0827 14.7974H13.3577C14.1527 14.7974 14.8052 14.1449 14.8052 13.3499V12.0749C14.8052 11.7824 14.9627 11.3549 15.1577 11.1299L16.1777 9.94492C16.6127 9.42742 16.6127 8.57242 16.1702 8.05492ZM12.1202 7.58242L8.49766 11.2049C8.39266 11.3099 8.25016 11.3699 8.10016 11.3699C7.95016 11.3699 7.80766 11.3099 7.70266 11.2049L5.88766 9.38992C5.67016 9.17242 5.67016 8.81242 5.88766 8.59492C6.10516 8.37742 6.46516 8.37742 6.68266 8.59492L8.10016 10.0124L11.3252 6.78742C11.5427 6.56992 11.9027 6.56992 12.1202 6.78742C12.3377 7.00492 12.3377 7.36492 12.1202 7.58242Z" fill="#00A3FF"/>
+                                </svg>
+                            </span>
+                            {{/has}}
+                        </h3>
+                        <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Contributor"}}{{/if}}{{/if}}</p>
+                    </div>
+                </a>
+                {{/foreach}}
+            {{/if}}
+        {{/get}}
+        {{/if}}
+    </div>
+</div>
+
+<div class="sc-directory-panel" data-tab-panel="companies">
+    <div class="sc-directory-grid">
+        {{#if @custom.directory_companies_source_filter}}
+        {{#get "posts" filter=@custom.directory_companies_source_filter include="authors,tags" limit="18" order="published_at desc"}}
+            {{#if posts}}
+                {{#foreach posts}}
+                <a href="{{url}}" class="sc-directory-card sc-directory-card--link">
+                    <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}">
+                    <div class="sc-directory-info">
+                        <h3 class="sc-directory-name">{{title}}</h3>
+                        <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Company"}}{{/if}}{{/if}}</p>
+                    </div>
+                </a>
+                {{/foreach}}
+            {{else}}
+                {{#get "posts" include="authors,tags" limit="18" order="published_at desc"}}
+                    {{#foreach posts}}
+                    <a href="{{url}}" class="sc-directory-card sc-directory-card--link">
+                        <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}">
+                        <div class="sc-directory-info">
+                            <h3 class="sc-directory-name">{{title}}</h3>
+                            <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Company"}}{{/if}}{{/if}}</p>
+                        </div>
+                    </a>
+                    {{/foreach}}
+                {{/get}}
+            {{/if}}
+        {{/get}}
+        {{else}}
+        {{#get "posts" filter="(tag:companies,tag:company)" include="authors,tags" limit="18" order="published_at desc"}}
+            {{#if posts}}
+                {{#foreach posts}}
+                <a href="{{url}}" class="sc-directory-card sc-directory-card--link">
+                    <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}">
+                    <div class="sc-directory-info">
+                        <h3 class="sc-directory-name">{{title}}</h3>
+                        <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Company"}}{{/if}}{{/if}}</p>
+                    </div>
+                </a>
+                {{/foreach}}
+            {{else}}
+                {{#get "posts" include="authors,tags" limit="18" order="published_at desc"}}
+                    {{#foreach posts}}
+                    <a href="{{url}}" class="sc-directory-card sc-directory-card--link">
+                        <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}">
+                        <div class="sc-directory-info">
+                            <h3 class="sc-directory-name">{{title}}</h3>
+                            <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Company"}}{{/if}}{{/if}}</p>
+                        </div>
+                    </a>
+                    {{/foreach}}
+                {{/get}}
+            {{/if}}
+        {{/get}}
+        {{/if}}
+    </div>
+</div>
+
+<div class="sc-directory-panel" data-tab-panel="products">
+    <div class="sc-directory-grid">
+        {{#if @custom.directory_products_source_filter}}
+        {{#get "posts" filter=@custom.directory_products_source_filter include="authors,tags" limit="18" order="published_at desc"}}
+            {{#if posts}}
+                {{#foreach posts}}
+                <a href="{{url}}" class="sc-directory-card sc-directory-card--link">
+                    <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/defi.svg"}}{{/if}}" alt="{{title}}">
+                    <div class="sc-directory-info">
+                        <h3 class="sc-directory-name">{{title}}</h3>
+                        <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Product"}}{{/if}}{{/if}}</p>
+                    </div>
+                </a>
+                {{/foreach}}
+            {{else}}
+                {{#get "posts" include="authors,tags" limit="18" order="published_at desc"}}
+                    {{#foreach posts}}
+                    <a href="{{url}}" class="sc-directory-card sc-directory-card--link">
+                        <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/defi.svg"}}{{/if}}" alt="{{title}}">
+                        <div class="sc-directory-info">
+                            <h3 class="sc-directory-name">{{title}}</h3>
+                            <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Product"}}{{/if}}{{/if}}</p>
+                        </div>
+                    </a>
+                    {{/foreach}}
+                {{/get}}
+            {{/if}}
+        {{/get}}
+        {{else}}
+        {{#get "posts" filter="(tag:products,tag:product,tag:reviews)" include="authors,tags" limit="18" order="published_at desc"}}
+            {{#if posts}}
+                {{#foreach posts}}
+                <a href="{{url}}" class="sc-directory-card sc-directory-card--link">
+                    <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/defi.svg"}}{{/if}}" alt="{{title}}">
+                    <div class="sc-directory-info">
+                        <h3 class="sc-directory-name">{{title}}</h3>
+                        <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Product"}}{{/if}}{{/if}}</p>
+                    </div>
+                </a>
+                {{/foreach}}
+            {{else}}
+                {{#get "posts" include="authors,tags" limit="18" order="published_at desc"}}
+                    {{#foreach posts}}
+                    <a href="{{url}}" class="sc-directory-card sc-directory-card--link">
+                        <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/defi.svg"}}{{/if}}" alt="{{title}}">
+                        <div class="sc-directory-info">
+                            <h3 class="sc-directory-name">{{title}}</h3>
+                            <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Product"}}{{/if}}{{/if}}</p>
+                        </div>
+                    </a>
+                    {{/foreach}}
+                {{/get}}
+            {{/if}}
+        {{/get}}
+        {{/if}}
+    </div>
+</div>

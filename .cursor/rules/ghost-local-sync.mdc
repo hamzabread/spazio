@@ -1,0 +1,17 @@
+---
+description: Sync this Ghost theme to local Ghost install and restart after changes
+alwaysApply: true
+---
+
+# Local Ghost preview
+
+This theme is developed against a local Ghost instance. The active copy lives next to this repo:
+
+`../ghost-local/content/themes/spazio-pitch-multi/`
+
+After **any** theme work that should show in the browser (templates, partials, `assets/css`, `assets/js`, `assets/built`, images, etc.):
+
+1. If `assets/css/index.css` or `assets/js/index.js` sources changed, run **`npm run build`** first.
+2. Run **`npm run sync:ghost`** (rsyncs this directory into the Ghost themes folder, then **`ghost restart`** from `../ghost-local`).
+
+Do not end a coding session that touched the theme without running sync + restart when the user previews on local Ghost, unless they explicitly opt out.

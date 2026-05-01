@@ -1,0 +1,84 @@
+<script>
+(function () {
+    var tabs = document.querySelectorAll('.sc-directory-tab');
+    var panels = document.querySelectorAll('.sc-directory-panel');
+    var chips = document.querySelectorAll('.sc-directory-chip');
+    var activeFilter = 'all';
+    var titleEl = document.querySelector('.sc-directory-page-list-title');
+    var ledeEl = document.querySelector('.sc-directory-page-list-lede');
+
+    function syncListHead(activeTab) {
+        if (!titleEl || !ledeEl || !activeTab) return;
+        var t = activeTab.getAttribute('data-list-title');
+        var d = activeTab.getAttribute('data-list-lede');
+        if (t) titleEl.textContent = t;
+        if (d) ledeEl.textContent = d;
+    }
+
+    if (!tabs.length || !panels.length) return;
+
+    var initialTab = document.querySelector('.sc-directory-tab.is-active');
+    if (initialTab) syncListHead(initialTab);
+
+    function applyFilter() {
+        var activePanel = document.querySelector('.sc-directory-panel.is-active');
+        if (!activePanel) return;
+
+        var cards = activePanel.querySelectorAll('.sc-directory-card');
+        cards.forEach(function (card) {
+            if (activeFilter === 'all') {
+                card.style.display = '';
+                return;
+            }
+
+            var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+            if (!tags) {
+                card.style.display = '';
+                return;
+            }
+
+            card.style.display = tags.indexOf(activeFilter.toLowerCase()) > -1 ? '' : 'none';
+        });
+    }
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            var target = tab.getAttribute('data-tab-target');
+
+            tabs.forEach(function (t) {
+                t.classList.remove('is-active');
+                t.setAttribute('aria-selected', 'false');
+            });
+
+            panels.forEach(function (panel) {
+                panel.classList.remove('is-active');
+            });
+
+            tab.classList.add('is-active');
+            tab.setAttribute('aria-selected', 'true');
+
+            var nextPanel = document.querySelector('.sc-directory-panel[data-tab-panel="' + target + '"]');
+            if (nextPanel) {
+                nextPanel.classList.add('is-active');
+                syncListHead(tab);
+                applyFilter();
+            }
+        });
+    });
+
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            activeFilter = chip.getAttribute('data-directory-filter') || 'all';
+
+            chips.forEach(function (c) {
+                c.classList.remove('is-active');
+            });
+            chip.classList.add('is-active');
+
+            applyFilter();
+        });
+    });
+
+    applyFilter();
+})();
+</script>

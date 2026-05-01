@@ -1,0 +1,132 @@
+<div class="sc-pr-post-page">
+    <div class="sc-pr-post-breadcrumbs">
+        <nav class="sc-pr-post-bc gh-container" aria-label="{{t "Breadcrumb"}}">
+            <a class="sc-pr-post-bc-link" href="{{@site.url}}/press-releases/">{{t "Press Releases"}}</a>
+            <span class="sc-pr-post-bc-sep" aria-hidden="true">›</span>
+            <span class="sc-pr-post-bc-current">{{title}}</span>
+        </nav>
+    </div>
+
+    <main class="main flex-1 sc-pr-post-main">
+        <div class="gh-container sc-pr-post-layout">
+            <article class="sc-pr-post-primary" aria-labelledby="sc-pr-post-title">
+                <div class="sc-pr-post-card">
+                    <div class="sc-pr-post-card-head">
+                        <span class="sc-pr-post-card-cat">
+                            {{#foreach tags visibility="public"}}
+                                {{#match slug "press-releases"}}{{else}}
+                                {{#match slug "press-release"}}{{else}}
+                                <span class="sc-pr-post-cat-opt">{{name}}</span>
+                                {{/match}}
+                                {{/match}}
+                            {{/foreach}}
+                        </span>
+                    </div>
+                    <h1 id="sc-pr-post-title" class="sc-pr-post-title">{{title}}</h1>
+                    {{#if excerpt}}
+                    <p class="sc-pr-post-lede">{{excerpt}}</p>
+                    {{/if}}
+                    <div class="sc-pr-post-meta">
+                        <span class="sc-pr-post-meta-item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.667 2.667H3.333C2.597 2.667 2 3.264 2 4v8c0 .736.597 1.333 1.333 1.333h9.334c.736 0 1.333-.597 1.333-1.333V4c0-.736-.597-1.333-1.333-1.333z" stroke="currentColor" stroke-width="1.2"/><path d="M10.667 1.333V4M5.333 1.333V4M2 6.667h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                            <time datetime="{{date published_at format='YYYY-MM-DD'}}">{{date published_at format='MMMM D, YYYY'}}</time>
+                        </span>
+                        <span class="sc-pr-post-meta-item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 8a2.667 2.667 0 100-5.333A2.667 2.667 0 008 8zM2.667 13.333c0-2.946 2.387-5.333 5.333-5.333s5.333 2.387 5.333 5.333" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                            {{#if primary_author}}<span class="sc-pr-post-by">{{t "Press post by"}} {{primary_author.name}}</span>{{else}}<span class="sc-pr-post-by">{{@site.title}}</span>{{/if}}
+                        </span>
+                    </div>
+                    <hr class="sc-pr-post-divider" />
+                    {{#if custom_excerpt}}
+                    <blockquote class="sc-pr-post-pull">
+                        <p>{{custom_excerpt}}</p>
+                    </blockquote>
+                    {{/if}}
+                    <div class="sc-pr-post-body gh-content">
+                        {{{content}}}
+                    </div>
+                    <section class="sc-pr-post-tags" aria-labelledby="sc-pr-post-tags-title">
+                        <h2 id="sc-pr-post-tags-title" class="sc-pr-post-tags-title">{{t "Tags"}}</h2>
+                        <div class="sc-pr-post-tag-row">
+                            {{#foreach tags visibility="public"}}
+                                {{#match slug "press-releases"}}{{else}}
+                                {{#match slug "press-release"}}{{else}}
+                                <a href="{{url}}" class="sc-pr-post-tag">{{name}}</a>
+                                {{/match}}
+                                {{/match}}
+                            {{/foreach}}
+                            {{#foreach tags visibility="internal"}}
+                            <span class="sc-pr-post-tag sc-pr-post-tag--internal">{{name}}</span>
+                            {{/foreach}}
+                        </div>
+                    </section>
+                </div>
+
+                {{#get "posts" filter="tag:press-releases+id:-{{id}}" limit="4" include="authors,tags" order="published_at desc"}}
+                {{#if posts}}
+                <section class="sc-pr-post-related" aria-labelledby="sc-pr-post-related-title">
+                    <h2 id="sc-pr-post-related-title" class="sc-pr-post-related-title">{{t "Related Press Releases"}}</h2>
+                    <div class="sc-pr-post-related-grid">
+                        {{#foreach posts}}
+                        <article class="sc-pr-related-card">
+                            <div class="sc-pr-related-card-head">
+                                <span class="sc-pr-related-card-cat">
+                                    {{#foreach tags visibility="public"}}
+                                        {{#match slug "press-releases"}}{{else}}
+                                        {{#match slug "press-release"}}{{else}}
+                                        <span class="sc-pr-related-cat-opt">{{name}}</span>
+                                        {{/match}}
+                                        {{/match}}
+                                    {{/foreach}}
+                                </span>
+                                <a class="sc-pr-related-read" href="{{url}}">{{t "Read More"}}</a>
+                            </div>
+                            <h3 class="sc-pr-related-title"><a href="{{url}}">{{title}}</a></h3>
+                            {{#if excerpt}}<p class="sc-pr-related-excerpt">{{excerpt words="32"}}</p>{{/if}}
+                        </article>
+                        {{/foreach}}
+                    </div>
+                </section>
+                {{/if}}
+                {{/get}}
+            </article>
+
+            <aside class="sc-pr-post-sidebar" aria-label="{{t "Press release sidebar"}}">
+                <section class="sc-pr-sidebar-card sc-pr-sidebar-share">
+                    <h2 class="sc-pr-sidebar-heading">{{t "SHARE"}}</h2>
+                    <div class="sc-pr-sidebar-share-row">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute='true'}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Share on Facebook"}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                        <a href="https://t.me/share/url?url={{url absolute='true'}}&text={{title}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Share on Telegram"}}" target="_blank" rel="noopener">{{> "icons/telegram"}}</a>
+                        <a href="https://news.google.com/search?q={{title}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Open in Google News"}}" target="_blank" rel="noopener">{{> "icons/googlenews"}}</a>
+                        <a href="https://x.com/intent/post?url={{url absolute='true'}}&text={{title}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Share on X"}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute='true'}}" class="sc-pr-sidebar-share-btn" aria-label="{{t "Share on LinkedIn"}}" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
+                    </div>
+                </section>
+
+                <section class="sc-pr-sidebar-card sc-pr-sidebar-contact">
+                    <h2 class="sc-pr-sidebar-contact-title">{{t "Press Contact"}}</h2>
+                    <div class="sc-pr-sidebar-contact-group">
+                        <p class="sc-pr-sidebar-contact-label">{{t "Press contact role"}}</p>
+                        <p class="sc-pr-sidebar-contact-value"><a class="sc-pr-sidebar-contact-link" href="mailto:press@spaziocrypto.com">press@spaziocrypto.com</a></p>
+                    </div>
+                    <div class="sc-pr-sidebar-contact-group">
+                        <p class="sc-pr-sidebar-contact-label">{{t "Press contact phone label"}}</p>
+                        <p class="sc-pr-sidebar-contact-value">{{t "Press contact phone value"}}</p>
+                    </div>
+                </section>
+
+                <section class="sc-pr-sidebar-newsletter" aria-labelledby="sc-pr-sidebar-nl-title">
+                    <h2 id="sc-pr-sidebar-nl-title" class="sc-pr-sidebar-nl-title">{{t "Stay informed"}}</h2>
+                    <p class="sc-pr-sidebar-nl-desc">{{t "Press newsletter blurb"}}</p>
+                    <form class="sc-pr-sidebar-nl-form" data-members-form="subscribe" data-members-autoredirect="false" novalidate>
+                        <div class="sc-pr-sidebar-nl-field">
+                            <input class="sc-pr-sidebar-nl-input" type="email" data-members-email name="email" placeholder="{{t "Your email"}}" aria-label="{{t "Your email"}}" required>
+                        </div>
+                        <button class="sc-pr-sidebar-nl-btn" type="submit">{{t "Subscribe"}}</button>
+                        <p class="sc-pr-sidebar-nl-error gh-form__error" data-members-error></p>
+                    </form>
+                </section>
+            </aside>
+        </div>
+    </main>
+</div>

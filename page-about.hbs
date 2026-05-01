@@ -6,7 +6,7 @@
         <div class="sc-about-shell">
             <article class="sc-about-hero-card sc-about-hero-card-dynamic">
                 <div class="sc-about-hero-copy">
-                    {{> breadcrumbs}}
+                    {{> breadcrumbs breadcrumb_title=(t "About")}}
 
                     {{#if primary_tag}}
                         <span class="sc-about-chip">{{primary_tag.name}}</span>
@@ -292,6 +292,18 @@
                         {{#if @custom.google_news_link}}<a href="{{@custom.google_news_link}}" target="_blank" rel="noopener" aria-label="Google">{{> "icons/googlenews"}}</a>{{/if}}
                         {{#if @custom.insta_link}}<a href="{{@custom.insta_link}}" target="_blank" rel="noopener" aria-label="Instagram">{{> "icons/instagram"}}</a>{{/if}}
                         {{#if @site.twitter}}<a href="{{twitter_url}}" target="_blank" rel="noopener" aria-label="Twitter">{{> "icons/twitter"}}</a>{{/if}}
+                        {{#if @custom.linkedin_link}}
+                        <a href="{{@custom.linkedin_link}}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg class="sc-about-social-icon-light" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><rect width="30" height="30" rx="15" fill="#262626"/><path d="M10.6369 11.8742V21.9987H7.20003V11.8742H10.6369ZM10.8554 8.74846C10.856 8.76658 10.8567 8.78783 10.8567 8.8097C10.8567 9.27775 10.6541 9.69893 10.3305 9.99388L10.3292 9.9945C9.982 10.3057 9.5176 10.4963 9.00733 10.4963C8.97611 10.4963 8.94426 10.4957 8.91304 10.4944H8.9175H8.89648C8.87036 10.4957 8.83978 10.4963 8.80921 10.4963C8.30976 10.4963 7.85619 10.3051 7.51919 9.99388L7.51983 9.9945C7.19876 9.68955 7 9.26337 7 8.79158C7 8.77658 7 8.76158 7.00064 8.74596V8.74846C7 8.73534 7 8.72034 7 8.70534C7 8.22917 7.2064 7.80049 7.53575 7.49992L7.53703 7.49929C7.88358 7.18997 8.34671 7 8.85444 7C8.88374 7 8.91241 7.00062 8.94171 7.00187H8.93789C8.96528 7.00062 8.9965 7 9.02899 7C9.52906 7 9.98455 7.18934 10.3247 7.49867L10.3235 7.49742C10.6515 7.80799 10.8554 8.24292 10.8554 8.72471V8.75096V8.74971V8.74846ZM22.9987 16.1972V21.9987H19.5727V16.584C19.5759 16.5347 19.5772 16.4772 19.5772 16.4197C19.5772 15.8598 19.4185 15.3367 19.1427 14.8906L19.1503 14.9037C18.8783 14.5312 18.4388 14.2919 17.9425 14.2919C17.9043 14.2919 17.8661 14.2932 17.8278 14.2963H17.8329C17.8157 14.2957 17.796 14.295 17.7762 14.295C17.3813 14.295 17.0182 14.4281 16.7308 14.6512L16.7347 14.6487C16.4461 14.8781 16.2199 15.1711 16.0772 15.508L16.0721 15.5223C15.9982 15.7442 15.9562 15.9991 15.9562 16.2641C15.9562 16.2941 15.9568 16.3241 15.9581 16.3541V16.3497V22H12.5321C12.5461 19.2825 12.5531 17.0792 12.5531 15.3899C12.5531 13.7005 12.5497 12.6926 12.5429 12.366L12.5327 11.8754H15.9588V13.3464H15.9377C16.0741 13.1309 16.2148 12.944 16.3696 12.769L16.3645 12.7747C16.5436 12.5816 16.7359 12.4072 16.943 12.251L16.9532 12.2435C17.2105 12.0492 17.5125 11.8967 17.8399 11.8036L17.8591 11.7992C18.2018 11.6986 18.5961 11.6405 19.0038 11.6405H19.0541H19.0516C19.0968 11.6386 19.1497 11.6374 19.2026 11.6374C20.2735 11.6374 21.2379 12.0835 21.9138 12.7972L21.9157 12.7997C22.6386 13.5729 23 14.7052 23 16.1966L22.9987 16.1972Z" fill="white"/></svg>
+                            <svg class="sc-about-social-icon-dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect width="20" height="20" rx="10" fill="#262626"/><path d="M7.09061 7.91621V14.6659H4.79937V7.91621H7.09061ZM7.23628 5.83239C7.2367 5.84447 7.23713 5.85863 7.23713 5.87321C7.23713 6.18524 7.10207 6.46603 6.88633 6.66267L6.88548 6.66308C6.65402 6.87055 6.34441 6.99761 6.00423 6.99761C5.98342 6.99761 5.96219 6.99719 5.94138 6.99636H5.94435H5.93034C5.91292 6.99719 5.89254 6.99761 5.87215 6.99761C5.53919 6.99761 5.23681 6.87013 5.01214 6.66267L5.01257 6.66308C4.79852 6.45978 4.66602 6.17566 4.66602 5.86113C4.66602 5.85113 4.66602 5.84114 4.66644 5.83072V5.83239C4.66602 5.82364 4.66602 5.81364 4.66602 5.80364C4.66602 5.48619 4.80362 5.20041 5.02319 5.00003L5.02403 4.99961C5.25507 4.79339 5.56382 4.66675 5.90231 4.66675C5.92184 4.66675 5.94095 4.66716 5.96049 4.668H5.95794C5.9762 4.66716 5.99701 4.66675 6.01867 4.66675C6.35206 4.66675 6.65572 4.79298 6.8825 4.99919L6.88165 4.99836C7.10037 5.20541 7.23628 5.49536 7.23628 5.81656V5.83405V5.83322V5.83239ZM15.3318 10.7982V14.6659H13.0478V11.0561C13.0499 11.0232 13.0508 10.9849 13.0508 10.9465C13.0508 10.5733 12.945 10.2246 12.7611 9.92712L12.7662 9.93587C12.5849 9.68758 12.2919 9.52802 11.961 9.52802C11.9355 9.52802 11.9101 9.52885 11.8846 9.53094H11.888C11.8765 9.53052 11.8633 9.5301 11.8502 9.5301C11.5869 9.5301 11.3448 9.61884 11.1532 9.76756L11.1558 9.7659C10.9634 9.91879 10.8126 10.1142 10.7175 10.3387L10.7141 10.3483C10.6648 10.4962 10.6368 10.6662 10.6368 10.8428C10.6368 10.8628 10.6372 10.8828 10.6381 10.9028V10.8999V14.6667H8.35408C8.36342 12.8551 8.36809 11.3862 8.36809 10.26C8.36809 9.13378 8.36583 8.46181 8.3613 8.24407L8.3545 7.91704H10.6385V8.89771H10.6245C10.7154 8.75398 10.8092 8.62942 10.9124 8.51277L10.909 8.51652C11.0284 8.38779 11.1566 8.27156 11.2947 8.16741L11.3015 8.16242C11.473 8.03285 11.6744 7.9312 11.8926 7.86913L11.9054 7.86621C12.1339 7.79914 12.3968 7.7604 12.6686 7.7604H12.7021H12.7004C12.7306 7.75915 12.7658 7.75832 12.8011 7.75832C13.515 7.75832 14.158 8.05577 14.6086 8.53152L14.6098 8.53319C15.0917 9.04866 15.3327 9.80353 15.3327 10.7978L15.3318 10.7982Z" fill="white"/></svg>
+                        </a>
+                        {{/if}}
+                        {{#if @custom.tiktok_link}}
+                        <a href="{{@custom.tiktok_link}}" target="_blank" rel="noopener" aria-label="TikTok">
+                            <img class="sc-about-social-icon-light" src="{{asset "imagesAndIcons/tiktok.svg"}}" alt="" width="20" height="20" loading="lazy" decoding="async" aria-hidden="true">
+                            <img class="sc-about-social-icon-dark" src="{{asset "imagesAndIcons/tiktok.svg"}}" alt="" width="20" height="20" loading="lazy" decoding="async" aria-hidden="true">
+                        </a>
+                        {{/if}}
                     </div>
 
                     <h3>{{t "Areas Of Expertise"}}</h3>
@@ -312,6 +324,7 @@
                         <img src="{{asset 'imagesAndIcons/riccardo2.png'}}" alt="Riccardo event 2" loading="lazy" />
                         <img src="{{asset 'imagesAndIcons/riccardo3.png'}}" alt="Riccardo event 3" loading="lazy" />
                         <img src="{{asset 'imagesAndIcons/riccardo4.png'}}" alt="Riccardo event 4" loading="lazy" />
+                        <img src="{{asset 'imagesAndIcons/riccardo6.png'}}" alt="Riccardo event 5" loading="lazy" />
                     </div>
                 </div>
             </div>
@@ -323,6 +336,7 @@
                         <div class="sc-about-article-image" style="background-image: url('{{asset 'imagesAndIcons/firstarticle.png'}}');"></div>
                         <div class="sc-about-article-content">
                             <div class="sc-about-article-meta">
+                                <img src="{{asset 'imagesAndIcons/tfnfirst.svg'}}" alt="TFN" loading="lazy" />
                                 <span class="sc-about-article-source">TFN • Marco D'Arma</span>
                             </div>
                             <h4 class="sc-about-article-title">Caltanissetta, al Rapisardi-DaVinci giornata dedicata alle criptovalute - TFN</h4>
@@ -336,6 +350,7 @@
                         <div class="sc-about-article-image" style="background-image: url('{{asset 'imagesAndIcons/secondarticle.png'}}');"></div>
                         <div class="sc-about-article-content">
                             <div class="sc-about-article-meta">
+                                <img src="{{asset 'imagesAndIcons/tfnsecond.svg'}}" alt="TFN" loading="lazy" />
                                 <span class="sc-about-article-source">TFN • Marco D'Arma</span>
                             </div>
                             <h4 class="sc-about-article-title">Caltanissetta. ITET Rapisardi-Da Vinci, il 18 dicembre l'evento Spaziocrypto e la Blockchain</h4>
@@ -378,6 +393,12 @@
                                     {{#if @custom.google_news_link}}<a href="{{@custom.google_news_link}}" target="_blank" rel="noopener" aria-label="Google">{{> "icons/googlenews"}}</a>{{/if}}
                                     {{#if @custom.insta_link}}<a href="{{@custom.insta_link}}" target="_blank" rel="noopener" aria-label="Instagram">{{> "icons/instagram"}}</a>{{/if}}
                                     {{#if @site.twitter}}<a href="{{twitter_url}}" target="_blank" rel="noopener" aria-label="Twitter">{{> "icons/twitter"}}</a>{{/if}}
+                                    {{#if @custom.reddit_link}}
+                                    <a href="{{@custom.reddit_link}}" target="_blank" rel="noopener" aria-label="Reddit">
+                                        <img class="sc-about-social-icon-light" src="{{asset "imagesAndIcons/reddit-light.svg"}}" alt="" width="20" height="20" loading="lazy" decoding="async" aria-hidden="true">
+                                        <img class="sc-about-social-icon-dark" src="{{asset "imagesAndIcons/reddit-dark.svg"}}" alt="" width="20" height="20" loading="lazy" decoding="async" aria-hidden="true">
+                                    </a>
+                                    {{/if}}
                                 </div>
                             </article>
                         {{/foreach}}
@@ -397,4 +418,5 @@
 
 {{> "never-miss"}}
 {{> "subscribe-newsletter"}}
+{{> "social-media-channels"}}
 {{/post}}

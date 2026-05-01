@@ -42,6 +42,13 @@
     width: 100%;
     max-width: 438.6px;
     min-width: 0;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.sc-pr-item:hover {
+    border-color: #F18F20;
 }
 
 .sc-pr-item-image {
@@ -202,6 +209,7 @@
 .sc-pr-cta-btn:hover {
     opacity: 0.9;
     color: var(--color-surface-101010);
+    box-shadow: 0 4px 10px 1px rgba(245, 151, 45, 0.60);
 }
 
 @media (max-width: 1200px) {
@@ -251,7 +259,7 @@
     }
 
     .sc-pr-item-tag {
-        font-size: 12px;
+        font-size: 14px;
         margin-bottom: 8px;
     }
 
@@ -307,5 +315,358 @@
 
     .sc-pr-cta-copy p {
         font-size: 14px;
+    }
+}
+
+/* Press releases listing page — reuses .sc-contact-hero (formPages.css); accent matches Figma */
+
+.sc-blockchain-press-releases-page .sc-bc-pr-bc-wrap {
+    padding: 14px 75px 0;
+    display: none;
+}
+
+.sc-press-releases-page .sc-jobs-filter-btn {
+    display: none;
+}
+
+:root[data-color-scheme="light"] .sc-press-releases-page .main,
+:root:not([data-color-scheme="dark"]) .sc-press-releases-page .main {
+    background: #fff;
+}
+
+.sc-press-releases-page .sc-contact-hero-inner h1 span {
+    color: #f18f20;
+}
+
+:root[data-color-scheme="light"] .sc-press-releases-page .sc-contact-hero-inner h1 span {
+    color: #f18f20;
+}
+
+.sc-press-releases-page .sc-contact-hero-chip {
+    color: #FF6B00;
+    border-color: rgba(255, 107, 0, 0.25);
+    background: rgba(255, 107, 0, 0.12);
+}
+
+:root[data-color-scheme="light"] .sc-press-releases-page .sc-contact-hero-chip {
+    color: #CA3500;
+    border-color: rgba(202, 53, 0, 0.22);
+    background: rgba(255, 107, 0, 0.1);
+}
+
+.sc-press-releases-main {
+    padding-top: 48px;
+    padding-bottom: 64px;
+    display: none;
+}
+
+.sc-press-releases-cms > :first-child {
+    margin-top: 0;
+}
+
+/* Press releases page: toolbar reuses .sc-jobs (heroSection.css / formPages); sort as button */
+.sc-press-releases-page .sc-pr-listing .sc-jobs-sort {
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+}
+
+.sc-press-releases-page .sc-pr-listing .sc-jobs-chip {
+    border: none;
+    cursor: pointer;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 120% !important;
+}
+
+.sc-press-releases-page .sc-pr-listing {
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.sc-press-releases-page .main {
+    padding: 40px 75px 80px 75px;
+}
+
+.sc-prl-list-wrap {
+    padding: 0 50px;
+    padding-bottom: 64px;
+}
+
+.sc-prl-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+}
+
+.sc-prl-card {
+    border-radius: 10px;
+    border: 1px solid #1b1b1b;
+    background: #101010;
+    padding: 25px;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    text-align: left;
+}
+
+:root[data-color-scheme="light"] .sc-prl-card,
+:root:not([data-color-scheme="dark"]) .sc-prl-card {
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.sc-prl-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.sc-prl-card-cat {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.25em;
+}
+
+.sc-prl-card-cat:empty {
+    display: none;
+}
+
+.sc-prl-card-cat .sc-prl-cat-opt {
+    display: none;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 16777200px;
+    background: rgba(241, 143, 32, 0.2);
+    color: #f18f20;
+    text-transform: capitalize;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.sc-prl-card-cat .sc-prl-cat-opt:first-of-type {
+    display: inline-flex;
+}
+
+:root[data-color-scheme="light"] .sc-prl-card-cat .sc-prl-cat-opt {
+    background: rgba(241, 143, 32, 0.2);
+    color: #f18f20;
+}
+
+.sc-prl-read {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7.5px 23.563px 8.5px 24px;
+    border-radius: 16777200px;
+    background: #f18f20;
+    color: #fff !important;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.sc-prl-read:hover {
+    filter: brightness(1.06);
+}
+
+.sc-prl-title {
+    margin: 0 0 10px;
+}
+
+.sc-prl-title a {
+    color: #ebeff2;
+    text-decoration: none;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.07px;
+}
+
+.sc-prl-title a:hover {
+    color: #ff6b00;
+}
+
+:root:not([data-color-scheme="dark"]) .sc-prl-title a {
+    color: #18181b;
+}
+
+.sc-prl-lede {
+    margin: 0 0 8px;
+    color: #6c757d;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.15px;
+}
+
+:root[data-color-scheme="light"] .sc-prl-lede {
+    color: #364153;
+}
+
+/* CMS excerpt from {{ content words="…" }} — inner <p> inherits */
+.sc-prl-snippet {
+    margin-bottom: 16px;
+    color: #6c757d;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.15px;
+}
+
+.sc-prl-snippet p {
+    margin: 0;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+}
+
+.sc-prl-snippet p + p {
+    margin-top: 8px;
+}
+
+:root[data-color-scheme="light"] .sc-prl-snippet {
+    color: #4a5565;
+}
+
+:root[data-color-scheme="light"] .sc-prl-snippet p {
+    color: #4a5565;
+}
+
+.sc-prl-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-top: 0;
+    border-top: none;
+}
+
+.sc-prl-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #6c757d;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.15px;
+}
+
+:root[data-color-scheme="light"] .sc-prl-meta .sc-prl-meta-item {
+    color: #6a7282;
+}
+
+.sc-prl-meta-item svg {
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+
+.sc-prl-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sc-prl-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 22px;
+    background: rgba(73, 80, 87, 0.08);
+    color: var(--color-ebeff2-adaptive);
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+}
+
+:root[data-color-scheme="light"] .sc-prl-chip {
+    background: #f3f4f6;
+    color: #4a5565;
+    border: none;
+}
+
+.sc-prl-chip:hover {
+    border: none;
+    color: #ff6b00;
+}
+
+.sc-prl-footer .sc-prl-chip {
+    cursor: default;
+}
+
+.sc-prl-empty {
+    margin: 0;
+    padding: 40px 0;
+    text-align: center;
+    color: #6c757d;
+    font-size: 15px;
+}
+
+/* Press releases page — mobile (aligned with careers / positions rhythm) */
+@media (max-width: 767px) {
+    .sc-blockchain-press-releases-page .sc-bc-pr-bc-wrap {
+        padding: 14px 20px 0;
+    }
+
+    .sc-press-releases-page .main {
+        padding: 32px 20px 60px;
+    }
+
+    .sc-press-releases-page .sc-pr-listing {
+        padding: 0;
+        margin-bottom: 16px;
+    }
+
+    .sc-prl-list-wrap {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 48px;
+    }
+
+    .sc-prl-list {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .sc-press-releases-page .sc-contact-hero-inner h1 {
+        font-size: 36px !important;
+        line-height: 1.1;
+    }
+
+    .sc-prl-card {
+        padding: 20px;
+    }
+
+    .sc-prl-title a {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .sc-press-releases-main {
+        padding-top: 32px;
+        padding-bottom: 48px;
     }
 }

@@ -16,7 +16,8 @@
             {{!-- Market Sentiment Gauge --}}
             <div class="sc-md-card sc-md-sentiment" data-md-sentiment-card>
                 <div class="sc-md-card-label">{{t "Market Sentiment"}}</div>
-                <img class="sc-md-sentiment-svg" src="{{asset "imagesAndIcons/market-sentiment.svg"}}" alt="{{t "Market Sentiment Gauge"}}" loading="lazy" width="290" height="174">
+                <img class="sc-md-sentiment-svg sc-md-sentiment-img--dark" src="{{asset "imagesAndIcons/market-sentiment.svg"}}" alt="{{t "Market Sentiment Gauge"}}" loading="lazy" width="290" height="174">
+                <img class="sc-md-sentiment-svg sc-md-sentiment-img--light" src="{{asset "imagesAndIcons/market-sentiment-light.png"}}" alt="{{t "Market Sentiment Gauge"}}" loading="lazy" width="290" height="174">
                 <div class="sc-md-card-meta" data-md-sentiment-meta>
                     {{#if @custom.market_overview_source_filter}}
                     {{#get "posts" filter=@custom.market_overview_source_filter limit="1" include="tags" order="published_at desc"}}

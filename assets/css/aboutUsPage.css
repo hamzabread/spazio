@@ -46,7 +46,7 @@
 }
 
 .sc-about-shell {
-    max-width: 1540px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
@@ -57,12 +57,23 @@
     overflow: hidden;
 }
 
-.sc-about-hero {
-    background: #000000 !important;
+:root[data-color-scheme="dark"] .sc-about-hero {
+    background-color: #000 !important;
+    background-image: url("/assets/imagesAndIcons/contact-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 776px) {
+    :root[data-color-scheme="dark"] .sc-about-hero {
+        background-image: url("/assets/imagesAndIcons/contact-mobile.png");
+    }
 }
 
 :root[data-color-scheme="light"] .sc-about-hero {
-    background: #F8F9FA !important;
+    background-image: none !important;
+    background-color: #f8f9fa !important;
 }
 
 .sc-about-hero-glow {
@@ -109,6 +120,10 @@
     color: rgba(255, 255, 255, 0.8);
     background: rgba(231, 132, 38, 0.10);
     border: 1px solid rgba(231, 132, 38, 0.13);
+}
+
+:root[data-color-scheme="dark"] .sc-about-chip {
+    color: #F18F20;
 }
 
 :root[data-color-scheme="light"] .sc-about-chip {
@@ -195,9 +210,45 @@
 
 .sc-about-socials a svg,
 .sc-about-riccardo-socials a svg,
-.sc-about-team-socials a svg {
+.sc-about-team-card .sc-about-team-socials a svg {
     width: 30px;
     height: 30px;
+}
+
+.sc-about-team-card .sc-about-team-socials a img {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+.sc-about-team-card .sc-about-team-socials a .sc-about-social-icon-dark {
+    display: none;
+}
+
+:root[data-color-scheme="dark"] .sc-about-team-card .sc-about-team-socials a .sc-about-social-icon-light {
+    display: none;
+}
+
+:root[data-color-scheme="dark"] .sc-about-team-card .sc-about-team-socials a .sc-about-social-icon-dark {
+    display: block;
+}
+
+.sc-about-riccardo-socials a img {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+.sc-about-riccardo-socials a .sc-about-social-icon-dark {
+    display: none;
+}
+
+:root[data-color-scheme="dark"] .sc-about-riccardo-socials a .sc-about-social-icon-light {
+    display: none;
+}
+
+:root[data-color-scheme="dark"] .sc-about-riccardo-socials a .sc-about-social-icon-dark {
+    display: block;
 }
 
 .sc-about-hero-image-wrap {
@@ -264,6 +315,8 @@
 .sc-about-operate {
     background: #000000;
     padding: 80px 75px;
+    border-top: 1px solid #1B1B1B;
+    border-bottom: 1px solid #1B1B1B;
 }
 
 :root[data-color-scheme="light"] .sc-about-operate {
@@ -406,12 +459,17 @@
 }
 
 .sc-about-revenue-item {
-    border: 1px solid var(--color-border-strong-adaptive);
+    border: 1px solid #1B1B1B;
     border-radius: 10px;
-    background: var(--color-surface-101010);
+    background: #050505;
     padding: 24px;
     min-height: 176px;
     transition: border-color 0.2s ease;
+}
+
+:root[data-color-scheme="light"] .sc-about-revenue-item {
+    border: 1px solid var(--color-border-strong-adaptive);
+    background: var(--color-surface-101010);
 }
 
 .sc-about-revenue-item:hover {
@@ -504,7 +562,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 100%;
+    line-height: 130%;
 }
 
 .sc-about-riccardo {
@@ -692,6 +750,7 @@
 .sc-about-riccardo-article-card {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: space-between;
     gap: 24px;
     padding: 20px;
     border-radius: 10px;
@@ -874,14 +933,14 @@
     line-height: 120%;
 }
 
-.sc-about-team-socials {
+.sc-about-team-card .sc-about-team-socials {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-top: auto;
 }
 
-.sc-about-team-socials a {
+.sc-about-team-card .sc-about-team-socials a {
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: var(--color-ebeff2-adaptive);
@@ -923,7 +982,7 @@
     margin: 0 0 24px;
     color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
-    font-size: 30px;
+    font-size: 40px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
@@ -1059,6 +1118,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 12px;
+}
+
+.sc-about-article-meta img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
 }
 
 .sc-about-article-source {
@@ -1070,7 +1137,7 @@
     font-weight: 500;
     line-height: 110%;
     display: inline-block;
-    margin-bottom: 12px;
+    margin-bottom: 0;
 }
 
 .sc-about-article-title {
@@ -1415,7 +1482,7 @@
     }
 
     .sc-about-team {
-        padding: 12px 16px 46px;
+        padding: 40px 20px;
     }
 
     .sc-about-team-grid {

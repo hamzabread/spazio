@@ -41,6 +41,7 @@
             <a class="sc-jobs-chip" href="{{@site.url}}/tag/news/">{{t "News"}}</a>
             <a class="sc-jobs-chip" href="{{@site.url}}/tag/research/">{{t "Research"}}</a>
             <a class="sc-jobs-chip" href="{{@site.url}}/tag/launchpads/">{{t "Launchpads"}}</a>
+            <div class="sc-jobs-chips-fade" aria-hidden="true"></div>
         </div>
 
         <div class="sc-jobs-grid">
@@ -51,7 +52,7 @@
                     {{> "job-card"}}
                     {{/foreach}}
                 {{else}}
-                    {{#get "posts" filter="tags:[jobs,careers,job,hiring]" limit="6" include="authors,tags" order="published_at desc"}}
+                    {{#get "posts" filter="(tag:jobs,tag:careers,tag:job,tag:hiring)" limit="6" include="authors,tags" order="published_at desc"}}
                         {{#foreach posts}}
                         {{> "job-card"}}
                         {{/foreach}}
@@ -59,13 +60,14 @@
                 {{/if}}
             {{/get}}
             {{else}}
-            {{#get "posts" filter="tags:[jobs,careers,job,hiring]" limit="6" include="authors,tags" order="published_at desc"}}
+            {{#get "posts" filter="(tag:jobs,tag:careers,tag:job,tag:hiring)" limit="6" include="authors,tags" order="published_at desc"}}
                 {{#foreach posts}}
                 {{> "job-card"}}
                 {{/foreach}}
             {{/get}}
             {{/if}}
         </div>
+        <button type="button" class="sc-jobs-load-more-btn is-hidden">Load More</button>
 
         <div class="sc-jobs-cta">
             <div class="sc-jobs-cta-text">

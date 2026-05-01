@@ -1,0 +1,102 @@
+<div class="sc-crypto-prices-page">
+    <section class="sc-contact-hero" aria-labelledby="sc-crypto-prices-hero-title">
+        <div class="sc-contact-hero-inner gh-container">
+            <span class="sc-contact-hero-chip">{{t "Crypto prices chip"}}</span>
+            <h1 id="sc-crypto-prices-hero-title">{{t "Crypto prices title before"}} <span>{{t "Crypto prices title accent"}}</span></h1>
+            <p>{{t "Crypto prices hero lede"}}</p>
+        </div>
+    </section>
+
+    <section class="sc-jobs sc-crypto-prices-listing" aria-labelledby="sc-crypto-prices-board-title">
+        <div class="sc-jobs-inner">
+            <div class="sc-jobs-top">
+                <h2 id="sc-crypto-prices-board-title" class="sc-jobs-title">{{t "Crypto Prices"}}</h2>
+                <div class="sc-jobs-controls">
+                    <div class="sc-jobs-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <path d="M7.66732 14.0002C11.1651 14.0002 14.0007 11.1646 14.0007 7.66683C14.0007 4.16903 11.1651 1.3335 7.66732 1.3335C4.16951 1.3335 1.33398 4.16903 1.33398 7.66683C1.33398 11.1646 4.16951 14.0002 7.66732 14.0002Z" stroke="var(--color-muted-legacy)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.6673 14.6668L13.334 13.3335" stroke="var(--color-muted-legacy)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input type="search" class="sc-jobs-search-input" id="sc-crypto-prices-search" placeholder="{{t "Crypto prices search placeholder"}}" aria-label="{{t "Crypto prices search placeholder"}}" autocomplete="off" data-cp-search>
+                    </div>
+                    <button type="button" class="sc-jobs-sort" id="sc-crypto-prices-sort" data-cp-sort-btn aria-label="{{t "Sort"}}">
+                        <span>{{t "Sort"}}</span>
+                        <svg width="14" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sc-jobs-chips sc-crypto-prices-tabs" role="tablist" aria-label="{{t "Crypto prices categories"}}">
+                <button type="button" class="sc-jobs-chip is-active" data-cp-tab data-category="all" role="tab" aria-selected="true">{{t "All Crypto"}}</button>
+                <button type="button" class="sc-jobs-chip" data-cp-tab data-category="highlights" role="tab" aria-selected="false"><span class="sc-crypto-prices-tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.8335 7H12.2502" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.8335 10.5H12.2502" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.8335 3.5H12.2502" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.3335 5.83331H3.50016" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.3335 3.5H2.91683V5.83333" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.50016 10.5H2.3335C2.3335 9.91667 3.50016 9.33333 3.50016 8.75C3.50016 8.16667 2.91683 7.875 2.3335 8.16667" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{{t "Highlights"}}</button>
+                <button type="button" class="sc-jobs-chip" data-cp-tab data-category="categories" role="tab" aria-selected="false"><span class="sc-crypto-prices-tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.84172 5.83334C4.76652 5.83745 4.69165 5.82067 4.62539 5.78488C4.55913 5.74909 4.50406 5.69567 4.46627 5.63053C4.42848 5.56539 4.40944 5.49106 4.41125 5.41578C4.41307 5.34049 4.43567 5.26717 4.47655 5.20393L6.65005 1.75001C6.68421 1.68851 6.73367 1.63687 6.79365 1.60011C6.85363 1.56335 6.92208 1.5427 6.99239 1.54018C7.06269 1.53766 7.13245 1.55334 7.19491 1.58571C7.25737 1.61808 7.31041 1.66603 7.34889 1.72493L9.50839 5.19168C9.55095 5.2528 9.57598 5.32441 9.58078 5.39875C9.58557 5.47308 9.56993 5.54731 9.53557 5.6134C9.5012 5.67948 9.44941 5.73491 9.38581 5.77368C9.3222 5.81245 9.24921 5.83308 9.17472 5.83334H4.84172Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.25 8.16669H2.33333C2.01117 8.16669 1.75 8.42785 1.75 8.75002V11.6667C1.75 11.9889 2.01117 12.25 2.33333 12.25H5.25C5.57217 12.25 5.83333 11.9889 5.83333 11.6667V8.75002C5.83333 8.42785 5.57217 8.16669 5.25 8.16669Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.2082 12.25C11.3358 12.25 12.2498 11.3359 12.2498 10.2084C12.2498 9.08077 11.3358 8.16669 10.2082 8.16669C9.08059 8.16669 8.1665 9.08077 8.1665 10.2084C8.1665 11.3359 9.08059 12.25 10.2082 12.25Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{{t "Crypto prices tab categories"}}</button>
+                <button type="button" class="sc-jobs-chip" data-cp-tab data-category="rwa" role="tab" aria-selected="false"><span class="sc-crypto-prices-tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><g clip-path="url(#cp-clip-prices-rwa)"><path d="M6.99984 12.8334C10.2215 12.8334 12.8332 10.2217 12.8332 7.00002C12.8332 3.77836 10.2215 1.16669 6.99984 1.16669C3.77818 1.16669 1.1665 3.77836 1.1665 7.00002C1.1665 10.2217 3.77818 12.8334 6.99984 12.8334Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.99984 1.16669C5.50197 2.73944 4.6665 4.82812 4.6665 7.00002C4.6665 9.17192 5.50197 11.2606 6.99984 12.8334C8.4977 11.2606 9.33317 9.17192 9.33317 7.00002C9.33317 4.82812 8.4977 2.73944 6.99984 1.16669Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.1665 7H12.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="cp-clip-prices-rwa"><rect width="14" height="14" fill="white"/></clipPath></defs></svg></span>{{t "Real-World Assets"}}</button>
+                <button type="button" class="sc-jobs-chip" data-cp-tab data-category="nfts" role="tab" aria-selected="false"><span class="sc-crypto-prices-tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><g clip-path="url(#cp-clip-prices-nft)"><path d="M6.99984 12.8334C5.45274 12.8334 3.96901 12.2188 2.87505 11.1248C1.78109 10.0308 1.1665 8.54712 1.1665 7.00002C1.1665 5.45292 1.78109 3.96919 2.87505 2.87523C3.96901 1.78127 5.45274 1.16669 6.99984 1.16669C8.54693 1.16669 10.0307 1.71981 11.1246 2.70438C12.2186 3.68894 12.8332 5.0243 12.8332 6.41669C12.8332 7.19024 12.5259 7.9321 11.9789 8.47908C11.4319 9.02606 10.6901 9.33335 9.9165 9.33335H8.604C8.41442 9.33335 8.22859 9.38615 8.06732 9.48581C7.90605 9.58548 7.77573 9.72809 7.69094 9.89766C7.60616 10.0672 7.57027 10.257 7.5873 10.4459C7.60432 10.6347 7.67359 10.815 7.78734 10.9667L7.96234 11.2C8.07609 11.3517 8.14535 11.532 8.16238 11.7208C8.1794 11.9097 8.14352 12.0995 8.05873 12.2691C7.97395 12.4386 7.84362 12.5812 7.68235 12.6809C7.52109 12.7806 7.33525 12.8334 7.14567 12.8334H6.99984Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.87516 4.08333C8.03625 4.08333 8.16683 3.95275 8.16683 3.79167C8.16683 3.63058 8.03625 3.5 7.87516 3.5C7.71408 3.5 7.5835 3.63058 7.5835 3.79167C7.5835 3.95275 7.71408 4.08333 7.87516 4.08333Z" fill="currentColor" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.2082 6.41665C10.3693 6.41665 10.4998 6.28606 10.4998 6.12498C10.4998 5.9639 10.3693 5.83331 10.2082 5.83331C10.0471 5.83331 9.9165 5.9639 9.9165 6.12498C9.9165 6.28606 10.0471 6.41665 10.2082 6.41665Z" fill="currentColor" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.79167 7.58333C3.95275 7.58333 4.08333 7.45275 4.08333 7.29167C4.08333 7.13058 3.95275 7 3.79167 7C3.63058 7 3.5 7.13058 3.5 7.29167C3.5 7.45275 3.63058 7.58333 3.79167 7.58333Z" fill="currentColor" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.95817 4.66665C5.11925 4.66665 5.24984 4.53606 5.24984 4.37498C5.24984 4.2139 5.11925 4.08331 4.95817 4.08331C4.79709 4.08331 4.6665 4.2139 4.6665 4.37498C4.6665 4.53606 4.79709 4.66665 4.95817 4.66665Z" fill="currentColor" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="cp-clip-prices-nft"><rect width="14" height="14" fill="white"/></clipPath></defs></svg></span>{{t "NFTs"}}</button>
+                <button type="button" class="sc-jobs-chip" data-cp-tab data-category="unlocks" role="tab" aria-selected="false"><span class="sc-crypto-prices-tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><g clip-path="url(#cp-clip-prices-unlock)"><path d="M4.6665 8.16669C6.5995 8.16669 8.1665 6.59968 8.1665 4.66669C8.1665 2.73369 6.5995 1.16669 4.6665 1.16669C2.73351 1.16669 1.1665 2.73369 1.1665 4.66669C1.1665 6.59968 2.73351 8.16669 4.6665 8.16669Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5526 6.04919C11.104 6.25478 11.5947 6.59609 11.9793 7.04156C12.3638 7.48703 12.6299 8.02229 12.7528 8.59782C12.8756 9.17335 12.8514 9.77058 12.6823 10.3343C12.5133 10.898 12.2048 11.4099 11.7854 11.8228C11.366 12.2357 10.8493 12.5361 10.2831 12.6964C9.7168 12.8567 9.11926 12.8716 8.54572 12.7397C7.97218 12.6079 7.44114 12.3335 7.00172 11.942C6.5623 11.5506 6.22869 11.0546 6.03174 10.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.0835 3.5H4.66683V5.83333" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.74741 8.09668L10.1557 8.51085L8.51074 10.1558" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="cp-clip-prices-unlock"><rect width="14" height="14" fill="white"/></clipPath></defs></svg></span>{{t "Token Unlocks"}}</button>
+                <button type="button" class="sc-jobs-chip" data-cp-tab data-category="alpha" role="tab" aria-selected="false"><span class="sc-crypto-prices-tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.95841 8.45833C5.34519 8.45833 5.71612 8.30469 5.98961 8.0312C6.2631 7.75771 6.41675 7.38677 6.41675 7C6.41675 6.195 6.12508 5.83333 5.83341 5.25C5.20808 3.99992 5.70275 2.88517 7.00008 1.75C7.29175 3.20833 8.16675 4.60833 9.33342 5.54167C10.5001 6.475 11.0834 7.58333 11.0834 8.75C11.0834 9.28623 10.9778 9.81721 10.7726 10.3126C10.5674 10.808 10.2666 11.2582 9.88743 11.6374C9.50826 12.0165 9.05812 12.3173 8.56271 12.5225C8.06729 12.7277 7.53631 12.8333 7.00008 12.8333C6.46385 12.8333 5.93287 12.7277 5.43746 12.5225C4.94204 12.3173 4.4919 12.0165 4.11273 11.6374C3.73356 11.2582 3.43278 10.808 3.22757 10.3126C3.02237 9.81721 2.91675 9.28623 2.91675 8.75C2.91675 8.07742 3.16933 7.41183 3.50008 7C3.50008 7.38677 3.65373 7.75771 3.92722 8.0312C4.20071 8.30469 4.57164 8.45833 4.95841 8.45833Z" stroke="#F7931A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{{t "Binance Alpha"}}</button>
+                <button type="button" class="sc-jobs-chip" data-cp-tab data-category="memes" role="tab" aria-selected="false"><span class="sc-crypto-prices-tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.95841 8.45833C5.34519 8.45833 5.71612 8.30469 5.98961 8.0312C6.2631 7.75771 6.41675 7.38677 6.41675 7C6.41675 6.195 6.12508 5.83333 5.83341 5.25C5.20808 3.99992 5.70275 2.88517 7.00008 1.75C7.29175 3.20833 8.16675 4.60833 9.33342 5.54167C10.5001 6.475 11.0834 7.58333 11.0834 8.75C11.0834 9.28623 10.9778 9.81721 10.7726 10.3126C10.5674 10.808 10.2666 11.2582 9.88743 11.6374C9.50826 12.0165 9.05812 12.3173 8.56271 12.5225C8.06729 12.7277 7.53631 12.8333 7.00008 12.8333C6.46385 12.8333 5.93287 12.7277 5.43746 12.5225C4.94204 12.3173 4.4919 12.0165 4.11273 11.6374C3.73356 11.2582 3.43278 10.808 3.22757 10.3126C3.02237 9.81721 2.91675 9.28623 2.91675 8.75C2.91675 8.07742 3.16933 7.41183 3.50008 7C3.50008 7.38677 3.65373 7.75771 3.92722 8.0312C4.20071 8.30469 4.57164 8.45833 4.95841 8.45833Z" stroke="#F7931A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{{t "Memes"}}</button>
+                <button type="button" class="sc-jobs-chip" data-cp-tab data-category="privacy" role="tab" aria-selected="false"><span class="sc-crypto-prices-tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.95841 8.45833C5.34519 8.45833 5.71612 8.30469 5.98961 8.0312C6.2631 7.75771 6.41675 7.38677 6.41675 7C6.41675 6.195 6.12508 5.83333 5.83341 5.25C5.20808 3.99992 5.70275 2.88517 7.00008 1.75C7.29175 3.20833 8.16675 4.60833 9.33342 5.54167C10.5001 6.475 11.0834 7.58333 11.0834 8.75C11.0834 9.28623 10.9778 9.81721 10.7726 10.3126C10.5674 10.808 10.2666 11.2582 9.88743 11.6374C9.50826 12.0165 9.05812 12.3173 8.56271 12.5225C8.06729 12.7277 7.53631 12.8333 7.00008 12.8333C6.46385 12.8333 5.93287 12.7277 5.43746 12.5225C4.94204 12.3173 4.4919 12.0165 4.11273 11.6374C3.73356 11.2582 3.43278 10.808 3.22757 10.3126C3.02237 9.81721 2.91675 9.28623 2.91675 8.75C2.91675 8.07742 3.16933 7.41183 3.50008 7C3.50008 7.38677 3.65373 7.75771 3.92722 8.0312C4.20071 8.30469 4.57164 8.45833 4.95841 8.45833Z" stroke="#F7931A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{{t "Privacy"}}</button>
+                <button type="button" class="sc-jobs-chip" data-cp-tab data-category="mining" role="tab" aria-selected="false"><span class="sc-crypto-prices-tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.95841 8.45833C5.34519 8.45833 5.71612 8.30469 5.98961 8.0312C6.2631 7.75771 6.41675 7.38677 6.41675 7C6.41675 6.195 6.12508 5.83333 5.83341 5.25C5.20808 3.99992 5.70275 2.88517 7.00008 1.75C7.29175 3.20833 8.16675 4.60833 9.33342 5.54167C10.5001 6.475 11.0834 7.58333 11.0834 8.75C11.0834 9.28623 10.9778 9.81721 10.7726 10.3126C10.5674 10.808 10.2666 11.2582 9.88743 11.6374C9.50826 12.0165 9.05812 12.3173 8.56271 12.5225C8.06729 12.7277 7.53631 12.8333 7.00008 12.8333C6.46385 12.8333 5.93287 12.7277 5.43746 12.5225C4.94204 12.3173 4.4919 12.0165 4.11273 11.6374C3.73356 11.2582 3.43278 10.808 3.22757 10.3126C3.02237 9.81721 2.91675 9.28623 2.91675 8.75C2.91675 8.07742 3.16933 7.41183 3.50008 7C3.50008 7.38677 3.65373 7.75771 3.92722 8.0312C4.20071 8.30469 4.57164 8.45833 4.95841 8.45833Z" stroke="#F7931A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{{t "Mobile Mining"}}</button>
+                <div class="sc-jobs-chips-fade" aria-hidden="true"></div>
+            </div>
+
+            <div class="sc-crypto-prices-content">
+                <div class="sc-crypto-prices-table-wrap">
+                    <table class="sc-crypto-prices-table">
+                        <colgroup>
+                            <col class="sc-crypto-prices-col-rank">
+                            <col class="sc-crypto-prices-col-name">
+                            <col span="7">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{t "Name"}}</th>
+                                <th>Price</th>
+                                <th>1H %</th>
+                                <th>24H %</th>
+                                <th>7D %</th>
+                                <th>Volume (24H)</th>
+                                <th>Market Cap</th>
+                                <th>Price Graph (7D)</th>
+                            </tr>
+                        </thead>
+                        <tbody data-cp-tbody></tbody>
+                    </table>
+                </div>
+
+                <div class="sc-crypto-prices-pager">
+                    <div class="sc-crypto-prices-pager-left">
+                        <span data-cp-summary></span>
+                        <label for="sc-crypto-prices-page-size" class="sc-crypto-prices-page-size-label">
+                            <select id="sc-crypto-prices-page-size" data-cp-page-size>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100" selected>100</option>
+                            </select>
+                            <span class="sc-crypto-prices-select-chevron" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                    <path d="M3 4.5L6 7.5L9 4.5" stroke="#EBEFF2" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="sc-crypto-prices-pager-right">
+                        <button class="sc-crypto-prices-page-btn" type="button" data-cp-prev aria-label="Previous page">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                                <path d="M7.5 3L4.5 6L7.5 9" stroke="#999999" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="sc-crypto-prices-page-numbers" data-cp-page-numbers></div>
+                        <button class="sc-crypto-prices-page-btn" type="button" data-cp-next aria-label="Next page">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                                <path d="M4.5 9L7.5 6L4.5 3" stroke="#F18F20" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

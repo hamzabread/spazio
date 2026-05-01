@@ -1,0 +1,115 @@
+<section class="sc-jobs sc-pr-listing" aria-labelledby="sc-pr-listing-title">
+    <div class="sc-jobs-inner">
+        <div class="sc-jobs-top">
+            <h2 id="sc-pr-listing-title" class="sc-jobs-title">{{t "Press Releases"}}</h2>
+            <div class="sc-jobs-controls">
+                <div class="sc-jobs-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M7.66732 14.0002C11.1651 14.0002 14.0007 11.1646 14.0007 7.66683C14.0007 4.16903 11.1651 1.3335 7.66732 1.3335C4.16951 1.3335 1.33398 4.16903 1.33398 7.66683C1.33398 11.1646 4.16951 14.0002 7.66732 14.0002Z" stroke="var(--color-muted-legacy)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.6673 14.6668L13.334 13.3335" stroke="var(--color-muted-legacy)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="search" class="sc-jobs-search-input" id="sc-pr-listing-search" placeholder="{{t "Search"}}" aria-label="{{t "Search press releases"}}" autocomplete="off">
+                </div>
+                <button type="button" class="sc-jobs-sort" id="sc-pr-listing-sort" aria-label="{{t "Sort press releases"}}">
+                    <span>{{t "Sort"}}</span>
+                    <svg width="14" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                </button>
+                <button type="button" class="sc-jobs-filter-btn" aria-label="{{t "Filter"}}" disabled aria-disabled="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M14.4193 9.83317C14.4193 10.4265 14.2593 10.9865 13.9659 11.4665C13.4193 12.3798 12.4126 12.9998 11.2526 12.9998C10.6259 12.9998 10.0393 12.8132 9.54594 12.4865C9.13261 12.2332 8.79261 11.8798 8.54594 11.4665C8.25261 10.9865 8.08594 10.4265 8.08594 9.83317C8.08594 8.0865 9.50594 6.6665 11.2526 6.6665C11.4926 6.6665 11.7259 6.69317 11.9459 6.7465C13.3659 7.05983 14.4193 8.3265 14.4193 9.83317Z" fill="#EBEFF2" stroke="#005F93" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10.0195 9.83323L10.7995 10.6132L12.4862 9.05322" fill="#EBEFF2"/>
+                        <path d="M10.0195 9.83323L10.7995 10.6132L12.4862 9.05322" stroke="#005F93" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13.7937 2.68016V4.16016C13.7937 4.70016 13.4537 5.3735 13.1204 5.7135L11.947 6.74683C11.727 6.69349 11.4937 6.66683 11.2537 6.66683C9.50704 6.66683 8.08704 8.08683 8.08704 9.8335C8.08704 10.4268 8.2537 10.9868 8.54704 11.4668C8.7937 11.8802 9.1337 12.2335 9.54704 12.4868V12.7135C9.54704 13.1202 9.28035 13.6602 8.94035 13.8602L8.00037 14.4668C7.12703 15.0068 5.9137 14.4002 5.9137 13.3202V9.7535C5.9137 9.28017 5.64036 8.6735 5.3737 8.34017L2.81368 5.64683C2.48035 5.30683 2.20703 4.70017 2.20703 4.30017V2.74683C2.20703 1.94016 2.81371 1.3335 3.55371 1.3335H12.447C13.187 1.3335 13.7937 1.94016 13.7937 2.68016Z" stroke="#EBEFF2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="sc-jobs-chips sc-pr-listing-chips" role="tablist" aria-label="{{t "Press release categories"}}">
+            <button type="button" class="sc-jobs-chip is-active" data-pr-chip="all" role="tab" aria-selected="true">{{t "All"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="exchanges" role="tab" aria-selected="false">{{t "Exchanges"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="wallets" role="tab" aria-selected="false">{{t "Wallets"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="analytics" role="tab" aria-selected="false">{{t "Analytics"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="defi-apps" role="tab" aria-selected="false">{{t "DeFi Apps"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="on-chain" role="tab" aria-selected="false">{{t "On-Chain"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="ai" role="tab" aria-selected="false">{{t "AI"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="nft" role="tab" aria-selected="false">{{t "NFT"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="news" role="tab" aria-selected="false">{{t "News"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="research" role="tab" aria-selected="false">{{t "Research"}}</button>
+            <button type="button" class="sc-jobs-chip" data-pr-chip="launchpads" role="tab" aria-selected="false">{{t "Launchpads"}}</button>
+            <div class="sc-jobs-chips-fade" aria-hidden="true"></div>
+        </div>
+    </div>
+</section>
+
+<div class="gh-container sc-prl-list-wrap">
+    {{#get "posts" filter="tag:press-releases+tag:-blockchain+tag:-hash-blockchain" limit="50" include="authors,tags" order="published_at desc"}}
+    <div class="sc-prl-list" id="sc-prl-list" role="feed" aria-busy="false">
+        {{#if posts}}
+            {{#foreach posts}}
+            <article class="sc-prl-card" data-pr-slugs="{{#foreach tags visibility="public"}}{{#match slug "press-releases"}}{{else}}{{#match slug "press-release"}}{{else}}{{slug}} {{/match}}{{/match}}{{/foreach}}{{#foreach tags visibility="internal"}}{{slug}} {{/foreach}}" data-pr-sort="{{date published_at format='X'}}">
+                <div class="sc-prl-card-head">
+                    <span class="sc-prl-card-cat">
+                        {{!-- Top: first public topic tag only (press-releases is never shown). Order in Ghost = display order. --}}
+                        {{#foreach tags visibility="public"}}
+                            {{#match slug "press-releases"}}{{else}}
+                            {{#match slug "press-release"}}{{else}}
+                            {{#match slug "blockchain"}}{{else}}
+                            {{#match slug "hash-blockchain"}}{{else}}
+                            <span class="sc-prl-cat-opt">{{name}}</span>
+                            {{/match}}
+                            {{/match}}
+                            {{/match}}
+                            {{/match}}
+                        {{/foreach}}
+                    </span>
+                    <a class="sc-prl-read" href="{{url}}">{{t "Read More"}}</a>
+                </div>
+                <h3 class="sc-prl-title"><a href="{{url}}">{{title}}</a></h3>
+                {{#if custom_excerpt}}
+                <p class="sc-prl-lede">{{custom_excerpt}}</p>
+                <div class="sc-prl-snippet">{{content words="40"}}</div>
+                {{else if excerpt}}
+                <p class="sc-prl-lede">{{excerpt}}</p>
+                <div class="sc-prl-snippet">{{content words="40"}}</div>
+                {{else}}
+                <div class="sc-prl-snippet sc-prl-snippet--standalone">{{content words="55"}}</div>
+                {{/if}}
+                <div class="sc-prl-meta">
+                    <span class="sc-prl-meta-item">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.667 2.667H3.333C2.597 2.667 2 3.264 2 4v8c0 .736.597 1.333 1.333 1.333h9.334c.736 0 1.333-.597 1.333-1.333V4c0-.736-.597-1.333-1.333-1.333z" stroke="currentColor" stroke-width="1.2"/><path d="M10.667 1.333V4M5.333 1.333V4M2 6.667h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <time datetime="{{date published_at format='YYYY-MM-DD'}}">{{date published_at format='MMMM D, YYYY'}}</time>
+                    </span>
+                    <span class="sc-prl-meta-item">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 8a2.667 2.667 0 100-5.333A2.667 2.667 0 008 8zM2.667 13.333c0-2.946 2.387-5.333 5.333-5.333s5.333 2.387 5.333 5.333" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        {{#if primary_author}}{{primary_author.name}}{{else}}{{@site.title}}{{/if}}
+                    </span>
+                    <span class="sc-prl-meta-item sc-prl-meta-tags-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <g clip-path="url(#sc-prl-tag-icon-clip-{{slug}})">
+                                <path d="M8.39068 1.72404C8.14069 1.47397 7.8016 1.33345 7.44801 1.33337H2.66668C2.31305 1.33337 1.97392 1.47385 1.72387 1.7239C1.47382 1.97395 1.33334 2.31309 1.33334 2.66671V7.44804C1.33342 7.80163 1.47394 8.14072 1.72401 8.39071L7.52668 14.1934C7.82969 14.4945 8.23951 14.6635 8.66668 14.6635C9.09385 14.6635 9.50367 14.4945 9.80668 14.1934L14.1933 9.80671C14.4944 9.5037 14.6634 9.09388 14.6634 8.66671C14.6634 8.23954 14.4944 7.82972 14.1933 7.52671L8.39068 1.72404Z" stroke="#6A7282" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M4.99999 5.33329C5.18408 5.33329 5.33332 5.18405 5.33332 4.99996C5.33332 4.81586 5.18408 4.66663 4.99999 4.66663C4.81589 4.66663 4.66666 4.81586 4.66666 4.99996C4.66666 5.18405 4.81589 5.33329 4.99999 5.33329Z" fill="#6A7282" stroke="#6A7282" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="sc-prl-tag-icon-clip-{{slug}}">
+                                    <rect width="16" height="16" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span class="sc-prl-tag-count-num" data-pr-tag-count>0</span> {{t "tags label"}}
+                    </span>
+                </div>
+                <div class="sc-prl-footer">
+                    {{!-- Bottom: internal (#) tags only; # stripped in JS --}}
+                    {{#foreach tags visibility="internal"}}
+                    <span class="sc-prl-chip">{{name}}</span>
+                    {{/foreach}}
+                </div>
+            </article>
+            {{/foreach}}
+        {{else}}
+            <p class="sc-prl-empty">{{t "No press releases yet"}}</p>
+        {{/if}}
+    </div>
+    {{/get}}
+</div>

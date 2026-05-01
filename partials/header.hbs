@@ -10,7 +10,7 @@
     @custom.header_type "Author with bottom navigation" }}bottom-nav{{/match}}{{#is 'post' }}{{#post}}{{#if featured}}
     transparent fixed{{/if}}{{/post}}{{/is}}{{#is 'page' }}{{#page}}{{#if featured}}{{#if feature_image}}{{#match @page.show_title_and_feature_image}}
     transparent fixed{{/match}}{{/if}}{{/if}}{{/page}}{{/is}}{{#is 'home' }}{{#match @custom.featured_posts "Large Slider" }} transparent
-    fixed{{/match}}{{/is}}" id="gh-header">
+    fixed{{/match}}{{/is}}{{#is "home"}}{{else}} sc-header-jobs-layout{{/is}}" id="gh-header">
     <div class="gh-header-container gh-container">
         {{#match @custom.header_type "Logo with bottom navigation" }}
         <div class="gh-header-socials">
@@ -39,110 +39,33 @@
                 {{else match @custom.header_type "Author with bottom navigation"}}
                 {{>header-author}}
                 {{else}}
-                <a class="gh-site-logo {{#if @custom.dark_mode_logo}}gh-site-logo-has-DM-logo{{/if}}"
+                <a class="gh-site-logo gh-site-logo-has-DM-logo"
                     href="{{@site.url}}" aria-label="{{@site.title}} {{t "logo and home page link"}}">
                     {{#if @site.logo}}
                     <img src="{{img_url @site.logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img" />
+                    <img src="{{asset "imagesAndIcons/dark-logo.svg"}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode" />
                     {{else}}
-                    <span class="gh-site-title"><img src="{{asset 'imagesAndIcons/header-icon.svg'}}" alt="{{@site.title}}" /></span>
+                    <span class="gh-site-title">
+                        <img class="gh-site-title-logo--dark" src="{{asset 'imagesAndIcons/dark-logo.svg'}}" alt="{{@site.title}}" />
+                        <img class="gh-site-title-logo--light" src="{{asset 'imagesAndIcons/header-light.svg'}}" alt="{{@site.title}}" />
+                    </span>
                     {{/if}}
                 </a>
                 {{/match}}
             </div>
 
         </div>
-        {{^match @custom.header_type "Logo with bottom navigation" }}
-        {{^match @custom.header_type "Author with bottom navigation" }}
-        <nav class="gh-header-navigation-wrapper">
-            <ul class="gh-header-navigation">
-                <li class="gh-header-nav-item">
-                    <a class="gh-header-nav-link" href="{{@site.url}}/tag/news/">
-                        {{t "News"}}
-                        <svg class="sc-nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </li>
-                <li class="gh-header-nav-item">
-                    <a class="gh-header-nav-link" href="{{@site.url}}/tag/markets/">
-                                                <svg class="sc-nav-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                                    <path d="M12.8327 4.08301L7.87435 9.04134L4.95768 6.12467L1.16602 9.91634" stroke="#EBEFF2" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M9.33398 4.08301H12.834V7.58301" stroke="#EBEFF2" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                        {{t "Markets"}}
-                        <svg class="sc-nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </li>
-                <li class="gh-header-nav-item">
-                    <a class="gh-header-nav-link" href="{{@site.url}}/tag/product/">
-                                                <svg class="sc-nav-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                                    <path d="M11.0833 1.75H2.91667C2.27233 1.75 1.75 2.27233 1.75 2.91667V11.0833C1.75 11.7277 2.27233 12.25 2.91667 12.25H11.0833C11.7277 12.25 12.25 11.7277 12.25 11.0833V2.91667C12.25 2.27233 11.7277 1.75 11.0833 1.75Z" stroke="#EBEFF2" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M5.25 4.66699H9.33333" stroke="#EBEFF2" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M4.66602 7H8.16602" stroke="#EBEFF2" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M6.41602 9.33301H9.33268" stroke="#EBEFF2" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                        {{t "Product"}}
-                        <svg class="sc-nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </li>
-                <li class="gh-header-nav-item">
-                    <a class="gh-header-nav-link" href="{{@site.url}}/tag/ai/">
-                                                <svg class="sc-nav-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                                    <g clip-path="url(#clip0_298_6081)">
-                                                        <path d="M5.797 9.04214C5.74492 8.84026 5.63969 8.65603 5.49227 8.50861C5.34485 8.36119 5.16062 8.25597 4.95875 8.20389L1.38 7.28105C1.31894 7.26372 1.2652 7.22695 1.22694 7.17631C1.18867 7.12568 1.16797 7.06394 1.16797 7.00047C1.16797 6.937 1.18867 6.87527 1.22694 6.82463C1.2652 6.77399 1.31894 6.73722 1.38 6.71989L4.95875 5.79647C5.16055 5.74444 5.34473 5.63931 5.49215 5.49199C5.63956 5.34468 5.74483 5.16057 5.797 4.9588L6.71983 1.38005C6.73698 1.31876 6.77372 1.26475 6.82443 1.22628C6.87515 1.18782 6.93705 1.16699 7.0007 1.16699C7.06436 1.16699 7.12626 1.18782 7.17698 1.22628C7.22769 1.26475 7.26443 1.31876 7.28158 1.38005L8.20383 4.9588C8.25591 5.16068 8.36113 5.34491 8.50855 5.49233C8.65597 5.63975 8.8402 5.74498 9.04208 5.79705L12.6208 6.7193C12.6824 6.73628 12.7366 6.77298 12.7753 6.82377C12.814 6.87456 12.8349 6.93663 12.8349 7.00047C12.8349 7.06431 12.814 7.12639 12.7753 7.17718C12.7366 7.22797 12.6824 7.26466 12.6208 7.28164L9.04208 8.20389C8.8402 8.25597 8.65597 8.36119 8.50855 8.50861C8.36113 8.65603 8.25591 8.84026 8.20383 9.04214L7.281 12.6209C7.26384 12.6822 7.22711 12.7362 7.17639 12.7747C7.12568 12.8131 7.06377 12.834 7.00012 12.834C6.93647 12.834 6.87456 12.8131 6.82385 12.7747C6.77314 12.7362 6.7364 12.6822 6.71925 12.6209L5.797 9.04214Z" stroke="#EBEFF2" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path d="M11.666 1.75V4.08333" stroke="#EBEFF2" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path d="M12.8333 2.91699H10.5" stroke="#EBEFF2" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path d="M2.33398 9.91699V11.0837" stroke="#EBEFF2" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path d="M2.91667 10.5H1.75" stroke="#EBEFF2" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_298_6081">
-                                                            <rect width="14" height="14" fill="white"/>
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                        {{t "AI Insights"}}
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        {{/match}}
-        {{/match}}
-        <div class="gh-header-actions">
-            <div class="gh-header-actions-buttons">
-                
-                
-                 <li class="popup-launcher no-mobile">
-                    {{> "langswitch"}}
-                          <span class="caret"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="4" viewBox="0 0 7 4" fill="none"><path d="M0.5 0.5L3.5 3.5L6.5 0.5" stroke="#212529" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                 </li>
-               
-
-                <button class="gh-dark-mode-toggle-btn" aria-label="{{t "Dark mode toggle button"}}">
-                    {{>icons/sun}}
-                    {{>icons/moon}}
-                </button>
-                <script>
-                    const toggleBtn = document.querySelector(".gh-dark-mode-toggle-btn");
-
-                        function updateTooltip(isDarkMode) {
-                        toggleBtn.setAttribute(
-                            "data-tooltip",
-                            isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
-                        );
-                        }
-
-                        let darkMode = false;
-                        toggleBtn.addEventListener("click", () => {
-                        darkMode = !darkMode;
-                        updateTooltip(darkMode);
-                        });
-
-                        updateTooltip(darkMode);
-
-                </script>
-                <button class="gh-search-btn" title="{{t "Search button"}}" aria-label="{{t "Search button"}}" data-ghost-search>
-                    {{>icons/search}}
+        {{#is "home"}}
+        {{> "header-default-nav-row"}}
+    </div>
+        {{else}}
+        <div class="gh-header-jobs-search-wrap">
+            <button type="button" class="gh-header-jobs-search-btn" data-ghost-search aria-label="{{t "Search button"}}">
+                <span class="gh-header-jobs-search-icon" aria-hidden="true">{{>icons/search}}</span>
+                <span class="gh-header-jobs-search-placeholder">Search...</span>
                 </button>
             </div>
+        <div class="gh-header-actions gh-header-actions--jobs-top">
             <div class="sc-header-cta">
                 <a class="sc-btn-outline" href="{{@site.url}}/post-a-job" aria-label="{{t "Post a Job"}}">
                     {{t "Post a Job"}}
@@ -153,6 +76,13 @@
             </div>
         </div>
     </div>
+    <div class="gh-header-container gh-container gh-header-jobs-subrow">
+        {{> "header-main-nav"}}
+        <div class="gh-header-actions gh-header-actions--jobs-bottom">
+            {{> "header-actions-buttons"}}
+        </div>
+    </div>
+        {{/is}}
     {{#match @custom.header_type "Logo with bottom navigation" }}
     <div class="gh-header-bottom gh-container">
         <div class="gh-header-bottom-navigation">

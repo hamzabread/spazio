@@ -1,0 +1,113 @@
+<section class="sc-jobs sc-ev-listing" aria-labelledby="sc-ev-listing-title">
+    <div class="sc-jobs-inner">
+        <div class="sc-ev-list-head">
+            <h2 id="sc-ev-listing-title" class="sc-ev-list-heading">{{t "Crypto Events listing title"}}</h2>
+            <div class="sc-ev-toolbar" role="search">
+                <div class="sc-jobs-search sc-ev-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M7.66732 14.0002C11.1651 14.0002 14.0007 11.1646 14.0007 7.66683C14.0007 4.16903 11.1651 1.3335 7.66732 1.3335C4.16951 1.3335 1.33398 4.16903 1.33398 7.66683C1.33398 11.1646 4.16951 14.0002 7.66732 14.0002Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.6673 14.6668L13.334 13.3335" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="search" class="sc-jobs-search-input" id="sc-ev-listing-search" placeholder="{{t "Event name search placeholder"}}" aria-label="{{t "Search events"}}" autocomplete="off">
+                </div>
+                <div class="sc-ev-select-wrap sc-ev-select-wrap--cat">
+                    <label class="visually-hidden" for="sc-ev-filter-cat">{{t "Category"}}</label>
+                    <select class="sc-ev-select" id="sc-ev-filter-cat" aria-label="{{t "Category"}}">
+                        <option value="all" selected>{{t "Category"}}</option>
+                    </select>
+                    <span class="sc-ev-select-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M2 4.667H14M2 8H14M2 11.333H14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </div>
+                <div class="sc-ev-select-wrap sc-ev-select-wrap--loc">
+                    <label class="visually-hidden" for="sc-ev-filter-loc">{{t "Location"}}</label>
+                    <select class="sc-ev-select" id="sc-ev-filter-loc" aria-label="{{t "Location"}}">
+                        <option value="all" selected>{{t "Location"}}</option>
+                    </select>
+                    <span class="sc-ev-select-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 14S12 10.7 12 7.333A4 4 0 0 0 4 7.333C4 10.7 8 14 8 14Z" stroke="currentColor" stroke-width="1.2"/>
+                            <circle cx="8" cy="7.333" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+                        </svg>
+                    </span>
+                </div>
+                <div class="sc-ev-select-wrap sc-ev-select-wrap--date">
+                    <label class="visually-hidden" for="sc-ev-filter-date">{{t "Date"}}</label>
+                    <select class="sc-ev-select" id="sc-ev-filter-date" aria-label="{{t "Date"}}">
+                        <option value="all" selected>{{t "Date"}}</option>
+                    </select>
+                    <span class="sc-ev-select-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <rect x="2" y="3.333" width="12" height="10.667" rx="2" stroke="currentColor" stroke-width="1.2"/>
+                            <path d="M5 2V4.333M11 2V4.333M2 6.333H14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        {{#get "posts" filter="tags:[event,events]+tag:-jobs+tag:-careers+tag:-hiring+tag:-press-releases+tag:-people" limit="50" include="authors,tags" order="published_at desc"}}
+        <div class="sc-evl-list" id="sc-evl-list" role="feed" aria-busy="false">
+            {{#if posts}}
+            {{#foreach posts}}
+            <article class="sc-evl-card"
+                data-ev-sort="{{date published_at format='X'}}"
+                data-ev-cat-slugs="{{#foreach tags visibility="public"}}{{#match slug "event"}}{{else}}{{#match slug "events"}}{{else}}{{slug}} {{/match}}{{/match}}{{/foreach}}"
+                data-ev-date-slug="{{#foreach tags visibility="internal" limit="1"}}{{slug}}{{/foreach}}"
+                data-ev-date-name="{{#foreach tags visibility="internal" limit="1"}}{{name}}{{/foreach}}"
+                data-ev-loc-slug="{{#foreach tags visibility="internal" from="2" to="2"}}{{slug}}{{/foreach}}"
+                data-ev-loc-name="{{#foreach tags visibility="internal" from="2" to="2"}}{{name}}{{/foreach}}"
+                data-ev-att-name="{{#foreach tags visibility="internal" from="3" to="3"}}{{name}}{{/foreach}}">
+                <a class="sc-evl-thumb" href="{{url}}" aria-hidden="true" tabindex="-1">
+                    {{#if feature_image}}
+                    <img src="{{img_url feature_image size="m"}}" alt="" width="200" height="140" loading="lazy" decoding="async">
+                    {{else}}
+                    <div class="sc-evl-thumb-placeholder" aria-hidden="true"></div>
+                    {{/if}}
+                </a>
+                <div class="sc-evl-body">
+                    <span class="sc-evl-card-cat">
+                        {{#foreach tags visibility="public"}}
+                        {{#match slug "event"}}{{else}}
+                        {{#match slug "events"}}{{else}}
+                        <span class="sc-evl-cat-opt">{{name}}</span>
+                        {{/match}}
+                        {{/match}}
+                        {{/foreach}}
+                    </span>
+                    <h3 class="sc-evl-title"><a href="{{url}}">{{title}}</a></h3>
+                    {{#if excerpt}}
+                    <p class="sc-evl-excerpt">{{excerpt}}</p>
+                    {{else if custom_excerpt}}
+                    <p class="sc-evl-excerpt">{{custom_excerpt}}</p>
+                    {{/if}}
+                    <div class="sc-evl-snippet gh-content">{{{content words="35"}}}</div>
+                    <div class="sc-evl-meta">
+                        <span class="sc-evl-meta-row">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12.667 2.667H3.333C2.597 2.667 2 3.264 2 4v8c0 .736.597 1.333 1.333 1.333h9.334c.736 0 1.333-.597 1.333-1.333V4c0-.736-.597-1.333-1.333-1.333z" stroke="currentColor" stroke-width="1.2"/><path d="M10.667 1.333V4M5.333 1.333V4M2 6.667h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                            <span>{{#foreach tags visibility="internal" limit="1"}}{{name}}{{else}}{{date published_at format="MMMM D, YYYY"}}{{/foreach}}</span>
+                        </span>
+                        <span class="sc-evl-meta-row">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.2"/></svg>
+                            <span>{{#foreach tags visibility="internal" from="2" to="2"}}{{name}}{{else}}{{t "Global"}}{{/foreach}}</span>
+                        </span>
+                        <span class="sc-evl-meta-row">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.2"/></svg>
+                            <span>{{#foreach tags visibility="internal" from="3" to="3"}}{{name}}{{else}}—{{/foreach}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="sc-evl-aside">
+                    <a class="sc-evl-read" href="{{url}}">{{t "Read More"}}</a>
+                </div>
+            </article>
+            {{/foreach}}
+            {{else}}
+            <p class="sc-evl-empty">{{t "No events yet"}}</p>
+            {{/if}}
+        </div>
+        {{/get}}
+    </div>
+</section>
