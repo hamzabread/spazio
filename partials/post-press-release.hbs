@@ -62,7 +62,7 @@
                     </section>
                 </div>
 
-                {{#get "posts" filter="tag:press-releases+id:-{{id}}" limit="4" include="authors,tags" order="published_at desc"}}
+                {{#get "posts" filter="tags:[press-releases,press-release,hash-press-releases,hash-press-release,sponsored-press-release]+id:-{{id}}" limit="4" include="authors,tags" order="published_at desc"}}
                 {{#if posts}}
                 <section class="sc-pr-post-related" aria-labelledby="sc-pr-post-related-title">
                     <h2 id="sc-pr-post-related-title" class="sc-pr-post-related-title">{{t "Related Press Releases"}}</h2>

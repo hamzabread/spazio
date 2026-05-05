@@ -5,7 +5,7 @@
         {{!-- Main posts grid --}}
         <div class="sc-mn-main">
             <div class="sc-mn-grid">
-                {{#get "posts" filter="tag:more-news+(tag:hash-crypto,tag:hash-hack,tag:crypto,tag:hack)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases" include="authors,tags" limit="4" order="published_at desc"}}
+                {{#get "posts" filter="tag:news+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases+tag:-people+tag:-product+tag:-company+tag:-companies" include="authors,tags" limit="4" order="published_at desc"}}
                 {{#foreach posts}}
                 <article class="sc-mn-card">
                     {{#if feature_image}}
@@ -38,7 +38,7 @@
                         {{/if}}
                         {{#if tags}}
                         <div class="sc-mn-card-tags">
-                            {{#foreach tags visibility="all" limit="8"}}
+                            {{#foreach tags visibility="all" limit="4"}}
                             <span class="sc-mn-card-tag">{{name}}</span>
                             {{/foreach}}
                         </div>
@@ -48,7 +48,7 @@
                 {{/foreach}}
                 {{/get}}
 
-                {{#get "posts" filter="(tag:ai,tag:artificial-intelligence,tag:machine-learning,tag:generative-ai)+tag:-hash-ai+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases" include="authors,tags" limit="4" order="published_at desc"}}
+                {{#get "posts" filter="(tag:ai,tag:artificial-intelligence,tag:machine-learning,tag:generative-ai)+tag:-hash-ai+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored+tag:-sponsored-content+tag:-press-release+tag:-press-releases+tag:-people+tag:-product+tag:-company+tag:-companies" include="authors,tags" limit="4" order="published_at desc"}}
                 {{#foreach posts}}
                 <article class="sc-mn-card">
                     {{#if feature_image}}

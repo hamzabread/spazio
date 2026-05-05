@@ -2,6 +2,11 @@
 /*  ABOUT US PAGE                            */
 /* ========================================= */
 
+/* Optional Ghost HTML card: structured CMS slots (never shown as raw body). */
+.sc-about-cms {
+    display: none !important;
+}
+
 .sc-about-page {
     background: var(--color-background-main);
 }

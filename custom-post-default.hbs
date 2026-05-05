@@ -2,7 +2,7 @@
 
 {{#post}}
 {{!-- Same job routing as post.hbs — posts using this custom template must still get the job layout. --}}
-{{#get "posts" filter="id:{{id}}+(tag:jobs,tag:careers,tag:job,tag:hiring)" limit="1" include="authors,tags"}}
+{{#get "posts" filter="id:{{id}}+tags:[jobs,careers,hiring]" limit="1" include="authors,tags"}}
 {{#if posts}}
 {{#foreach posts}}
 {{> "post-job"}}

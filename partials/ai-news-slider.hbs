@@ -1,4 +1,4 @@
-{{#get "posts" filter="(tag:ai,tag:artificial-intelligence,tag:machine-learning,tag:generative-ai)+tag:-hash-ai+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event" include="authors,tags" limit="8" order="published_at desc" as |ai_posts|}}
+{{#get "posts" filter="(tag:ai,tag:artificial-intelligence,tag:machine-learning,tag:generative-ai)+tag:-hash-ai+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-people+tag:-product+tag:-company+tag:-companies" include="authors,tags" limit="8" order="published_at desc" as |ai_posts|}}
 {{#if ai_posts}}
 <section class="sc-ai-slider">
     <div class="sc-ai-slider-inner">

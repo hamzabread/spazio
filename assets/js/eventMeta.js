@@ -1,3 +1,144 @@
+const EVENT_META_STOP = /(?:📅|🗓|📆|📍|🗺|🎟️|🎟|🎫|🌐|👥|[\r\n])/u;
+
+/**
+ * Trim a segment so one bad line cannot fill the card with the whole article.
+ */
+function clipEventMetaSegment(raw) {
+    if (!raw || typeof raw !== 'string') return '';
+    let s = raw.replace(/\s+/g, ' ').trim();
+    const cutAt = s.search(EVENT_META_STOP);
+    if (cutAt > 0) s = s.slice(0, cutAt).trim();
+    if (s.length > 200) s = `${s.slice(0, 197)}…`;
+    return s.trim();
+}
+
+function afterMarkerOnLine(line, markers) {
+    let best = '';
+    for (const em of markers) {
+        const i = line.indexOf(em);
+        if (i === -1) continue;
+        const rest = line.slice(i + em.length).trim();
+        const clipped = clipEventMetaSegment(rest);
+        if (clipped.length > best.length) best = clipped;
+    }
+    return best.trim();
+}
+
+function regexCapture(plain, re) {
+    const m = plain.match(re);
+    if (!m || !m[1]) return '';
+    return clipEventMetaSegment(m[1]);
+}
+
+/**
+ * Post body may put 📅 / 📍 / 🎟 / 🌐 / 👥 at the top or bottom; Koenig can flatten to few lines.
+ * @returns {{ found: boolean, datetime: string, location: string, detail: string }}
+ */
+function parseEventFooterLines(plain) {
+    let datetime = '';
+    let location = '';
+    let tickets = '';
+    let attendees = '';
+    let website = '';
+
+    if (!plain || typeof plain !== 'string') {
+        return { found: false, datetime, location, detail: '' };
+    }
+
+    const lines = plain
+        .replace(/\r\n/g, '\n')
+        .split('\n')
+        .map((l) => l.trim())
+        .filter(Boolean);
+
+    for (const line of lines) {
+        if (/📅|🗓|📆/.test(line)) {
+            const v = afterMarkerOnLine(line, ['📅', '🗓', '📆']);
+            if (v) datetime = v;
+        }
+        if (/📍|🗺/.test(line)) {
+            const v = afterMarkerOnLine(line, ['📍', '🗺']);
+            if (v) location = v;
+        }
+        if (/🎟|🎫/.test(line)) {
+            const v = afterMarkerOnLine(line, ['🎟️', '🎟', '🎫']);
+            if (v) tickets = v;
+        }
+        if (/👥|👤/.test(line)) {
+            const v = afterMarkerOnLine(line, ['👥', '👤']);
+            if (v) attendees = v;
+        }
+        if (/🌐/.test(line)) {
+            const v = afterMarkerOnLine(line, ['🌐']);
+            if (v) website = v;
+        }
+    }
+
+    if (!datetime) {
+        datetime = regexCapture(plain, /(?:📅|🗓|📆)\s*([^\n📍🎟🌐👥]{1,240})/u);
+    }
+    if (!location) {
+        location = regexCapture(plain, /(?:📍|🗺)\s*([^\n📅🎟🌐👥]{1,240})/u);
+    }
+    if (!tickets) {
+        tickets = regexCapture(plain, /(?:🎟️|🎟|🎫)\s*([^\n📅📍🌐👥]{1,240})/u);
+    }
+    if (!attendees) {
+        attendees = regexCapture(plain, /(?:👥|👤)\s*([^\n📅📍🎟🌐]{1,240})/u);
+    }
+    if (!website) {
+        website = regexCapture(plain, /🌐\s*([^\n📅📍🎟👥]{1,240})/u);
+    }
+
+    const detail = clipEventMetaSegment(tickets || attendees || website);
+    const found = Boolean(datetime || location || detail);
+    return { found, datetime, location, detail };
+}
+
+function plainTextFromPostHtmlTemplate(templateEl) {
+    if (!templateEl || !templateEl.content) return '';
+    const holder = document.createElement('div');
+    holder.appendChild(templateEl.content.cloneNode(true));
+    return (holder.textContent || '').trim();
+}
+
+function getEventMetaRowTextNodes(card) {
+    const rows = card.querySelectorAll('.sc-event-meta-row, .sc-evl-meta-row');
+    return [...rows]
+        .map((row) => row.querySelector(':scope > span:last-of-type') || row.querySelector('span'))
+        .filter(Boolean);
+}
+
+/**
+ * Home upcoming events + events listing: fill date / venue / ticket rows from post HTML when present.
+ */
+export function hydrateEventCardsFromPostHtml() {
+    const cards = document.querySelectorAll('.sc-events .sc-event-card, .sc-events-page .sc-evl-card');
+    if (!cards.length) return;
+
+    cards.forEach((card) => {
+        const tpl = card.querySelector('template.sc-event-html-source');
+        if (!tpl) return;
+
+        const plain = plainTextFromPostHtmlTemplate(tpl);
+        const { found, datetime, location, detail } = parseEventFooterLines(plain);
+        if (!found) return;
+
+        const spans = getEventMetaRowTextNodes(card);
+        if (spans.length < 3) return;
+
+        if (datetime) spans[0].textContent = datetime;
+        if (location) spans[1].textContent = location;
+        if (detail) spans[2].textContent = detail;
+
+        card.querySelectorAll('.sc-event-meta-row').forEach((row) => {
+            const span = row.querySelector(':scope > span:last-of-type') || row.querySelector('span');
+            const t = (span && span.textContent ? span.textContent.trim() : '') || '';
+            row.classList.toggle('sc-event-meta-row--empty', !t);
+        });
+    });
+}
+
 export const normalizeEventMeta = () => {
     const metaItems = document.querySelectorAll(
         '.sc-events .sc-event-meta-row span, .sc-events-page .sc-evl-meta-row span'
@@ -117,4 +258,6 @@ export const normalizeEventMeta = () => {
             tagsContainer.remove();
         }
     });
+
+    hydrateEventCardsFromPostHtml();
 };

@@ -43,7 +43,8 @@
 </section>
 
 <div class="gh-container sc-prl-list-wrap">
-    {{#get "posts" filter="tag:press-releases+tag:-blockchain+tag:-hash-blockchain" limit="50" include="authors,tags" order="published_at desc"}}
+    {{!-- Any public/internal Press Release tag (singular/plural, # internal, sponsored). --}}
+    {{#get "posts" filter="tags:[press-releases,press-release,hash-press-releases,hash-press-release,sponsored-press-release]" limit="50" include="authors,tags" order="published_at desc"}}
     <div class="sc-prl-list" id="sc-prl-list" role="feed" aria-busy="false">
         {{#if posts}}
             {{#foreach posts}}
@@ -54,9 +55,15 @@
                         {{#foreach tags visibility="public"}}
                             {{#match slug "press-releases"}}{{else}}
                             {{#match slug "press-release"}}{{else}}
+                            {{#match slug "hash-press-releases"}}{{else}}
+                            {{#match slug "hash-press-release"}}{{else}}
+                            {{#match slug "sponsored-press-release"}}{{else}}
                             {{#match slug "blockchain"}}{{else}}
                             {{#match slug "hash-blockchain"}}{{else}}
                             <span class="sc-prl-cat-opt">{{name}}</span>
+                            {{/match}}
+                            {{/match}}
+                            {{/match}}
                             {{/match}}
                             {{/match}}
                             {{/match}}

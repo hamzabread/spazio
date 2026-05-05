@@ -2,15 +2,9 @@
     <div class="sc-market-dashboard-inner">
         <div class="sc-market-dashboard-header">
             <h2 class="sc-market-dashboard-title">{{t "Crypto Market"}}</h2>
-            {{#if @custom.market_source_tag}}
-            <a class="sc-market-dashboard-viewall" href="{{@site.url}}/tag/{{@custom.market_source_tag}}/">
-                {{t "View full market"}} →
-            </a>
-            {{else}}
             <a class="sc-market-dashboard-viewall" href="{{@site.url}}/tag/markets/">
                 {{t "View full market"}} →
             </a>
-            {{/if}}
         </div>
         <div class="sc-market-dashboard-grid">
             {{!-- Market Sentiment Gauge --}}
@@ -19,21 +13,6 @@
                 <img class="sc-md-sentiment-svg sc-md-sentiment-img--dark" src="{{asset "imagesAndIcons/market-sentiment.svg"}}" alt="{{t "Market Sentiment Gauge"}}" loading="lazy" width="290" height="174">
                 <img class="sc-md-sentiment-svg sc-md-sentiment-img--light" src="{{asset "imagesAndIcons/market-sentiment-light.png"}}" alt="{{t "Market Sentiment Gauge"}}" loading="lazy" width="290" height="174">
                 <div class="sc-md-card-meta" data-md-sentiment-meta>
-                    {{#if @custom.market_overview_source_filter}}
-                    {{#get "posts" filter=@custom.market_overview_source_filter limit="1" include="tags" order="published_at desc"}}
-                        {{#if posts}}
-                            {{#foreach posts}}
-                            <a href="{{url}}">{{title}}</a>
-                            {{/foreach}}
-                        {{else}}
-                            {{#get "posts" limit="1" include="tags" order="published_at desc"}}
-                                {{#foreach posts}}
-                                <a href="{{url}}">{{title}}</a>
-                                {{/foreach}}
-                            {{/get}}
-                        {{/if}}
-                    {{/get}}
-                    {{else}}
                     {{#get "posts" filter="tags:[markets,market]" limit="1" include="tags" order="published_at desc"}}
                         {{#if posts}}
                             {{#foreach posts}}
@@ -47,7 +26,6 @@
                             {{/get}}
                         {{/if}}
                     {{/get}}
-                    {{/if}}
                 </div>
             </div>
 

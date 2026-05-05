@@ -2,19 +2,15 @@
     <div class="sc-events-inner">
         <div class="sc-events-header">
             <h2 class="sc-events-title">{{t "Upcoming Events"}}</h2>
-          {{#if @custom.events_source_tag}}
-          <a href="{{@site.url}}/tag/{{@custom.events_source_tag}}/" class="sc-events-view-all">{{t "View all events"}} →</a>
-          {{else}}
             <a href="{{@site.url}}/tag/events/" class="sc-events-view-all">{{t "View all events"}} →</a>
-          {{/if}}
         </div>
 
         <div class="sc-events-grid">
-          {{#if @custom.events_source_tag}}
-          {{#get "posts" filter="tags:[{{@custom.events_source_tag}},events,event]+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-news+tag:-trending+tag:-markets+tag:-press-release" limit="4" include="authors,tags" order="published_at desc"}}
+          {{#get "posts" filter="tags:[events,event]+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-news+tag:-trending+tag:-markets+tag:-press-release" limit="4" include="authors,tags" order="published_at desc"}}
                 {{#if posts}}
                     {{#foreach posts}}
                     <article class="sc-event-card">
+                        <template class="sc-event-html-source">{{{html}}}</template>
                         <div class="sc-event-img" style="background-image: url('{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset 'imagesAndIcons/bitcoin2026.png'}}{{/if}}')">
                         </div>
                         <div class="sc-event-body">
@@ -48,6 +44,7 @@
                     {{#get "posts" filter="tags:[events,event]+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-news+tag:-trending+tag:-markets+tag:-press-release" limit="4" include="authors,tags" order="published_at desc"}}
                         {{#foreach posts}}
                         <article class="sc-event-card">
+                            <template class="sc-event-html-source">{{{html}}}</template>
                             <div class="sc-event-img" style="background-image: url('{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset 'imagesAndIcons/bitcoin2026.png'}}{{/if}}')">
                             </div>
                             <div class="sc-event-body">
@@ -80,77 +77,6 @@
                     {{/get}}
                 {{/if}}
             {{/get}}
-                  {{else}}
-                  {{#get "posts" filter="tags:[events,event]+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-news+tag:-trending+tag:-markets+tag:-press-release" limit="4" include="authors,tags" order="published_at desc"}}
-                    {{#if posts}}
-                      {{#foreach posts}}
-                      <article class="sc-event-card">
-                        <div class="sc-event-img" style="background-image: url('{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset 'imagesAndIcons/bitcoin2026.png'}}{{/if}}')">
-                        </div>
-                        <div class="sc-event-body">
-                          <h3 class="sc-event-name">{{title}}</h3>
-                          <div class="sc-event-meta">
-                            <div class="sc-event-meta-row">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                              <span>{{#foreach tags visibility="internal" limit="1"}}{{name}}{{else}}{{date format="MMM D, YYYY"}}{{/foreach}}</span>
-                            </div>
-                            <div class="sc-event-meta-row">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                              <span>{{#foreach tags visibility="internal" from="2" to="2"}}{{name}}{{else}}{{t "Global"}}{{/foreach}}</span>
-                            </div>
-                            <div class="sc-event-meta-row">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                              <span>{{#foreach tags visibility="internal" from="3" to="3"}}{{name}}{{else}}{{#if primary_author}}{{primary_author.name}}{{else}}{{@site.title}}{{/if}}{{/foreach}}</span>
-                            </div>
-                          </div>
-                          <a href="{{url}}" class="sc-event-btn">
-                            {{t "Learn More"}}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                              <path d="M7.58398 6.41663L12.3673 1.6333" stroke="#F18F20" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round"/>
-                              <path d="M12.8332 3.9665V1.1665H10.0332" stroke="#F18F20" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round"/>
-                              <path d="M6.41602 1.1665H5.24935C2.33268 1.1665 1.16602 2.33317 1.16602 5.24984V8.74984C1.16602 11.6665 2.33268 12.8332 5.24935 12.8332H8.74935C11.666 12.8332 12.8327 11.6665 12.8327 8.74984V7.58317" stroke="#F18F20" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                          </a>
-                        </div>
-                      </article>
-                      {{/foreach}}
-                    {{else}}
-                      {{#get "posts" filter="tags:[events,event]+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-news+tag:-trending+tag:-markets+tag:-press-release" limit="4" include="authors,tags" order="published_at desc"}}
-                        {{#foreach posts}}
-                        <article class="sc-event-card">
-                          <div class="sc-event-img" style="background-image: url('{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset 'imagesAndIcons/bitcoin2026.png'}}{{/if}}')">
-                          </div>
-                          <div class="sc-event-body">
-                            <h3 class="sc-event-name">{{title}}</h3>
-                            <div class="sc-event-meta">
-                              <div class="sc-event-meta-row">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                                <span>{{#foreach tags visibility="internal" limit="1"}}{{name}}{{else}}{{date format="MMM D, YYYY"}}{{/foreach}}</span>
-                              </div>
-                              <div class="sc-event-meta-row">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                <span>{{#foreach tags visibility="internal" from="2" to="2"}}{{name}}{{else}}{{t "Global"}}{{/foreach}}</span>
-                              </div>
-                              <div class="sc-event-meta-row">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                                <span>{{#foreach tags visibility="internal" from="3" to="3"}}{{name}}{{else}}{{#if primary_author}}{{primary_author.name}}{{else}}{{@site.title}}{{/if}}{{/foreach}}</span>
-                              </div>
-                            </div>
-                            <a href="{{url}}" class="sc-event-btn">
-                              {{t "Learn More"}}
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <path d="M7.58398 6.41663L12.3673 1.6333" stroke="#F18F20" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12.8332 3.9665V1.1665H10.0332" stroke="#F18F20" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M6.41602 1.1665H5.24935C2.33268 1.1665 1.16602 2.33317 1.16602 5.24984V8.74984C1.16602 11.6665 2.33268 12.8332 5.24935 12.8332H8.74935C11.666 12.8332 12.8327 11.6665 12.8327 8.74984V7.58317" stroke="#F18F20" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg>
-                            </a>
-                          </div>
-                        </article>
-                        {{/foreach}}
-                      {{/get}}
-                    {{/if}}
-                  {{/get}}
-                  {{/if}}
         </div>
 
         <div class="sc-trusted-by">

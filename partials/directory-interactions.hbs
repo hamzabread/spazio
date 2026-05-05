@@ -31,9 +31,9 @@
                 return;
             }
 
-            var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+            var tags = (card.getAttribute('data-tags') || '').toLowerCase().trim();
             if (!tags) {
-                card.style.display = '';
+                card.style.display = 'none';
                 return;
             }
 

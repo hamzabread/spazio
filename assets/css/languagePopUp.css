@@ -26,7 +26,8 @@
     animation: fadeIn 0.3s ease;
     width: max-content;
     border-radius: var(--border-radius-containers);
-    z-index: 999;
+    /* Above sticky header chrome so links receive clicks */
+    z-index: 1000001;
 }
 
 .popup-launcher:hover .gh-subnav-language-header {
@@ -47,8 +48,8 @@
   }
 }
 
-/* Other button definitions on the page */
-button {
+/* Scoped: avoid global `button` rules — they broke Ghost UI (search, dark mode, etc.) */
+.mobile-popup-menu button {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 4px;

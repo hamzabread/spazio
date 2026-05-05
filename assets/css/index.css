@@ -75,22 +75,29 @@ html,
 }
 
 .gh-main {
-  background: url(/assets/imagesAndIcons/background.png);
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-position: center;
+  background: transparent;
 }
 
-:root[data-color-scheme="light"] .gh-main {
-  background-image: none;
+/* Home: hero + content grid sit on theme background (not full gh-main) */
+.sc-home-hero-bg {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+:root[data-color-scheme="light"] .sc-home-hero-bg {
+  background-image: none !important;
 }
 
 @media (max-width: 767px) {
-  .gh-main {
-    background-image: none;
+  .sc-home-hero-bg {
+    background-image: none !important;
   }
 }
 

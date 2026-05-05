@@ -25,14 +25,17 @@ import { footerExternalLinks } from './footerExternalLinks';
 import { initMarketDashboard } from './marketDashboard';
 import { normalizeEventMeta } from './eventMeta';
 import { initAdvertisingToc } from './advertisingToc';
+import { initAdvertisingCountriesFromPage } from './advertisingCountries';
 import { initPressReleasesListing } from './pressReleasesListing';
 import { initEventsListing } from './eventsListing';
 import { initPostPressReleasePage } from './postPressReleasePage';
 import { initPostJobPage } from './postJobPage';
+import { initJobMetaFromPostBody } from './jobMetaFromContent';
 import { initPeoplePostPage } from './peoplePostPage';
 import { initCompanyPostPage } from './companyPostPage';
 import { initProductPostPage } from './productPostPage';
 import { initCryptoPricesPage } from './cryptoPricesPage';
+import { initAboutPage } from './aboutPage';
 
 // import { createPopUp } from './languagePopUp';
 
@@ -236,10 +239,12 @@ vibrator();
 initMarketDashboard();
 normalizeEventMeta();
 initAdvertisingToc();
+initAdvertisingCountriesFromPage();
 initPressReleasesListing();
 initEventsListing();
 initPostPressReleasePage();
 initPostJobPage();
+initJobMetaFromPostBody();
 initPeoplePostPage();
 initCompanyPostPage();
 initProductPostPage();
@@ -249,6 +254,7 @@ accentAboutHeroLastWord();
 accentLastWord('.sc-about-operate-head h2', 'sc-about-operate-last-word');
 accentLastWord('.sc-about-revenue-head h2', 'sc-about-revenue-last-word');
 accentLastWord('.sc-about-team-head h3', 'sc-about-team-last-word');
+initAboutPage();
 initMoreNewsLoadMore();
 initJobsLoadMore();
 

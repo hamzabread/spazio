@@ -29,7 +29,7 @@
 </section>
 
 <div class="gh-container sc-prl-list-wrap">
-    {{#get "posts" filter="tag:press-releases+(tag:blockchain,tag:hash-blockchain)" limit="50" include="authors,tags" order="published_at desc"}}
+    {{#get "posts" filter="tags:[press-releases,press-release,hash-press-releases,hash-press-release,sponsored-press-release]+(tag:blockchain,tag:hash-blockchain)" limit="50" include="authors,tags" order="published_at desc"}}
     <div class="sc-prl-list" id="sc-prl-list" role="feed" aria-busy="false">
         {{#if posts}}
             {{#foreach posts}}

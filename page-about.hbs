@@ -46,7 +46,7 @@
         <div class="sc-about-shell">
             <article class="sc-about-mission-card sc-about-mission-card-dynamic">
                 <h2>{{t "What"}} <span>{{t "Drives Us"}}</span></h2>
-                <p>
+                <p data-sc-about-mission-text>
                     {{t "Our mission is to be a trusted source for learning about crypto and blockchain by offering clear, research-based content that helps people make informed decisions. Our vision is to build an impartial, collaborative community where knowledge is shared openly and even complex topics become easy to understand for everyone."}}
                 </p>
             </article>
@@ -110,7 +110,7 @@
             <div class="sc-about-revenue-head">
                 <span class="sc-about-revenue-chip">{{t "Transparency"}}</span>
                 <h2>{{t "Revenue Model"}}</h2>
-                <p>To keep the platform running sustainably, Spaziocrypto generates revenue through multiple transparent channels.</p>
+                <p data-sc-about-revenue-intro>To keep the platform running sustainably, Spaziocrypto generates revenue through multiple transparent channels.</p>
             </div>
 
             <div class="sc-about-revenue-grid">
@@ -415,6 +415,8 @@
 
     {{> "faq-section"}}
 </main>
+
+<template class="sc-about-lexical-source">{{{content}}}</template>
 
 {{> "never-miss"}}
 {{> "subscribe-newsletter"}}

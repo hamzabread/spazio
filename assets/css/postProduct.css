@@ -1,14 +1,37 @@
 /* Product directory posts (tag: product) — layout matches company; center adds chart */
 
+.sc-product-page {
+    overflow-x: clip;
+}
+
+.sc-product-page .sc-people-layout {
+    grid-template-columns: minmax(0, 361px) minmax(0, 611px) minmax(0, 1fr);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.sc-product-page .sc-people-col-left {
+    max-width: 100%;
+    min-width: 0;
+}
+
 .sc-product-center-stack {
     grid-column: 2 / 3;
-    width: 611px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 611px;
+    min-width: 0;
 }
 
 .sc-product-center-stack .sc-product-chart-top,
 .sc-product-center-stack .sc-people-col-center {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.sc-product-page .sc-people-bio.gh-content {
+    overflow-x: hidden;
     max-width: 100%;
 }
 
