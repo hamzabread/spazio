@@ -282,11 +282,11 @@
         <div class="sc-about-shell">
             <div class="sc-about-riccardo-wrap">
                 <div class="sc-about-riccardo-content">
-                    <span class="sc-about-riccardo-chip">{{t "Founder & Managing Partner"}}</span>
-                    <h2>Riccardo Curatolo</h2>
-                    <p>Riccardo Curatolo is an economist and digital entrepreneur specializing in blockchain and cryptocurrencies. As founder and editor-in-chief of SpazioCrypto, he focuses on providing clear, verified, and education-driven insights into the economic and social impact of decentralized technologies.</p>
+                    <span class="sc-about-riccardo-chip" data-sc-about-riccardo-chip>{{t "Founder & Managing Partner"}}</span>
+                    <h2 data-sc-about-riccardo-title>Riccardo Curatolo</h2>
+                    <p data-sc-about-riccardo-bio>Riccardo Curatolo is an economist and digital entrepreneur specializing in blockchain and cryptocurrencies. As founder and editor-in-chief of SpazioCrypto, he focuses on providing clear, verified, and education-driven insights into the economic and social impact of decentralized technologies.</p>
 
-                    <div class="sc-about-riccardo-socials">
+                    <div class="sc-about-riccardo-socials" data-sc-about-riccardo-socials>
                         {{#if @site.facebook}}<a href="{{facebook_url}}" target="_blank" rel="noopener" aria-label="Facebook">{{> "icons/facebook"}}</a>{{/if}}
                         {{#if @custom.telegram_link}}<a href="{{@custom.telegram_link}}" target="_blank" rel="noopener" aria-label="Telegram">{{> "icons/telegram"}}</a>{{/if}}
                         {{#if @custom.google_news_link}}<a href="{{@custom.google_news_link}}" target="_blank" rel="noopener" aria-label="Google">{{> "icons/googlenews"}}</a>{{/if}}
@@ -307,7 +307,7 @@
                     </div>
 
                     <h3>{{t "Areas Of Expertise"}}</h3>
-                    <ul class="sc-about-riccardo-list">
+                    <ul class="sc-about-riccardo-list" data-sc-about-riccardo-expertise>
                         <li><span class="sc-about-riccardo-check" aria-hidden="true"><i class="fa fa-check"></i></span><span class="sc-about-riccardo-list-text">Blockchain and cryptocurrencies</span></li>
                         <li><span class="sc-about-riccardo-check" aria-hidden="true"><i class="fa fa-check"></i></span><span class="sc-about-riccardo-list-text">Bitcoin and digital monetary systems</span></li>
                         <li><span class="sc-about-riccardo-check" aria-hidden="true"><i class="fa fa-check"></i></span><span class="sc-about-riccardo-list-text">Web3 and DeFi</span></li>
@@ -318,8 +318,8 @@
                 </div>
 
                 <div class="sc-about-riccardo-media">
-                    <img class="sc-about-riccardo-main" src="{{asset 'imagesAndIcons/riccardo.png'}}" alt="Riccardo Curatolo" loading="lazy" />
-                    <div class="sc-about-riccardo-gallery">
+                    <img class="sc-about-riccardo-main" data-sc-about-riccardo-main src="{{asset 'imagesAndIcons/riccardo.png'}}" alt="Riccardo Curatolo" loading="lazy" />
+                    <div class="sc-about-riccardo-gallery" data-sc-about-riccardo-gallery>
                         <img src="{{asset 'imagesAndIcons/riccardo1.png'}}" alt="Riccardo event 1" loading="lazy" />
                         <img src="{{asset 'imagesAndIcons/riccardo2.png'}}" alt="Riccardo event 2" loading="lazy" />
                         <img src="{{asset 'imagesAndIcons/riccardo3.png'}}" alt="Riccardo event 3" loading="lazy" />
@@ -331,7 +331,7 @@
 
             <div class="sc-about-riccardo-articles">
                 <h3>{{t "Articles and mentions"}}</h3>
-                <div class="sc-about-riccardo-articles-grid">
+                <div class="sc-about-riccardo-articles-grid" data-sc-about-riccardo-articles-grid>
                     <a class="sc-about-riccardo-article-card" href="https://www.tfnweb.it/caltanissetta-al-rapisardi-davinci-giornata-dedicata-alle-criptovalute/" target="_blank" rel="noopener">
                         <div class="sc-about-article-image" style="background-image: url('{{asset 'imagesAndIcons/firstarticle.png'}}');"></div>
                         <div class="sc-about-article-content">
@@ -415,6 +415,20 @@
 
     {{> "faq-section"}}
 </main>
+
+{{!-- Append-only pages (e.g. revenue copy): internal tag #about-append (slug hash-about-append). --}}
+{{#get "pages" filter="tag:hash-about-append+status:published" limit="5" order="published_at asc"}}
+    {{#foreach pages}}
+    <template class="sc-about-source-fragment">{{{html}}}</template>
+    {{/foreach}}
+{{/get}}
+
+{{!-- Dedicated FAQ page: internal tag #about-faq (slug hash-about-faq). Placed last so toggles follow other About body fragments. --}}
+{{#get "pages" filter="tag:hash-about-faq+status:published" limit="1"}}
+    {{#foreach pages}}
+    <template class="sc-about-source-fragment">{{{html}}}</template>
+    {{/foreach}}
+{{/get}}
 
 <template class="sc-about-lexical-source">{{{content}}}</template>
 

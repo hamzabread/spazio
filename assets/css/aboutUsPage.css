@@ -645,6 +645,133 @@
     font-size: 14px;
 }
 
+/* Ghost `.container-staff` social list (Font Awesome icons) injected by aboutPage.js */
+.sc-about-riccardo-socials .sci,
+.sc-about-riccardo-sci {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    align-items: center;
+}
+
+.sc-about-riccardo-socials .sci li,
+.sc-about-riccardo-sci li {
+    list-style: none;
+    margin: 0;
+}
+
+.sc-about-riccardo-socials .sci a,
+.sc-about-riccardo-sci a {
+    color: #F5F7FA;
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border-strong-adaptive, rgba(255, 255, 255, 0.12));
+}
+
+.sc-about-riccardo-content [data-sc-about-riccardo-bio] p {
+    margin: 0 0 1em;
+}
+
+.sc-about-riccardo-content [data-sc-about-riccardo-bio] p:last-child {
+    margin-bottom: 0;
+}
+
+.sc-about-riccardo-articles-grid--cms .kg-bookmark-card,
+.sc-about-riccardo-articles-grid--cms a.kg-bookmark-card,
+.sc-about-riccardo-articles-grid--cms .kg-bookmark-card a.kg-bookmark-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0;
+    border-radius: 10px;
+    border: 1px solid var(--color-border-strong-adaptive);
+    overflow: hidden;
+    background: #1B1B1B;
+    text-decoration: none;
+}
+
+:root[data-color-scheme="light"] .sc-about-riccardo-articles-grid--cms .kg-bookmark-card,
+:root[data-color-scheme="light"] .sc-about-riccardo-articles-grid--cms a.kg-bookmark-card {
+    background: #F2F4F5;
+    border-color: #F2F4F5;
+}
+
+.sc-about-riccardo-articles-grid--cms .kg-bookmark-thumbnail {
+    width: 205px;
+    height: 113px;
+    flex: 0 0 205px;
+    border-radius: 10px;
+    object-fit: cover;
+    padding: 0 !important;
+}
+
+.sc-about-riccardo-articles-grid--cms .kg-bookmark-content {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 !important;
+}
+
+.sc-about-riccardo-articles-grid--cms .kg-bookmark-title {
+    color: #EBEFF2 !important;
+    font-family: "Helvetica Now Display";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 10px;
+}
+
+.sc-about-riccardo-articles-grid--cms .kg-bookmark-description {
+    color: #A6A6A6;
+    font-family: "Helvetica Now Display";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 0 12px;
+}
+
+.sc-about-riccardo-articles-grid--cms .kg-bookmark-metadata {
+    color: #A6A6A6;
+    font-family: "Helvetica Now Display";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.sc-about-riccardo-articles-grid--cms .kg-bookmark-icon {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 767px) {
+    .sc-about-riccardo-articles-grid--cms .kg-bookmark-card,
+    .sc-about-riccardo-articles-grid--cms a.kg-bookmark-card,
+    .sc-about-riccardo-articles-grid--cms .kg-bookmark-card a.kg-bookmark-container {
+        gap: 24px;
+        padding: 0;
+    }
+
+    .sc-about-riccardo-articles-grid--cms .kg-bookmark-thumbnail {
+        width: 115px;
+        height: 84px;
+        flex: 0 0 115px;
+    }
+}
+
 .sc-about-riccardo-content h3 {
     color: var(--color-ebeff2-adaptive);
     font-family: "Helvetica Now Display";
@@ -767,6 +894,26 @@
 :root[data-color-scheme="light"] .sc-about-riccardo-article-card {
     background: #F2F4F5;
     border: 1px solid #F2F4F5;
+}
+
+:root[data-color-scheme="light"] .sc-about-riccardo-articles h3 {
+    color: #101828;
+}
+
+:root[data-color-scheme="light"] .sc-about-riccardo-articles-grid--cms .kg-bookmark-card,
+:root[data-color-scheme="light"] .sc-about-riccardo-articles-grid--cms a.kg-bookmark-card,
+:root[data-color-scheme="light"] .sc-about-riccardo-articles-grid--cms .kg-bookmark-card a.kg-bookmark-container {
+    background: #F2F4F5;
+    border-color: #DDE3E8;
+}
+
+:root[data-color-scheme="light"] .sc-about-riccardo-articles-grid--cms .kg-bookmark-title {
+    color: #101828 !important;
+}
+
+:root[data-color-scheme="light"] .sc-about-riccardo-articles-grid--cms .kg-bookmark-description,
+:root[data-color-scheme="light"] .sc-about-riccardo-articles-grid--cms .kg-bookmark-metadata {
+    color: #4B5563;
 }
 
 .sc-about-article-image {
@@ -1109,6 +1256,14 @@
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
+}
+
+.sc-about-faq-answer p {
+    margin: 0 0 0.75em;
+}
+
+.sc-about-faq-answer p:last-child {
+    margin-bottom: 0;
 }
 
 .sc-about-article-content {

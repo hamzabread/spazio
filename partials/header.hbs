@@ -1,4 +1,4 @@
-<header class="gh-header header-{{#match @custom.header_type "Logo on the left"}}left-logo{{else match
+<header class="gh-header gh-container header-{{#match @custom.header_type "Logo on the left"}}left-logo{{else match
     @custom.header_type "Author on the left" }}left-logo{{else match @custom.header_type "Logo in the middle"
     }}middle-logo{{else match @custom.header_type "Author in the middle" }}middle-logo{{else match
     @custom.header_type "Logo with social icons" }}include-social-icons{{else match
@@ -11,7 +11,7 @@
     transparent fixed{{/if}}{{/post}}{{/is}}{{#is 'page' }}{{#page}}{{#if featured}}{{#if feature_image}}{{#match @page.show_title_and_feature_image}}
     transparent fixed{{/match}}{{/if}}{{/if}}{{/page}}{{/is}}{{#is 'home' }}{{#match @custom.featured_posts "Large Slider" }} transparent
     fixed{{/match}}{{/is}}{{#is "home"}}{{else}} sc-header-jobs-layout{{/is}}" id="gh-header">
-    <div class="gh-header-container gh-container">
+    <div class="gh-header-container">
         {{#match @custom.header_type "Logo with bottom navigation" }}
         <div class="gh-header-socials">
             {{>socials}}
@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-    <div class="gh-header-container gh-container gh-header-jobs-subrow">
+    <div class="gh-header-container gh-header-jobs-subrow">
         {{> "header-main-nav"}}
         <div class="gh-header-actions gh-header-actions--jobs-bottom">
             {{> "header-actions-buttons"}}
