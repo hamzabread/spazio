@@ -11,7 +11,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 14px 75px;
+    padding: 14px 75px !important;
     transition: top 0.45s ease, background-color 0.7s ease, border-bottom 0.7s ease;
     background-color: transparent;
     border-bottom: 1px solid #E9ECEF;
@@ -61,7 +61,8 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    padding: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     background: #F8F9FA;
 }
 
@@ -337,7 +338,7 @@
     gap: 16px;
     flex-wrap: wrap;
     align-items: center;
-    padding: 10px 75px;
+    padding: 14px 75px !important;
 }
 
 .gh-header.sc-header-jobs-layout .gh-header-jobs-search-wrap {
@@ -415,7 +416,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    padding: 14px 75px;
+    padding: 14px 75px !important;
     border-top: 1px solid #e9ecef;
 }
 
@@ -1217,7 +1218,7 @@
     }
 
     .gh-header.sc-header-jobs-layout > .gh-header-container:first-of-type {
-        padding: 10px 16px;
+        padding: 10px 16px !important;
         flex-wrap: wrap;
     }
 
@@ -1625,12 +1626,33 @@
 
     .gh-header.sc-header-jobs-layout > .gh-header-container:first-of-type {
         flex-wrap: nowrap;
-        padding: 10px 16px;
+        padding: 10px 16px !important;
     }
 
     .gh-header.sc-header-jobs-layout .gh-header-brand-wrapper {
         flex: 1 1 auto;
         width: auto;
+    }
+}
+
+/* Jobs layout header: zero out all padding to align with the page-jobs hero. */
+.gh-header.sc-header-jobs-layout {
+    padding: 0 !important;
+}
+
+/* Mobile header padding override */
+@media (max-width: 767px) {
+    .gh-header {
+        padding: 14px 20px !important;
+    }
+}
+
+/* Wide-screen jobs header: zero out horizontal padding so contents align to gh-container max-width. */
+@media (min-width: 1515px) {
+    .gh-header.sc-header-jobs-layout > .gh-header-container:first-of-type,
+    .gh-header.sc-header-jobs-layout .gh-header-jobs-subrow {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 }
 

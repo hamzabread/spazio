@@ -37,7 +37,299 @@ import { initProductPostPage } from './productPostPage';
 import { initCryptoPricesPage } from './cryptoPricesPage';
 import { initAboutPage } from './aboutPage';
 
-// import { createPopUp } from './languagePopUp';
+import { createPopUp } from './languagePopUp';
+
+function detectSocialPlatformKey(label) {
+	const t = (label || '').toLowerCase().replace(/[^a-z]/g, '');
+	if (!t) return '';
+	if (t.includes('youtube')) return 'youtube';
+	if (t.includes('linkdin') || t.includes('linkedin')) return 'linkedin';
+	if (t.includes('facebook')) return 'facebook';
+	if (t.includes('instagram')) return 'instagram';
+	if (t.includes('telegram')) return 'telegram';
+	if (t.includes('reddit')) return 'reddit';
+	if (t.includes('tiktok')) return 'tiktok';
+	if (t === 'x' || t.includes('twitter') || t.includes('xcom')) return 'x';
+	return '';
+}
+
+function hydrateSocialChannels() {
+	const tpl = document.querySelector('template.sc-social-source');
+	const section = document.querySelector('.sc-social-channels');
+	if (!tpl || !tpl.content || !section) return;
+
+	const holder = document.createElement('div');
+	holder.appendChild(tpl.content.cloneNode(true));
+
+	const titleEl = section.querySelector('.sc-social-title');
+	const subtitleEl = section.querySelector('.sc-social-subtitle');
+	const grid = section.querySelector('.sc-social-grid');
+	if (!grid) return;
+
+	const sourceH2 = holder.querySelector('h2');
+	if (sourceH2 && titleEl) titleEl.textContent = sourceH2.textContent.trim();
+
+	const sourceP = holder.querySelector('p');
+	if (sourceP && subtitleEl) subtitleEl.textContent = sourceP.textContent.trim();
+
+	// Build a map of platform -> existing static logo HTML so we reuse the theme's SVGs/images.
+	const logoByPlatform = {};
+	[...grid.querySelectorAll('.sc-social-card')].forEach((card) => {
+		const logo = card.querySelector('.sc-social-logo');
+		if (!logo) return;
+		const platformClass = [...logo.classList].find((c) => c.startsWith('sc-social-logo--'));
+		if (!platformClass) return;
+		const key = platformClass.replace('sc-social-logo--', '');
+		logoByPlatform[key] = logo.outerHTML;
+	});
+
+	const productCards = [...holder.querySelectorAll('.kg-card.kg-product-card, .kg-product-card')];
+	if (!productCards.length) return;
+
+	const cards = productCards
+		.map((card) => {
+			const desc = (card.querySelector('.kg-product-card-description')?.textContent || '').trim();
+			const btn = card.querySelector('.kg-product-card-button');
+			const btnText = (btn?.textContent || '').trim();
+			const btnHref = btn?.getAttribute('href') || '#';
+			const key = detectSocialPlatformKey(btnText);
+			return { desc, btnText, btnHref, key };
+		})
+		.filter((c) => c.desc || c.btnText);
+
+	if (!cards.length) return;
+
+	const escapeHtml = (s) =>
+		(s || '').replace(/[&<>"']/g, (ch) =>
+			({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch])
+		);
+
+	grid.innerHTML = cards
+		.map((c) => {
+			const logoHtml =
+				logoByPlatform[c.key] ||
+				`<div class="sc-social-logo sc-social-logo--${c.key || 'generic'}" aria-hidden="true"></div>`;
+			return `<article class="sc-social-card">${logoHtml}<p class="sc-social-copy">${escapeHtml(c.desc)}</p><a class="sc-social-btn" href="${escapeHtml(c.btnHref)}" target="_blank" rel="noopener">${escapeHtml(c.btnText.toUpperCase())}</a></article>`;
+		})
+		.join('');
+}
+
+function hydrateGenericFaq() {
+	const FAQ_ICON_OPEN = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+	const FAQ_ICON_CLOSED = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+	const escapeHtml = (s) =>
+		(s || '').replace(/[&<>"']/g, (ch) =>
+			({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch])
+		);
+
+	document.querySelectorAll('section.sc-faq-section').forEach((section) => {
+		// The about page has its own bespoke hydration via initAboutPage; skip there.
+		if (section.closest('.sc-about-page-dynamic')) return;
+
+		const tpl = section.querySelector('template.sc-faq-source');
+		const list = section.querySelector('[data-faq-list]');
+		if (!tpl || !tpl.content || !list) return;
+
+		const holder = document.createElement('div');
+		holder.appendChild(tpl.content.cloneNode(true));
+
+		const pairs = [];
+
+		// Pattern A: Ghost toggle cards
+		holder.querySelectorAll('.kg-toggle-card, details.kg-toggle-card').forEach((card) => {
+			const q = (card.querySelector('.kg-toggle-heading-text, summary, h3, h4')?.textContent || '').trim();
+			const aEl = card.querySelector('.kg-toggle-content, .kg-toggle-card-content');
+			const a = aEl ? aEl.innerHTML.trim() : '';
+			if (q && a) pairs.push({ q, a });
+		});
+
+		// Pattern B: heading (h2/h3/h4) followed by paragraph(s) until next heading
+		if (!pairs.length) {
+			const headings = [...holder.querySelectorAll('h2, h3, h4')];
+			headings.forEach((h) => {
+				const q = (h.textContent || '').trim();
+				if (!q) return;
+				const buf = [];
+				let next = h.nextElementSibling;
+				while (next) {
+					if (/^H[1-6]$/.test(next.tagName)) break;
+					if (['P', 'UL', 'OL'].includes(next.tagName)) {
+						buf.push(next.outerHTML.trim());
+					}
+					next = next.nextElementSibling;
+				}
+				if (buf.length) pairs.push({ q, a: buf.join('') });
+			});
+		}
+
+		if (!pairs.length) return;
+
+		list.innerHTML = pairs
+			.map((pair, idx) => {
+				const isOpen = idx === 0;
+				return (
+					'<article class="sc-about-faq-item' +
+					(isOpen ? ' is-open' : '') +
+					'" data-faq-item>' +
+					'<button class="sc-about-faq-trigger" type="button" aria-expanded="' +
+					(isOpen ? 'true' : 'false') +
+					'">' +
+					'<span class="sc-about-faq-question">' +
+					escapeHtml(pair.q) +
+					'</span>' +
+					'<span class="sc-about-faq-icon sc-about-faq-icon-closed" aria-hidden="true">' +
+					FAQ_ICON_CLOSED +
+					'</span>' +
+					'<span class="sc-about-faq-icon sc-about-faq-icon-open" aria-hidden="true">' +
+					FAQ_ICON_OPEN +
+					'</span>' +
+					'</button>' +
+					'<div class="sc-about-faq-answer-wrap" data-faq-answer-wrap>' +
+					'<div class="sc-about-faq-answer">' +
+					pair.a +
+					'</div>' +
+					'</div>' +
+					'</article>'
+				);
+			})
+			.join('');
+
+		// Notify the existing accordion script to re-sync heights.
+		list.dispatchEvent(new Event('sc-faq-rebuilt'));
+	});
+}
+
+function initCryptoJobsChipFilter() {
+	document.querySelectorAll('.sc-jobs').forEach((section) => {
+		const chips = [...section.querySelectorAll('.sc-jobs-chip[data-job-chip]')];
+		const cards = [...section.querySelectorAll('[data-job-slugs]')];
+		if (!chips.length || !cards.length) return;
+
+		const apply = (filter) => {
+			cards.forEach((card) => {
+				if (filter === 'all') {
+					card.style.display = '';
+					return;
+				}
+				const slugs = (card.getAttribute('data-job-slugs') || '').toLowerCase();
+				card.style.display = slugs.indexOf(filter.toLowerCase()) > -1 ? '' : 'none';
+			});
+		};
+
+		chips.forEach((chip) => {
+			chip.addEventListener('click', () => {
+				chips.forEach((c) => {
+					c.classList.remove('is-active');
+					c.setAttribute('aria-selected', 'false');
+				});
+				chip.classList.add('is-active');
+				chip.setAttribute('aria-selected', 'true');
+				apply(chip.getAttribute('data-job-chip') || 'all');
+			});
+		});
+	});
+}
+
+function filterAuthorTagsFromMoreNews() {
+	document.querySelectorAll('.sc-mn-card').forEach((card) => {
+		const author = (card.querySelector('.sc-mn-card-author')?.textContent || '').trim().toLowerCase();
+		if (!author) return;
+		card.querySelectorAll('.sc-mn-card-tag').forEach((tag) => {
+			const text = (tag.textContent || '').trim().toLowerCase();
+			if (text && text === author) tag.remove();
+		});
+	});
+
+	// Also collect all author names site-wide and filter them out of any tag chip on more-news cards.
+	const authorNames = new Set();
+	document.querySelectorAll('.sc-mn-card-author').forEach((el) => {
+		const name = (el.textContent || '').trim().toLowerCase();
+		if (name) authorNames.add(name);
+	});
+	if (!authorNames.size) return;
+	document.querySelectorAll('.sc-mn-card .sc-mn-card-tag').forEach((tag) => {
+		const text = (tag.textContent || '').trim().toLowerCase();
+		if (text && authorNames.has(text)) tag.remove();
+	});
+}
+
+function hydrateAdvertisingHero() {
+	const h1 = document.querySelector('.sc-adv-hero [data-sc-adv-hero-h1]');
+	const tpl = document.querySelector('template.sc-adv-source');
+	if (!h1 || !tpl || !tpl.content) return;
+
+	const holder = document.createElement('div');
+	holder.appendChild(tpl.content.cloneNode(true));
+
+	const heading = holder.querySelector('h1, h2, h3');
+	if (heading) {
+		const headingText = (heading.textContent || '').trim();
+		if (headingText) h1.textContent = headingText;
+	}
+}
+
+function hydrateBestExchangesWidget() {
+	const widget = document.querySelector('.sc-mn-widget--exchanges');
+	if (!widget) return;
+	const tpl = widget.querySelector('template.sc-mn-exchanges-source');
+	if (!tpl || !tpl.content) return;
+	const list = widget.querySelector('.sc-mn-exchanges');
+	if (!list) return;
+
+	const holder = document.createElement('div');
+	holder.appendChild(tpl.content.cloneNode(true));
+
+	const ctaCards = [...holder.querySelectorAll('.kg-cta-card')];
+	const productCards = [...holder.querySelectorAll('.kg-product-card')];
+
+	const fromProduct = productCards.map((card) => {
+		const title = (card.querySelector('.kg-product-card-title')?.textContent || '').trim();
+		const img = card.querySelector('.kg-product-card-image, img');
+		const imgSrc = img?.getAttribute('src') || '';
+		const imgAlt = img?.getAttribute('alt') || title;
+		const btn = card.querySelector('.kg-product-card-button');
+		const btnHref = btn?.getAttribute('href') || '#';
+		return { title, imgSrc, imgAlt, btnHref };
+	});
+
+	const fromCta = ctaCards.map((card) => {
+		const title = (card.querySelector('.kg-cta-text')?.textContent || '').trim();
+		const img = card.querySelector('.kg-cta-image-container img, img');
+		const imgSrc = img?.getAttribute('src') || '';
+		const imgAlt = img?.getAttribute('alt') || title;
+		const btn = card.querySelector('a.kg-cta-button');
+		const imgLink = card.querySelector('.kg-cta-image-container a');
+		const btnHref = btn?.getAttribute('href') || imgLink?.getAttribute('href') || '#';
+		return { title, imgSrc, imgAlt, btnHref };
+	});
+
+	const cards = [...fromProduct, ...fromCta].filter((c) => c.title);
+
+	if (!cards.length) return;
+
+	const escapeHtml = (s) =>
+		(s || '').replace(/[&<>"']/g, (ch) =>
+			({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch])
+		);
+
+	const arrowSvg =
+		'<svg class="sc-mn-exchange-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9992A" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+
+	list.innerHTML = cards
+		.map((c) => {
+			const slug = c.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+			const iconHtml = c.imgSrc
+				? `<img src="${escapeHtml(c.imgSrc)}" alt="${escapeHtml(c.imgAlt)}" loading="lazy" />`
+				: '';
+			return `<a class="sc-mn-exchange-item" href="${escapeHtml(c.btnHref)}" target="_blank" rel="noopener">
+				<div class="sc-mn-exchange-icon sc-mn-exchange-icon--${slug}">${iconHtml}</div>
+				<span class="sc-mn-exchange-name">${escapeHtml(c.title)}</span>
+				${arrowSvg}
+			</a>`;
+		})
+		.join('');
+}
 
 function normalizeLocaleLabels() {
 	const localeMap = {
@@ -126,6 +418,149 @@ function accentLastWord(selector, className) {
 		accentSpan.textContent = lastWord;
 		el.append(accentSpan);
 	});
+}
+
+function accentLastHalf(selector, className) {
+	const elements = Array.from(document.querySelectorAll(selector));
+	if (!elements.length) return;
+
+	elements.forEach((el) => {
+		if (el.querySelector(`.${className}`)) return;
+
+		const rawText = (el.textContent || '').trim().replace(/\s+/g, ' ');
+		if (!rawText) return;
+
+		const words = rawText.split(' ');
+		if (words.length < 2) return;
+
+		const accentCount = Math.max(1, Math.ceil(words.length / 2));
+		const splitIdx = words.length - accentCount;
+		const leadText = words.slice(0, splitIdx).join(' ');
+		const accentText = words.slice(splitIdx).join(' ');
+
+		el.textContent = '';
+		el.append(document.createTextNode(`${leadText} `));
+
+		const accentSpan = document.createElement('span');
+		accentSpan.className = className;
+		accentSpan.textContent = accentText;
+		el.append(accentSpan);
+	});
+}
+
+function initImprintTitleSync() {
+	const titleEl = document.querySelector('.sc-imprint-page .sc-imprint-title');
+	const cms = document.querySelector('.sc-imprint-page .sc-imprint-cms-content');
+	if (!titleEl || !cms) return;
+
+	const firstHeading = cms.querySelector('h1, h2, h3');
+	if (!firstHeading) return;
+
+	const headingText = (firstHeading.textContent || '').trim();
+	if (!headingText) return;
+
+	titleEl.textContent = headingText;
+	firstHeading.remove();
+}
+
+function initAdvertisingDynamicContent() {
+	const article = document.querySelector('.custom-advertising-template .sc-advertising-article');
+	const cms = document.querySelector('.custom-advertising-template .sc-advertising-cms.gh-post-content');
+	if (!article || !cms) return;
+
+	const normalize = (str) => (str || '').toLowerCase().replace(/[^a-z0-9]+/g, '').trim();
+	const headingsMatch = (a, b) => {
+		const na = normalize(a);
+		const nb = normalize(b);
+		if (!na || !nb) return false;
+		return na === nb || `${na}s` === nb || `${nb}s` === na;
+	};
+
+	const dynamicH2s = Array.from(cms.querySelectorAll('h2'));
+
+	const staticSections = Array.from(article.querySelectorAll('.sc-advertising-section, .sc-advertising-packages-shell'));
+
+	staticSections.forEach((section) => {
+		const heading = section.querySelector('.sc-advertising-h2, .sc-advertising-h1');
+		if (!heading) return;
+
+		const dynH2 = dynamicH2s.find((h) => headingsMatch(h.textContent, heading.textContent));
+		if (!dynH2) return;
+
+		let next = dynH2.nextElementSibling;
+		while (next && !['P', 'H2', 'H3', 'UL', 'OL'].includes(next.tagName)) {
+			next = next.nextElementSibling;
+		}
+		if (!next || next.tagName !== 'P') return;
+
+		const dynamicText = (next.textContent || '').trim();
+		if (!dynamicText) return;
+
+		const descSlot = section.querySelector('.sc-advertising-muted, .sc-advertising-lede, .sc-advertising-price-desc');
+		if (descSlot) descSlot.textContent = dynamicText;
+	});
+
+	cms.style.display = 'none';
+}
+
+function initImprintOwnerSync() {
+	const card = document.querySelector('.sc-imprint-page .sc-imprint-owner-card');
+	const cms = document.querySelector('.sc-imprint-page .sc-imprint-cms-content');
+	if (!card || !cms) return;
+
+	const nameEl = card.querySelector('.sc-imprint-owner-copy h3');
+	const descEl = card.querySelector('.sc-imprint-owner-copy p');
+	const emailLink = card.querySelector('.sc-imprint-owner-meta li:nth-child(1) a');
+	const addressEl = card.querySelector('.sc-imprint-owner-meta li:nth-child(2) span, .sc-imprint-owner-meta li:nth-child(2) a');
+
+	const targetP = Array.from(cms.querySelectorAll('p')).find((p) => {
+		const text = p.textContent || '';
+		return /e-?mail\s*[:：]/i.test(text) || /address\s*[:：]/i.test(text) || /indirizzo\s*[:：]/i.test(text);
+	});
+	if (!targetP) return;
+
+	const lines = targetP.innerHTML.split(/<br\s*\/?>/i);
+	const remainingLines = [];
+	let nameAssigned = false;
+	let descAssigned = false;
+
+	lines.forEach((lineHtml) => {
+		const tmp = document.createElement('div');
+		tmp.innerHTML = lineHtml;
+		const lineText = (tmp.textContent || '').trim();
+		if (!lineText) return;
+
+		const emailMatch = lineText.match(/^e-?mail\s*[:：]\s*(.+)$/i);
+		const addressMatch = lineText.match(/^(?:address|indirizzo)\s*[:：]\s*(.+)$/i);
+
+		if (emailMatch && emailLink) {
+			const value = emailMatch[1].trim();
+			emailLink.textContent = value;
+			if (value.includes('@')) emailLink.href = `mailto:${value}`;
+			return;
+		}
+		if (addressMatch && addressEl) {
+			addressEl.textContent = addressMatch[1].trim();
+			return;
+		}
+		if (!nameAssigned && nameEl) {
+			nameEl.textContent = lineText;
+			nameAssigned = true;
+			return;
+		}
+		if (!descAssigned && descEl) {
+			descEl.textContent = lineText;
+			descAssigned = true;
+			return;
+		}
+		remainingLines.push(lineHtml.trim());
+	});
+
+	if (remainingLines.length) {
+		targetP.innerHTML = remainingLines.join('<br>');
+	} else {
+		targetP.remove();
+	}
 }
 
 function initMoreNewsLoadMore() {
@@ -254,6 +689,17 @@ accentAboutHeroLastWord();
 accentLastWord('.sc-about-operate-head h2', 'sc-about-operate-last-word');
 accentLastWord('.sc-about-revenue-head h2', 'sc-about-revenue-last-word');
 accentLastWord('.sc-about-team-head h3', 'sc-about-team-last-word');
+initImprintTitleSync();
+initImprintOwnerSync();
+initAdvertisingDynamicContent();
+hydrateSocialChannels();
+hydrateBestExchangesWidget();
+hydrateAdvertisingHero();
+hydrateGenericFaq();
+initCryptoJobsChipFilter();
+filterAuthorTagsFromMoreNews();
+accentLastHalf('.sc-contact-hero-inner h1', 'sc-contact-hero-last-word');
+accentLastHalf('.sc-imprint-title', 'sc-imprint-title-accent');
 initAboutPage();
 initMoreNewsLoadMore();
 initJobsLoadMore();

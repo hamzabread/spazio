@@ -1,4 +1,4 @@
-<section class="sc-about-faq">
+<section class="sc-about-faq sc-faq-section">
     <div class="sc-about-shell">
         <div class="sc-about-faq-wrap">
             <div class="sc-about-faq-head">
@@ -103,60 +103,65 @@
                 </article>
             </div>
         </div>
+
+        {{!-- Dynamic source: a Ghost page with slug `faq` or tag `#faq`. The JS hydrator
+             rebuilds the FAQ list above using h2/h3 question headings + their following <p> answers. --}}
+        {{#get "pages" filter="slug:faq,slug:frequently-asked-questions,tag:hash-faq+status:published" limit="1"}}
+            {{#foreach pages}}
+            <template class="sc-faq-source">{{{html}}}</template>
+            {{/foreach}}
+        {{/get}}
     </div>
 </section>
 
 <script>
     (function () {
-        var faqItems = document.querySelectorAll('[data-faq-item]');
-        if (!faqItems.length) return;
+        // Event-delegated accordion — survives DOM rebuilds from the JS hydrator.
+        document.querySelectorAll('[data-faq-list]').forEach(function (list) {
+            if (list.dataset.scFaqBound === 'true') return;
+            list.dataset.scFaqBound = 'true';
 
-        function setOpenState(item, isOpen) {
-            var trigger = item.querySelector('.sc-about-faq-trigger');
-            var panel = item.querySelector('[data-faq-answer-wrap]');
-            if (!trigger || !panel) return;
-
-            trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-            item.classList.toggle('is-open', isOpen);
-
-            if (isOpen) {
-                panel.style.maxHeight = panel.scrollHeight + 'px';
-            } else {
-                panel.style.maxHeight = '0px';
-            }
-        }
-
-        faqItems.forEach(function (item) {
-            var trigger = item.querySelector('.sc-about-faq-trigger');
-            var panel = item.querySelector('[data-faq-answer-wrap]');
-            if (!trigger || !panel) return;
-
-            if (item.classList.contains('is-open')) {
-                panel.style.maxHeight = panel.scrollHeight + 'px';
-            } else {
-                panel.style.maxHeight = '0px';
+            function setOpenState(item, isOpen) {
+                var trigger = item.querySelector('.sc-about-faq-trigger');
+                var panel = item.querySelector('[data-faq-answer-wrap]');
+                if (!trigger || !panel) return;
+                trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                item.classList.toggle('is-open', isOpen);
+                panel.style.maxHeight = isOpen ? panel.scrollHeight + 'px' : '0px';
             }
 
-            trigger.addEventListener('click', function () {
-                var isOpen = item.classList.contains('is-open');
-
-                faqItems.forEach(function (other) {
-                    if (other !== item) {
-                        setOpenState(other, false);
-                    }
+            function syncInitial() {
+                list.querySelectorAll('[data-faq-item]').forEach(function (item) {
+                    var panel = item.querySelector('[data-faq-answer-wrap]');
+                    if (!panel) return;
+                    panel.style.maxHeight = item.classList.contains('is-open')
+                        ? panel.scrollHeight + 'px'
+                        : '0px';
                 });
+            }
 
-                setOpenState(item, !isOpen);
+            list.addEventListener('click', function (e) {
+                var trigger = e.target.closest('.sc-about-faq-trigger');
+                if (!trigger || !list.contains(trigger)) return;
+                var item = trigger.closest('[data-faq-item]');
+                if (!item) return;
+                var willOpen = !item.classList.contains('is-open');
+                list.querySelectorAll('[data-faq-item]').forEach(function (other) {
+                    if (other !== item) setOpenState(other, false);
+                });
+                setOpenState(item, willOpen);
             });
-        });
 
-        window.addEventListener('resize', function () {
-            faqItems.forEach(function (item) {
-                if (item.classList.contains('is-open')) {
+            window.addEventListener('resize', function () {
+                list.querySelectorAll('[data-faq-item].is-open').forEach(function (item) {
                     var panel = item.querySelector('[data-faq-answer-wrap]');
                     if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
-                }
+                });
             });
+
+            // Re-sync after JS hydrator rebuilds items.
+            list.addEventListener('sc-faq-rebuilt', syncInitial);
+            syncInitial();
         });
     })();
 </script>

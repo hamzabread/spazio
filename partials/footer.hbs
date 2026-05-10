@@ -59,11 +59,11 @@
                 <div class="scf-links-left">
                     <div class="scf-col">
                         <h5>{{t "Cryptocurrencies"}}</h5>
-                        <a href="{{@site.url}}/tag/markets/">{{t "Coin Rankings"}}</a>
-                        <a href="{{@site.url}}/tag/gainers/">{{t "Biggest Gainers"}}</a>
-                        <a href="{{@site.url}}/tag/losers/">{{t "Biggest Losers"}}</a>
-                        <a href="{{@site.url}}/tag/volume/">{{t "Highest Volume"}}</a>
-                        <a href="{{@site.url}}/tag/new-listings/">{{t "Recently Added"}}</a>
+                        <a href="{{@site.url}}/crypto-prices/">{{t "Coin Rankings"}}</a>
+                        <a href="{{@site.url}}/crypto-prices/?sort=gainers">{{t "Biggest Gainers"}}</a>
+                        <a href="{{@site.url}}/crypto-prices/?sort=losers">{{t "Biggest Losers"}}</a>
+                        <a href="{{@site.url}}/crypto-prices/?sort=volume">{{t "Highest Volume"}}</a>
+                        <a href="{{@site.url}}/crypto-prices/?sort=new">{{t "Recently Added"}}</a>
                     </div>
 
                     <div class="scf-col">
@@ -78,9 +78,13 @@
                     <div class="scf-trending-sectors">
                         <h6>{{t "TRENDING SECTORS"}}</h6>
                         <div class="scf-chip-grid">
-                            {{#get "tags" limit="10" order="count.posts desc"}}
+                            {{#get "tags" filter="visibility:public" limit="10" order="count.posts desc" include="count.posts"}}
                                 {{#foreach tags}}
-                                <a href="{{url}}"><span>{{name}} ({{count.posts}})</span></a>
+                                {{#if count.posts}}
+                                <a href="{{url}}"><span>{{name}}<span class="scf-tag-count"> ({{count.posts}})</span></span></a>
+                                {{else}}
+                                <a href="{{url}}"><span>{{name}}</span></a>
+                                {{/if}}
                                 {{/foreach}}
                             {{/get}}
                         </div>
@@ -120,14 +124,16 @@
                     <div class="scf-col">
                         <h5>{{t "More"}}</h5>
                         <a href="{{@site.url}}/about-us/">{{t "About SpazioCrypto"}}</a>
-                        <a href="{{@site.url}}/brand-assets/">{{t "Brand Assets"}}</a>
-                        <a href="{{@site.url}}/tag/company-updates/">{{t "Company Updates"}}</a>
-                        <a href="{{@site.url}}/glossary/">{{t "Crypto Glossary"}}</a>
+                        <a href="{{@site.url}}/advertising/">{{t "Advertising"}}</a>
+                        <a href="{{@site.url}}/contact-us/">{{t "Contact Us"}}</a>
+                        <a href="{{@site.url}}/crypto-prices/">{{t "Crypto Prices"}}</a>
                         <a href="{{@site.url}}/disclaimers/">{{t "Disclaimers"}}</a>
+                        <a href="{{@site.url}}/events/">{{t "Events"}}</a>
                         <a href="{{@site.url}}/faq/">{{t "FAQ"}}</a>
-                        <a href="{{@site.url}}/help/">{{t "Help & Support"}}</a>
-                        <a href="{{@site.url}}/media-kit/">{{t "Media Kit"}}</a>
-                        <a href="{{@site.url}}/tag/press-release/">{{t "Press Releases"}}</a>
+                        <a href="{{@site.url}}/glossary/">{{t "Crypto Glossary"}}</a>
+                        <a href="{{@site.url}}/imprint/">{{t "Imprint"}}</a>
+                        <a href="{{@site.url}}/jobs/">{{t "Jobs"}}</a>
+                        <a href="{{@site.url}}/press-releases/">{{t "Press Releases"}}</a>
                     </div>
                 </div>
             </div>

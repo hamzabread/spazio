@@ -1,4 +1,5 @@
 .tag-section{
+    display: none !important;
 
     &.bg-alt{
         background-color: var(--color-bg-alt);

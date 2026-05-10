@@ -3710,7 +3710,7 @@ a.sc-directory-card--link .sc-directory-name {
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
-    margin-bottom: 18px !important;
+    margin-bottom: 36px !important;
 }
 
 .sc-trusted-logos {
@@ -4324,6 +4324,15 @@ a.sc-directory-card--link .sc-directory-name {
 
 .sc-mn-exchanges {
     padding: 0;
+    /* Cap visible items to 4 — anything beyond becomes scrollable. ~58px per row × 4. */
+    max-height: 232px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+.sc-mn-exchanges::-webkit-scrollbar {
+    width: 0;
 }
 
 .sc-mn-exchange-item {
@@ -5692,4 +5701,30 @@ a.sc-directory-card--link .sc-directory-name {
     .sc-directory-role {
         font-size: 14px;
     }
+}
+
+/* Hide scrollbar on more-news card tag rails (kept scrollable, just no visible bar) */
+.sc-mn-card-tags {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.sc-mn-card-tags::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+/* Featured posts list: vertical scroll for 10+ items, hidden scrollbar */
+.sc-featured-posts-card .sc-fp-list {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.sc-featured-posts-card .sc-fp-list::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
 }

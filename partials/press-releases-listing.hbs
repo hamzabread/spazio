@@ -49,30 +49,30 @@
         {{#if posts}}
             {{#foreach posts}}
             <article class="sc-prl-card" data-pr-slugs="{{#foreach tags visibility="public"}}{{#match slug "press-releases"}}{{else}}{{#match slug "press-release"}}{{else}}{{slug}} {{/match}}{{/match}}{{/foreach}}{{#foreach tags visibility="internal"}}{{slug}} {{/foreach}}" data-pr-sort="{{date published_at format='X'}}">
+                <span class="sc-prl-card-cat">
+                    {{!-- Top: first public topic tag only (press-releases is never shown). Order in Ghost = display order. --}}
+                    {{#foreach tags visibility="public"}}
+                        {{#match slug "press-releases"}}{{else}}
+                        {{#match slug "press-release"}}{{else}}
+                        {{#match slug "hash-press-releases"}}{{else}}
+                        {{#match slug "hash-press-release"}}{{else}}
+                        {{#match slug "sponsored-press-release"}}{{else}}
+                        {{#match slug "blockchain"}}{{else}}
+                        {{#match slug "hash-blockchain"}}{{else}}
+                        <span class="sc-prl-cat-opt">{{name}}</span>
+                        {{/match}}
+                        {{/match}}
+                        {{/match}}
+                        {{/match}}
+                        {{/match}}
+                        {{/match}}
+                        {{/match}}
+                    {{/foreach}}
+                </span>
                 <div class="sc-prl-card-head">
-                    <span class="sc-prl-card-cat">
-                        {{!-- Top: first public topic tag only (press-releases is never shown). Order in Ghost = display order. --}}
-                        {{#foreach tags visibility="public"}}
-                            {{#match slug "press-releases"}}{{else}}
-                            {{#match slug "press-release"}}{{else}}
-                            {{#match slug "hash-press-releases"}}{{else}}
-                            {{#match slug "hash-press-release"}}{{else}}
-                            {{#match slug "sponsored-press-release"}}{{else}}
-                            {{#match slug "blockchain"}}{{else}}
-                            {{#match slug "hash-blockchain"}}{{else}}
-                            <span class="sc-prl-cat-opt">{{name}}</span>
-                            {{/match}}
-                            {{/match}}
-                            {{/match}}
-                            {{/match}}
-                            {{/match}}
-                            {{/match}}
-                            {{/match}}
-                        {{/foreach}}
-                    </span>
+                    <h3 class="sc-prl-title"><a href="{{url}}">{{title}}</a></h3>
                     <a class="sc-prl-read" href="{{url}}">{{t "Read More"}}</a>
                 </div>
-                <h3 class="sc-prl-title"><a href="{{url}}">{{title}}</a></h3>
                 {{#if custom_excerpt}}
                 <p class="sc-prl-lede">{{custom_excerpt}}</p>
                 <div class="sc-prl-snippet">{{content words="40"}}</div>

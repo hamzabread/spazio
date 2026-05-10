@@ -86,3 +86,20 @@
     background-color: #ffffff;
     border-bottom: 1px solid #E9ECEF;
 }
+
+.extended-header .gh-container .right {
+    display: none !important;
+}
+
+/* Wrap the gecko marquee in a clickable anchor that goes to /crypto-prices/.
+   Disable pointer events on the widget itself so all clicks bubble to the wrapper. */
+.extended-header .extended-header-crypto-link {
+    display: block;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+.extended-header .extended-header-crypto-link gecko-coin-price-marquee-widget,
+.extended-header .extended-header-crypto-link gecko-coin-price-marquee-widget * {
+    pointer-events: none;
+}

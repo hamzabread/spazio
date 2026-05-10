@@ -13,7 +13,7 @@
                 </a>
             </div>
             <div class="sc-market-list">
-                <a class="sc-market-item" href="https://www.coingecko.com/en/coins/bitcoin" aria-label="Bitcoin" data-market-row="bitcoin" target="_blank" rel="noopener">
+                <a class="sc-market-item" href="{{@site.url}}/crypto-prices/" aria-label="Bitcoin" data-market-row="bitcoin">
                     <img class="sc-market-coin-icon" src="{{asset "imagesAndIcons/bitcoin.svg"}}" alt="Bitcoin" loading="lazy" width="48" height="48" data-market-icon>
                     <div class="sc-market-coin-info">
                         <span class="sc-market-coin-name" data-market-name>Bitcoin</span>
@@ -24,7 +24,7 @@
                         <span class="sc-market-coin-change sc-md-change-up" data-market-change>↑2.04%</span>
                     </div>
                 </a>
-                <a class="sc-market-item" href="https://www.coingecko.com/en/coins/ethereum" aria-label="Ethereum" data-market-row="ethereum" target="_blank" rel="noopener">
+                <a class="sc-market-item" href="{{@site.url}}/crypto-prices/" aria-label="Ethereum" data-market-row="ethereum">
                     <img class="sc-market-coin-icon" src="{{asset "imagesAndIcons/ethereum.svg"}}" alt="Ethereum" loading="lazy" width="48" height="48" data-market-icon>
                     <div class="sc-market-coin-info">
                         <span class="sc-market-coin-name" data-market-name>Ethereum</span>
@@ -35,7 +35,7 @@
                         <span class="sc-market-coin-change sc-md-change-up" data-market-change>↑1.35%</span>
                     </div>
                 </a>
-                <a class="sc-market-item" href="https://www.coingecko.com/en/coins/cardano" aria-label="Cardano" data-market-row="cardano" target="_blank" rel="noopener">
+                <a class="sc-market-item" href="{{@site.url}}/crypto-prices/" aria-label="Cardano" data-market-row="cardano">
                     <img class="sc-market-coin-icon" src="{{asset "imagesAndIcons/cmp.svg"}}" alt="Cardano" loading="lazy" width="48" height="48" data-market-icon>
                     <div class="sc-market-coin-info">
                         <span class="sc-market-coin-name" data-market-name>Cardano</span>
@@ -51,7 +51,7 @@
         </div>
 
         {{!-- Sponsored Content --}}
-        {{#get "posts" filter="tag:sponsored-content+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags" order="published_at desc"}}
+        {{#get "posts" filter="(tag:sponsored-content,tag:hash-sponsored-content)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags" order="published_at desc"}}
             {{#if posts}}
                 {{#foreach posts}}
                 <a class="sc-sponsored-card" href="{{url}}" aria-label="{{title}}">
@@ -63,7 +63,7 @@
                 </a>
                 {{/foreach}}
             {{else}}
-                {{#get "posts" filter="tag:sponsored-content+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" order="published_at desc"}}
+                {{#get "posts" filter="(tag:sponsored-content,tag:hash-sponsored-content)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" order="published_at desc"}}
                     {{#foreach posts}}
                     <a class="sc-sponsored-card" href="{{url}}" aria-label="{{title}}">
                         <img src="{{#if feature_image}}{{img_url feature_image size="l"}}{{else}}{{asset "imagesAndIcons/yuan.png"}}{{/if}}" alt="{{title}}" loading="lazy">
@@ -78,7 +78,7 @@
         {{/get}}
     </div>
 
-    {{#get "posts" filter="(tag:hero-center,tag:elon-center,tag:elon-musk)+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags,authors" order="published_at desc"}}
+    {{#get "posts" filter="tag:hash-center+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hash-sponsored-content+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="1" include="tags,authors" order="published_at desc"}}
         {{#if posts}}
             {{#foreach posts}}
             {{!-- Center Column: Featured Article --}}
@@ -100,7 +100,7 @@
                                 <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
                             </div>
                             <div class="sc-featured-article-tags">
-                                {{#foreach tags limit="3"}}
+                                {{#foreach tags visibility="public" limit="3"}}
                                 <a class="sc-featured-article-tag" href="{{url}}">{{name}}</a>
                                 {{/foreach}}
                             </div>
@@ -121,7 +121,7 @@
                             </svg>
                         </a>
                     </div>
-                    {{#get "posts" filter="featured:true+id:-{{id}}+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="5" include="tags" order="published_at desc"}}
+                    {{#get "posts" filter="featured:true+id:-{{id}}+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hash-sponsored-content+tag:-hash-center+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="10" include="tags" order="published_at desc"}}
                         {{#if posts}}
                             {{#foreach posts}}
                                 {{#if @first}}
@@ -153,7 +153,7 @@
                                 {{/if}}
                             {{/foreach}}
                         {{else}}
-                            {{#get "posts" filter="featured:true+id:-{{id}}+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="5" include="tags" order="published_at desc"}}
+                            {{#get "posts" filter="featured:true+id:-{{id}}+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hash-sponsored-content+tag:-hash-center+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="10" include="tags" order="published_at desc"}}
                                 {{#foreach posts}}
                                     {{#if @first}}
                                     <div class="sc-fp-main">
@@ -211,7 +211,7 @@
                                         <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
                                     </div>
                                     <div class="sc-featured-article-tags">
-                                        {{#foreach tags limit="3"}}
+                                        {{#foreach tags visibility="public" limit="3"}}
                                         <a class="sc-featured-article-tag" href="{{url}}">{{name}}</a>
                                         {{/foreach}}
                                     </div>
@@ -239,7 +239,7 @@
                                             <span class="sc-featured-article-date">{{date published_at format="DD MMM YYYY"}}</span>
                                         </div>
                                         <div class="sc-featured-article-tags">
-                                            {{#foreach tags limit="3"}}
+                                            {{#foreach tags visibility="public" limit="3"}}
                                             <a class="sc-featured-article-tag" href="{{url}}">{{name}}</a>
                                             {{/foreach}}
                                         </div>
@@ -262,7 +262,7 @@
                             </svg>
                         </a>
                     </div>
-                    {{#get "posts" filter="featured:true+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="5" include="tags" order="published_at desc"}}
+                    {{#get "posts" filter="featured:true+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-sponsored-content+tag:-hash-sponsored-content+tag:-hash-center+tag:-hero-center+tag:-elon-center+tag:-elon-musk+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" limit="10" include="tags" order="published_at desc"}}
                         {{#foreach posts}}
                             {{#if @first}}
                             <div class="sc-fp-main">

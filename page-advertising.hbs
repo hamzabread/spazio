@@ -1,357 +1,327 @@
 {{!< default}}
 
 {{#post}}
-<div class="sc-advertising-page custom-advertising-template">
-    <div class="sc-advertising-inner gh-container">
-        <div class="sc-advertising-layout">
-            <aside class="sc-advertising-toc" aria-label="{{t "On this page"}}">
-                <div class="sc-advertising-toc-head">
-                    <img class="sc-advertising-toc-icon" src="{{asset "imagesAndIcons/on-this-page.svg"}}" alt="" width="32" height="32" loading="lazy" decoding="async" aria-hidden="true">
-                    <span>{{t "On this page"}}</span>
+<main class="sc-adv-page sc-about-page-dynamic">
+
+    {{!-- Hero - mirrors the About hero (breadcrumbs + chip + H1 + lede + socials + image) --}}
+    <section class="sc-about-hero sc-adv-hero">
+        <div class="sc-about-shell">
+            <article class="sc-about-hero-card sc-about-hero-card-dynamic">
+                <div class="sc-about-hero-copy">
+                    {{> breadcrumbs breadcrumb_title=(t "Advertising")}}
+
+                    <span class="sc-about-chip">{{t "Advertising"}}</span>
+
+                    <h1 data-sc-adv-hero-h1>{{title}}</h1>
+
+                    <p data-sc-adv-hero-p>{{t "Reach a globally connected, savvy audience that lives and breathes Web3. Spaziocrypto puts your brand in front of decision-makers across crypto, blockchain, and digital finance — through a trusted editorial environment built for clarity, credibility, and impact."}}</p>
+
+                    <div class="sc-about-socials">
+                        {{#if @site.facebook}}<a href="{{facebook_url}}" target="_blank" rel="noopener" aria-label="Facebook">{{> "icons/facebook"}}</a>{{/if}}
+                        {{#if @custom.telegram_link}}<a href="{{@custom.telegram_link}}" target="_blank" rel="noopener" aria-label="Telegram">{{> "icons/telegram"}}</a>{{/if}}
+                        {{#if @custom.google_news_link}}<a href="{{@custom.google_news_link}}" target="_blank" rel="noopener" aria-label="Google">{{> "icons/googlenews"}}</a>{{/if}}
+                        {{#if @custom.insta_link}}<a href="{{@custom.insta_link}}" target="_blank" rel="noopener" aria-label="Instagram">{{> "icons/instagram"}}</a>{{/if}}
+                        {{#if @site.twitter}}<a href="{{twitter_url}}" target="_blank" rel="noopener" aria-label="Twitter">{{> "icons/twitter"}}</a>{{/if}}
+                    </div>
                 </div>
-                <nav class="sc-advertising-toc-nav">
-                    <a href="#media-kit-overview" class="sc-advertising-toc-link is-active">{{t "Media Kit Overview"}}</a>
-                    <a href="#traffic-analytics" class="sc-advertising-toc-link">{{t "Traffic & Analytics"}}</a>
-                    <a href="#social-proof" class="sc-advertising-toc-link">{{t "Social Proof"}}</a>
-                    <div class="sc-advertising-toc-group">
-                        <span class="sc-advertising-toc-group-label">{{t "Advertising Packages"}}</span>
-                        <a href="#company-listing" class="sc-advertising-toc-sublink">{{t "Company Listing"}}</a>
-                        <a href="#featured-listing" class="sc-advertising-toc-sublink">{{t "Featured Listing"}}</a>
-                        <a href="#press-release" class="sc-advertising-toc-sublink">{{t "Press Release"}}</a>
-                        <a href="#sponsored-article" class="sc-advertising-toc-sublink">{{t "Sponsored Article"}}</a>
-                        <a href="#event-promotion" class="sc-advertising-toc-sublink">{{t "Event Promotion"}}</a>
-                        <a href="#job-listing" class="sc-advertising-toc-sublink">{{t "Job Listing"}}</a>
-                    </div>
-                </nav>
-            </aside>
 
-            <div class="sc-advertising-main">
-                <article class="sc-advertising-article">
-                    <div class="sc-advertising-hero-shell">
-                    <section id="media-kit-overview" class="sc-advertising-section sc-advertising-section--hero">
-                            <h1 class="sc-advertising-h1">{{title}}</h1>
-                            {{#if excerpt}}
-                            <p class="sc-advertising-lede">{{excerpt}}</p>
-                            {{else}}
-                            <p class="sc-advertising-lede">{{t "Advertising overview default"}}</p>
-                            {{/if}}
+                <div class="sc-about-hero-image-wrap">
+                    {{#if feature_image}}
+                        <img class="sc-about-hero-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" loading="lazy" />
+                    {{else}}
+                        <img class="sc-about-hero-image" src="{{asset 'imagesAndIcons/aboutustop.png'}}" alt="{{title}}" loading="lazy" />
+                    {{/if}}
+                </div>
+            </article>
+        </div>
+    </section>
 
-                            <div class="sc-advertising-chart-card">
-                                <div class="sc-advertising-chart-head">
-                                    <span class="sc-advertising-chart-title">{{t "2025 Monthly Views"}}</span>
-                                    <span class="sc-advertising-chart-badge" aria-hidden="true">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="sc-advertising-chart-badge-svg" aria-hidden="true">
-                                            <path d="M18.3334 5.83334L11.2501 12.9167L7.08341 8.75001L1.66675 14.1667" stroke="#22C55E" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M13.3333 5.83334H18.3333V10.8333" stroke="#22C55E" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                        +10.25%
-                                    </span>
-                                </div>
-                                <div class="sc-advertising-chart" role="img" aria-label="{{t "2025 Monthly Views chart"}}">
-                                    <picture>
-                                        <source media="(max-width: 767px)" srcset="{{asset "imagesAndIcons/responsive-graph.svg"}}">
-                                        <img class="sc-advertising-chart-svg" src="{{asset "imagesAndIcons/graph-product.svg"}}" alt="" loading="lazy" decoding="async">
-                                    </picture>
-                                </div>
-                            </div>
-
-                        <div class="sc-advertising-stat-grid">
-                            <div class="sc-advertising-stat-card">
-                                <div class="sc-advertising-chart-head">
-                                    <span class="sc-advertising-chart-title">{{t "Monthly Traffic Trends"}}</span>
-                                    <span class="sc-advertising-chart-badge sc-advertising-chart-badge--bare" aria-hidden="true">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 10.5L6 5.5L9 8L13.5 3.5" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 3.5H13.5V6.5" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                    </span>
-                                </div>
-                                <div class="sc-advertising-bar-chart" role="img" aria-label="{{t "Monthly Traffic Trends chart"}}">
-                                    <img class="sc-advertising-bar-chart-svg" src="{{asset "imagesAndIcons/bar-graph.svg"}}" alt="" loading="lazy" decoding="async">
-                                </div>
-                            </div>
-
-                            <div class="sc-advertising-stat-card">
-                                <div class="sc-advertising-chart-head">
-                                    <span class="sc-advertising-chart-title">{{t "Geographic Distribution"}}</span>
-                                    <span class="sc-advertising-chart-badge sc-advertising-chart-badge--bare" aria-hidden="true">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
-                                    </span>
-                                </div>
-
-                                <ul class="sc-advertising-geo-list" role="list">
-                                    <li class="sc-advertising-geo-row">
-                                        <div class="sc-advertising-geo-label">
-                                            <span>{{t "North America"}}</span>
-                                            <span class="sc-advertising-geo-value">45%</span>
-                                        </div>
-                                        <div class="sc-advertising-geo-track"><span class="sc-advertising-geo-fill" style="width: 45%"></span></div>
-                                    </li>
-                                    <li class="sc-advertising-geo-row">
-                                        <div class="sc-advertising-geo-label">
-                                            <span>{{t "Europe"}}</span>
-                                            <span class="sc-advertising-geo-value">30%</span>
-                                        </div>
-                                        <div class="sc-advertising-geo-track"><span class="sc-advertising-geo-fill" style="width: 30%"></span></div>
-                                    </li>
-                                    <li class="sc-advertising-geo-row">
-                                        <div class="sc-advertising-geo-label">
-                                            <span>{{t "Asia"}}</span>
-                                            <span class="sc-advertising-geo-value">18%</span>
-                                        </div>
-                                        <div class="sc-advertising-geo-track"><span class="sc-advertising-geo-fill" style="width: 18%"></span></div>
-                                    </li>
-                                    <li class="sc-advertising-geo-row">
-                                        <div class="sc-advertising-geo-label">
-                                            <span>{{t "Others"}}</span>
-                                            <span class="sc-advertising-geo-value">7%</span>
-                                        </div>
-                                        <div class="sc-advertising-geo-track"><span class="sc-advertising-geo-fill" style="width: 7%"></span></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="traffic-analytics" class="sc-advertising-section">
-                        <h2 class="sc-advertising-h2">{{t "Traffic & Analytics"}}</h2>
-                        <div class="sc-advertising-chart-card sc-advertising-countries-card">
-                            <h3 class="sc-advertising-chart-title sc-advertising-countries-title">{{t "Top Countries by Traffic"}}</h3>
-                            <div class="sc-advertising-table-wrap">
-                                <table class="sc-advertising-countries-table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">{{t "Country"}}</th>
-                                            <th scope="col">{{t "Sessions"}}</th>
-                                            <th scope="col">{{t "% of Total"}}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="sc-advertising-countries-tbody">
-                                        <tr>
-                                            <td><span class="sc-advertising-rank">1</span> <span class="sc-advertising-country-name">{{t "United States"}}</span></td>
-                                            <td class="sc-advertising-sessions">285,420</td>
-                                            <td class="sc-advertising-pct-cell">
-                                                <div class="sc-advertising-countries-bar-track" aria-hidden="true"><span class="sc-advertising-countries-bar-fill" style="width:28.5%"></span></div>
-                                                <span class="sc-advertising-pct-value">28.5%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="sc-advertising-rank">2</span> <span class="sc-advertising-country-name">{{t "United Kingdom"}}</span></td>
-                                            <td class="sc-advertising-sessions">142,180</td>
-                                            <td class="sc-advertising-pct-cell">
-                                                <div class="sc-advertising-countries-bar-track" aria-hidden="true"><span class="sc-advertising-countries-bar-fill" style="width:14.2%"></span></div>
-                                                <span class="sc-advertising-pct-value">14.2%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="sc-advertising-rank">3</span> <span class="sc-advertising-country-name">{{t "Germany"}}</span></td>
-                                            <td class="sc-advertising-sessions">98,400</td>
-                                            <td class="sc-advertising-pct-cell">
-                                                <div class="sc-advertising-countries-bar-track" aria-hidden="true"><span class="sc-advertising-countries-bar-fill" style="width:9.8%"></span></div>
-                                                <span class="sc-advertising-pct-value">9.8%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="sc-advertising-rank">4</span> <span class="sc-advertising-country-name">{{t "Japan"}}</span></td>
-                                            <td class="sc-advertising-sessions">76,200</td>
-                                            <td class="sc-advertising-pct-cell">
-                                                <div class="sc-advertising-countries-bar-track" aria-hidden="true"><span class="sc-advertising-countries-bar-fill" style="width:7.6%"></span></div>
-                                                <span class="sc-advertising-pct-value">7.6%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="sc-advertising-rank">5</span> <span class="sc-advertising-country-name">{{t "France"}}</span></td>
-                                            <td class="sc-advertising-sessions">61,000</td>
-                                            <td class="sc-advertising-pct-cell">
-                                                <div class="sc-advertising-countries-bar-track" aria-hidden="true"><span class="sc-advertising-countries-bar-fill" style="width:7.7%"></span></div>
-                                                <span class="sc-advertising-pct-value">7.7%</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </section>
-                    </div>
-
-                    <div class="sc-advertising-global-reach">
-                        <div class="sc-advertising-global-reach-head">
-                            <svg class="sc-advertising-global-globe" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                            <h3 class="sc-advertising-global-reach-title">{{t "Global Reach Local Impact"}}</h3>
-                        </div>
-                        <p class="sc-advertising-global-reach-sub">{{t "Listings nine languages"}}</p>
-                        <div class="sc-advertising-lang-pills" role="list">
-                            <div class="sc-advertising-lang-pill" role="listitem"><span class="sc-advertising-lang-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none"><g clip-path="url(#clip0_753_6640)"><path d="M0 0H27V18.0002H0V0Z" fill="white"/><path d="M15.1875 -0.00012207H11.8125V7.31235H0V10.6874H11.8125V17.9998H15.1875V10.6874H27V7.31235H15.1875V-0.00012207Z" fill="#D80027"/><path d="M20.766 12.1302L27 15.5936V12.1302H20.766ZM16.4348 12.1302L27 17.9998V16.34L19.4225 12.1302H16.4348ZM24.1858 17.9998L16.4348 13.6933V17.9998H24.1858Z" fill="#0052B4"/><path d="M16.4348 12.1302L27 17.9998V16.34L19.4225 12.1302H16.4348Z" fill="white"/><path d="M16.4348 12.1302L27 17.9998V16.34L19.4225 12.1302H16.4348Z" fill="#D80027"/><path d="M4.76408 12.1301L0 14.7769V12.1301H4.76408ZM10.5652 12.8765V17.9997H1.34425L10.5652 12.8765Z" fill="#0052B4"/><path d="M7.57756 12.1302L0 16.34V17.9998L10.5652 12.1302H7.57756Z" fill="#D80027"/><path d="M6.23399 5.86943L0 2.40604V5.86943H6.23399ZM10.5652 5.86943L0 -0.00012207V1.65964L7.57756 5.86943H10.5652ZM2.81422 -0.00012207L10.5652 4.30638V-0.00012207H2.81422Z" fill="#0052B4"/><path d="M10.5652 5.86943L0 -0.00012207V1.65964L7.57756 5.86943H10.5652Z" fill="white"/><path d="M10.5652 5.86943L0 -0.00012207V1.65964L7.57756 5.86943H10.5652Z" fill="#D80027"/><path d="M22.236 5.86948L27 3.22274V5.86948H22.236ZM16.4348 5.12308V-0.00012207H25.6558L16.4348 5.12308Z" fill="#0052B4"/><path d="M19.4225 5.86943L27 1.65964V-0.00012207L16.4348 5.86943H19.4225Z" fill="#D80027"/></g><defs><clipPath id="clip0_753_6640"><rect width="27" height="18" fill="white"/></clipPath></defs></svg></span><span class="sc-advertising-lang-label">{{t "English"}}</span></div>
-                            <div class="sc-advertising-lang-pill" role="listitem"><span class="sc-advertising-lang-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none"><g clip-path="url(#clip0_753_6643)"><path d="M18 -0.00012207H0V17.9998H27V-0.00012207H18Z" fill="white"/><path d="M0 0H8.99981V18.0002H0V0Z" fill="#6DA544"/><path d="M18.0002 0H27V18.0002H18.0002V0Z" fill="#D80027"/></g><defs><clipPath id="clip0_753_6643"><rect width="27" height="18" fill="white"/></clipPath></defs></svg></span><span class="sc-advertising-lang-label">{{t "Italiano"}}</span></div>
-                            <div class="sc-advertising-lang-pill" role="listitem"><span class="sc-advertising-lang-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none"><g clip-path="url(#clip0_753_6646)"><path d="M0 0.0126953H26.9474V18.0127H0V0.0126953Z" fill="white"/><path d="M0 0.0126953H26.9474V4.8127H0V0.0126953ZM0 13.2127H26.9474V18.0127H0V13.2127Z" fill="#D03433"/><path d="M0 4.80212H26.9474V13.2232H0V4.80212Z" fill="#FBCA46"/><path d="M9.3418 8.4126H10.5395V9.0126H9.3418V8.4126Z" fill="white"/><path d="M8.62314 10.2126C8.62314 10.5726 8.98244 10.8126 9.34173 10.8126C9.70103 10.8126 10.0603 10.5726 10.0603 10.2126L10.1801 8.41262H8.50337L8.62314 10.2126ZM7.90454 8.41262C7.90454 8.05262 8.14407 7.81262 8.38361 7.81262H10.1801C10.5394 7.81262 10.7789 8.05262 10.7789 8.29262V8.41262L10.6592 10.2126C10.5394 10.9326 10.0603 11.4126 9.34173 11.4126C8.62314 11.4126 8.14407 10.9326 8.02431 10.2126L7.90454 8.41262Z" fill="#A41517"/><path d="M8.14415 9.0127H10.5395V9.6127H9.94064L9.34181 10.8127L8.74298 9.6127H8.14415V9.0127ZM6.34766 7.2127H7.54532V11.4127H6.34766V7.2127ZM11.1383 7.2127H12.336V11.4127H11.1383V7.2127ZM8.14415 6.6127C8.14415 6.2527 8.38368 6.0127 8.74298 6.0127H9.94064C10.2999 6.0127 10.5395 6.2527 10.5395 6.6127V6.8527C10.5395 7.0927 10.4197 7.2127 10.1802 7.2127H8.38368C8.26391 7.2127 8.14415 7.0927 8.14415 6.9727V6.6127Z" fill="#A41517"/></g><defs><clipPath id="clip0_753_6646"><rect width="27" height="18" fill="white"/></clipPath></defs></svg></span><span class="sc-advertising-lang-label">{{t "Español"}}</span></div>
-                            <div class="sc-advertising-lang-pill" role="listitem"><span class="sc-advertising-lang-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none"><g clip-path="url(#clip0_753_6649)"><path d="M0 -0.00012207H27V18.0001H0V-0.00012207Z" fill="white"/><path d="M0 -0.00012207H8.99981V18.0001H0V-0.00012207Z" fill="#0052B4"/><path d="M18.0002 -0.00012207H27V18.0001H18.0002V-0.00012207Z" fill="#D80027"/></g><defs><clipPath id="clip0_753_6649"><rect width="27" height="18" fill="white"/></clipPath></defs></svg></span><span class="sc-advertising-lang-label">{{t "Français"}}</span></div>
-                            <div class="sc-advertising-lang-pill" role="listitem"><span class="sc-advertising-lang-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none"><g clip-path="url(#clip0_753_6652)"><path d="M0 -0.00012207H27V18.0001H0V-0.00012207Z" fill="#D80027"/><path d="M0 -0.00012207H27V5.99974H0V-0.00012207Z" fill="black"/><path d="M0 11.9996H27V17.9995H0V11.9996Z" fill="#FFDA44"/></g><defs><clipPath id="clip0_753_6652"><rect width="27" height="18" fill="white"/></clipPath></defs></svg></span><span class="sc-advertising-lang-label">{{t "Deutsch"}}</span></div>
-                            <div class="sc-advertising-lang-pill" role="listitem"><span class="sc-advertising-lang-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none"><g clip-path="url(#clip0_753_6655)"><path d="M26.75 0.25V17.75H0.25V0.25H26.75Z" fill="white" stroke="#E6E6E6" stroke-width="0.5"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4.12231 5.45227L6.61846 1.70804L7.27534 2.14596L4.7792 5.89019L4.12231 5.45227ZM5.05837 6.07631L7.55452 2.33208L8.2114 2.77L5.71525 6.51423L5.05837 6.07631ZM5.99443 6.70034L8.49058 2.95611L9.14746 3.39403L6.65131 7.13826L5.99443 6.70034ZM17.8512 14.6048L20.3473 10.8606L21.0042 11.2985L18.508 15.0427L17.8512 14.6048ZM18.7872 15.2288L21.2834 11.4846L21.9402 11.9225L19.4441 15.6668L18.7872 15.2288ZM22.8763 12.5466L20.3802 16.2908L19.7233 15.8529L22.2194 12.1087L22.8763 12.5466Z" fill="black"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.7413 14.8894L18.6211 12.8093L18.986 12.2619L22.1062 14.342L21.7413 14.8894Z" fill="white"/><path d="M17.2434 11.4956C18.622 9.42774 18.0632 6.63383 15.9953 5.25525C13.9274 3.87666 11.1335 4.43545 9.75494 6.50333C8.37635 8.57121 8.93514 11.3651 11.003 12.7437C13.0709 14.1223 15.8648 13.5635 17.2434 11.4956Z" fill="#CA163A"/><path d="M9.75494 6.50333C9.066 7.53674 9.34557 8.93458 10.379 9.62352C11.4124 10.3125 12.8102 10.0329 13.4992 8.99948C14.1881 7.96607 15.5859 7.6865 16.6194 8.37543C17.6528 9.06437 17.9323 10.4622 17.2434 11.4956C15.8655 13.5624 13.0698 14.1216 11.003 12.7437C8.9362 11.3658 8.37706 8.57014 9.75494 6.50333Z" fill="#0E4896"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.3801 1.70801L22.8763 5.45225L22.2194 5.89017L19.7232 2.14593L20.3801 1.70801ZM19.4441 2.33206L21.9402 6.07628L21.2834 6.5142L18.7872 2.76999L19.4441 2.33206ZM18.508 2.9561L21.0042 6.70031L20.3473 7.13823L17.8511 3.39402L18.508 2.9561ZM6.65126 10.8606L9.14741 14.6048L8.49053 15.0427L5.99437 11.2985L6.65126 10.8606ZM5.7152 11.4846L8.21135 15.2288L7.55447 15.6667L5.05832 11.9225L5.7152 11.4846ZM4.7792 12.1086L7.27535 15.8529L6.61846 16.2908L4.12231 12.5466L4.7792 12.1086Z" fill="black"/><path d="M6.16797 13.8869L7.10403 13.2629L6.16797 13.8869ZM18.8035 5.46327L19.8968 4.73439L18.8035 5.46327ZM20.8328 4.11036L21.7689 3.48633L20.8328 4.11036Z" fill="black"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21.9515 3.76005L21.0154 4.38408L20.6505 3.83668L21.5865 3.21265L21.9515 3.76005ZM20.0793 5.00811L18.986 5.73699L18.6211 5.18959L19.7144 4.46071L20.0793 5.00811ZM7.28657 13.5367L6.35051 14.1607L5.9856 13.6133L6.92166 12.9893L7.28657 13.5367Z" fill="white"/></g><defs><clipPath id="clip0_753_6655"><rect width="27" height="18" fill="white"/></clipPath></defs></svg></span><span class="sc-advertising-lang-label">{{t "Korean"}}</span></div>
-                            <div class="sc-advertising-lang-pill" role="listitem"><span class="sc-advertising-lang-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none"><g clip-path="url(#clip0_753_6658)"><path d="M0 -0.00012207V17.9998H27V-0.00012207H0Z" fill="white"/><path d="M0 0H27V18.0002H0V0Z" fill="#0052B4"/><path d="M0 0H27V5.99986H0V0Z" fill="white"/><path d="M0 11.9998H27V17.9996H0V11.9998Z" fill="#D80027"/></g><defs><clipPath id="clip0_753_6658"><rect width="27" height="18" fill="white"/></clipPath></defs></svg></span><span class="sc-advertising-lang-label">{{t "Russian"}}</span></div>
-                            <div class="sc-advertising-lang-pill" role="listitem"><span class="sc-advertising-lang-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none"><g clip-path="url(#clip0_753_6662)"><path d="M0 0H27V18H0V0Z" fill="#D80027"/><path d="M11.9368 12.5895L11.4263 11.7685L10.4842 12.0001L11.1105 11.258L10.6 10.4369L11.5 10.8001L12.1211 10.058L12.0526 11.0264L12.9526 11.3895L12.0105 11.6211L11.9368 12.5895ZM15.2947 4.31586L14.7632 5.12639L15.3737 5.87902L14.4421 5.62639L13.9105 6.44218L13.8579 5.47376L12.9263 5.22112L13.8316 4.87376L13.779 3.90533L14.3895 4.65797L15.2947 4.31586ZM12.4316 1.33691L12.3263 2.30007L13.2105 2.70007L12.2632 2.90007L12.1579 3.86323L11.6737 3.02112L10.7316 3.22112L11.379 2.50007L10.8947 1.66323L11.779 2.05797L12.4316 1.33691ZM15.4105 8.51586L14.6263 9.08955L14.9316 10.0106L14.1474 9.44218L13.3632 10.0211L13.6579 9.09481L12.8737 8.53165L13.8421 8.52639L14.1369 7.60007L14.4421 8.52112L15.4105 8.51586ZM6.05264 2.43691L6.96317 5.2527H9.92106L7.53159 6.98428L8.44211 9.80007L6.05264 8.06323L3.6579 9.80007L4.57369 6.98428L2.17896 5.2527H5.14211L6.05264 2.43691Z" fill="#FFDA44"/></g><defs><clipPath id="clip0_753_6662"><rect width="27" height="18" fill="white"/></clipPath></defs></svg></span><span class="sc-advertising-lang-label">{{t "Chinese"}}</span></div>
-                            <div class="sc-advertising-lang-pill" role="listitem"><span class="sc-advertising-lang-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none"><g clip-path="url(#clip0_753_6665)"><path d="M26.75 0.25V17.75H0.25V0.25H26.75Z" fill="white" stroke="#E6E6E6" stroke-width="0.5"/><path d="M13.5 14.0623C16.2959 14.0623 18.5625 11.7957 18.5625 8.99976C18.5625 6.20382 16.2959 3.93726 13.5 3.93726C10.7041 3.93726 8.4375 6.20382 8.4375 8.99976C8.4375 11.7957 10.7041 14.0623 13.5 14.0623Z" fill="#D80027"/></g><defs><clipPath id="clip0_753_6665"><rect width="27" height="18" fill="white"/></clipPath></defs></svg></span><span class="sc-advertising-lang-label">{{t "Japanese"}}</span></div>
-                        </div>
-                        <p class="sc-advertising-global-reach-foot">{{t "Global reach footer copy"}}</p>
-                    </div>
-
-                    <section id="social-proof" class="sc-advertising-section sc-advertising-section--social">
-                        <div class="sc-advertising-social-banner">
-                            <p>{{t "Global reach footer copy"}}</p>
-                        </div>
-                        <h2 class="sc-advertising-h2 sc-advertising-h2--center">{{t "Trusted by Leading Crypto Brands"}}</h2>
-                        <p class="sc-advertising-muted sc-advertising-muted--center">{{t "Social proof subtitle"}}</p>
-                        <div class="sc-advertising-metrics" role="list">
-                            <div class="sc-advertising-metric" role="listitem">
-                                <span class="sc-advertising-metric-value">500+</span>
-                                <span class="sc-advertising-metric-label">{{t "Active Advertisers"}}</span>
-                            </div>
-                            <div class="sc-advertising-metric" role="listitem">
-                                <span class="sc-advertising-metric-value">98%</span>
-                                <span class="sc-advertising-metric-label">{{t "Satisfaction Rate"}}</span>
-                            </div>
-                            <div class="sc-advertising-metric" role="listitem">
-                                <span class="sc-advertising-metric-value">3.2M+</span>
-                                <span class="sc-advertising-metric-label">{{t "Ad Impressions Month"}}</span>
-                            </div>
-                            <div class="sc-advertising-metric" role="listitem">
-                                <span class="sc-advertising-metric-value">4.8/5</span>
-                                <span class="sc-advertising-metric-label">{{t "Average Rating"}}</span>
-                            </div>
-                        </div>
-                        <div class="sc-advertising-testimonial-grid">
-                            <blockquote class="sc-advertising-tcard">
-                                <div class="sc-advertising-tcard-stars" aria-hidden="true">{{> "advertising-stars"}}</div>
-                                <p class="sc-advertising-tcard-quote">{{t "Testimonial quote 1"}}</p>
-                                <footer class="sc-advertising-tcard-author">
-                                    <span class="sc-advertising-tcard-avatar" aria-hidden="true">MW</span>
-                                    <span class="sc-advertising-tcard-meta"><strong>{{t "Michael Wang"}}</strong><span>{{t "CMO CryptoVentures"}}</span></span>
-                                </footer>
-                            </blockquote>
-                            <blockquote class="sc-advertising-tcard">
-                                <div class="sc-advertising-tcard-stars" aria-hidden="true">{{> "advertising-stars"}}</div>
-                                <p class="sc-advertising-tcard-quote">{{t "Testimonial quote 2"}}</p>
-                                <footer class="sc-advertising-tcard-author">
-                                    <span class="sc-advertising-tcard-avatar" aria-hidden="true">SP</span>
-                                    <span class="sc-advertising-tcard-meta"><strong>{{t "Sarah Patterson"}}</strong><span>{{t "Marketing Director BlockTech"}}</span></span>
-                                </footer>
-                            </blockquote>
-                            <blockquote class="sc-advertising-tcard">
-                                <div class="sc-advertising-tcard-stars" aria-hidden="true">{{> "advertising-stars"}}</div>
-                                <p class="sc-advertising-tcard-quote">{{t "Testimonial quote 3"}}</p>
-                                <footer class="sc-advertising-tcard-author">
-                                    <span class="sc-advertising-tcard-avatar" aria-hidden="true">JR</span>
-                                    <span class="sc-advertising-tcard-meta"><strong>{{t "James Rodriguez"}}</strong><span>{{t "Founder DeFi Innovations"}}</span></span>
-                                </footer>
-                            </blockquote>
-                            <blockquote class="sc-advertising-tcard">
-                                <div class="sc-advertising-tcard-stars" aria-hidden="true">{{> "advertising-stars"}}</div>
-                                <p class="sc-advertising-tcard-quote">{{t "Testimonial quote 3"}}</p>
-                                <footer class="sc-advertising-tcard-author">
-                                    <span class="sc-advertising-tcard-avatar" aria-hidden="true">JR</span>
-                                    <span class="sc-advertising-tcard-meta"><strong>{{t "James Rodriguez"}}</strong><span>{{t "Founder DeFi Innovations"}}</span></span>
-                                </footer>
-                            </blockquote>
-                        </div>
-                    </section>
-
-                    <div class="sc-advertising-packages-shell">
-                        <h2 class="sc-advertising-packages-h2">{{t "Advertising Packages"}}</h2>
-                        <h2 class="sc-advertising-h2">{{t "Company Listing"}}</h2>
-                        <div class="sc-advertising-packages-grid">
-                            <article id="company-listing" class="sc-advertising-price-card">
-                                <div class="sc-advertising-price-card-top">
-                                    <span class="sc-advertising-price-icon" aria-hidden="true">{{> "advertising-building-icon"}}</span>
-                                    <h3 class="sc-advertising-price-title">{{t "Company Listing"}}</h3>
-                                    <div class="sc-advertising-price-row"><span class="sc-advertising-price-num">$299</span> <span class="sc-advertising-price-usd">{{t "USD"}}</span></div>
-                                    <p class="sc-advertising-price-per">{{t "Per month"}}</p>
-                                    <p class="sc-advertising-price-desc">{{t "Company listing description"}}</p>
-                                </div>
-                                <ul class="sc-advertising-price-features">
-                                    <li>{{> "advertising-check"}} {{t "Feature company profile"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature company logo"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature SEO listing"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature analytics dashboard"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature support channel"}}</li>
-                                </ul>
-                                <a class="sc-advertising-price-more" href="#">{{t "More features link"}}</a>
-                                <a class="sc-advertising-price-btn sc-advertising-price-btn--secondary" href="#">{{t "Get Started"}}</a>
-                            </article>
-                            <article id="featured-listing" class="sc-advertising-price-card sc-advertising-price-card--featured">
-                                <div class="sc-advertising-price-card-spotlight">
-                                    <span class="sc-advertising-price-icon sc-advertising-price-icon--on-orange" aria-hidden="true">{{> "advertising-building-icon"}}</span>
-                                    <h3 class="sc-advertising-price-title">{{t "Featured Listing"}}</h3>
-                                </div>
-                                <div class="sc-advertising-price-row"><span class="sc-advertising-price-num">$299</span> <span class="sc-advertising-price-usd">{{t "USD"}}</span></div>
-                                <p class="sc-advertising-price-per">{{t "Per month"}}</p>
-                                <p class="sc-advertising-price-desc">{{t "Featured listing description"}}</p>
-                                <ul class="sc-advertising-price-features">
-                                    <li>{{> "advertising-check"}} {{t "Feature all company"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature homepage placement"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature category spotlight"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature priority support"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature lead capture"}}</li>
-                                </ul>
-                                <a class="sc-advertising-price-more" href="#">{{t "More features link"}}</a>
-                                <a class="sc-advertising-price-btn sc-advertising-price-btn--primary" href="#">{{t "Get Started"}}</a>
-                            </article>
-                            <article id="press-release" class="sc-advertising-price-card">
-                                <div class="sc-advertising-price-card-top">
-                                    <span class="sc-advertising-price-icon" aria-hidden="true">{{> "advertising-building-icon"}}</span>
-                                    <h3 class="sc-advertising-price-title">{{t "Press Release"}}</h3>
-                                    <div class="sc-advertising-price-row"><span class="sc-advertising-price-num">$799</span> <span class="sc-advertising-price-usd">{{t "USD"}}</span></div>
-                                    <p class="sc-advertising-price-per">{{t "Per article"}}</p>
-                                    <p class="sc-advertising-price-desc">{{t "Press release description"}}</p>
-                                </div>
-                                <ul class="sc-advertising-price-features">
-                                    <li>{{> "advertising-check"}} {{t "Feature editorial review"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature SEO press"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature newsletter distribution"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature company logo"}}</li>
-                                    <li>{{> "advertising-check"}} {{t "Feature analytics dashboard"}}</li>
-                                </ul>
-                                <a class="sc-advertising-price-more" href="#">{{t "More features link"}}</a>
-                                <a class="sc-advertising-price-btn sc-advertising-price-btn--secondary" href="#">{{t "Get Started"}}</a>
-                            </article>
-                        </div>
-                    </div>
-
-                    <section class="sc-advertising-section sc-advertising-section--placements">
-                        <h2 class="sc-advertising-h2 sc-advertising-h2--center">{{t "Featured Listing"}}</h2>
-                        {{> "advertising-placement-cards"}}
-                    </section>
-
-                    <section class="sc-advertising-section sc-advertising-section--placements sc-advertising-section--placements-dark" id="press-release-placements">
-                        <h2 class="sc-advertising-h2 sc-advertising-h2--center">{{t "Press Release"}}</h2>
-                        {{> "advertising-placement-cards"}}
-                    </section>
-
-                    <section id="sponsored-article" class="sc-advertising-section sc-advertising-section--placements sc-advertising-section--placements-dark">
-                        <h2 class="sc-advertising-h2 sc-advertising-h2--center">{{t "Sponsored Articles"}}</h2>
-                        {{> "advertising-placement-cards"}}
-                    </section>
-
-                    <section id="event-promotion" class="sc-advertising-section">
-                        <h2 class="sc-advertising-h2">{{t "Event Promotion"}}</h2>
-                        <div class="sc-advertising-mini-card">
-                            <p class="sc-advertising-muted">{{t "Event promotion intro"}}</p>
-                            <a class="sc-advertising-placement-cta sc-advertising-placement-cta--inline" href="#">{{t "Get Started"}}</a>
-                        </div>
-                    </section>
-
-                    <section id="job-listing" class="sc-advertising-section">
-                        <h2 class="sc-advertising-h2">{{t "Job Listing"}}</h2>
-                        <div class="sc-advertising-mini-card">
-                            <p class="sc-advertising-muted">{{t "Job listing intro"}}</p>
-                            <a class="sc-advertising-placement-cta sc-advertising-placement-cta--inline" href="#">{{t "Get Started"}}</a>
-                        </div>
-                    </section>
-
-                    <div class="sc-advertising-cms gh-post-content">
-                        {{{content}}}
-                    </div>
+    {{!-- Real Reach: stats grid --}}
+    <section class="sc-adv-stats">
+        <div class="sc-about-shell">
+            <div class="sc-adv-section-head">
+                <span class="sc-adv-chip">{{t "By the numbers"}}</span>
+                <h2>{{t "A Platform With"}} <span>{{t "Real Reach"}}</span></h2>
+                <p>{{t "Audited metrics across our owned and partner channels — updated quarterly."}}</p>
+            </div>
+            <div class="sc-adv-stats-grid">
+                <article class="sc-adv-stat-card">
+                    <span class="sc-adv-stat-num">10k+</span>
+                    <h3>{{t "Unique Users Monthly"}}</h3>
+                    <p>{{t "Engaged crypto-native readers"}}</p>
+                </article>
+                <article class="sc-adv-stat-card">
+                    <span class="sc-adv-stat-num">9</span>
+                    <h3>{{t "Languages Published"}}</h3>
+                    <p>{{t "Global editorial coverage"}}</p>
+                </article>
+                <article class="sc-adv-stat-card">
+                    <span class="sc-adv-stat-num">10k+</span>
+                    <h3>{{t "Newsletter Subscribers"}}</h3>
+                    <p>{{t "Direct inbox delivery"}}</p>
+                </article>
+                <article class="sc-adv-stat-card">
+                    <span class="sc-adv-stat-num">2x</span>
+                    <h3>{{t "Reach"}}</h3>
+                    <p>{{t "Ads shared across platforms"}}</p>
                 </article>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
+    {{!-- Advertising Services: 5 cards (2x2 + 1 wide bottom) --}}
+    <section class="sc-adv-services">
+        <div class="sc-about-shell">
+            <div class="sc-adv-section-head sc-adv-section-head--centered">
+                <span class="sc-adv-chip">{{t "What We Offer"}}</span>
+                <h2>{{t "Advertising"}} <span>{{t "Services"}}</span></h2>
+                <p>{{t "A full suite of paid placements and editorial collaborations — built for crypto, Web3, and DeFi brands."}}</p>
+            </div>
+            <div class="sc-adv-services-grid">
+                <article class="sc-adv-service-card">
+                    <span class="sc-adv-service-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F18F20" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </span>
+                    <h3>{{t "Display Advertising"}}</h3>
+                    <p>{{t "Boost your brand within the crypto & Web3 space with banners, native ads, and sponsored placements in a trusted editorial environment."}}</p>
+                </article>
 
+                <article class="sc-adv-service-card">
+                    <span class="sc-adv-service-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F18F20" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                    </span>
+                    <h3>{{t "Press Releases"}}</h3>
+                    <p>{{t "Distribute press releases on Spaziocrypto and partner outlets. Ideal for project launches, events, market insights, or educational content."}}</p>
+                    <ul class="sc-adv-service-bullets">
+                        <li><span class="sc-adv-bullet" aria-hidden="true"></span><span class="sc-adv-bullet-text">{{t "Featured on"}} <strong>{{t "European Blockchain Convention"}}</strong>, <strong>{{t "TechBullion"}}</strong>, <strong>{{t "Blockchain Week Rome"}}</strong>, <strong>{{t "ETHRome"}}</strong> &amp; {{t "more"}}</span></li>
+                        <li><span class="sc-adv-bullet" aria-hidden="true"></span><span class="sc-adv-bullet-text">{{t "Boost visibility and referral traffic"}}</span></li>
+                    </ul>
+                </article>
+
+                <article class="sc-adv-service-card">
+                    <span class="sc-adv-service-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F18F20" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </span>
+                    <h3>{{t "Sponsored Posts"}}</h3>
+                    <p>{{t "Reach a targeted, engaged audience with sponsored content published on Spaziocrypto, supported by in-depth analysis and distribution via social channels and aggregators."}}</p>
+                    <ul class="sc-adv-service-bullets">
+                        <li><span class="sc-adv-bullet" aria-hidden="true"></span><span class="sc-adv-bullet-text">{{t "Distributed on top of aggregators —"}} <strong>{{t "Cryptopanic"}}</strong>, <strong>{{t "Blockchair"}}</strong>, <strong>{{t "Blogarama"}}</strong>, <strong>{{t "Google News"}}</strong> &amp; {{t "more"}}</span></li>
+                        <li><span class="sc-adv-bullet" aria-hidden="true"></span><span class="sc-adv-bullet-text">{{t "High engagement & credibility"}}</span></li>
+                    </ul>
+                </article>
+
+                <article class="sc-adv-service-card">
+                    <span class="sc-adv-service-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F18F20" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                    </span>
+                    <h3>{{t "Product Service / Review"}}</h3>
+                    <p>{{t "Professional reviews of your product or service: exchanges, wallets, tokens, DeFi projects, NFT platforms — with focus on usability, value, and market positioning."}}</p>
+                </article>
+
+                <article class="sc-adv-service-card sc-adv-service-card--wide">
+                    <span class="sc-adv-service-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F18F20" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                    </span>
+                    <h3>{{t "Hire a Content Writer"}}</h3>
+                    <p>{{t "Get high-quality, crypto-focused content written by experienced writers — articles, guides, SEO-optimized reports to maximize reach and impact."}}</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    {{!-- Get Started: Contact + Payment + How publishing works --}}
+    <section class="sc-adv-cta">
+        <div class="sc-about-shell">
+            <div class="sc-adv-section-head sc-adv-section-head--centered">
+                <span class="sc-adv-chip">{{t "Get Started"}}</span>
+                <h2>{{t "Let's Get The"}} <span>{{t "Conversation Going"}}</span></h2>
+                <p>{{t "Email us, choose your payment, and learn how publishing works — everything you need to launch a campaign in one place."}}</p>
+            </div>
+
+            <div class="sc-adv-cta-card">
+                <div class="sc-adv-cta-grid">
+                    <article class="sc-adv-cta-col sc-adv-cta-col--contact">
+                        <span class="sc-adv-eyebrow">{{t "CONTACT"}}</span>
+                        <h3>{{t "Reach our"}} <span>{{t "team directly"}}</span></h3>
+                        <p>{{t "Whether it's a media buy, a sponsored post, or a custom partnership — drop us a line and we'll respond within one business day."}}</p>
+                        <a class="sc-adv-contact-row" href="mailto:marketing@spaziocrypto.com">
+                            <span class="sc-adv-contact-icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </span>
+                            <span class="sc-adv-contact-meta">
+                                <span class="sc-adv-contact-label">{{t "MARKETING"}}</span>
+                                <span class="sc-adv-contact-value">marketing@spaziocrypto.com</span>
+                            </span>
+                            <span class="sc-adv-contact-arrow" aria-hidden="true">→</span>
+                        </a>
+                        <a class="sc-adv-contact-row" href="mailto:info@spaziocrypto.com">
+                            <span class="sc-adv-contact-icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            </span>
+                            <span class="sc-adv-contact-meta">
+                                <span class="sc-adv-contact-label">{{t "GENERAL"}}</span>
+                                <span class="sc-adv-contact-value">info@spaziocrypto.com</span>
+                            </span>
+                            <span class="sc-adv-contact-arrow" aria-hidden="true">→</span>
+                        </a>
+                        <a class="sc-adv-cta-button" href="mailto:marketing@spaziocrypto.com">{{t "Request a Tailored Quote"}} →</a>
+                    </article>
+
+                    <article class="sc-adv-cta-col sc-adv-cta-col--payment">
+                        <span class="sc-adv-eyebrow">{{t "PAYMENT METHODS"}}</span>
+                        <h3>{{t "Pay"}} <span>{{t "your way"}}</span></h3>
+                        <p>{{t "Crypto, fiat, or wire — we keep things flexible. Other options available on request."}}</p>
+                        <div class="sc-adv-payment-grid">
+                            <span class="sc-adv-payment-tile"><span class="sc-adv-payment-mark sc-adv-payment-mark--btc">₿</span>{{t "Bitcoin"}}</span>
+                            <span class="sc-adv-payment-tile"><span class="sc-adv-payment-mark sc-adv-payment-mark--eth">Ξ</span>{{t "Ethereum"}}</span>
+                            <span class="sc-adv-payment-tile"><span class="sc-adv-payment-mark sc-adv-payment-mark--usdt">₮</span>{{t "USDT"}}</span>
+                            <span class="sc-adv-payment-tile"><span class="sc-adv-payment-mark sc-adv-payment-mark--paypal">P</span>{{t "PayPal"}}</span>
+                            <span class="sc-adv-payment-tile sc-adv-payment-tile--wide"><span class="sc-adv-payment-mark sc-adv-payment-mark--bank">▭</span>{{t "Bank Transfer (SEPA / SWIFT)"}}</span>
+                        </div>
+                        <p class="sc-adv-payment-note">{{t "All invoices are processed securely. Crypto payments confirmed on-chain. Other methods available upon request."}}</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="sc-adv-publishing-card">
+                <div class="sc-adv-publishing-head">
+                    <h3>{{t "How publishing"}} <span>{{t "works"}}</span></h3>
+                    <p>{{t "From submission to live in 48 hours — three simple, transparent steps."}}</p>
+                </div>
+                <div class="sc-adv-publishing-steps">
+                    <article class="sc-adv-publishing-step">
+                        <div class="sc-adv-step-head">
+                            <span class="sc-adv-step-num">1</span>
+                            <h4>{{t "Submit Original Content"}}</h4>
+                        </div>
+                        <span class="sc-adv-step-tag">{{t "Editorial Quality"}}</span>
+                        <p>{{t "Your article must be entirely original, written by a human, and offer genuine value to our readers."}}</p>
+                    </article>
+                    <span class="sc-adv-publishing-arrow" aria-hidden="true">→</span>
+                    <article class="sc-adv-publishing-step">
+                        <div class="sc-adv-step-head">
+                            <span class="sc-adv-step-num">2</span>
+                            <h4>{{t "Editorial & Link Review"}}</h4>
+                        </div>
+                        <span class="sc-adv-step-tag">{{t "No-Follow Only"}}</span>
+                        <p>{{t "We strictly allow only no-follow links. Anything irrelevant or spammy will be flagged and rejected."}}</p>
+                    </article>
+                    <span class="sc-adv-publishing-arrow" aria-hidden="true">→</span>
+                    <article class="sc-adv-publishing-step">
+                        <div class="sc-adv-step-head">
+                            <span class="sc-adv-step-num">3</span>
+                            <h4>{{t "Live in 48 Hours"}}</h4>
+                        </div>
+                        <span class="sc-adv-step-tag">{{t "Fast Turnaround"}}</span>
+                        <p>{{t "Once payment is confirmed, your article is published within 48 hours — guaranteed exposure to our audience."}}</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{!-- Audience: Global Readership --}}
+    <section class="sc-adv-audience">
+        <div class="sc-about-shell">
+            <div class="sc-adv-section-head sc-adv-section-head--centered">
+                <span class="sc-adv-chip">{{t "Audience"}}</span>
+                <h2>{{t "A Truly"}} <span>{{t "Global Readership"}}</span></h2>
+                <p>{{t "A snapshot of who reads Spaziocrypto, where they're tuning in from, and how they engage. Updated quarterly via Plausible."}}</p>
+            </div>
+
+            <div class="sc-adv-audience-card">
+                <div class="sc-adv-audience-stats">
+                    <div class="sc-adv-audience-stat">
+                        <span class="sc-adv-audience-num">1<span class="sc-adv-audience-num-suffix">k+</span></span>
+                        <p>{{t "AVG. USERS / MO."}}</p>
+                    </div>
+                    <div class="sc-adv-audience-stat">
+                        <span class="sc-adv-audience-num">15<span class="sc-adv-audience-num-suffix">k+</span></span>
+                        <p>{{t "AVG. VIEWS / MO."}}</p>
+                    </div>
+                    <div class="sc-adv-audience-stat">
+                        <span class="sc-adv-audience-num">10<span class="sc-adv-audience-num-suffix">k+</span></span>
+                        <p>{{t "EMAIL SUBS"}}</p>
+                    </div>
+                    <div class="sc-adv-audience-stat">
+                        <span class="sc-adv-audience-num">2.4</span>
+                        <p>{{t "PAGES / VISIT"}}</p>
+                    </div>
+                    <div class="sc-adv-audience-stat">
+                        <span class="sc-adv-audience-num">54.7<span class="sc-adv-audience-num-suffix">%</span></span>
+                        <p>{{t "BOUNCE RATE"}}</p>
+                    </div>
+                    <div class="sc-adv-audience-stat">
+                        <span class="sc-adv-audience-num">15<span class="sc-adv-audience-num-suffix">k+</span></span>
+                        <p>{{t "SOCIAL FOLLOWERS"}}</p>
+                    </div>
+                </div>
+
+                <div class="sc-adv-audience-grid">
+                    <div class="sc-adv-demographics">
+                        <span class="sc-adv-eyebrow">{{t "DEMOGRAPHICS"}}</span>
+                        <h3>{{t "Who's reading"}}</h3>
+                        <div class="sc-adv-demo-grid">
+                            <div class="sc-adv-demo-item">
+                                <div class="sc-adv-demo-circle" style="--pct: 58">
+                                    <span>58%</span>
+                                </div>
+                                <p>{{t "Americas / Europe"}}</p>
+                            </div>
+                            <div class="sc-adv-demo-item">
+                                <div class="sc-adv-demo-circle" style="--pct: 56">
+                                    <span>56%</span>
+                                </div>
+                                <p>{{t "Ages 18-34"}}</p>
+                            </div>
+                            <div class="sc-adv-demo-item">
+                                <div class="sc-adv-demo-circle" style="--pct: 73">
+                                    <span>73%</span>
+                                </div>
+                                <p>{{t "Male"}}</p>
+                            </div>
+                            <div class="sc-adv-demo-item">
+                                <div class="sc-adv-demo-circle" style="--pct: 56">
+                                    <span>56%</span>
+                                </div>
+                                <p>{{t "Asian"}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sc-adv-countries">
+                        <span class="sc-adv-eyebrow">{{t "TOP COUNTRIES"}}</span>
+                        <h3>{{t "Where they're tuning in"}}</h3>
+                        <ul class="sc-adv-countries-list">
+                            <li><span class="sc-adv-country-flag">IT</span><span class="sc-adv-country-name">{{t "Italy"}}</span><span class="sc-adv-country-bar"><span style="--pct: 22.6"></span></span><span class="sc-adv-country-pct">22.6%</span></li>
+                            <li><span class="sc-adv-country-flag">US</span><span class="sc-adv-country-name">{{t "USA"}}</span><span class="sc-adv-country-bar"><span style="--pct: 18.7"></span></span><span class="sc-adv-country-pct">18.7%</span></li>
+                            <li><span class="sc-adv-country-flag">SG</span><span class="sc-adv-country-name">{{t "Singapore"}}</span><span class="sc-adv-country-bar"><span style="--pct: 11.5"></span></span><span class="sc-adv-country-pct">11.5%</span></li>
+                            <li><span class="sc-adv-country-flag">IN</span><span class="sc-adv-country-name">{{t "India"}}</span><span class="sc-adv-country-bar"><span style="--pct: 5.6"></span></span><span class="sc-adv-country-pct">5.6%</span></li>
+                            <li><span class="sc-adv-country-flag">PL</span><span class="sc-adv-country-name">{{t "Poland"}}</span><span class="sc-adv-country-bar"><span style="--pct: 4"></span></span><span class="sc-adv-country-pct">4%</span></li>
+                            <li><span class="sc-adv-country-flag">DE</span><span class="sc-adv-country-name">{{t "Germany"}}</span><span class="sc-adv-country-bar"><span style="--pct: 3.7"></span></span><span class="sc-adv-country-pct">3.7%</span></li>
+                            <li><span class="sc-adv-country-flag">FR</span><span class="sc-adv-country-name">{{t "France"}}</span><span class="sc-adv-country-bar"><span style="--pct: 3.5"></span></span><span class="sc-adv-country-pct">3.5%</span></li>
+                            <li><span class="sc-adv-country-flag">GB</span><span class="sc-adv-country-name">{{t "United Kingdom"}}</span><span class="sc-adv-country-bar"><span style="--pct: 3"></span></span><span class="sc-adv-country-pct">3%</span></li>
+                            <li><span class="sc-adv-country-flag">ID</span><span class="sc-adv-country-name">{{t "Indonesia"}}</span><span class="sc-adv-country-bar"><span style="--pct: 2.6"></span></span><span class="sc-adv-country-pct">2.6%</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sc-adv-audience-foot">
+                    <span class="sc-adv-audience-foot-status"><span class="sc-adv-status-dot" aria-hidden="true"></span>{{t "Data via Plausible · Updated April 2026"}}</span>
+                    <span class="sc-adv-audience-foot-window">{{t "Last 90 days"}}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{> "faq-section"}}
+
+</main>
+
+{{!-- Hidden source for optional dynamic hydration --}}
+<template class="sc-adv-source">{{{content}}}</template>
+
+{{> "never-miss"}}
+{{> "subscribe-newsletter"}}
+{{> "social-media-channels"}}
 {{/post}}

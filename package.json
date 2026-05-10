@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "rollup -c --environment BUILD:development -w",
     "build": "rollup -c --environment BUILD:production",
-    "sync:ghost": "rsync -av --delete --exclude=node_modules --exclude=.git --exclude=.DS_Store ./ ../ghost-local/content/themes/spazio-pitch-multi/ && cd ../ghost-local && ghost restart",
+    "sync:ghost": "npm run build && rsync -av --delete --exclude=node_modules --exclude=.git --exclude=.DS_Store ./ ../ghost-local/content/themes/spazio-pitch-multi/ && cd ../ghost-local && ghost restart",
     "zip": "npm run build && rm -f $npm_package_name.zip && bestzip $npm_package_name.zip assets/* partials/* members/* locales/* *.hbs package.json rollup.config.js",
     "test": "npx gscan .",
     "pretest": "npm run build"

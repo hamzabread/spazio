@@ -4,9 +4,13 @@
 <div class="sc-imprint-page">
 <section class="sc-contact-hero" aria-labelledby="sc-imprint-hero-title">
     <div class="sc-contact-hero-inner gh-container">
-        <span class="sc-contact-hero-chip">Legal Information</span>
-        <h1 id="sc-imprint-hero-title">Imprint & Legal <span>Disclosure</span></h1>
-        <p>Information required under UK and EU regulations, including ownership, contact details, and editorial responsibility.</p>
+        <span class="sc-contact-hero-chip">{{t "Legal Information"}}</span>
+        <h1 id="sc-imprint-hero-title">{{title}}</h1>
+        {{#if excerpt}}
+        <p>{{excerpt}}</p>
+        {{else}}
+        <p>{{t "Information required under UK and EU regulations, including ownership, contact details, and editorial responsibility."}}</p>
+        {{/if}}
     </div>
 </section>
 

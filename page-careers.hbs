@@ -3,9 +3,13 @@
 {{#post}}
 <section class="sc-contact-hero sc-career-hero" aria-labelledby="sc-careers-hero-title">
     <div class="sc-contact-hero-inner sc-career-hero-inner gh-container">
-        <span class="sc-contact-hero-chip">Future of Crypto Media</span>
-        <h1 id="sc-careers-hero-title">Build the Future of Web3 <span>Journalism With Us</span></h1>
-        <p>Join a fast-growing, independent crypto media platform trusted by readers worldwide.</p>
+        <span class="sc-contact-hero-chip">{{t "Future of Crypto Media"}}</span>
+        <h1 id="sc-careers-hero-title">{{title}}</h1>
+        {{#if excerpt}}
+        <p>{{excerpt}}</p>
+        {{else}}
+        <p>{{t "Join a fast-growing, independent crypto media platform trusted by readers worldwide."}}</p>
+        {{/if}}
     </div>
 </section>
 

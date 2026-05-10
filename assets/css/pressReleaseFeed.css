@@ -412,6 +412,7 @@
 }
 
 .sc-prl-card {
+    position: relative;
     border-radius: 10px;
     border: 1px solid #1b1b1b;
     background: #101010;
@@ -439,6 +440,7 @@
     display: inline-flex;
     align-items: center;
     min-height: 1.25em;
+    margin-bottom: 12px;
 }
 
 .sc-prl-card-cat:empty {
@@ -470,6 +472,9 @@
 }
 
 .sc-prl-read {
+    position: absolute;
+    right: 25px;
+    top: 25px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -678,4 +683,9 @@
         padding-top: 32px;
         padding-bottom: 48px;
     }
+}
+
+/* Hide Ghost gallery cards inside the press-releases page body. */
+.sc-press-releases-page .kg-gallery-container {
+    display: none !important;
 }

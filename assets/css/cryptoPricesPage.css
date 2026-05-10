@@ -410,7 +410,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 /* Prev / next only (page numbers live inside `.sc-crypto-prices-page-numbers`) */
@@ -532,5 +532,21 @@
 
     .sc-crypto-prices-page .sc-crypto-prices-listing .sc-jobs-search {
         max-width: none;
+    }
+}
+
+/* Mobile pager: each side fills the row and lays its children out across it. */
+@media (max-width: 767px) {
+    .sc-crypto-prices-pager-left,
+    .sc-crypto-prices-pager-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* Desktop pager: extra breathing room between page numbers. */
+@media (min-width: 768px) {
+    .sc-crypto-prices-page-numbers {
+        gap: 15px;
     }
 }

@@ -220,11 +220,30 @@ function parseFromSlots(cms) {
         });
     }
 
+    console.log('[sc-about FAQ] parseFromSlots', {
+        faqIntroHtml: typeof out.faqIntroHtml,
+        faqIntroLength: out.faqIntroHtml?.length ?? 0,
+        faqIntroPreview: (out.faqIntroHtml || '').slice(0, 160),
+        faqPairsCount: out.faqPairs.length,
+        faqPairs: out.faqPairs.map((p, i) => ({
+            index: i,
+            qType: typeof p.q,
+            q: p.q,
+            aHtmlType: typeof p.aHtml,
+            aHtmlLength: (p.aHtml || '').length,
+            aHtmlPreview: (p.aHtml || '').slice(0, 220)
+        }))
+    });
+
     const rCard = cms.querySelector('[data-sc-about-slot="riccardo-card"]');
     if (rCard) out.riccardoCardSlot = rCard.innerHTML.trim();
 
+    console.log(out.riccardoCardSlot);
+
     const rBio = cms.querySelector('[data-sc-about-slot="riccardo-bio"]');
     if (rBio) out.riccardoBioSlot = rBio.innerHTML.trim();
+
+    console.log(out.riccardoBioSlot);
 
     return out;
 }
@@ -367,6 +386,21 @@ function parseFaqFromFlow(flow) {
 
         i += 1;
     }
+
+    console.log('[sc-about FAQ] parseFaqFromFlow', {
+        introHtml: typeof out.introHtml,
+        introLength: out.introHtml?.length ?? 0,
+        introPreview: (out.introHtml || '').slice(0, 160),
+        pairsCount: out.pairs.length,
+        pairs: out.pairs.map((p, i) => ({
+            index: i,
+            qType: typeof p.q,
+            q: p.q,
+            aHtmlType: typeof p.aHtml,
+            aHtmlLength: (p.aHtml || '').length,
+            aHtmlPreview: (p.aHtml || '').slice(0, 220)
+        }))
+    });
 
     return out;
 }
@@ -760,10 +794,26 @@ function hasHydrationSignal(parsed, holder) {
 /** Prefer toggle cards when headings did not capture pairs (FAQ intro may still parse). */
 function mergeFaqPairsFromToggleCards(holder, faqFlow) {
     const togglePairs = parseFaqTogglePairs(holder);
+    const useToggles =
+        togglePairs.length &&
+        (!faqFlow.pairs.length || togglePairs.length >= faqFlow.pairs.length);
+
+    console.log('[sc-about FAQ] mergeFaqPairsFromToggleCards', {
+        flowPairsCount: faqFlow.pairs.length,
+        togglePairsCount: togglePairs.length,
+        useToggles: !!useToggles,
+        togglePairs: togglePairs.map((p, i) => ({
+            index: i,
+            qType: typeof p.q,
+            q: p.q,
+            aHtmlType: typeof p.aHtml,
+            aHtmlLength: (p.aHtml || '').length,
+            aHtmlPreview: (p.aHtml || '').slice(0, 220)
+        }))
+    });
+
     if (!togglePairs.length) return faqFlow;
 
-    const useToggles =
-        !faqFlow.pairs.length || togglePairs.length >= faqFlow.pairs.length;
     if (useToggles) {
         return { introHtml: faqFlow.introHtml, pairs: togglePairs };
     }
@@ -954,6 +1004,107 @@ function hasCmsSignal(parsed) {
     );
 }
 
+/* Inline social icon SVGs (matched to partials/icons/*.hbs) */
+const TEAM_SOCIAL_SVG = {
+    twitter: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="15" fill="#262626"/><path d="M22.3516 11.7578C22.3516 11.9219 22.3516 12.0859 22.3516 12.2266C22.3516 17.0781 18.6484 22.6797 11.8984 22.6797C9.8125 22.6797 7.89062 22.0703 6.25 21.0391C6.53125 21.0625 6.83594 21.0859 7.11719 21.0859C8.82812 21.0859 10.4219 20.5 11.6875 19.5156C10.0703 19.4922 8.71094 18.4141 8.26562 16.9609C8.5 17.0078 8.71094 17.0313 8.96875 17.0313C9.29687 17.0313 9.625 16.9844 9.92969 16.8906C8.24219 16.5625 6.97656 15.0859 6.97656 13.3047C6.97656 13.2813 6.97656 13.2813 6.97656 13.2578C7.46875 13.5391 8.03125 13.7031 8.64062 13.7266C7.65625 13.0703 7 11.9453 7 10.6563C7 9.97656 7.1875 9.34375 7.49219 8.80469C9.29687 11.0313 12.0156 12.4844 15.0625 12.6484C14.9922 12.3906 14.9687 12.0859 14.9687 11.8047C14.9687 9.76563 16.6094 8.125 18.6484 8.125C19.7031 8.125 20.6641 8.57031 21.3203 9.27344C22.1641 9.10938 22.9375 8.80469 23.6641 8.38281C23.3828 9.25 22.7969 9.95313 22.0469 10.4219C22.7969 10.3281 23.5 10.1406 24.1562 9.83594C23.6875 10.5859 23.0781 11.2422 22.3516 11.7578Z" fill="white"/></svg>',
+    facebook: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="15" fill="#262626"/><path d="M16.0016 24.9999V15.8769H19.0638L19.5223 12.3216H16.0016V10.0516C16.0016 9.02223 16.2875 8.32068 17.7637 8.32068L19.6464 8.31981V5.13994C19.3206 5.09677 18.2031 5 16.903 5C14.1885 5 12.3302 6.65682 12.3302 9.69964V12.3217H9.26001V15.877H12.3301V25L16.0016 24.9999Z" fill="white"/></svg>',
+    linkedin: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="15" fill="#262626"/><path d="M22 9.5h-14c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-9c0-.55-.45-1-1-1Zm-9.5 9h-2v-6h2v6Zm-1-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1Zm9 7h-2v-3.5c0-.55-.45-1-1-1s-1 .45-1 1V18.5h-2v-6h2v.5c.6-.4 1.3-.5 2-.5 1.7 0 3 1.3 3 3v3.5Z" fill="#fff"/></svg>',
+    instagram: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="15" fill="#262626"/><path d="M11.876 15C11.876 13.2742 13.2747 11.8747 15.0005 11.8747C16.7263 11.8747 18.1257 13.2742 18.1257 15C18.1257 16.7258 16.7263 18.1252 15.0005 18.1252C13.2747 18.1252 11.876 16.7258 11.876 15ZM10.1865 15C10.1865 17.6587 12.3417 19.8139 15.0005 19.8139C17.6592 19.8139 19.8144 17.6587 19.8144 15C19.8144 12.3412 17.6592 10.186 15.0005 10.186C12.3417 10.186 10.1865 12.3412 10.1865 15ZM18.88 9.99517C18.8799 10.2177 18.9458 10.4352 19.0694 10.6203C19.1929 10.8053 19.3685 10.9496 19.5741 11.0348C19.7796 11.12 20.0058 11.1424 20.224 11.0991C20.4423 11.0558 20.6428 10.9487 20.8002 10.7914C20.9576 10.6342 21.0648 10.4338 21.1083 10.2155C21.1518 9.99733 21.1296 9.77112 21.0445 9.56552C20.9595 9.35992 20.8154 9.18416 20.6304 9.06047C20.4454 8.93678 20.228 8.87071 20.0055 8.87063H20.005C19.7068 8.87076 19.4208 8.98927 19.2098 9.20012C18.9989 9.41098 18.8803 9.69693 18.88 9.99517ZM11.213 22.631C10.299 22.5894 9.80216 22.4371 9.47201 22.3085C9.03431 22.1381 8.72201 21.9352 8.39366 21.6073C8.06531 21.2794 7.86206 20.9674 7.69241 20.5297C7.56371 20.1997 7.41146 19.7027 7.36991 18.7887C7.32446 17.8005 7.31539 17.5036 7.31539 15.0001C7.31539 12.4965 7.32521 12.2005 7.36991 11.2114C7.41154 10.2974 7.56491 9.80145 7.69241 9.47047C7.86281 9.03277 8.06576 8.72047 8.39366 8.39213C8.72156 8.06378 9.03356 7.86053 9.47201 7.69088C9.80201 7.56218 10.299 7.40992 11.213 7.36837C12.2012 7.32292 12.498 7.31385 15.0005 7.31385C17.5029 7.31385 17.8001 7.32367 18.7891 7.36837C19.7031 7.41 20.1991 7.56337 20.5301 7.69088C20.9678 7.86053 21.2801 8.06422 21.6084 8.39213C21.9368 8.72003 22.1393 9.03277 22.3097 9.47047C22.4384 9.80047 22.5906 10.2974 22.6322 11.2114C22.6776 12.2005 22.6867 12.4965 22.6867 15.0001C22.6867 17.5036 22.6776 17.7997 22.6322 18.7887C22.5906 19.7027 22.4376 20.1995 22.3097 20.5297C22.1393 20.9674 21.9363 21.2797 21.6084 21.6073C21.2805 21.9349 20.9678 22.1381 20.5301 22.3085C20.2001 22.4372 19.7031 22.5895 18.7891 22.631C17.8009 22.6765 17.5041 22.6855 15.0005 22.6855C12.4969 22.6855 12.2009 22.6765 11.213 22.631ZM11.1354 5.68177C10.1373 5.72722 9.45536 5.88547 8.85979 6.11722C8.24299 6.35655 7.72084 6.67762 7.19906 7.19857C6.67729 7.71952 6.35704 8.2425 6.11771 8.8593C5.88596 9.45525 5.72771 10.1368 5.68226 11.1349C5.63606 12.1345 5.62549 12.4541 5.62549 15C5.62549 17.5459 5.63606 17.8655 5.68226 18.8651C5.72771 19.8632 5.88596 20.5448 6.11771 21.1407C6.35704 21.7571 6.67736 22.2807 7.19906 22.8014C7.72076 23.3221 8.24299 23.6428 8.85979 23.8828C9.45649 24.1145 10.1373 24.2728 11.1354 24.3182C12.1355 24.3637 12.4545 24.375 15.0005 24.375C17.5464 24.375 17.866 24.3644 18.8656 24.3182C19.8637 24.2728 20.5452 24.1145 21.1412 23.8828C21.7576 23.6428 22.2801 23.3224 22.8019 22.8014C23.3237 22.2805 23.6433 21.7571 23.8833 21.1407C24.115 20.5448 24.274 19.8631 24.3187 18.8651C24.3642 17.8648 24.3747 17.5459 24.3747 15C24.3747 12.4541 24.3642 12.1345 24.3187 11.1349C24.2733 10.1368 24.115 9.45487 23.8833 8.8593C23.6433 8.24287 23.3229 7.72035 22.8019 7.19857C22.281 6.6768 21.7576 6.35655 21.1419 6.11722C20.5452 5.88547 19.8636 5.72648 18.8664 5.68177C17.8668 5.63633 17.5472 5.625 15.0012 5.625C12.4553 5.625 12.1355 5.63558 11.1354 5.68177Z" fill="white"/></svg>',
+    telegram: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="15" fill="#262626"/><path d="M6.7421 14.6693C11.1042 12.7289 14.0129 11.4497 15.4683 10.8316C19.6237 9.06688 20.4872 8.76033 21.05 8.7501C21.1738 8.74798 21.4505 8.7793 21.6298 8.92783C21.7812 9.05324 21.8228 9.22266 21.8428 9.34157C21.8627 9.46047 21.8875 9.73135 21.8678 9.943C21.6426 12.3588 20.6682 18.2212 20.1725 20.9269C19.9628 22.0717 19.5498 22.4556 19.1499 22.4932C18.281 22.5748 17.6212 21.9069 16.7795 21.3436C15.4626 20.4622 14.7186 19.9135 13.4403 19.0534C11.9629 18.0594 12.9206 17.513 13.7626 16.6202C13.9829 16.3865 17.8115 12.831 17.8856 12.5084C17.8948 12.4681 17.9034 12.3177 17.8159 12.2383C17.7284 12.1589 17.5993 12.1861 17.5061 12.2077C17.374 12.2383 15.2702 13.6581 11.1946 16.467C10.5974 16.8857 10.0565 17.0897 9.57188 17.079C9.03762 17.0672 8.00991 16.7706 7.24592 16.517C6.30885 16.206 5.56408 16.0416 5.62894 15.5134C5.66272 15.2383 6.03377 14.9569 6.7421 14.6693Z" fill="white"/></svg>',
+    reddit: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="15" fill="#262626"/><circle cx="15" cy="15" r="9" fill="#FF4500"/><circle cx="15" cy="15" r="6" fill="#fff"/></svg>'
+};
+
+function detectSocialPlatform(href) {
+    const h = (href || '').toLowerCase();
+    if (h.includes('twitter.com') || h.includes('x.com')) return 'twitter';
+    if (h.includes('facebook.com')) return 'facebook';
+    if (h.includes('linkedin.com')) return 'linkedin';
+    if (h.includes('instagram.com')) return 'instagram';
+    if (h.includes('t.me') || h.includes('telegram')) return 'telegram';
+    if (h.includes('reddit.com')) return 'reddit';
+    return null;
+}
+
+function buildTeamSocials(staffRoot) {
+    const links = [...staffRoot.querySelectorAll('ul.sci a, .sci a')];
+    const html = links
+        .map((a) => {
+            const href = a.getAttribute('href') || '';
+            if (!href || href === '#') return '';
+            const platform = detectSocialPlatform(href);
+            const svg = platform ? TEAM_SOCIAL_SVG[platform] : '';
+            if (!svg) return '';
+            const label = platform ? platform[0].toUpperCase() + platform.slice(1) : 'Link';
+            return `<a href="${href}" target="_blank" rel="noopener" aria-label="${label}">${svg}</a>`;
+        })
+        .filter(Boolean)
+        .join('');
+    return html;
+}
+
+function teamBioBetween(holder, currentStaff, nextStaff) {
+    const candidates = [...holder.querySelectorAll('p, blockquote')].filter((node) => {
+        const afterCurrent =
+            currentStaff.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING;
+        if (!afterCurrent) return false;
+        if (nextStaff) {
+            const beforeNext =
+                nextStaff.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_PRECEDING;
+            if (!beforeNext) return false;
+        }
+        const text = (node.textContent || '').trim();
+        return text.length > 8;
+    });
+
+    const fullText = candidates
+        .map((n) => (n.textContent || '').trim())
+        .filter(Boolean)
+        .join(' ')
+        .replace(/\s+/g, ' ');
+
+    if (!fullText) return '';
+    const words = fullText.split(' ');
+    if (words.length <= 28) return fullText;
+    return words.slice(0, 28).join(' ') + '…';
+}
+
+function hydrateAboutTeamGrid(holder) {
+    const grid = document.querySelector('.sc-about-page-dynamic .sc-about-team-grid');
+    if (!grid || !holder) return;
+
+    const staffNodes = [...holder.querySelectorAll('.container-staff')];
+    if (!staffNodes.length) return;
+
+    const cards = staffNodes
+        .map((staff, idx) => {
+            const card = parseStaffCard(staff);
+            const nextStaff = staffNodes[idx + 1] || null;
+            const bio = teamBioBetween(holder, staff, nextStaff);
+            const socialsHtml = buildTeamSocials(staff);
+            return { ...card, bio, socialsHtml };
+        })
+        .filter((c) => c.name || c.mainImageSrc)
+        .filter((c) => !/riccardo/i.test(c.name || ''));
+
+    if (!cards.length) return;
+
+    grid.innerHTML = cards
+        .map((c) => {
+            const imgHtml = c.mainImageSrc
+                ? `<img src="${c.mainImageSrc}" alt="${c.mainImageAlt || c.name}" loading="lazy" />`
+                : `<span class="sc-about-team-avatar-placeholder">${c.name}</span>`;
+            const role = c.chip
+                ? `<span class="sc-about-team-role">${c.chip}</span>`
+                : '';
+            const bio = c.bio ? `<p>${c.bio}</p>` : '';
+            const socials = c.socialsHtml
+                ? `<div class="sc-about-team-socials">${c.socialsHtml}</div>`
+                : '';
+            return `<article class="sc-about-team-card"><span>${imgHtml}</span><h4>${c.name}</h4>${role}${bio}${socials}</article>`;
+        })
+        .join('');
+}
+
 /** Append fragments from `#get "pages"` templates after main lexical source */
 function gatherLexicalHolders(mainTpl) {
     const holder = document.createElement('div');
@@ -975,8 +1126,25 @@ export function initAboutPage() {
     const holder = gatherLexicalHolders(tpl);
     const cms = holder.querySelector('.sc-about-cms');
 
+    hydrateAboutTeamGrid(holder);
+
     let parsed = parseFromHeadings(holder);
     if (cms) mergeParsed(parsed, parseFromSlots(cms));
+
+    console.log('[sc-about FAQ] final (after heading + slot merge)', {
+        faqIntroHtml: typeof parsed.faqIntroHtml,
+        faqIntroLength: (parsed.faqIntroHtml || '').length,
+        faqIntroPreview: (parsed.faqIntroHtml || '').slice(0, 160),
+        faqPairsCount: parsed.faqPairs?.length ?? 0,
+        faqPairs: (parsed.faqPairs || []).map((p, i) => ({
+            index: i,
+            qType: typeof p.q,
+            q: p.q,
+            aHtmlType: typeof p.aHtml,
+            aHtmlLength: (p.aHtml || '').length,
+            aHtmlPreview: (p.aHtml || '').slice(0, 220)
+        }))
+    });
 
     if (!hasHydrationSignal(parsed, holder)) return;
 

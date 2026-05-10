@@ -42,3 +42,11 @@
         </div>
     </div>
 </section>
+
+{{!-- Dynamic source: a Ghost page authored by the editor (slug `social-section` or `social-section-2`,
+     or any page with internal tag `#social-section`). JS hydrates the section above from this template. --}}
+{{#get "pages" filter="slug:social-section,slug:social-section-2,tag:hash-social-section" limit="1"}}
+    {{#foreach pages}}
+    <template class="sc-social-source">{{{html}}}</template>
+    {{/foreach}}
+{{/get}}

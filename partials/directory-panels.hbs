@@ -26,7 +26,7 @@
 
 <div class="sc-directory-panel" data-tab-panel="companies">
     <div class="sc-directory-grid">
-        {{#get "posts" filter="primary_tag:[company,companies]+tag:-people+tag:-product+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-press-release+tag:-press-releases" include="authors,tags" limit="18" order="published_at desc"}}
+        {{#get "posts" filter="tag:company+tag:-people+tag:-product+tag:-products+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-press-release+tag:-press-releases+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" include="authors,tags" limit="18" order="published_at desc"}}
             {{#if posts}}
                 {{#foreach posts}}
                 <a href="{{url}}" class="sc-directory-card sc-directory-card--link" data-tags="all {{#foreach tags visibility="all"}}{{slug}} {{/foreach}}">

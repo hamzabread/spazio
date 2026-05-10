@@ -477,7 +477,7 @@ li.sitelinks-link a {
 
 .scf-footer {
     background: transparent;
-    border-top: 1px solid #E9ECEF;
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 :root[data-color-scheme="dark"] .scf-footer {
@@ -491,7 +491,12 @@ li.sitelinks-link a {
 
 .scf-footer .scf-wrap {
     padding: 20px 50px;
-    background: #F5F6F7;
+    background: #FFFFFF;
+}
+
+/* Hide empty trailing parens left over when count.posts is 0 (defensive) */
+.scf-tag-count:empty {
+    display: none;
 }
 
 .scf-footer .scf-top {

@@ -25,29 +25,27 @@
             </div>
         </div>
 
-        <div class="sc-jobs-chips">
-            {{#if @custom.jobs_source_tag}}
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/{{@custom.jobs_source_tag}}/">{{t "All"}}</a>
-            {{else}}
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/jobs/">{{t "All"}}</a>
-            {{/if}}
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/exchanges/">{{t "Exchanges"}}</a>
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/wallets/">{{t "Wallets"}}</a>
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/analytics/">{{t "Analytics"}}</a>
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/defi-apps/">{{t "DeFi Apps"}}</a>
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/on-chain/">{{t "On-Chain"}}</a>
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/ai/">{{t "AI"}}</a>
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/nft/">{{t "NFT"}}</a>
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/news/">{{t "News"}}</a>
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/research/">{{t "Research"}}</a>
-            <a class="sc-jobs-chip" href="{{@site.url}}/tag/launchpads/">{{t "Launchpads"}}</a>
+        <div class="sc-jobs-chips" role="tablist" aria-label="{{t "Job categories"}}">
+            <button type="button" class="sc-jobs-chip is-active" data-job-chip="all" role="tab" aria-selected="true">{{t "All"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="exchanges" role="tab" aria-selected="false">{{t "Exchanges"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="wallets" role="tab" aria-selected="false">{{t "Wallets"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="analytics" role="tab" aria-selected="false">{{t "Analytics"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="defi-apps" role="tab" aria-selected="false">{{t "DeFi Apps"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="on-chain" role="tab" aria-selected="false">{{t "On-Chain"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="ai" role="tab" aria-selected="false">{{t "AI"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="nft" role="tab" aria-selected="false">{{t "NFT"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="news" role="tab" aria-selected="false">{{t "News"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="research" role="tab" aria-selected="false">{{t "Research"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="launchpads" role="tab" aria-selected="false">{{t "Launchpads"}}</button>
             <div class="sc-jobs-chips-fade" aria-hidden="true"></div>
         </div>
 
         <div class="sc-jobs-grid">
             {{#get "posts" filter="tag:{{@custom.jobs_source_tag}}" limit="6" include="authors,tags" order="published_at desc"}}
                 {{#foreach posts}}
-                {{> "job-card"}}
+                <div class="sc-job-card-wrap" data-job-slugs="{{#foreach tags visibility="all"}}{{slug}} {{/foreach}}">
+                    {{> "job-card"}}
+                </div>
                 {{/foreach}}
             {{/get}}
         </div>

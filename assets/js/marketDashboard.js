@@ -119,9 +119,9 @@ function updateMarketCap(globalData) {
 
     if (sentimentMetaEl && typeof btcDominance === 'number') {
         sentimentMetaEl.textContent = `BTC dominance: ${btcDominance.toFixed(2)}%`;
-        sentimentMetaEl.href = 'https://www.coingecko.com/';
-        sentimentMetaEl.target = '_blank';
-        sentimentMetaEl.rel = 'noopener';
+        sentimentMetaEl.href = '/crypto-prices/';
+        sentimentMetaEl.removeAttribute('target');
+        sentimentMetaEl.removeAttribute('rel');
     }
 }
 
@@ -166,7 +166,9 @@ function updateContentGridMarketRows(coins) {
         }
 
         if (coinId) {
-            row.href = `https://www.coingecko.com/en/coins/${coinId}`;
+            row.href = '/crypto-prices/';
+            row.removeAttribute('target');
+            row.removeAttribute('rel');
         }
     });
 }
@@ -256,7 +258,9 @@ function updateArticleBitcoinCard(marketCoins, bitcoinChartData) {
     }
 
     if (marketLink) {
-        marketLink.href = 'https://www.coingecko.com/en/coins/bitcoin';
+        marketLink.href = '/crypto-prices/';
+        marketLink.removeAttribute('target');
+        marketLink.removeAttribute('rel');
     }
 
     const chartPoints = bitcoinChartData && Array.isArray(bitcoinChartData.prices)

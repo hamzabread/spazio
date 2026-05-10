@@ -2,8 +2,12 @@
     <section class="sc-contact-hero" aria-labelledby="sc-crypto-prices-hero-title">
         <div class="sc-contact-hero-inner gh-container">
             <span class="sc-contact-hero-chip">{{t "Crypto prices chip"}}</span>
-            <h1 id="sc-crypto-prices-hero-title">{{t "Crypto prices title before"}} <span>{{t "Crypto prices title accent"}}</span></h1>
+            <h1 id="sc-crypto-prices-hero-title">{{title}}</h1>
+            {{#if excerpt}}
+            <p>{{excerpt}}</p>
+            {{else}}
             <p>{{t "Crypto prices hero lede"}}</p>
+            {{/if}}
         </div>
     </section>
 

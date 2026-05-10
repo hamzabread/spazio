@@ -2,11 +2,12 @@
     <div class="gh-container">
         <div class="left">
             <script data-categories="essential" src="https://widgets.coingecko.com/gecko-coin-price-marquee-widget.js"></script>
-            <gecko-coin-price-marquee-widget id="gecko" 
-            initial-currency="{{#match @site.locale "=" "it"}}eur{{else}}{{#match @site.locale "=" "de"}}eur{{else}}{{#match @site.locale "=" "fr"}}eur{{else}}{{#match @site.locale "=" "ja"}}jpy{{else}}{{#match @site.locale "=" "zh"}}cny{{else}}{{#match @site.locale "=" "ko"}}krw{{else}}{{#match @site.locale "=" "ru"}}rub{{else}}usd{{/match}}{{/match}}{{/match}}{{/match}}{{/match}}{{/match}}{{/match}}"
-            locale="{{@site.locale}}" dark-mode="false" transparent-background="true"
-            coin-ids="bitcoin,tether,binancecoin,usd-coin,ripple,solana,cardano,dogecoin,matic-network,polkadot,tron,litecoin"></gecko-coin-price-marquee-widget>
-       
+            <a class="extended-header-crypto-link" href="{{@site.url}}/crypto-prices/" aria-label="{{t "View crypto prices"}}">
+                <gecko-coin-price-marquee-widget id="gecko"
+                initial-currency="{{#match @site.locale "=" "it"}}eur{{else}}{{#match @site.locale "=" "de"}}eur{{else}}{{#match @site.locale "=" "fr"}}eur{{else}}{{#match @site.locale "=" "ja"}}jpy{{else}}{{#match @site.locale "=" "zh"}}cny{{else}}{{#match @site.locale "=" "ko"}}krw{{else}}{{#match @site.locale "=" "ru"}}rub{{else}}usd{{/match}}{{/match}}{{/match}}{{/match}}{{/match}}{{/match}}{{/match}}"
+                locale="{{@site.locale}}" dark-mode="false" transparent-background="true"
+                coin-ids="bitcoin,tether,binancecoin,usd-coin,ripple,solana,cardano,dogecoin,matic-network,polkadot,tron,litecoin"></gecko-coin-price-marquee-widget>
+            </a>
         </div>
         
         <div class="right">
