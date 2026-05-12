@@ -1,0 +1,250 @@
+:root {
+  /* Light Mode Variables */
+  --sc-bg: #fcfcfc;
+  --sc-card-bg: #ffffff;
+  --sc-border: #f0f0f0;
+  --sc-input-bg: #f9f9f9;
+  --sc-text-main: #1a1a1a;
+  --sc-text-muted: #666666;
+  --sc-text-label: #333333;
+  --sc-accent: #f18f20;
+  --sc-accent-soft: #fff5eb;
+}
+
+[data-color-scheme="dark"] {
+  /* Dark Mode Variables */
+  --sc-bg: #0a0a0a;
+  --sc-card-bg: #141414;
+  --sc-border: #262626;
+  --sc-input-bg: #1a1a1a;
+  --sc-text-main: #ebeff2;
+  --sc-text-muted: #999999;
+  --sc-text-label: #cccccc;
+}
+
+.sc-form-page {
+  background-color: var(--sc-bg);
+  padding: 20px 30px;
+  font-family: "Helvetica Now Display";
+}
+
+.sc-form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: transparent;
+  border: 1px solid var(--sc-border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.sc-form-header {
+  padding: 22px 30px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--sc-border);
+}
+
+.sc-header-icon {
+  background: var(--sc-accent-soft);
+  padding: 11px;
+
+  border-radius: 10px;
+}
+.sc-header-text h1 {
+  color: var(--sc-text-main);
+  color: #0a0a0a;
+  font-family: "Helvetica Now Display";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+.sc-header-text p {
+  color: var(--sc-text-muted);
+  font-family: "Helvetica Now Display";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  margin: 8px 0 0;
+}
+
+.sc-form-section {
+  padding: 20px 30px;
+  border-bottom: 1px solid var(--sc-border);
+}
+
+.sc-section-title {
+  font-family: "Helvetica Now Display";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--sc-text-muted);
+  margin-bottom: 16px;
+}
+.border {
+  width: 100%;
+  height: 1px;
+  background-color: var(--sc-border);
+  margin-bottom: 16px;
+}
+
+.sc-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.sc-form-row.three-col {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.sc-input-group label {
+  display: block;
+  font-family: "Helvetica Now Display";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.1px;
+  color: var(--sc-text-label);
+  margin-bottom: 12px;
+}
+
+.required {
+  color: var(--sc-accent);
+  margin-left: 2px;
+}
+.sc-input-group textarea {
+  height: 104px;
+}
+.sc-input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.sc-input-footer span {
+  color: var(--sc-accent);
+  font-family: "Helvetica Now Display";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+}
+.sc-input-group input,
+.sc-input-group textarea,
+.sc-tag-container {
+  width: 100%;
+  background: var(--sc-input-bg);
+  border: 1px solid var(--sc-border);
+  border-radius: 8px;
+  padding: 16px 15px;
+  color: var(--sc-text-main);
+  font-size: 14px;
+}
+
+.sc-tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.sc-tag {
+  background: var(--sc-accent-soft);
+  color: var(--sc-accent);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(241, 143, 32, 0.1);
+}
+
+.sc-tag-container input {
+  border: none;
+  background: transparent;
+  padding: 0;
+  width: auto;
+  flex: 1;
+}
+
+.sc-upload-box {
+  border: 1px dashed var(--sc-border);
+  border-radius: 12px;
+  padding: 40px 17px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--sc-bg);
+}
+.sc-upload-box p {
+  color: var(--sc-text-main);
+  text-align: center;
+  font-family: "Helvetica Now Display";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  margin-bottom: 8px;
+}
+.sc-upload-box .specs {
+  color: var(--sc-text-muted);
+  text-align: center;
+  font-family: "Helvetica Now Display";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+}
+.orange-text {
+  color: var(--sc-accent);
+}
+
+.sc-form-footer {
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0px 0px 16px 16px;
+  border-top: 1px solid var(--sc-border);
+  background: var(--sc-input-bg);
+}
+
+.btn-primary {
+  background: var(--sc-accent);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: var(--sc-card-bg);
+  color: var(--sc-text-label);
+  border: 1px solid var(--sc-border);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+@media (max-width: 768px) {
+  .sc-form-row,
+  .sc-form-row.three-col {
+    grid-template-columns: 1fr;
+  }
+  .sc-form-footer {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}

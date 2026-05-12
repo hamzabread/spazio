@@ -1,0 +1,150 @@
+<link rel="stylesheet" href="{{asset 'css/list-your-company.css'}}" />
+
+<section class="sc-form-page">
+  <div class="sc-form-container">
+
+    <!-- Header -->
+    <header class="sc-form-header">
+      <div class="sc-header-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+        >
+          <path
+            d="M17.5 3H4.5C3.11929 3 2 4.11929 2 5.5V16.5C2 17.8807 3.11929 19 4.5 19H17.5C18.8807 19 20 17.8807 20 16.5V5.5C20 4.11929 18.8807 3 17.5 3Z"
+            stroke="#F54900"
+            stroke-width="1.6"
+          />
+          <path
+            d="M6.00391 9H16.0039M6.00391 12.5H13.0039"
+            stroke="#F54900"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M17 19.501C18.933 19.501 20.5 17.934 20.5 16.001C20.5 14.068 18.933 12.501 17 12.501C15.067 12.501 13.5 14.068 13.5 16.001C13.5 17.934 15.067 19.501 17 19.501Z"
+            fill="white"
+            stroke="#F54900"
+            stroke-width="1.3"
+          />
+          <path
+            d="M15.8008 16.0008H18.2008M17.0008 14.8008V17.2008"
+            stroke="#F54900"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+      <div class="sc-header-text">
+        <h1>List Your Company</h1>
+        <p>Get your business discovered by 500K+ crypto readers</p>
+      </div>
+    </header>
+
+    <form action="#" class="sc-main-form">
+
+      <!-- Section: Company Info -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">COMPANY INFORMATION</h2>
+
+        <div class="sc-form-row">
+          <div class="sc-input-group">
+            <label>Company Name<span class="required">*</span></label>
+            <input type="text" placeholder="e.g. Paradex Exchange" />
+          </div>
+          <div class="sc-input-group">
+            <label>Website URL<span class="required">*</span></label>
+            <input type="url" placeholder="https://yoursite.com" />
+          </div>
+        </div>
+
+        <div class="sc-form-row">
+          <div class="sc-input-group">
+            <label>Category<span class="required">*</span></label>
+            <input type="text" placeholder="Select Category" />
+          </div>
+          <div class="sc-input-group">
+            <label>Founded Year</label>
+            <input type="text" placeholder="e.g. 2021" />
+          </div>
+        </div>
+
+        <div class="sc-input-group full-width">
+          <label>Short Description<span class="required">*</span></label>
+          <textarea
+            maxlength="160"
+            placeholder="Describe your company in 1-2 sentences..."
+          ></textarea>
+          <div class="sc-input-footer" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+            <span>Shown on your directory listing</span>
+            <span class="char-count">0 / 160</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Social -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">SOCIAL & CONTACT</h2>
+        <div class="border"></div>
+        <div class="sc-form-row three-col">
+          <div class="sc-input-group">
+            <label>Twitter / X</label>
+            <input type="text" placeholder="@handle" />
+          </div>
+          <div class="sc-input-group">
+            <label>LinkedIn</label>
+            <input type="text" placeholder="company/name" />
+          </div>
+          <div class="sc-input-group">
+            <label>Contact Email<span class="required">*</span></label>
+            <input type="email" placeholder="hello@company.com" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Logo -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">LOGO & MEDIA</h2>
+        <div class="sc-upload-box">
+          <input type="file" id="logo-upload" hidden />
+          <label for="logo-upload">
+           🏢
+            <p>Drop your logo here or
+              <span class="orange-text">browse</span></p>
+            <span class="specs">SVG, PNG or WEBP · Max 2MB · Min 200×200px</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Section: Tags -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">TAGS</h2>
+        <div class="border"></div>
+        <div class="sc-input-group full-width">
+          <label>Keywords</label>
+          <div class="sc-tag-container">
+            <span class="sc-tag">DeFi</span>
+            <span class="sc-tag">Web3</span>
+            <span class="sc-tag">Layer-2</span>
+            <input type="text" placeholder="Add tag..." />
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Buttons -->
+      <footer class="sc-form-footer">
+        <p class="terms">Free listing. Reviewed within 48h.
+          <a href="#">Terms apply.</a></p>
+        <div class="sc-btn-group">
+          <button type="button" class="btn-secondary">Save Draft</button>
+          <button type="submit" class="btn-primary">Submit for Review &rarr;</button>
+        </div>
+      </footer>
+
+    </form>
+  </div>
+</section>
+
+<script src="{{asset 'js/list-your-company-query.js'}}"></script>
