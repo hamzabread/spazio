@@ -336,7 +336,6 @@
 .gh-header.sc-header-jobs-layout > .gh-header-container:first-of-type {
     justify-content: space-between;
     gap: 16px;
-    flex-wrap: wrap;
     align-items: center;
     padding: 14px 75px !important;
 }
@@ -1625,7 +1624,6 @@
     }
 
     .gh-header.sc-header-jobs-layout > .gh-header-container:first-of-type {
-        flex-wrap: nowrap;
         padding: 10px 16px !important;
     }
 

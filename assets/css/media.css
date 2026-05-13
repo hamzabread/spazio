@@ -58,9 +58,7 @@
         display: none;
     }
 
-    .gh-burger-btn {
-        display: flex;
-    }
+    
 
     .gh-header.header-middle-logo .gh-header-brand-wrapper,
     .gh-header.header-bottom-nav .gh-header-brand-wrapper {
@@ -175,6 +173,10 @@
    .no-mobile {
     visibility: hidden;
    }
+
+   .gh-burger-btn {
+        display: flex;
+    }
 
 }
 
