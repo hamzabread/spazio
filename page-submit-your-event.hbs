@@ -1,0 +1,166 @@
+{{!< default}}
+<link rel="stylesheet" href="{{asset 'css/list-your-company-fix.css'}}" />
+
+<section class="sc-form-page">
+  <div class="sc-form-container">
+
+    <!-- Header -->
+    <header class="sc-form-header">
+      <div class="sc-header-icon-event">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+        >
+          <path
+            d="M17.5 4H4.5C3.11929 4 2 5.11929 2 6.5V17.5C2 18.8807 3.11929 20 4.5 20H17.5C18.8807 20 20 18.8807 20 17.5V6.5C20 5.11929 18.8807 4 17.5 4Z"
+            stroke="#9810FA"
+            stroke-width="1.6"
+          />
+          <path d="M2 10H20" stroke="#9810FA" stroke-width="1.4" />
+          <path
+            d="M7 1V6M15 1V6"
+            stroke="#9810FA"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+          <path
+            opacity="0.5"
+            d="M8.2 13H6.8C6.35817 13 6 13.3582 6 13.8V15.2C6 15.6418 6.35817 16 6.8 16H8.2C8.64183 16 9 15.6418 9 15.2V13.8C9 13.3582 8.64183 13 8.2 13Z"
+            fill="#9810FA"
+          />
+          <path
+            opacity="0.5"
+            d="M12.7 13H11.3C10.8582 13 10.5 13.3582 10.5 13.8V15.2C10.5 15.6418 10.8582 16 11.3 16H12.7C13.1418 16 13.5 15.6418 13.5 15.2V13.8C13.5 13.3582 13.1418 13 12.7 13Z"
+            fill="#9810FA"
+          />
+          <path
+            opacity="0.5"
+            d="M17.2 13H15.8C15.3582 13 15 13.3582 15 13.8V15.2C15 15.6418 15.3582 16 15.8 16H17.2C17.6418 16 18 15.6418 18 15.2V13.8C18 13.3582 17.6418 13 17.2 13Z"
+            fill="#9810FA"
+          />
+        </svg>
+      </div>
+      <div class="sc-header-text">
+        <h1>Submit Your Event</h1>
+        <p>Promote to 500K+ crypto readers worldwide</p>
+      </div>
+    </header>
+
+    <form action="#" class="sc-main-form">
+
+      <!-- Section: Company Info -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">Event Details</h2>
+        <div class="border"></div>
+        <div class="sc-input-group margin-bottom">
+          <label>Event Name<span class="required">*</span></label>
+          <input type="text" placeholder="e.g. Senior Solidity Engineer" />
+        </div>
+        <div class="sc-form-row">
+          <div class="sc-input-group">
+            <label>Event Type<span class="required">*</span></label>
+            <input type="text" placeholder="" />
+          </div>
+          <div class="sc-input-group">
+            <label>Category<span class="required">*</span></label>
+            <input type="url" placeholder="" />
+          </div>
+        </div>
+        <h2 class="sc-section-title">Date & Location</h2>
+        <div class="border"></div>
+        <div class="sc-form-row three-col">
+          <div class="sc-input-group">
+            <label>Start Date<span class="required">*</span></label>
+            <input type="text" placeholder="yyyy-mm-dd" />
+          </div>
+          <div class="sc-input-group">
+            <label>End Date</label>
+            <input type="text" placeholder="yyyy-mm-dd" />
+          </div>
+          <div class="sc-input-group">
+            <label>Time (UTC)</label>
+            <input type="text" placeholder="HH:MM" />
+          </div>
+        </div>
+        <div class="sc-form-row">
+          <div class="sc-input-group">
+            <label>Venue / Platform <span class="required">*</span></label>
+            <input
+              type="text"
+              placeholder="Miami Beach Convention Center / Zoom"
+            />
+          </div>
+          <div class="sc-input-group">
+            <label>City / Country <span class="required">*</span></label>
+            <input type="text" placeholder="Miami, USA · or Online" />
+          </div>
+
+        </div>
+        <h2 class="sc-section-title">About the Event</h2>
+        <div class="border"></div>
+        <div class="sc-input-group full-width">
+
+          <label>Event Description<span class="required">*</span></label>
+          <textarea
+            maxlength="500"
+            placeholder="What will attendees learn? Who should attend? What makes your event special?"
+          ></textarea>
+          <div
+            class="sc-input-footer"
+            style="display:flex;justify-content:space-between;align-items:center;width:100%;"
+          >
+            <span>2–4 sentences recommended</span>
+            <span class="char-count">0 / 500</span>
+          </div>
+        </div>
+      </div>
+      <div class="outer_padding">
+
+      <div class="sc-form-row">
+        <div class="sc-input-group">
+          <label>Event URL / Tickets <span class="required">*</span></label>
+          <input type="text" placeholder="https://event-tickets.com" />
+        </div>
+        <div class="sc-input-group">
+          <label>Expected Attendees </label>
+          <input type="text" placeholder="https://jobs.co/apply or email" />
+        </div>
+
+      </div>
+      </div>
+      <!-- Section: Social -->
+
+      <!-- Section: Logo -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">Cover Image</h2>
+        <div class="border"></div>
+        <div class="sc-upload-box">
+          <input type="file" id="logo-upload" hidden />
+          <label for="logo-upload">
+            🎪
+            <p>Upload event banner or
+              <span class="orange-text">browse</span></p>
+            <span class="specs">JPG, PNG or WEBP · Max 5MB · Recommended
+              1200×630px</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Section: Tags -->
+
+      <!-- Footer Buttons -->
+      <footer class="sc-form-footer">
+        <p class="terms">Free listing. Reviewed within 48h.
+          <a href="#">Terms apply.</a></p>
+        <div class="sc-btn-group">
+          <button type="button" class="btn-secondary">Save Draft</button>
+          <button type="submit" class="btn-primary">Submit Event →</button>
+        </div>
+      </footer>
+
+    </form>
+  </div>
+</section>

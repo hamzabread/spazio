@@ -1,0 +1,219 @@
+{{!< default}}
+<link rel="stylesheet" href="{{asset 'css/list-your-company-fix.css'}}" />
+
+<section class="sc-form-page">
+  <div class="sc-form-container">
+
+    <!-- Header -->
+    <header class="sc-form-header">
+      <div class="sc-header-icon-event">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+        >
+          <path
+            d="M5 3H15L19 7V19H5V3Z"
+            stroke="#00A63E"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15 3V7H19"
+            stroke="#00A63E"
+            stroke-width="1.4"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8 12H14M8 15H12"
+            stroke="#00A63E"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M8 9H10"
+            stroke="#00A63E"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+      <div class="sc-header-text">
+        <h1>Submit a Press Release</h1>
+        <p>Share your news with SpazioCrypto's global audience</p>
+      </div>
+    </header>
+
+    <form action="#" class="sc-main-form">
+
+      <!-- Section: Company Info -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">Press Release Content</h2>
+        <div class="border"></div>
+        <div class="sc-input-group border-bottom ">
+          <label>Headline<span class="required">*</span></label>
+          <input
+            type="text"
+            placeholder="e.g. SpazioCrypto Launches AI-Powered Market Intelligence Suite"
+          />
+        </div>
+       
+
+        <div class="sc-input-group full-width margin-bottom">
+
+          <label>Summary / Lead Paragraph<span class="required">*</span></label>
+          <textarea
+            maxlength="300"
+            placeholder="The opening paragraph — what's the news? Who does it affect and why does it matter?"
+          ></textarea>
+          <div
+            class="sc-input-footer"
+            style="display:flex;justify-content:space-between;align-items:center;width:100%;"
+          >
+            <span>Minimum 300 words recommended</span>
+            <span class="char-count">0 / 300</span>
+          </div>
+        </div>
+        <div class="sc-input-group full-width">
+
+          <label>Full Press Release Body<span class="required">*</span></label>
+          <textarea
+            maxlength="5000"
+            placeholder="Paste or type the full press release content here. Markdown and links are supported…"
+          ></textarea>
+          <div
+            class="sc-input-footer"
+            style="display:flex;justify-content:space-between;align-items:center;width:100%;"
+          >
+            <span>Minimum 300 words recommended</span>
+            <span class="char-count">0 / 5000</span>
+          </div>
+        </div>
+      </div>
+      <div class="outer_padding">
+
+        <div class="sc-form-row">
+          <div class="sc-input-group">
+            <label>Category <span class="required">*</span></label>
+            <input
+              type="text"
+              placeholder="Miami Beach Convention Center / Zoom"
+            />
+          </div>
+          <div class="sc-input-group">
+            <label>Category </label>
+            <input type="text" placeholder="press@yourcompany.com" />
+          </div>
+
+        </div>
+      </div>
+      <!-- Section: Social -->
+
+      <!-- Section: Logo -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">Editorial Checklist</h2>
+        <div class="border"></div>
+
+        <div class="sc-checklist-container">
+          <!-- Item 1 -->
+          <div class="sc-checklist-item" onclick="toggleCheck(this)">
+            <div class="sc-custom-checkbox checked">
+              <svg
+                class="tick-icon"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+              ><path
+                  d="M10 3L4.5 8.5L2 6"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                /></svg>
+            </div>
+            <p>Content is factual and not misleading</p>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="sc-checklist-item" onclick="toggleCheck(this)">
+            <div class="sc-custom-checkbox checked">
+              <svg
+                class="tick-icon"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+              ><path
+                  d="M10 3L4.5 8.5L2 6"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                /></svg>
+            </div>
+            <p>No pump-and-dump or price prediction language</p>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="sc-checklist-item" onclick="toggleCheck(this)">
+            <div class="sc-custom-checkbox">
+              <svg
+                class="tick-icon"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+              ><path
+                  d="M10 3L4.5 8.5L2 6"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                /></svg>
+            </div>
+            <p>I confirm I am authorized to submit on behalf of this company</p>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="sc-checklist-item" onclick="toggleCheck(this)">
+            <div class="sc-custom-checkbox">
+              <svg
+                class="tick-icon"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+              ><path
+                  d="M10 3L4.5 8.5L2 6"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                /></svg>
+            </div>
+            <p>I agree to SpazioCrypto's editorial standards and terms</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Buttons -->
+      <footer class="sc-form-footer">
+        <p class="terms">Free listing. Reviewed within 48h.
+          <a href="#">Terms apply.</a></p>
+        <div class="sc-btn-group">
+          <button type="button" class="btn-secondary">Save Draft</button>
+          <button type="submit" class="btn-primary">Submit Event →</button>
+        </div>
+      </footer>
+
+    </form>
+  </div>
+</section>
+<script>
+  function toggleCheck(element) { const checkbox =
+  element.querySelector('.sc-custom-checkbox');
+  checkbox.classList.toggle('checked'); }
+</script>

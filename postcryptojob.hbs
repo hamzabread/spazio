@@ -1,0 +1,129 @@
+{{!< default}}
+<link rel="stylesheet" href="{{asset 'css/list-your-company-fix.css'}}" />
+
+<section class="sc-form-page">
+  <div class="sc-form-container">
+
+    <!-- Header -->
+    <header class="sc-form-header">
+      <div class="sc-header-icon-job">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+        >
+          <path
+            d="M17.5 5H4.5C3.11929 5 2 6.11929 2 7.5V15.5C2 16.8807 3.11929 18 4.5 18H17.5C18.8807 18 20 16.8807 20 15.5V7.5C20 6.11929 18.8807 5 17.5 5Z"
+            stroke="#155DFC"
+            stroke-width="1.6"
+          />
+          <path
+            d="M7 5V4C7 3.46957 7.21071 2.96086 7.58579 2.58579C7.96086 2.21071 8.46957 2 9 2C9.53043 2 10.0391 2.21071 10.4142 2.58579C10.7893 2.96086 11 3.46957 11 4V5"
+            stroke="#155DFC"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M6 11H11M6 14H9.5"
+            stroke="#155DFC"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M15 11L17 13L15 15"
+            stroke="#155DFC"
+            stroke-width="1.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div class="sc-header-text">
+        <h1>Post a Crypto Job</h1>
+        <p>Reach the top 1% of blockchain talent globally</p>
+      </div>
+    </header>
+
+    <form action="#" class="sc-main-form">
+
+      <!-- Section: Company Info -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">Job Details</h2>
+        <div class="border"></div>
+        <div class="sc-form-row">
+          <div class="sc-input-group">
+            <label>Job Title<span class="required">*</span></label>
+            <input type="text" placeholder="e.g. Paradex Exchange" />
+          </div>
+          <div class="sc-input-group">
+            <label>Company<span class="required">*</span></label>
+            <input type="url" placeholder="https://yoursite.com" />
+          </div>
+        </div>
+
+        <div class="sc-form-row three-col">
+          <div class="sc-input-group">
+            <label>Job Type<span class="required">*</span></label>
+            <input type="text" placeholder="" />
+          </div>
+          <div class="sc-input-group">
+            <label>Location</label>
+            <input type="text" placeholder="" />
+          </div>
+          <div class="sc-input-group">
+            <label>Salary Range</label>
+            <input type="text" placeholder="$80K – $150K" />
+          </div>
+        </div>
+
+        <div class="sc-input-group full-width">
+          <label>Job Description<span class="required">*</span></label>
+          <textarea
+            maxlength="160"
+            placeholder="Describe the role, responsibilities, and what makes it exciting…"
+          ></textarea>
+          <div
+            class="sc-input-footer"
+            style="display:flex;justify-content:space-between;align-items:center;width:100%;"
+          >
+            <span>Markdown supported</span>
+            <span class="char-count">0 / 160</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Tags -->
+<div class="outer_padding">
+
+      <div class="sc-form-row">
+        <div class="sc-input-group full-width">
+          <label>Keywords</label>
+          <div class="sc-tag-container">
+            <span class="sc-tag-jobs">DeFi</span>
+            <span class="sc-tag-jobs">Web3</span>
+            <span class="sc-tag-jobs">Layer-2</span>
+            <input type="text" placeholder="Add tag..." />
+          </div>
+        </div>
+        <div class="sc-input-group">
+          <label>Apply Link / Email<span class="required">*</span></label>
+          <input class="sc-input" type="text" placeholder="https://jobs.co/apply or email" />
+        </div>
+      </div>
+</div>
+      <!-- Footer Buttons -->
+      <footer class="sc-form-footer">
+        <p class="terms">Secure checkout via Stripe. Job goes live within 2h
+          after payment.
+        </p>
+        <div class="sc-btn-group">
+          <button type="button" class="btn-secondary">Save Draft</button>
+          <button type="submit" class="btn-primary">Submit for Review &rarr;</button>
+        </div>
+      </footer>
+
+    </form>
+  </div>
+</section>
