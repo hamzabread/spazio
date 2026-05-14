@@ -269,9 +269,77 @@ function updateArticleBitcoinCard(marketCoins, bitcoinChartData) {
     renderBitcoinGraph(graphEl, chartPoints, isUpTrend);
 }
 
+/* Fetch the Alternative.me Fear & Greed Index (no API key required) and render
+   the value into the dynamic SVG gauge. Cached in localStorage for 5 minutes. */
+async function updateMarketSentiment() {
+    const valueEl = document.querySelector('[data-md-sentiment-value]');
+    const labelEl = document.querySelector('[data-md-sentiment-label]');
+    const needleEl = document.querySelector('[data-md-sentiment-needle]');
+    if (!valueEl || !needleEl) return;
+
+    const CACHE_KEY = 'sc_market_sentiment_v1';
+    const CACHE_TTL_MS = 5 * 60 * 1000;
+    const ENDPOINT = 'https://api.alternative.me/fng/?limit=1';
+
+    const render = (value, label) => {
+        if (typeof value !== 'number' || isNaN(value)) return;
+        const clamped = Math.max(0, Math.min(100, value));
+        valueEl.textContent = String(Math.round(clamped));
+        if (labelEl) labelEl.textContent = label || classificationFor(clamped);
+        const rotation = -90 + (clamped / 100) * 180;
+        needleEl.setAttribute('transform', `rotate(${rotation.toFixed(2)} 145 130)`);
+    };
+
+    // Try cache first.
+    try {
+        const raw = localStorage.getItem(CACHE_KEY);
+        if (raw) {
+            const cached = JSON.parse(raw);
+            if (cached && typeof cached.value === 'number' && Date.now() - cached.ts < CACHE_TTL_MS) {
+                render(cached.value, cached.label);
+                return;
+            }
+        }
+    } catch (e) {
+        /* ignore localStorage failures */
+    }
+
+    try {
+        const res = await fetch(ENDPOINT, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`FNG ${res.status}`);
+        const data = await res.json();
+        const entry = data && data.data && data.data[0];
+        if (!entry) throw new Error('FNG: empty payload');
+        const value = parseInt(entry.value, 10);
+        const label = entry.value_classification || classificationFor(value);
+        if (!isFinite(value)) throw new Error('FNG: NaN value');
+
+        render(value, label);
+        try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify({ value, label, ts: Date.now() }));
+        } catch (e) { /* ignore */ }
+    } catch (e) {
+        // eslint-disable-next-line no-console
+        console.warn('Market sentiment fetch failed:', e);
+        // Fall back to a neutral value so the gauge still reads meaningfully.
+        render(50, 'Neutral');
+    }
+}
+
+function classificationFor(value) {
+    if (value < 25) return 'Extreme Fear';
+    if (value < 45) return 'Fear';
+    if (value < 55) return 'Neutral';
+    if (value < 75) return 'Greed';
+    return 'Extreme Greed';
+}
+
 export async function initMarketDashboard() {
     const dashboard = document.querySelector('[data-market-dashboard="coingecko"]');
     if (!dashboard || typeof window.fetch !== 'function') return;
+
+    // Market Sentiment gauge runs independently of the CoinGecko pipeline.
+    updateMarketSentiment();
 
     const gainersRows = Array.from(document.querySelectorAll('[data-md-gainers-row]'));
     const trendingRows = Array.from(document.querySelectorAll('[data-md-trending-row]'));

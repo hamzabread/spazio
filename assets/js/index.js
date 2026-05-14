@@ -254,6 +254,231 @@ function filterAuthorTagsFromMoreNews() {
 	});
 }
 
+/* ====================================================================
+   Global Search — corpus + header autocomplete + /search/ results page
+   ==================================================================== */
+
+function readSearchCorpus() {
+	const root = document.getElementById('sc-search-corpus');
+	if (!root) return [];
+	return [...root.querySelectorAll('template.sc-search-doc')].map((tpl) => {
+		const title = (tpl.getAttribute('data-title') || '').trim();
+		const url = tpl.getAttribute('data-url') || '';
+		const type = tpl.getAttribute('data-type') || 'post';
+		const tags = (tpl.getAttribute('data-tags') || '').toLowerCase().split(/\s+/).filter(Boolean);
+		const primary = (tpl.getAttribute('data-primary') || '').toLowerCase();
+		const published = parseInt(tpl.getAttribute('data-published') || '0', 10) || 0;
+		const excerpt = (tpl.content && tpl.content.textContent ? tpl.content.textContent : '').trim();
+		return { type, title, url, tags, primary, excerpt, published };
+	});
+}
+
+function categorizeSearchDoc(doc) {
+	const tagSet = new Set(doc.tags);
+	if (tagSet.has('jobs') || tagSet.has('job') || tagSet.has('hash-jobs') || tagSet.has('hash-job')) return 'jobs';
+	if (tagSet.has('events') || tagSet.has('event') || tagSet.has('hash-events') || tagSet.has('hash-event')) return 'events';
+	if (tagSet.has('people') || tagSet.has('company') || tagSet.has('companies') || tagSet.has('product') || tagSet.has('products')) return 'directory';
+	return 'articles';
+}
+
+function scoreSearchMatch(doc, query) {
+	if (!query) return 0;
+	const q = query.toLowerCase();
+	const title = doc.title.toLowerCase();
+	const excerpt = doc.excerpt.toLowerCase();
+	let score = 0;
+	if (title === q) score += 200;
+	if (title.startsWith(q)) score += 100;
+	if (title.includes(q)) score += 60;
+	if (doc.tags.some((t) => t === q)) score += 40;
+	if (doc.tags.some((t) => t.includes(q))) score += 15;
+	if (excerpt.includes(q)) score += 10;
+	return score;
+}
+
+function searchCorpus(corpus, query, limit) {
+	const q = (query || '').trim();
+	if (!q) return [];
+	return corpus
+		.map((doc) => ({ doc, score: scoreSearchMatch(doc, q) }))
+		.filter((r) => r.score > 0)
+		.sort((a, b) => b.score - a.score || b.doc.published - a.doc.published)
+		.slice(0, limit || 50)
+		.map((r) => r.doc);
+}
+
+function initHeaderSearch() {
+	const forms = document.querySelectorAll('[data-sc-header-search]');
+	if (!forms.length) return;
+	const corpus = readSearchCorpus();
+
+	forms.forEach((form) => {
+		const input = form.querySelector('[data-sc-search-input]');
+		const resultsEl = form.querySelector('[data-sc-search-results]');
+		if (!input || !resultsEl) return;
+
+		const close = () => {
+			resultsEl.hidden = true;
+			resultsEl.innerHTML = '';
+		};
+		const render = (matches) => {
+			if (!matches.length) {
+				resultsEl.innerHTML = '<li class="sc-header-search-empty">No matches</li>';
+				resultsEl.hidden = false;
+				return;
+			}
+			resultsEl.innerHTML = matches
+				.map((doc) => {
+					const cat = categorizeSearchDoc(doc);
+					return `<li class="sc-header-search-item" role="option">
+						<a class="sc-header-search-link" href="${doc.url}">
+							<span class="sc-header-search-cat">${cat}</span>
+							<span class="sc-header-search-title">${doc.title.replace(/</g, '&lt;')}</span>
+						</a>
+					</li>`;
+				})
+				.join('');
+			resultsEl.hidden = false;
+		};
+
+		let timer;
+		input.addEventListener('input', () => {
+			clearTimeout(timer);
+			const q = input.value.trim();
+			if (q.length < 2) { close(); return; }
+			timer = setTimeout(() => render(searchCorpus(corpus, q, 6)), 80);
+		});
+
+		input.addEventListener('focus', () => {
+			const q = input.value.trim();
+			if (q.length >= 2) render(searchCorpus(corpus, q, 6));
+		});
+
+		document.addEventListener('click', (e) => {
+			if (!form.contains(e.target)) close();
+		});
+
+		input.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') { close(); input.blur(); }
+		});
+	});
+}
+
+function initSearchResultsPage() {
+	const page = document.querySelector('.sc-search-page');
+	if (!page) return;
+
+	const params = new URLSearchParams(window.location.search);
+	const initialQ = (params.get('q') || '').trim();
+
+	const input = page.querySelector('[data-sc-results-input]');
+	const summaryEl = page.querySelector('[data-sc-results-summary]');
+	const zeroEl = page.querySelector('[data-sc-results-zero]');
+	const zeroQEl = page.querySelector('[data-sc-results-zero-q]');
+	const sortEl = page.querySelector('[data-sc-results-sort]');
+	const tabs = [...page.querySelectorAll('.sc-search-tab')];
+	const panels = [...page.querySelectorAll('.sc-search-panel')];
+	const lists = {
+		articles: page.querySelector('[data-sc-list="articles"]'),
+		directory: page.querySelector('[data-sc-list="directory"]'),
+		jobs: page.querySelector('[data-sc-list="jobs"]'),
+		events: page.querySelector('[data-sc-list="events"]')
+	};
+	const empties = {
+		articles: page.querySelector('[data-sc-empty="articles"]'),
+		directory: page.querySelector('[data-sc-empty="directory"]'),
+		jobs: page.querySelector('[data-sc-empty="jobs"]'),
+		events: page.querySelector('[data-sc-empty="events"]')
+	};
+	const counts = {
+		articles: page.querySelector('[data-sc-tab-count="articles"]'),
+		directory: page.querySelector('[data-sc-tab-count="directory"]'),
+		jobs: page.querySelector('[data-sc-tab-count="jobs"]'),
+		events: page.querySelector('[data-sc-tab-count="events"]')
+	};
+
+	if (input && initialQ) input.value = initialQ;
+
+	const corpus = readSearchCorpus();
+
+	const renderItem = (doc) => {
+		const safeTitle = doc.title.replace(/</g, '&lt;');
+		const safeExcerpt = (doc.excerpt || '').replace(/</g, '&lt;');
+		const cat = categorizeSearchDoc(doc);
+		return `<li class="sc-search-result">
+			<a class="sc-search-result-link" href="${doc.url}">
+				<span class="sc-search-result-cat">${cat}</span>
+				<h3 class="sc-search-result-title">${safeTitle}</h3>
+				${safeExcerpt ? `<p class="sc-search-result-excerpt">${safeExcerpt}</p>` : ''}
+			</a>
+		</li>`;
+	};
+
+	const apply = () => {
+		const q = (input?.value || '').trim();
+		const buckets = { articles: [], directory: [], jobs: [], events: [] };
+
+		if (q) {
+			const matches = searchCorpus(corpus, q, 200);
+			matches.forEach((doc) => {
+				const cat = categorizeSearchDoc(doc);
+				buckets[cat].push(doc);
+			});
+		} else {
+			// No query → show recent items across each category so the page never looks empty.
+			const recent = [...corpus].sort((a, b) => b.published - a.published);
+			recent.forEach((doc) => {
+				const cat = categorizeSearchDoc(doc);
+				if (buckets[cat].length < 12) buckets[cat].push(doc);
+			});
+		}
+
+		if (sortEl && sortEl.value === 'newest') {
+			Object.keys(buckets).forEach((k) => buckets[k].sort((a, b) => b.published - a.published));
+		}
+
+		Object.keys(buckets).forEach((k) => {
+			if (counts[k]) counts[k].textContent = String(buckets[k].length);
+			if (lists[k]) lists[k].innerHTML = buckets[k].map(renderItem).join('');
+			if (empties[k]) empties[k].hidden = buckets[k].length !== 0;
+		});
+
+		const total = buckets.articles.length + buckets.directory.length + buckets.jobs.length + buckets.events.length;
+		if (summaryEl) {
+			if (!q) summaryEl.textContent = 'Showing recent content. Start typing to search.';
+			else summaryEl.textContent = total + ' result' + (total === 1 ? '' : 's') + ' for "' + q + '"';
+		}
+		if (zeroEl) {
+			zeroEl.hidden = !(q && total === 0);
+			if (zeroQEl) zeroQEl.textContent = q;
+		}
+	};
+
+	tabs.forEach((tab) => {
+		tab.addEventListener('click', () => {
+			const target = tab.getAttribute('data-search-tab');
+			tabs.forEach((t) => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+			panels.forEach((p) => p.classList.remove('is-active'));
+			tab.classList.add('is-active');
+			tab.setAttribute('aria-selected', 'true');
+			const panel = page.querySelector(`[data-search-panel="${target}"]`);
+			if (panel) panel.classList.add('is-active');
+		});
+	});
+
+	if (input) {
+		input.addEventListener('input', () => {
+			clearTimeout(input._t);
+			input._t = setTimeout(apply, 100);
+		});
+		// Auto-focus so visitors can start typing immediately.
+		try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); }
+	}
+	if (sortEl) sortEl.addEventListener('change', apply);
+
+	apply();
+}
+
 function hydrateAdvertisingHero() {
 	const h1 = document.querySelector('.sc-adv-hero [data-sc-adv-hero-h1]');
 	const tpl = document.querySelector('template.sc-adv-source');
@@ -698,6 +923,8 @@ hydrateAdvertisingHero();
 hydrateGenericFaq();
 initCryptoJobsChipFilter();
 filterAuthorTagsFromMoreNews();
+initHeaderSearch();
+initSearchResultsPage();
 accentLastHalf('.sc-contact-hero-inner h1', 'sc-contact-hero-last-word');
 accentLastHalf('.sc-imprint-title', 'sc-imprint-title-accent');
 initAboutPage();

@@ -315,13 +315,14 @@
 
 .gh-dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 6px);
   left: 0;
   margin: 0;
-  min-width: 220px;
+  min-width: 240px;
   background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 12px;
-  padding: 16px 0;
+  padding: 12px 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   list-style: none;
   opacity: 0;
@@ -330,6 +331,37 @@
   transform: translateY(10px);
   transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
   z-index: 1000;
+}
+
+/* Hover bridge: invisible strip below the trigger so the cursor can travel from
+   link to dropdown without losing :hover state. */
+.has-dropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  pointer-events: none;
+}
+
+.has-dropdown:hover::after,
+.has-dropdown:focus-within::after {
+  pointer-events: auto;
+}
+
+/* If a dropdown's content all came from missing pages/tags, hide the dropdown
+   shell, the caret, and the hover bridge — the nav item becomes a plain link. */
+.gh-dropdown-menu:not(:has(li:not(.divider))) {
+  display: none;
+}
+
+.has-dropdown:not(:has(.gh-dropdown-menu li:not(.divider))) .sc-nav-caret {
+  display: none;
+}
+
+.has-dropdown:not(:has(.gh-dropdown-menu li:not(.divider)))::after {
+  display: none;
 }
 .gh-dropdown-menu li {
   list-style: none;
@@ -1806,4 +1838,133 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+}
+
+/* =====================================================================
+   Global Search — header input + autocomplete dropdown
+   ===================================================================== */
+.sc-header-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 540px;
+    border-radius: 999px;
+    border: 1px solid #E9ECEF;
+    background: #fff;
+    padding: 4px 8px 4px 14px;
+}
+
+:root[data-color-scheme="dark"] .sc-header-search {
+    background: #101010;
+    border-color: #1B1B1B;
+}
+
+.sc-header-search-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-muted-legacy);
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.sc-header-search-submit svg {
+    width: 18px;
+    height: 18px;
+}
+
+.sc-header-search-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    color: inherit;
+    padding: 8px 8px;
+}
+
+.sc-header-search-input::placeholder {
+    color: var(--color-muted-legacy);
+}
+
+.sc-header-search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid #E9ECEF;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    z-index: 1000002;
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+:root[data-color-scheme="dark"] .sc-header-search-results {
+    background: #101010;
+    border-color: #1B1B1B;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.sc-header-search-results[hidden] { display: none; }
+
+.sc-header-search-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease;
+}
+
+.sc-header-search-link:hover,
+.sc-header-search-link:focus {
+    background: rgba(241, 143, 32, 0.08);
+}
+
+.sc-header-search-cat {
+    display: inline-flex;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(241, 143, 32, 0.10);
+    color: #F18F20;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.sc-header-search-title {
+    font-size: 14px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sc-header-search-empty {
+    padding: 14px 16px;
+    color: var(--color-muted-legacy);
+    font-size: 13px;
+    text-align: center;
+    list-style: none;
+}
+
+@media (max-width: 767px) {
+    .sc-header-search { max-width: none; }
 }

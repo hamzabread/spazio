@@ -696,6 +696,23 @@ html[data-home-it="true"] .home-it-only{display:block;}
     
     <script data-categories="essential" src="https://media.spaziocrypto.com/js/swiper-bundle.min.js"></script>
     
+    {{!-- Search corpus: 100 recent posts + all pages, emitted as inert <template>
+         tags so the JS autocomplete + /search/ page can read titles + URLs +
+         tags without needing a Content API key at runtime. MUST render before the
+         main script so initSearchResultsPage() can read the corpus on first tick. --}}
+    <div id="sc-search-corpus" hidden aria-hidden="true">
+        {{#get "posts" limit="100" include="tags,authors" order="published_at desc"}}
+            {{#foreach posts}}
+            <template class="sc-search-doc" data-type="post" data-url="{{url}}" data-title="{{title}}" data-tags="{{#foreach tags visibility="all"}}{{slug}} {{/foreach}}" data-primary="{{#if primary_tag}}{{primary_tag.slug}}{{/if}}" data-published="{{date published_at format='X'}}">{{excerpt words="24"}}</template>
+            {{/foreach}}
+        {{/get}}
+        {{#get "pages" limit="50" include="tags"}}
+            {{#foreach pages}}
+            <template class="sc-search-doc" data-type="page" data-url="{{url}}" data-title="{{title}}" data-tags="{{#foreach tags visibility="all"}}{{slug}} {{/foreach}}" data-primary="{{#if primary_tag}}{{primary_tag.slug}}{{/if}}">{{excerpt words="24"}}</template>
+            {{/foreach}}
+        {{/get}}
+    </div>
+
     {{! Main script }}
     <script type="text/javascript" data-categories="essential" src="{{asset 'built/index.js'}}"></script>
 

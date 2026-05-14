@@ -23,10 +23,12 @@ const TAB_CATEGORY = {
 /** CoinGecko `/coins/markets` only allows these `order` values (see API docs). */
 const SORT_SEQUENCE = [
     { id: 'rank', apiOrder: 'market_cap_desc', aria: 'Sort by market cap' },
+    { id: 'gainers', apiOrder: 'price_change_percentage_24h_desc', aria: 'Top gainers (24h)' },
+    { id: 'losers', apiOrder: 'price_change_percentage_24h_asc', aria: 'Top losers (24h)' },
     { id: 'volume', apiOrder: 'volume_desc', aria: 'Sort by 24H volume' },
+    { id: 'new', apiOrder: 'id_asc', aria: 'Recently added' },
     { id: 'rank_asc', apiOrder: 'market_cap_asc', aria: 'Sort by market cap, ascending' },
-    { id: 'vol_asc', apiOrder: 'volume_asc', aria: 'Sort by volume, ascending' },
-    { id: 'id', apiOrder: 'id_asc', aria: 'Sort by id (A–Z)' }
+    { id: 'vol_asc', apiOrder: 'volume_asc', aria: 'Sort by volume, ascending' }
 ];
 
 const FALLBACK_ROWS = [
@@ -229,6 +231,19 @@ export function initCryptoPricesPage() {
     let totalCoins = 9509;
     let useFallback = false;
     let searchDebounce = null;
+
+    // Read ?sort= from URL so the Markets dropdown links (Top Gainers, Top Losers,
+    // Highest Volume, Recently Added) land on the right sort immediately.
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const sortParam = (params.get('sort') || '').trim().toLowerCase();
+        if (sortParam) {
+            const idx = SORT_SEQUENCE.findIndex((s) => s.id === sortParam);
+            if (idx >= 0) sortIndex = idx;
+        }
+    } catch (e) {
+        /* ignore */
+    }
 
     const getSortMeta = () => SORT_SEQUENCE[sortIndex % SORT_SEQUENCE.length];
 

@@ -60,11 +60,14 @@
     </div>
         {{else}}
         <div class="gh-header-jobs-search-wrap">
-            <button type="button" class="gh-header-jobs-search-btn" data-ghost-search aria-label="{{t "Search button"}}">
-                <span class="gh-header-jobs-search-icon" aria-hidden="true">{{>icons/search}}</span>
-                <span class="gh-header-jobs-search-placeholder">Search...</span>
+            <form class="sc-header-search" action="{{@site.url}}/search/" method="GET" role="search" data-sc-header-search>
+                <button type="submit" class="sc-header-search-submit" aria-label="{{t "Search"}}">
+                    <span class="gh-header-jobs-search-icon" aria-hidden="true">{{>icons/search}}</span>
                 </button>
-            </div>
+                <input type="search" name="q" class="sc-header-search-input gh-header-jobs-search-placeholder" placeholder="{{t "Search"}}…" aria-label="{{t "Search"}}" autocomplete="off" data-sc-search-input>
+                <ul class="sc-header-search-results" role="listbox" hidden data-sc-search-results></ul>
+            </form>
+        </div>
         <div class="gh-header-actions gh-header-actions--jobs-top">
             <div class="sc-header-cta">
                 <a class="sc-btn-outline" href="{{@site.url}}/post-a-job" aria-label="{{t "Post a Job"}}">

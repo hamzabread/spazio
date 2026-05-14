@@ -1,0 +1,260 @@
+/* =====================================================================
+   /search/ results page (page-search.hbs)
+   ===================================================================== */
+.sc-search-page {
+    background: var(--color-background-main);
+    color: var(--color-main);
+    padding: 0 0 80px;
+}
+
+.sc-search-page .sc-about-shell {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+.sc-search-hero {
+    padding: 48px 0 32px;
+}
+
+.sc-search-page-title {
+    margin: 18px 0 18px;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.sc-search-page-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 6px 6px 18px;
+    border: 1px solid #1B1B1B;
+    border-radius: 14px;
+    background: #050505;
+    max-width: 720px;
+}
+
+:root[data-color-scheme="light"] .sc-search-page-form {
+    border-color: rgba(0, 0, 0, 0.04);
+    background: #FFFFFF;
+}
+
+.sc-search-page-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted-legacy);
+    width: 22px;
+    height: 22px;
+}
+
+.sc-search-page-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.sc-search-page-input {
+    flex: 1 1 auto;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    outline: none;
+    padding: 12px 4px;
+    min-width: 0;
+}
+
+.sc-search-page-input::placeholder {
+    color: var(--color-muted-legacy);
+}
+
+.sc-search-page-submit {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: #F18F20;
+    color: #000;
+    border: none;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sc-search-page-meta {
+    margin: 16px 0 0;
+    color: var(--color-muted-legacy);
+    font-size: 13px;
+}
+
+.sc-search-results { padding: 0 0 40px; }
+
+.sc-search-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #1B1B1B;
+}
+
+:root[data-color-scheme="light"] .sc-search-tabs {
+    border-bottom-color: rgba(0, 0, 0, 0.04);
+}
+
+.sc-search-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: none;
+    background: transparent;
+    color: var(--color-muted-legacy);
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.sc-search-tab.is-active {
+    color: var(--color-main);
+    border-bottom-color: #F18F20;
+}
+
+.sc-search-tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    padding: 0 6px;
+    height: 20px;
+    border-radius: 999px;
+    background: rgba(241, 143, 32, 0.10);
+    color: #F18F20;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.sc-search-filters {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.sc-search-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-muted-legacy);
+}
+
+.sc-search-filter-select {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #1B1B1B;
+    background: #050505;
+    color: var(--color-main);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+:root[data-color-scheme="light"] .sc-search-filter-select {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.04);
+}
+
+.sc-search-panel { display: none; }
+.sc-search-panel.is-active { display: block; }
+
+.sc-search-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sc-search-result-link {
+    display: block;
+    padding: 18px 22px;
+    border-radius: 12px;
+    border: 1px solid #1B1B1B;
+    background: #050505;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+:root[data-color-scheme="light"] .sc-search-result-link {
+    border-color: rgba(0, 0, 0, 0.04);
+    background: #FFFFFF;
+}
+
+.sc-search-result-link:hover { border-color: rgba(241, 143, 32, 0.45); }
+
+.sc-search-result-cat {
+    display: inline-flex;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(241, 143, 32, 0.10);
+    color: #F18F20;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.sc-search-result-title {
+    margin: 8px 0 6px;
+    font-family: "Helvetica Now Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-main);
+}
+
+.sc-search-result-excerpt {
+    margin: 0;
+    color: var(--color-muted-legacy);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.sc-search-empty,
+.sc-search-zero {
+    padding: 32px 22px;
+    color: var(--color-muted-legacy);
+    font-size: 14px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px dashed #1B1B1B;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+:root[data-color-scheme="light"] .sc-search-empty,
+:root[data-color-scheme="light"] .sc-search-zero {
+    border-color: rgba(0, 0, 0, 0.06);
+    background: #FFFFFF;
+}
+
+/* The corpus emitter is invisible to layout */
+#sc-search-corpus { display: none !important; }
+
+@media (max-width: 767px) {
+    .sc-search-page-title { font-size: 28px; }
+    .sc-search-page-form { flex-wrap: wrap; }
+    .sc-search-page-submit { padding: 10px 14px; }
+    .sc-search-tabs { gap: 4px; }
+    .sc-search-tab { padding: 8px 10px; font-size: 13px; }
+    .sc-search-filters { justify-content: flex-start; }
+}

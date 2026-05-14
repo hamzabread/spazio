@@ -1,0 +1,78 @@
+{{!< default}}
+
+{{#post}}
+<main class="sc-search-page sc-about-page-dynamic">
+    <section class="sc-search-hero">
+        <div class="sc-about-shell">
+            {{> breadcrumbs breadcrumb_title=(t "Search")}}
+
+            <h1 class="sc-search-page-title">{{t "Search"}}</h1>
+
+            <form class="sc-search-page-form" action="{{@site.url}}/search/" method="GET" role="search">
+                <span class="sc-search-page-icon" aria-hidden="true">{{>icons/search}}</span>
+                <input
+                    type="search"
+                    name="q"
+                    class="sc-search-page-input"
+                    placeholder="{{t "Search articles, jobs, directory, events"}}…"
+                    aria-label="{{t "Search"}}"
+                    autocomplete="off"
+                    data-sc-results-input>
+                <button type="submit" class="sc-search-page-submit">{{t "Search"}}</button>
+            </form>
+
+            <p class="sc-search-page-meta" data-sc-results-summary>{{t "Enter a search term above."}}</p>
+        </div>
+    </section>
+
+    <section class="sc-search-results">
+        <div class="sc-about-shell">
+            <div class="sc-search-tabs" role="tablist" aria-label="{{t "Search categories"}}">
+                <button type="button" class="sc-search-tab is-active" data-search-tab="articles" role="tab" aria-selected="true">
+                    {{t "Articles"}} <span class="sc-search-tab-count" data-sc-tab-count="articles">0</span>
+                </button>
+                <button type="button" class="sc-search-tab" data-search-tab="directory" role="tab" aria-selected="false">
+                    {{t "Directory"}} <span class="sc-search-tab-count" data-sc-tab-count="directory">0</span>
+                </button>
+                <button type="button" class="sc-search-tab" data-search-tab="jobs" role="tab" aria-selected="false">
+                    {{t "Jobs"}} <span class="sc-search-tab-count" data-sc-tab-count="jobs">0</span>
+                </button>
+                <button type="button" class="sc-search-tab" data-search-tab="events" role="tab" aria-selected="false">
+                    {{t "Events"}} <span class="sc-search-tab-count" data-sc-tab-count="events">0</span>
+                </button>
+            </div>
+
+            <div class="sc-search-filters" data-sc-results-filters>
+                <label class="sc-search-filter">
+                    <span class="sc-search-filter-label">{{t "Sort"}}</span>
+                    <select class="sc-search-filter-select" data-sc-results-sort>
+                        <option value="relevance">{{t "Relevance"}}</option>
+                        <option value="newest">{{t "Newest first"}}</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="sc-search-panels">
+                <div class="sc-search-panel is-active" data-search-panel="articles">
+                    <ul class="sc-search-list" data-sc-list="articles"></ul>
+                    <p class="sc-search-empty" data-sc-empty="articles" hidden>{{t "No articles match this search."}}</p>
+                </div>
+                <div class="sc-search-panel" data-search-panel="directory">
+                    <ul class="sc-search-list" data-sc-list="directory"></ul>
+                    <p class="sc-search-empty" data-sc-empty="directory" hidden>{{t "No directory entries match this search."}}</p>
+                </div>
+                <div class="sc-search-panel" data-search-panel="jobs">
+                    <ul class="sc-search-list" data-sc-list="jobs"></ul>
+                    <p class="sc-search-empty" data-sc-empty="jobs" hidden>{{t "No jobs match this search."}}</p>
+                </div>
+                <div class="sc-search-panel" data-search-panel="events">
+                    <ul class="sc-search-list" data-sc-list="events"></ul>
+                    <p class="sc-search-empty" data-sc-empty="events" hidden>{{t "No events match this search."}}</p>
+                </div>
+            </div>
+
+            <p class="sc-search-zero" data-sc-results-zero hidden>{{t "No results found for"}} <strong data-sc-results-zero-q></strong>. {{t "Try a different keyword."}}</p>
+        </div>
+    </section>
+</main>
+{{/post}}
