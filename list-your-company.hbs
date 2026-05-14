@@ -7,35 +7,11 @@
     <!-- Header -->
     <header class="sc-form-header">
       <div class="sc-header-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
-          viewBox="0 0 22 22"
-          fill="none"
-        >
-          <path
-            d="M17.5 3H4.5C3.11929 3 2 4.11929 2 5.5V16.5C2 17.8807 3.11929 19 4.5 19H17.5C18.8807 19 20 17.8807 20 16.5V5.5C20 4.11929 18.8807 3 17.5 3Z"
-            stroke="#F54900"
-            stroke-width="1.6"
-          />
-          <path
-            d="M6.00391 9H16.0039M6.00391 12.5H13.0039"
-            stroke="#F54900"
-            stroke-width="1.5"
-            stroke-linecap="round"
-          />
-          <path
-            d="M17 19.501C18.933 19.501 20.5 17.934 20.5 16.001C20.5 14.068 18.933 12.501 17 12.501C15.067 12.501 13.5 14.068 13.5 16.001C13.5 17.934 15.067 19.501 17 19.501Z"
-            fill="white"
-            stroke="#F54900"
-            stroke-width="1.3"
-          />
-          <path
-            d="M15.8008 16.0008H18.2008M17.0008 14.8008V17.2008"
-            stroke="#F54900"
-            stroke-linecap="round"
-          />
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M17.5 3H4.5C3.11929 3 2 4.11929 2 5.5V16.5C2 17.8807 3.11929 19 4.5 19H17.5C18.8807 19 20 17.8807 20 16.5V5.5C20 4.11929 18.8807 3 17.5 3Z" stroke="#F54900" stroke-width="1.6"/>
+          <path d="M6.00391 9H16.0039M6.00391 12.5H13.0039" stroke="#F54900" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M17 19.501C18.933 19.501 20.5 17.934 20.5 16.001C20.5 14.068 18.933 12.501 17 12.501C15.067 12.501 13.5 14.068 13.5 16.001C13.5 17.934 15.067 19.501 17 19.501Z" fill="white" stroke="#F54900" stroke-width="1.3"/>
+          <path d="M15.8008 16.0008H18.2008M17.0008 14.8008V17.2008" stroke="#F54900" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="sc-header-text">
@@ -44,43 +20,70 @@
       </div>
     </header>
 
-    <form action="#" class="sc-main-form">
+    <form id="sc-co-form" class="sc-main-form" novalidate>
 
       <!-- Section: Company Info -->
       <div class="sc-form-section">
         <h2 class="sc-section-title">COMPANY INFORMATION</h2>
-<div class="border"></div>
+        <div class="border"></div>
+
         <div class="sc-form-row">
           <div class="sc-input-group">
-            <label>Company Name<span class="required">*</span></label>
-            <input type="text" placeholder="e.g. Paradex Exchange" />
+            <label for="sc-co-name">Company Name<span class="required">*</span></label>
+            <input id="sc-co-name" name="companyName" type="text" placeholder="e.g. Paradex Exchange"/>
           </div>
           <div class="sc-input-group">
-            <label>Website URL<span class="required">*</span></label>
-            <input type="url" placeholder="https://yoursite.com" />
+            <label for="sc-co-website">Website URL<span class="required">*</span></label>
+            <input id="sc-co-website" name="website" type="url" placeholder="https://yoursite.com"/>
           </div>
         </div>
 
         <div class="sc-form-row">
           <div class="sc-input-group">
-            <label>Category<span class="required">*</span></label>
-            <input type="text" placeholder="Select Category" />
+            <label for="sc-co-category">Category<span class="required">*</span></label>
+            <select id="sc-co-category" name="category" class="sc-co-form-select" required>
+              <option value="" disabled selected>Select category…</option>
+              <option value="Exchanges">Exchanges</option>
+              <option value="Wallets">Wallets</option>
+              <option value="Analytics">Analytics</option>
+              <option value="DeFi Apps">DeFi Apps</option>
+              <option value="On-Chain">On-Chain</option>
+              <option value="AI">AI</option>
+              <option value="NFT">NFT</option>
+              <option value="News">News</option>
+              <option value="Research">Research</option>
+              <option value="Launchpads">Launchpads</option>
+            </select>
           </div>
           <div class="sc-input-group">
-            <label>Founded Year</label>
-            <input type="text" placeholder="e.g. 2021" />
+            <label for="sc-co-founded">Founded Year</label>
+            <input id="sc-co-founded" name="foundedYear" type="text" inputmode="numeric" pattern="[0-9]{4}" placeholder="e.g. 2021"/>
+          </div>
+        </div>
+
+        <div class="sc-form-row">
+          <div class="sc-input-group">
+            <label for="sc-co-region">Region</label>
+            <select id="sc-co-region" name="region" class="sc-co-form-select">
+              <option value="">Select region…</option>
+              <option value="Global">Global</option>
+              <option value="North America">North America</option>
+              <option value="Europe">Europe</option>
+              <option value="Asia">Asia</option>
+              <option value="LATAM">LATAM</option>
+              <option value="Africa">Africa</option>
+              <option value="Middle East">Middle East</option>
+              <option value="Oceania">Oceania</option>
+            </select>
           </div>
         </div>
 
         <div class="sc-input-group full-width">
-          <label>Short Description<span class="required">*</span></label>
-          <textarea
-            maxlength="160"
-            placeholder="Describe your company in 1-2 sentences..."
-          ></textarea>
+          <label for="sc-co-desc">Short Description<span class="required">*</span></label>
+          <textarea id="sc-co-desc" name="shortDescription" maxlength="2000" placeholder="Describe your company. Paragraphs are preserved on your detail page." data-counter-for="sc-co-desc-count"></textarea>
           <div class="sc-input-footer" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
-            <span>Shown on your directory listing</span>
-            <span class="char-count">0 / 160</span>
+            <span>First ~160 chars shown on directory listing</span>
+            <span class="char-count"><span id="sc-co-desc-count">0</span> / 2000</span>
           </div>
         </div>
       </div>
@@ -91,16 +94,16 @@
         <div class="border"></div>
         <div class="sc-form-row three-col">
           <div class="sc-input-group">
-            <label>Twitter / X</label>
-            <input type="text" placeholder="@handle" />
+            <label for="sc-co-twitter">Twitter / X</label>
+            <input id="sc-co-twitter" name="twitter" type="text" placeholder="@handle"/>
           </div>
           <div class="sc-input-group">
-            <label>LinkedIn</label>
-            <input type="text" placeholder="company/name" />
+            <label for="sc-co-linkedin">LinkedIn</label>
+            <input id="sc-co-linkedin" name="linkedin" type="text" placeholder="company/name or full URL"/>
           </div>
           <div class="sc-input-group">
-            <label>Contact Email<span class="required">*</span></label>
-            <input type="email" placeholder="hello@company.com" />
+            <label for="sc-co-email">Contact Email<span class="required">*</span></label>
+            <input id="sc-co-email" name="contactEmail" type="email" placeholder="hello@company.com"/>
           </div>
         </div>
       </div>
@@ -108,14 +111,21 @@
       <!-- Section: Logo -->
       <div class="sc-form-section">
         <h2 class="sc-section-title">LOGO & MEDIA</h2>
-        <div class="sc-upload-box">
-          <input type="file" id="logo-upload" hidden />
-          <label for="logo-upload">
-           🏢
-            <p>Drop your logo here or
-              <span class="orange-text">browse</span></p>
-            <span class="specs">SVG, PNG or WEBP · Max 2MB · Min 200×200px</span>
+        <div class="border"></div>
+        <div class="sc-upload-box" id="sc-co-upload-box">
+          <input type="file" id="sc-co-logo" name="logo" accept="image/jpeg,image/png,image/webp,image/svg+xml" hidden/>
+          <label for="sc-co-logo" id="sc-co-upload-label">
+            <span aria-hidden="true">🏢</span>
+            <p>Drop your logo here or <span class="orange-text">browse</span></p>
+            <span class="specs">SVG, PNG or WEBP · Max 5MB · Min 200×200px</span>
           </label>
+          <div class="sc-co-upload-preview" id="sc-co-upload-preview" hidden>
+            <img id="sc-co-upload-img" alt="Logo preview" />
+            <div class="sc-co-upload-meta">
+              <span id="sc-co-upload-filename"></span>
+              <button type="button" class="sc-co-upload-remove" id="sc-co-upload-remove" aria-label="Remove logo">× Remove</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -124,26 +134,281 @@
         <h2 class="sc-section-title">TAGS</h2>
         <div class="border"></div>
         <div class="sc-input-group full-width">
-          <label>Keywords</label>
-          <div class="sc-tag-container">
-            <span class="sc-tag">DeFi</span>
-            <span class="sc-tag">Web3</span>
-            <span class="sc-tag">Layer-2</span>
-            <input type="text" placeholder="Add tag..." />
+          <label for="sc-co-tag-input">Keywords</label>
+          <div class="sc-tag-container" id="sc-co-tags-wrap">
+            <span class="sc-tag-jobs" data-tag="DeFi">DeFi <button type="button" class="sc-tag-x" aria-label="Remove DeFi">×</button></span>
+            <span class="sc-tag-jobs" data-tag="Web3">Web3 <button type="button" class="sc-tag-x" aria-label="Remove Web3">×</button></span>
+            <span class="sc-tag-jobs" data-tag="Layer-2">Layer-2 <button type="button" class="sc-tag-x" aria-label="Remove Layer-2">×</button></span>
+            <input type="text" id="sc-co-tag-input" placeholder="Add tag, press Enter"/>
           </div>
         </div>
       </div>
 
-      <!-- Footer Buttons -->
+      <!-- Inline status -->
+      <div id="sc-co-status" class="sc-pr-status" role="status" aria-live="polite" hidden></div>
+
       <footer class="sc-form-footer">
-        <p class="terms">Free listing. Reviewed within 48h.
-          <a href="#">Terms apply.</a></p>
+        <p class="terms">Free listing. Reviewed within 48h. <a href="#">Terms apply.</a></p>
         <div class="sc-btn-group">
-          <button type="button" class="btn-secondary">Save Draft</button>
-          <button type="submit" class="btn-primary">Submit for Review &rarr;</button>
+          <button type="button" class="btn-secondary" id="sc-co-draft">Save Draft</button>
+          <button type="submit" class="btn-primary" id="sc-co-submit">Submit for Review →</button>
         </div>
       </footer>
-
     </form>
   </div>
 </section>
+
+<style>
+  .sc-pr-status { margin: 12px 0; padding: 12px 16px; border-radius: 8px; font-size: 14px; }
+  .sc-pr-status.is-success { background: rgba(40, 167, 69, 0.15); color: #28a745; border: 1px solid rgba(40, 167, 69, 0.4); }
+  .sc-pr-status.is-error   { background: rgba(220, 53, 69, 0.15); color: #ef4a5d; border: 1px solid rgba(220, 53, 69, 0.4); }
+  .sc-pr-status.is-loading { background: rgba(241, 143, 32, 0.15); color: var(--sc-accent); border: 1px solid rgba(241, 143, 32, 0.35); }
+  #sc-co-submit[disabled], #sc-co-draft[disabled] { opacity: 0.6; cursor: not-allowed; }
+  .sc-main-form input.is-invalid,
+  .sc-main-form select.is-invalid,
+  .sc-main-form textarea.is-invalid { border-color: #ef4a5d !important; }
+
+  .sc-co-form-select {
+    width: 100%; padding: 12px 16px; border-radius: 8px;
+    border: 1px solid var(--sc-border);
+    background-color: var(--sc-input-bg);
+    color: var(--sc-text-main);
+    font-size: 15px; font-family: inherit;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 36px; cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+  .sc-co-form-select:hover { border-color: var(--sc-accent); }
+  .sc-co-form-select:focus { outline: 2px solid var(--sc-accent); outline-offset: 1px; }
+  .sc-co-form-select option {
+    background-color: var(--sc-card-bg);
+    color: var(--sc-text-main);
+  }
+  .sc-co-form-select option:disabled { color: var(--sc-text-muted); }
+
+  /* Tag chips */
+  .sc-tag-container {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    align-items: center; min-height: 46px;
+    padding: 6px 10px;
+  }
+  .sc-tag-jobs {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 4px 4px 10px;
+    background: var(--sc-tag-job-bg, var(--sc-accent-soft));
+    color: var(--sc-tag-job, var(--sc-accent));
+    border: 1px solid var(--sc-tag-job-border, rgba(21, 93, 252, 0.25));
+    border-radius: 999px; font-size: 13px; font-weight: 500;
+  }
+  .sc-tag-x {
+    background: transparent; border: 0; color: inherit;
+    width: 18px; height: 18px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 16px; line-height: 1; cursor: pointer; padding: 0;
+  }
+  .sc-tag-x:hover { background: rgba(21, 93, 252, 0.15); }
+  #sc-co-tag-input {
+    flex: 1; min-width: 120px;
+    border: 0; background: transparent;
+    padding: 6px 4px; color: var(--sc-text-main);
+    font-size: 14px;
+  }
+  #sc-co-tag-input:focus { outline: none; }
+
+  /* Logo upload */
+  .sc-upload-box { position: relative; }
+  .sc-upload-box.is-invalid { border-color: #ef4a5d; }
+  .sc-co-upload-preview:not([hidden]) {
+    margin-top: 12px; display: flex; align-items: center; gap: 14px;
+    padding: 10px;
+    border: 1px solid var(--sc-border);
+    border-radius: 10px;
+    background: var(--sc-input-bg);
+  }
+  .sc-co-upload-preview[hidden] { display: none !important; }
+  .sc-co-upload-preview img {
+    width: 80px; height: 80px; object-fit: cover; border-radius: 12px; display: block;
+    background: var(--sc-card-bg);
+  }
+  .sc-co-upload-meta { display: flex; flex-direction: column; gap: 6px; }
+  .sc-co-upload-meta span { font-size: 13px; color: var(--sc-text-main); word-break: break-all; }
+  .sc-co-upload-remove {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid var(--sc-border);
+    color: #ef4a5d;
+    padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 13px;
+  }
+  .sc-co-upload-remove:hover {
+    background: rgba(220, 53, 69, 0.1);
+    border-color: rgba(220, 53, 69, 0.4);
+  }
+</style>
+
+<script>
+  (function () {
+    const SUBMIT_ENDPOINT = window.SC_CO_SUBMIT_ENDPOINT || 'http://localhost:3001/submit-company';
+
+    const form = document.getElementById('sc-co-form');
+    const status = document.getElementById('sc-co-status');
+    const submitBtn = document.getElementById('sc-co-submit');
+    const draftBtn = document.getElementById('sc-co-draft');
+
+    document.querySelectorAll('textarea[data-counter-for]').forEach((ta) => {
+      const counter = document.getElementById(ta.dataset.counterFor);
+      const update = () => { counter.textContent = ta.value.length; };
+      ta.addEventListener('input', update);
+      update();
+    });
+
+    // --- Keywords / tag chips ---
+    const tagsWrap = document.getElementById('sc-co-tags-wrap');
+    const tagInput = document.getElementById('sc-co-tag-input');
+    function renderTagChip(value) {
+      const chip = document.createElement('span');
+      chip.className = 'sc-tag-jobs';
+      chip.dataset.tag = value;
+      chip.textContent = value + ' ';
+      const x = document.createElement('button');
+      x.type = 'button'; x.className = 'sc-tag-x';
+      x.setAttribute('aria-label', 'Remove ' + value);
+      x.textContent = '×';
+      x.addEventListener('click', () => chip.remove());
+      chip.appendChild(x);
+      tagsWrap.insertBefore(chip, tagInput);
+    }
+    tagsWrap.querySelectorAll('.sc-tag-jobs').forEach((chip) => {
+      const x = chip.querySelector('.sc-tag-x');
+      if (x) x.addEventListener('click', () => chip.remove());
+    });
+    tagInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        const v = tagInput.value.trim().replace(/,$/, '').trim();
+        if (v && !tagsWrap.querySelector(`.sc-tag-jobs[data-tag="${CSS.escape(v)}"]`)) {
+          renderTagChip(v);
+        }
+        tagInput.value = '';
+      } else if (e.key === 'Backspace' && !tagInput.value) {
+        const chips = tagsWrap.querySelectorAll('.sc-tag-jobs');
+        if (chips.length) chips[chips.length - 1].remove();
+      }
+    });
+
+    // --- Logo upload preview ---
+    const MAX_BYTES = 5 * 1024 * 1024;
+    const logoInput = document.getElementById('sc-co-logo');
+    const uploadLabel = document.getElementById('sc-co-upload-label');
+    const previewBox = document.getElementById('sc-co-upload-preview');
+    const previewImg = document.getElementById('sc-co-upload-img');
+    const previewName = document.getElementById('sc-co-upload-filename');
+    const removeBtn = document.getElementById('sc-co-upload-remove');
+
+    logoInput.addEventListener('change', () => {
+      const file = logoInput.files && logoInput.files[0];
+      if (!file) return;
+      if (file.size > MAX_BYTES) {
+        showStatus('error', 'Image is larger than 5 MB. Please pick a smaller file.');
+        logoInput.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        previewImg.src = ev.target.result;
+        previewName.textContent = file.name + ' · ' + Math.round(file.size / 1024) + ' KB';
+        previewBox.hidden = false;
+        uploadLabel.hidden = true;
+      };
+      reader.readAsDataURL(file);
+    });
+    removeBtn.addEventListener('click', () => {
+      logoInput.value = '';
+      previewBox.hidden = true;
+      uploadLabel.hidden = false;
+    });
+
+    function showStatus(kind, message) {
+      status.hidden = false;
+      status.className = 'sc-pr-status is-' + kind;
+      status.textContent = message;
+    }
+    function clearInvalid() {
+      form.querySelectorAll('.is-invalid').forEach((el) => el.classList.remove('is-invalid'));
+    }
+
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearInvalid();
+      const keywords = Array.from(tagsWrap.querySelectorAll('.sc-tag-jobs')).map((c) => c.dataset.tag);
+      const data = {
+        companyName: form.companyName.value.trim(),
+        website: form.website.value.trim(),
+        category: form.category.value,
+        foundedYear: form.foundedYear.value.trim(),
+        region: form.region.value,
+        shortDescription: form.shortDescription.value.trim(),
+        twitter: form.twitter.value.trim(),
+        linkedin: form.linkedin.value.trim(),
+        contactEmail: form.contactEmail.value.trim(),
+        keywords,
+      };
+
+      const required = ['companyName','website','category','shortDescription','contactEmail'];
+      const missing = required.filter((k) => !data[k] || !String(data[k]).trim());
+      if (missing.length) {
+        missing.forEach((k) => {
+          const el = form.elements[k];
+          if (el) el.classList.add('is-invalid');
+        });
+        showStatus('error', 'Please fill all required fields (highlighted in red).');
+        return;
+      }
+      try { new URL(data.website); } catch {
+        form.website.classList.add('is-invalid');
+        showStatus('error', 'Website must be a valid http(s):// URL.');
+        return;
+      }
+      if (!EMAIL_RE.test(data.contactEmail)) {
+        form.contactEmail.classList.add('is-invalid');
+        showStatus('error', 'Please enter a valid contact email.');
+        return;
+      }
+
+      const fd = new FormData();
+      Object.entries(data).forEach(([k, v]) => {
+        if (k === 'keywords') fd.append('keywords', JSON.stringify(v));
+        else fd.append(k, v || '');
+      });
+      if (logoInput.files && logoInput.files[0]) {
+        fd.append('logo', logoInput.files[0]);
+      }
+
+      submitBtn.disabled = true;
+      draftBtn.disabled = true;
+      showStatus('loading', 'Submitting…');
+
+      try {
+        const resp = await fetch(SUBMIT_ENDPOINT, { method: 'POST', body: fd });
+        const json = await resp.json().catch(() => ({}));
+        if (!resp.ok || !json.ok) throw new Error(json.error || ('Server returned ' + resp.status));
+        showStatus('success', 'Thanks! Your company was submitted as a ' + (json.status || 'draft') + ' and will be reviewed within 48 hours.');
+        form.reset();
+        tagsWrap.querySelectorAll('.sc-tag-jobs').forEach((c) => c.remove());
+        previewBox.hidden = true;
+        uploadLabel.hidden = false;
+        document.querySelectorAll('textarea[data-counter-for]').forEach((ta) => {
+          document.getElementById(ta.dataset.counterFor).textContent = '0';
+        });
+      } catch (err) {
+        showStatus('error', err.message || 'Submission failed. Please try again.');
+      } finally {
+        submitBtn.disabled = false;
+        draftBtn.disabled = false;
+      }
+    });
+  })();
+</script>

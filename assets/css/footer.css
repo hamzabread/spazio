@@ -964,6 +964,9 @@ li.sitelinks-link a {
     .scf-footer .scf-subscribe-btn {
         width: auto !important;
     }
+    .scf-footer .scf-top{
+        flex-direction: column;
+    }
 }
 
 /* Footer Injection Styles */

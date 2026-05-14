@@ -1,4 +1,4 @@
-<div class="sc-directory-panel is-active" data-tab-panel="people">
+<div class="sc-directory-panel" data-tab-panel="people">
     <div class="sc-directory-grid">
         {{#get "posts" filter="tag:people" include="authors,tags" limit="18" order="published_at desc"}}
             {{#if posts}}
@@ -24,7 +24,7 @@
     </div>
 </div>
 
-<div class="sc-directory-panel" data-tab-panel="companies">
+<div class="sc-directory-panel is-active" data-tab-panel="companies">
     <div class="sc-directory-grid">
         {{#get "posts" filter="tag:company+tag:-people+tag:-product+tag:-products+tag:-jobs+tag:-job+tag:-careers+tag:-hiring+tag:-events+tag:-event+tag:-press-release+tag:-press-releases+tag:-hash-jobs+tag:-hash-job+tag:-hash-careers+tag:-hash-hiring" include="authors,tags" limit="18" order="published_at desc"}}
             {{#if posts}}
@@ -33,7 +33,7 @@
                     <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/bitcoin.svg"}}{{/if}}" alt="{{title}}">
                     <div class="sc-directory-info">
                         <h3 class="sc-directory-name">{{title}}</h3>
-                        <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Company"}}{{/if}}{{/if}}</p>
+                        <p class="sc-directory-role">{{!-- Category (primary_tag or 2nd public tag) + optional Region (2nd internal tag) --}}{{#if primary_tag}}{{#match primary_tag.slug "company"}}{{#foreach tags visibility="public" from="2" limit="1"}}<span class="sc-directory-role-cat">{{name}}</span>{{/foreach}}{{else match primary_tag.slug "companies"}}{{#foreach tags visibility="public" from="2" limit="1"}}<span class="sc-directory-role-cat">{{name}}</span>{{/foreach}}{{else}}<span class="sc-directory-role-cat">{{primary_tag.name}}</span>{{/match}}{{/if}}{{#foreach tags visibility="internal" from="2" to="2"}}<span class="sc-directory-role-region">{{name}}</span>{{/foreach}}</p>
                     </div>
                 </a>
                 {{/foreach}}
@@ -51,7 +51,7 @@
                     <img class="sc-directory-avatar" src="{{#if feature_image}}{{img_url feature_image size="s"}}{{else}}{{asset "imagesAndIcons/defi.svg"}}{{/if}}" alt="{{title}}">
                     <div class="sc-directory-info">
                         <h3 class="sc-directory-name">{{title}}</h3>
-                        <p class="sc-directory-role">{{#if excerpt}}{{excerpt words="8"}}{{else}}{{#if primary_tag}}{{primary_tag.name}}{{else}}{{t "Product"}}{{/if}}{{/if}}</p>
+                        <p class="sc-directory-role">{{#if primary_tag}}{{#match primary_tag.slug "product"}}{{else}}{{#match primary_tag.slug "products"}}{{else}}<span class="sc-directory-role-cat">{{primary_tag.name}}</span>{{/match}}{{/match}}{{/if}}{{#foreach tags visibility="internal" from="2" to="2"}}<span class="sc-directory-role-sep"> · </span><span class="sc-directory-role-region">{{name}}</span>{{/foreach}}</p>
                     </div>
                 </a>
                 {{/foreach}}
@@ -59,3 +59,34 @@
         {{/get}}
     </div>
 </div>
+
+<style>
+  /* Single-line subtitle on directory cards — prevents long excerpts (legacy
+     seed data) from blowing out the card layout. */
+  .sc-directory-card .sc-directory-role {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .sc-directory-role-cat,
+  .sc-directory-role-region { color: inherit; }
+  /* Show a ' · ' separator only when region follows a category span */
+  .sc-directory-role-region:not(:first-child)::before {
+    content: ' · ';
+    color: inherit;
+  }
+</style>
+
+<script>
+  (function () {
+    // Internal Ghost tags carry a leading '#' in their name (e.g. "#Europe").
+    // Strip it for display, same pattern as post-company.hbs / post-event.hbs.
+    document.querySelectorAll('.sc-directory-role-region').forEach(function (el) {
+      var t = (el.textContent || '').trim();
+      if (t.charAt(0) === '#') el.textContent = t.slice(1).trim();
+    });
+  })();
+</script>
