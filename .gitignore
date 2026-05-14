@@ -35,3 +35,7 @@ spazio-pitch-multi/
 
 # Submit-server source can stay tracked, but never its node_modules or .env
 submit-server/node_modules/
+
+ghost-local
+ghost-local.handoff.zip
+ghost-local.zip
