@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+submit-server/.env
+
+# Editor / OS junk
+.vscode/
+.claude/
+.DS_Store
+Thumbs.db
+
+# Ghost local install — never commit Ghost binaries / DB / user content
+ghost-local/current/
+ghost-local/versions/
+ghost-local/*.tgz
+ghost-local/config.development.json
+ghost-local/content/data/
+ghost-local/content/logs/
+ghost-local/content/public/
+ghost-local/content/settings/
+ghost-local/content/images/
+ghost-local/content/themes/casper/
+ghost-local/content/themes/source/
+
+# Build artefacts (the theme submodule has its own bundled output; root copies stay tracked)
+*.log
+
+# Optional: the root copy of the theme directory (the working area used while syncing
+# files into the submodule at ghost-local/content/themes/spazio-pitch-multi/)
+spazio-pitch-multi/
+
+# Submit-server source can stay tracked, but never its node_modules or .env
+submit-server/node_modules/
