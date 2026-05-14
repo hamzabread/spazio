@@ -5729,6 +5729,159 @@ a.sc-directory-card--link .sc-directory-name {
     display: none;
 }
 
+/* ==========================================================
+   TABLET PORTRAIT FIXES  (768px – 1024px, iPad portrait range)
+   ==========================================================
+   The theme historically had only mobile (<=767px) and desktop
+   (>=1100px) breakpoints in many places, leaving iPad portrait
+   width (~768-820px) using desktop rules that overflow or look
+   cramped. This block tightens paddings, drops 4-col grids to
+   2-col, and scales down hero/section titles for that range.
+   Scoped with min-width so mobile rules below 767px keep their
+   existing behaviour. */
+@media (max-width: 1024px) and (min-width: 768px) {
 
+    /* Hero — stop the floating stat cards from overlapping the title.
+       Switch to the same 2-col grid layout used on mobile so cards drop
+       below the hero content instead of floating around it. */
+    .sc-hero {
+        padding: 50px 24px;
+    }
+    .sc-hero-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        text-align: left;
+        padding: 0 !important;
+    }
+    .sc-hero-inner * { text-align: left; }
+    .sc-hero-content {
+        grid-column: 1 / -1;
+        order: -1;
+        text-align: center;
+    }
+    .sc-hero-content * { text-align: center; }
+    .sc-hero-floating-card {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        width: 100% !important;
+    }
+    .sc-hero-title {
+        font-size: 34px;
+    }
+    .sc-hero-desc {
+        font-size: 16px;
+    }
+    .sc-hero-stats {
+        justify-content: center;
+        gap: 16px;
+    }
+
+    /* More News — tighten the 50px section padding at tablet (matches
+       the rest of the homepage sections). The grid columns are already
+       handled by the existing 1024px / 900px rules above. */
+    .sc-more-news {
+        padding: 36px 24px;
+    }
+    .sc-mn-heading {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Take Action */
+    .sc-take-action {
+        padding: 36px 24px;
+    }
+    .sc-take-action-title {
+        font-size: 28px;
+        letter-spacing: 0.3px;
+    }
+    .sc-take-action-subtitle {
+        font-size: 15px;
+    }
+    .sc-take-action-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .sc-ta-card {
+        padding: 18px 18px;
+    }
+    .sc-ta-card-title { font-size: 17px; }
+    .sc-ta-card-desc  { font-size: 13.5px; margin-bottom: 14px; }
+    .sc-ta-card-btn {
+        padding: 10px 24px;
+        font-size: 13px;
+    }
+
+    /* Upcoming Events / Trusted By */
+    .sc-events {
+        padding: 36px 24px 0;
+    }
+    .sc-events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Trust Section */
+    .sc-trust-section {
+        padding: 0 24px 36px;
+    }
+    .sc-trust-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sc-trust-heading { font-size: 24px; margin-bottom: 28px; }
+
+    /* Market Dashboard */
+    .sc-market-dashboard {
+        padding: 36px 24px;
+    }
+
+    /* Trusted-By logos row + Press Releases feed + News content */
+    .sc-trusted-by {
+        padding: 36px 24px;
+    }
+
+    /* Generic homepage section padding cleanup — anything that uses 50px
+       gutters becomes 24px so two side-by-side cards actually fit at 768px. */
+    .sc-news-section,
+    .sc-press-release-feed-section,
+    .sc-global-audience,
+    .sc-platform-section,
+    .sc-jobs.sc-jobs--home {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    /* Jobs section toolbar (the home preview, and the /jobs/ page) — let
+       the search / sort / filter row wrap onto its own line on tablet so
+       nothing overflows the container. */
+    .sc-jobs-top {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .sc-jobs-controls {
+        width: 100%;
+    }
+    .sc-jobs-search { flex: 1; min-width: 160px; }
+
+    /* Featured / large content cards drop to a tighter 2-col layout */
+    .sc-feed-grid,
+    .sc-news-content-grid,
+    .sc-press-release-feed-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 14px;
+    }
+    .sc-mn-card{
+        max-width: inherit;
+    }
+    .sc-mn-card-img{
+        width: inherit;
+    }
+      .sc-mn-card-img-wrap{
+        width: inherit;
+    }
+}
 
 

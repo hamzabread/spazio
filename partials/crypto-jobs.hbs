@@ -10,9 +10,17 @@
                     </svg>
                     <input type="text" class="sc-jobs-search-input" placeholder="{{t "Search"}}" aria-label="{{t "Search jobs"}}">
                 </div>
-                <div class="sc-jobs-sort">
-                    <span>{{t "Sort"}}</span>
-                    <svg width="14" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                <div class="sc-jobs-sort-wrap">
+                    <button type="button" class="sc-jobs-sort" id="sc-jobs-sort-btn" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="sc-jobs-sort-label">{{t "Sort"}}</span>
+                        <svg width="14" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                    </button>
+                    <ul class="sc-jobs-sort-menu" id="sc-jobs-sort-menu" role="listbox" hidden>
+                        <li role="option" data-sort="newest" class="is-active">{{t "Newest first"}}</li>
+                        <li role="option" data-sort="oldest">{{t "Oldest first"}}</li>
+                        <li role="option" data-sort="salary-high">{{t "Salary: high to low"}}</li>
+                        <li role="option" data-sort="salary-low">{{t "Salary: low to high"}}</li>
+                    </ul>
                 </div>
                 <button class="sc-jobs-filter-btn" aria-label="{{t "Filter"}}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -27,28 +35,35 @@
 
         <div class="sc-jobs-chips" role="tablist" aria-label="{{t "Job categories"}}">
             <button type="button" class="sc-jobs-chip is-active" data-job-chip="all" role="tab" aria-selected="true">{{t "All"}}</button>
-            <button type="button" class="sc-jobs-chip" data-job-chip="exchanges" role="tab" aria-selected="false">{{t "Exchanges"}}</button>
-            <button type="button" class="sc-jobs-chip" data-job-chip="wallets" role="tab" aria-selected="false">{{t "Wallets"}}</button>
-            <button type="button" class="sc-jobs-chip" data-job-chip="analytics" role="tab" aria-selected="false">{{t "Analytics"}}</button>
-            <button type="button" class="sc-jobs-chip" data-job-chip="defi-apps" role="tab" aria-selected="false">{{t "DeFi Apps"}}</button>
-            <button type="button" class="sc-jobs-chip" data-job-chip="on-chain" role="tab" aria-selected="false">{{t "On-Chain"}}</button>
-            <button type="button" class="sc-jobs-chip" data-job-chip="ai" role="tab" aria-selected="false">{{t "AI"}}</button>
-            <button type="button" class="sc-jobs-chip" data-job-chip="nft" role="tab" aria-selected="false">{{t "NFT"}}</button>
-            <button type="button" class="sc-jobs-chip" data-job-chip="news" role="tab" aria-selected="false">{{t "News"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="engineering" role="tab" aria-selected="false">{{t "Engineering"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="product" role="tab" aria-selected="false">{{t "Product"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="design" role="tab" aria-selected="false">{{t "Design"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="marketing" role="tab" aria-selected="false">{{t "Marketing"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="business-development" role="tab" aria-selected="false">{{t "Business Development"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="operations" role="tab" aria-selected="false">{{t "Operations"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="community" role="tab" aria-selected="false">{{t "Community"}}</button>
             <button type="button" class="sc-jobs-chip" data-job-chip="research" role="tab" aria-selected="false">{{t "Research"}}</button>
-            <button type="button" class="sc-jobs-chip" data-job-chip="launchpads" role="tab" aria-selected="false">{{t "Launchpads"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="trading" role="tab" aria-selected="false">{{t "Trading"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="compliance" role="tab" aria-selected="false">{{t "Compliance"}}</button>
+            <button type="button" class="sc-jobs-chip" data-job-chip="customer-support" role="tab" aria-selected="false">{{t "Customer Support"}}</button>
             <div class="sc-jobs-chips-fade" aria-hidden="true"></div>
         </div>
 
-        <div class="sc-jobs-grid">
+        <div class="sc-jobs-grid" id="sc-jobs-grid">
             {{#get "posts" filter="tag:{{@custom.jobs_source_tag}}" limit="6" include="authors,tags" order="published_at desc"}}
                 {{#foreach posts}}
-                <div class="sc-job-card-wrap" data-job-slugs="{{#foreach tags visibility="all"}}{{slug}} {{/foreach}}">
+                <div class="sc-job-card-wrap"
+                    data-job-slugs="{{#foreach tags visibility="all"}}{{slug}} {{/foreach}}"
+                    data-job-title="{{title}}"
+                    data-job-company="{{#primary_author}}{{name}}{{/primary_author}}"
+                    data-job-sort="{{date published_at format='X'}}"
+                    data-job-salary="{{#has tag="#salary-120k-plus"}}200{{else}}{{#has tag="#salary-90k-180k"}}135{{else}}{{#has tag="#salary-90k-120k"}}105{{else}}{{#has tag="#salary-60k-90k"}}75{{else}}{{#has tag="#salary-40k-60k"}}50{{else}}0{{/has}}{{/has}}{{/has}}{{/has}}{{/has}}">
                     {{> "job-card"}}
                 </div>
                 {{/foreach}}
             {{/get}}
         </div>
+        <p class="sc-jobs-empty" id="sc-jobs-empty" hidden>{{t "No jobs match these filters."}}</p>
         <button type="button" class="sc-jobs-load-more-btn is-hidden">Load More</button>
 
         <div class="sc-jobs-load-more-wrap">
@@ -68,3 +83,156 @@
         </div>
     </div>
 </section>
+
+<style>
+  /* Sort dropdown popover */
+  .sc-jobs-sort-wrap { position: relative; }
+  .sc-jobs-sort { cursor: pointer; }
+  .sc-jobs-sort-menu {
+    position: absolute; top: calc(100% + 6px); right: 0;
+    min-width: 200px;
+    background: var(--sc-card-bg, #fff);
+    border: 1px solid var(--sc-border, #2a2a2a);
+    border-radius: 8px; padding: 4px;
+    list-style: none; margin: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+  }
+  .sc-jobs-sort-menu[hidden] { display: none !important; }
+  .sc-jobs-sort-menu li {
+    padding: 10px 12px; border-radius: 6px; cursor: pointer;
+    font-size: 14px; color: var(--sc-text-main, inherit);
+    transition: background 0.12s ease;
+  }
+  .sc-jobs-sort-menu li:hover { background: var(--sc-input-bg, rgba(255,255,255,0.05)); }
+  .sc-jobs-sort-menu li.is-active {
+    background: var(--sc-accent-soft, rgba(241,143,32,0.15));
+    color: var(--sc-accent, #f18f20); font-weight: 500;
+  }
+  [data-color-scheme="dark"] .sc-jobs-sort-menu li.is-active {
+    background: rgba(241, 143, 32, 0.15);
+  }
+
+  /* Empty state */
+  .sc-jobs-empty {
+    grid-column: 1 / -1;
+    text-align: center; padding: 32px 16px;
+    color: var(--sc-text-muted, #999); font-size: 15px;
+  }
+  .sc-jobs-empty[hidden] { display: none !important; }
+
+  /* Cards being hidden via filter — keep grid clean */
+  .sc-job-card-wrap[data-hidden="1"] { display: none !important; }
+</style>
+
+<script>
+  (function () {
+    const grid = document.getElementById('sc-jobs-grid');
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll('.sc-job-card-wrap'));
+    const chips = document.querySelectorAll('.sc-jobs-chip[data-job-chip]');
+    const searchInput = document.querySelector('.sc-jobs-search-input');
+    const sortBtn = document.getElementById('sc-jobs-sort-btn');
+    const sortMenu = document.getElementById('sc-jobs-sort-menu');
+    const sortLabel = sortBtn ? sortBtn.querySelector('.sc-jobs-sort-label') : null;
+    const emptyEl = document.getElementById('sc-jobs-empty');
+
+    const state = { chip: 'all', q: '', sort: 'newest' };
+
+    function applyFiltersAndSort() {
+      // 1. Filter
+      let visible = cards.filter((card) => {
+        const slugs = (card.dataset.jobSlugs || '').toLowerCase().split(/\s+/);
+        const chipOk = state.chip === 'all' || slugs.includes(state.chip);
+        if (!chipOk) return false;
+        if (!state.q) return true;
+        const haystack = [
+          card.dataset.jobTitle || '',
+          card.dataset.jobCompany || '',
+          (card.textContent || '')
+        ].join(' ').toLowerCase();
+        return haystack.includes(state.q);
+      });
+
+      // 2. Sort
+      visible.sort((a, b) => {
+        const dateA = parseInt(a.dataset.jobSort || '0', 10);
+        const dateB = parseInt(b.dataset.jobSort || '0', 10);
+        const salA  = parseInt(a.dataset.jobSalary || '0', 10);
+        const salB  = parseInt(b.dataset.jobSalary || '0', 10);
+        switch (state.sort) {
+          case 'oldest':      return dateA - dateB;
+          case 'salary-high': return salB - salA || dateB - dateA;
+          case 'salary-low':  return (salA || Infinity) - (salB || Infinity) || dateB - dateA;
+          case 'newest':
+          default:            return dateB - dateA;
+        }
+      });
+
+      // 3. Apply: hide all, re-append visible in new order
+      cards.forEach((c) => c.setAttribute('data-hidden', '1'));
+      visible.forEach((c) => {
+        c.removeAttribute('data-hidden');
+        grid.appendChild(c);
+      });
+
+      if (emptyEl) emptyEl.hidden = visible.length > 0;
+    }
+
+    // Chip clicks
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => {
+          c.classList.remove('is-active');
+          c.setAttribute('aria-selected', 'false');
+        });
+        chip.classList.add('is-active');
+        chip.setAttribute('aria-selected', 'true');
+        state.chip = chip.dataset.jobChip || 'all';
+        applyFiltersAndSort();
+      });
+    });
+
+    // Search input (live, debounced lightly)
+    if (searchInput) {
+      let t;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(t);
+        t = setTimeout(() => {
+          state.q = searchInput.value.trim().toLowerCase();
+          applyFiltersAndSort();
+        }, 120);
+      });
+    }
+
+    // Sort menu
+    if (sortBtn && sortMenu) {
+      sortBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = sortMenu.hidden;
+        sortMenu.hidden = !open;
+        sortBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      sortMenu.querySelectorAll('li[data-sort]').forEach((li) => {
+        li.addEventListener('click', () => {
+          sortMenu.querySelectorAll('li').forEach((x) => x.classList.remove('is-active'));
+          li.classList.add('is-active');
+          state.sort = li.dataset.sort;
+          if (sortLabel) sortLabel.textContent = li.textContent.trim();
+          sortMenu.hidden = true;
+          sortBtn.setAttribute('aria-expanded', 'false');
+          applyFiltersAndSort();
+        });
+      });
+      document.addEventListener('click', (e) => {
+        if (!sortBtn.contains(e.target) && !sortMenu.contains(e.target)) {
+          sortMenu.hidden = true;
+          sortBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Initial sort to ensure newest first
+    applyFiltersAndSort();
+  })();
+</script>

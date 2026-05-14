@@ -1,5 +1,5 @@
 {{!< default}}
-<link rel="stylesheet" href="{{asset "css/list-your-company-fix.css"}}" />
+<link rel="stylesheet" href="{{asset 'css/list-your-company-fix.css'}}" />
 
 <section class="sc-form-page">
   <div class="sc-form-container">
@@ -7,37 +7,11 @@
     <!-- Header -->
     <header class="sc-form-header">
       <div class="sc-header-icon-job">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
-          viewBox="0 0 22 22"
-          fill="none"
-        >
-          <path
-            d="M17.5 5H4.5C3.11929 5 2 6.11929 2 7.5V15.5C2 16.8807 3.11929 18 4.5 18H17.5C18.8807 18 20 16.8807 20 15.5V7.5C20 6.11929 18.8807 5 17.5 5Z"
-            stroke="#155DFC"
-            stroke-width="1.6"
-          />
-          <path
-            d="M7 5V4C7 3.46957 7.21071 2.96086 7.58579 2.58579C7.96086 2.21071 8.46957 2 9 2C9.53043 2 10.0391 2.21071 10.4142 2.58579C10.7893 2.96086 11 3.46957 11 4V5"
-            stroke="#155DFC"
-            stroke-width="1.5"
-            stroke-linecap="round"
-          />
-          <path
-            d="M6 11H11M6 14H9.5"
-            stroke="#155DFC"
-            stroke-width="1.5"
-            stroke-linecap="round"
-          />
-          <path
-            d="M15 11L17 13L15 15"
-            stroke="#155DFC"
-            stroke-width="1.4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M17.5 5H4.5C3.11929 5 2 6.11929 2 7.5V15.5C2 16.8807 3.11929 18 4.5 18H17.5C18.8807 18 20 16.8807 20 15.5V7.5C20 6.11929 18.8807 5 17.5 5Z" stroke="#155DFC" stroke-width="1.6"/>
+          <path d="M7 5V4C7 3.46957 7.21071 2.96086 7.58579 2.58579C7.96086 2.21071 8.46957 2 9 2C9.53043 2 10.0391 2.21071 10.4142 2.58579C10.7893 2.96086 11 3.46957 11 4V5" stroke="#155DFC" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M6 11H11M6 14H9.5" stroke="#155DFC" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M15 11L17 13L15 15" stroke="#155DFC" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="sc-header-text">
@@ -46,85 +20,398 @@
       </div>
     </header>
 
-    <form action="#" class="sc-main-form">
+    <form id="sc-job-form" class="sc-main-form" novalidate>
 
-      <!-- Section: Company Info -->
       <div class="sc-form-section">
         <h2 class="sc-section-title">Job Details</h2>
         <div class="border"></div>
+
         <div class="sc-form-row">
           <div class="sc-input-group">
-            <label>Job Title<span class="required">*</span></label>
-            <input type="text" placeholder="e.g. Paradex Exchange" />
+            <label for="sc-job-title">Job Title<span class="required">*</span></label>
+            <input id="sc-job-title" name="jobTitle" type="text" placeholder="e.g. Senior Solidity Engineer"/>
           </div>
           <div class="sc-input-group">
-            <label>Company<span class="required">*</span></label>
-            <input type="url" placeholder="https://yoursite.com" />
+            <label for="sc-job-company">Company<span class="required">*</span></label>
+            <input id="sc-job-company" name="company" type="text" placeholder="e.g. Paradex Exchange"/>
           </div>
         </div>
 
         <div class="sc-form-row three-col">
           <div class="sc-input-group">
-            <label>Job Type<span class="required">*</span></label>
-            <input type="text" placeholder="" />
+            <label for="sc-job-type">Job Type<span class="required">*</span></label>
+            <select id="sc-job-type" name="jobType" class="sc-job-form-select" required>
+              <option value="" disabled selected>Select type…</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Contract">Contract</option>
+              <option value="Internship">Internship</option>
+              <option value="Freelance">Freelance</option>
+            </select>
           </div>
           <div class="sc-input-group">
-            <label>Location</label>
-            <input type="text" placeholder="" />
+            <label for="sc-job-location">Location</label>
+            <select id="sc-job-location" name="location" class="sc-job-form-select">
+              <option value="" disabled selected>Select location…</option>
+              <option value="Remote">Remote</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="On-site">On-site</option>
+            </select>
           </div>
           <div class="sc-input-group">
-            <label>Salary Range</label>
-            <input type="text" placeholder="$80K – $150K" />
+            <label for="sc-job-salary">Salary Range</label>
+            <select id="sc-job-salary" name="salaryRange" class="sc-job-form-select">
+              <option value="" disabled selected>Select range…</option>
+              <option value="$40K - $60K">$40K – $60K</option>
+              <option value="$60K - $90K">$60K – $90K</option>
+              <option value="$90K - $120K">$90K – $120K</option>
+              <option value="$90K - $180K">$90K – $180K</option>
+              <option value="$120K+">$120K+</option>
+              <option value="Negotiable">Negotiable</option>
+            </select>
           </div>
         </div>
 
         <div class="sc-input-group full-width">
-          <label>Job Description<span class="required">*</span></label>
-          <textarea
-            maxlength="160"
-            placeholder="Describe the role, responsibilities, and what makes it exciting…"
-          ></textarea>
-          <div
-            class="sc-input-footer"
-            style="display:flex;justify-content:space-between;align-items:center;width:100%;"
-          >
-            <span>Markdown supported</span>
-            <span class="char-count">0 / 160</span>
-          </div>
+          <label for="sc-job-category">Category<span class="required">*</span></label>
+          <select id="sc-job-category" name="category" class="sc-job-form-select" required>
+            <option value="" disabled selected>Select category…</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Product">Product</option>
+            <option value="Design">Design</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Business Development">Business Development</option>
+            <option value="Operations">Operations</option>
+            <option value="Community">Community</option>
+            <option value="Research">Research</option>
+            <option value="Trading">Trading</option>
+            <option value="Compliance">Compliance</option>
+            <option value="Customer Support">Customer Support</option>
+          </select>
         </div>
-      </div>
 
-      <!-- Section: Tags -->
-  <div class="outer_padding">
-
-      <div class="sc-form-row">
         <div class="sc-input-group full-width">
-          <label>Keywords</label>
-          <div class="sc-tag-container">
-            <span class="sc-tag-jobs">DeFi</span>
-            <span class="sc-tag-jobs">Web3</span>
-            <span class="sc-tag-jobs">Layer-2</span>
-            <input type="text" placeholder="Add tag..." />
+          <label for="sc-job-desc">Job Description<span class="required">*</span></label>
+          <textarea id="sc-job-desc" name="description" maxlength="2000" placeholder="Describe the role, responsibilities, and what makes it exciting…" data-counter-for="sc-job-desc-count"></textarea>
+          <div class="sc-input-footer" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+            <span>Markdown supported · paragraphs are preserved</span>
+            <span class="char-count"><span id="sc-job-desc-count">0</span> / 2000</span>
           </div>
         </div>
-        <div class="sc-input-group">
-          <label>Apply Link / Email<span class="required">*</span></label>
-          <input class="sc-input" type="text" placeholder="https://jobs.co/apply or email" />
+      </div>
+
+      <div class="outer_padding">
+        <div class="sc-form-row">
+          <div class="sc-input-group full-width">
+            <label for="sc-job-keyword-input">Keywords</label>
+            <div class="sc-tag-container" id="sc-job-tags-wrap">
+              <span class="sc-tag-jobs" data-tag="DeFi">DeFi <button type="button" class="sc-tag-x" aria-label="Remove DeFi">×</button></span>
+              <span class="sc-tag-jobs" data-tag="Web3">Web3 <button type="button" class="sc-tag-x" aria-label="Remove Web3">×</button></span>
+              <span class="sc-tag-jobs" data-tag="Layer-2">Layer-2 <button type="button" class="sc-tag-x" aria-label="Remove Layer-2">×</button></span>
+              <input type="text" id="sc-job-keyword-input" placeholder="Add tag, press Enter"/>
+            </div>
+          </div>
+          <div class="sc-input-group">
+            <label for="sc-job-apply">Apply Link / Email<span class="required">*</span></label>
+            <input id="sc-job-apply" name="applyLink" type="text" placeholder="https://jobs.co/apply or you@company.com"/>
+          </div>
         </div>
       </div>
-</div>
 
-      <!-- Footer Buttons -->
+      <!-- Section: Company Logo -->
+      <div class="sc-form-section">
+        <h2 class="sc-section-title">Company Logo (optional)</h2>
+        <div class="border"></div>
+        <div class="sc-upload-box" id="sc-job-upload-box">
+          <input type="file" id="sc-job-logo" name="companyLogo" accept="image/jpeg,image/png,image/webp" hidden/>
+          <label for="sc-job-logo" id="sc-job-upload-label">
+            <span class="sc-job-upload-icon" aria-hidden="true">💼</span>
+            <p>Upload company logo or <span class="orange-text">browse</span></p>
+            <span class="specs">JPG, PNG or WEBP · Max 5MB · Recommended 256×256px</span>
+          </label>
+          <div class="sc-job-upload-preview" id="sc-job-upload-preview" hidden>
+            <img id="sc-job-upload-img" alt="Logo preview" />
+            <div class="sc-job-upload-meta">
+              <span id="sc-job-upload-filename"></span>
+              <button type="button" class="sc-job-upload-remove" id="sc-job-upload-remove" aria-label="Remove logo">× Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inline status -->
+      <div id="sc-job-status" class="sc-pr-status" role="status" aria-live="polite" hidden></div>
+
       <footer class="sc-form-footer">
-        <p class="terms">Secure checkout via Stripe. Job goes live within 2h
-          after payment.
-        </p>
+        <p class="terms">Free listing during beta. Reviewed within 2 hours.</p>
         <div class="sc-btn-group">
-          <button type="button" class="btn-secondary">Save Draft</button>
-          <button type="submit" class="btn-primary">Submit for Review &rarr;</button>
+          <button type="button" class="btn-secondary" id="sc-job-draft">Save Draft</button>
+          <button type="submit" class="btn-primary" id="sc-job-submit">Submit for Review →</button>
         </div>
       </footer>
-
     </form>
   </div>
 </section>
+
+<style>
+  .sc-pr-status { margin: 12px 0; padding: 12px 16px; border-radius: 8px; font-size: 14px; }
+  .sc-pr-status.is-success { background: rgba(40, 167, 69, 0.15); color: #28a745; border: 1px solid rgba(40, 167, 69, 0.4); }
+  .sc-pr-status.is-error   { background: rgba(220, 53, 69, 0.15); color: #ef4a5d; border: 1px solid rgba(220, 53, 69, 0.4); }
+  .sc-pr-status.is-loading { background: rgba(241, 143, 32, 0.15); color: var(--sc-accent); border: 1px solid rgba(241, 143, 32, 0.35); }
+  #sc-job-submit[disabled], #sc-job-draft[disabled] { opacity: 0.6; cursor: not-allowed; }
+  .sc-main-form input.is-invalid,
+  .sc-main-form select.is-invalid,
+  .sc-main-form textarea.is-invalid { border-color: #ef4a5d !important; }
+
+  .sc-job-form-select {
+    width: 100%; padding: 12px 16px; border-radius: 8px;
+    border: 1px solid var(--sc-border);
+    background-color: var(--sc-input-bg);
+    color: var(--sc-text-main);
+    font-size: 15px; font-family: inherit;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+  .sc-job-form-select:hover { border-color: var(--sc-accent); }
+  .sc-job-form-select:focus { outline: 2px solid var(--sc-accent); outline-offset: 1px; }
+  .sc-job-form-select option {
+    background-color: var(--sc-card-bg);
+    color: var(--sc-text-main);
+  }
+  .sc-job-form-select option:disabled { color: var(--sc-text-muted); }
+
+  /* Tag chips */
+  .sc-tag-container {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    align-items: center; min-height: 46px;
+    padding: 6px 10px;
+  }
+  .sc-tag-jobs {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 4px 4px 10px;
+    background: var(--sc-tag-job-bg, var(--sc-accent-soft));
+    color: var(--sc-tag-job, var(--sc-accent));
+    border: 1px solid var(--sc-tag-job-border, rgba(21, 93, 252, 0.25));
+    border-radius: 999px; font-size: 13px; font-weight: 500;
+  }
+  .sc-tag-x {
+    background: transparent; border: 0; color: inherit;
+    width: 18px; height: 18px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 16px; line-height: 1; cursor: pointer; padding: 0;
+  }
+  .sc-tag-x:hover { background: rgba(21, 93, 252, 0.15); }
+  #sc-job-keyword-input {
+    flex: 1; min-width: 120px;
+    border: 0; background: transparent;
+    padding: 6px 4px; color: var(--sc-text-main);
+    font-size: 14px;
+  }
+  #sc-job-keyword-input:focus { outline: none; }
+
+  /* Logo upload */
+  .sc-upload-box { position: relative; }
+  .sc-upload-box.is-invalid { border-color: #ef4a5d; }
+  .sc-job-upload-preview:not([hidden]) {
+    margin-top: 12px; display: flex; align-items: center; gap: 14px;
+    padding: 10px;
+    border: 1px solid var(--sc-border);
+    border-radius: 10px;
+    background: var(--sc-input-bg);
+  }
+  .sc-job-upload-preview[hidden] { display: none !important; }
+  .sc-job-upload-preview img {
+    width: 80px; height: 80px; object-fit: cover; border-radius: 12px; display: block;
+    background: var(--sc-card-bg);
+  }
+  .sc-job-upload-meta { display: flex; flex-direction: column; gap: 6px; }
+  .sc-job-upload-meta span { font-size: 13px; color: var(--sc-text-main); word-break: break-all; }
+  .sc-job-upload-remove {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid var(--sc-border);
+    color: #ef4a5d;
+    padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 13px;
+  }
+  .sc-job-upload-remove:hover {
+    background: rgba(220, 53, 69, 0.1);
+    border-color: rgba(220, 53, 69, 0.4);
+  }
+</style>
+
+<script>
+  (function () {
+    const SUBMIT_ENDPOINT = window.SC_JOB_SUBMIT_ENDPOINT || 'http://localhost:3001/submit-job';
+
+    const form = document.getElementById('sc-job-form');
+    const status = document.getElementById('sc-job-status');
+    const submitBtn = document.getElementById('sc-job-submit');
+    const draftBtn = document.getElementById('sc-job-draft');
+
+    // Char counter
+    document.querySelectorAll('textarea[data-counter-for]').forEach((ta) => {
+      const counter = document.getElementById(ta.dataset.counterFor);
+      const update = () => { counter.textContent = ta.value.length; };
+      ta.addEventListener('input', update);
+      update();
+    });
+
+    // --- Keywords / tag chips ---
+    const tagsWrap = document.getElementById('sc-job-tags-wrap');
+    const tagInput = document.getElementById('sc-job-keyword-input');
+
+    function renderTagChip(value) {
+      const chip = document.createElement('span');
+      chip.className = 'sc-tag-jobs';
+      chip.dataset.tag = value;
+      chip.textContent = value + ' ';
+      const x = document.createElement('button');
+      x.type = 'button'; x.className = 'sc-tag-x';
+      x.setAttribute('aria-label', 'Remove ' + value);
+      x.textContent = '×';
+      x.addEventListener('click', () => chip.remove());
+      chip.appendChild(x);
+      tagsWrap.insertBefore(chip, tagInput);
+    }
+
+    // Wire existing chips' × buttons
+    tagsWrap.querySelectorAll('.sc-tag-jobs').forEach((chip) => {
+      const x = chip.querySelector('.sc-tag-x');
+      if (x) x.addEventListener('click', () => chip.remove());
+    });
+
+    tagInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        const v = tagInput.value.trim().replace(/,$/, '').trim();
+        if (v && !tagsWrap.querySelector(`.sc-tag-jobs[data-tag="${CSS.escape(v)}"]`)) {
+          renderTagChip(v);
+        }
+        tagInput.value = '';
+      } else if (e.key === 'Backspace' && !tagInput.value) {
+        const chips = tagsWrap.querySelectorAll('.sc-tag-jobs');
+        if (chips.length) chips[chips.length - 1].remove();
+      }
+    });
+
+    // --- Logo upload preview ---
+    const MAX_BYTES = 5 * 1024 * 1024;
+    const logoInput = document.getElementById('sc-job-logo');
+    const uploadLabel = document.getElementById('sc-job-upload-label');
+    const previewBox = document.getElementById('sc-job-upload-preview');
+    const previewImg = document.getElementById('sc-job-upload-img');
+    const previewName = document.getElementById('sc-job-upload-filename');
+    const removeBtn = document.getElementById('sc-job-upload-remove');
+
+    logoInput.addEventListener('change', () => {
+      const file = logoInput.files && logoInput.files[0];
+      if (!file) return;
+      if (file.size > MAX_BYTES) {
+        showStatus('error', 'Image is larger than 5 MB. Please pick a smaller file.');
+        logoInput.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        previewImg.src = ev.target.result;
+        previewName.textContent = file.name + ' · ' + Math.round(file.size / 1024) + ' KB';
+        previewBox.hidden = false;
+        uploadLabel.hidden = true;
+      };
+      reader.readAsDataURL(file);
+    });
+    removeBtn.addEventListener('click', () => {
+      logoInput.value = '';
+      previewBox.hidden = true;
+      uploadLabel.hidden = false;
+    });
+
+    function showStatus(kind, message) {
+      status.hidden = false;
+      status.className = 'sc-pr-status is-' + kind;
+      status.textContent = message;
+    }
+    function clearInvalid() {
+      form.querySelectorAll('.is-invalid').forEach((el) => el.classList.remove('is-invalid'));
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearInvalid();
+
+      // Collect keywords from chips
+      const keywords = Array.from(tagsWrap.querySelectorAll('.sc-tag-jobs')).map((c) => c.dataset.tag);
+
+      const data = {
+        jobTitle: form.jobTitle.value.trim(),
+        company: form.company.value.trim(),
+        jobType: form.jobType.value,
+        location: form.location.value,
+        salaryRange: form.salaryRange.value,
+        category: form.category.value,
+        description: form.description.value.trim(),
+        keywords,
+        applyLink: form.applyLink.value.trim(),
+      };
+
+      const required = ['jobTitle','company','jobType','category','description','applyLink'];
+      const missing = required.filter((k) => !data[k] || !String(data[k]).trim());
+      if (missing.length) {
+        missing.forEach((k) => {
+          const el = form.elements[k];
+          if (el) el.classList.add('is-invalid');
+        });
+        showStatus('error', 'Please fill all required fields (highlighted in red).');
+        return;
+      }
+
+      // Validate applyLink: either URL or email
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.applyLink);
+      let isUrl = false;
+      try { new URL(data.applyLink); isUrl = true; } catch {}
+      if (!isEmail && !isUrl) {
+        form.applyLink.classList.add('is-invalid');
+        showStatus('error', 'Apply link must be a valid URL or email.');
+        return;
+      }
+
+      // Build FormData so the optional logo file goes along
+      const fd = new FormData();
+      Object.entries(data).forEach(([k, v]) => {
+        if (k === 'keywords') fd.append('keywords', JSON.stringify(v));
+        else fd.append(k, v);
+      });
+      if (logoInput.files && logoInput.files[0]) {
+        fd.append('companyLogo', logoInput.files[0]);
+      }
+
+      submitBtn.disabled = true;
+      draftBtn.disabled = true;
+      showStatus('loading', 'Submitting…');
+
+      try {
+        const resp = await fetch(SUBMIT_ENDPOINT, { method: 'POST', body: fd });
+        const json = await resp.json().catch(() => ({}));
+        if (!resp.ok || !json.ok) throw new Error(json.error || ('Server returned ' + resp.status));
+        showStatus('success', 'Thanks! Your job listing was submitted as a ' + (json.status || 'draft') + ' and will be reviewed within 2 hours.');
+        form.reset();
+        // Reset chips to nothing (the user can re-add)
+        tagsWrap.querySelectorAll('.sc-tag-jobs').forEach((c) => c.remove());
+        previewBox.hidden = true;
+        uploadLabel.hidden = false;
+        document.querySelectorAll('textarea[data-counter-for]').forEach((ta) => {
+          document.getElementById(ta.dataset.counterFor).textContent = '0';
+        });
+      } catch (err) {
+        showStatus('error', err.message || 'Submission failed. Please try again.');
+      } finally {
+        submitBtn.disabled = false;
+        draftBtn.disabled = false;
+      }
+    });
+  })();
+</script>

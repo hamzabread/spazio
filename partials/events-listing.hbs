@@ -54,7 +54,9 @@
             {{#foreach posts}}
             <article class="sc-evl-card"
                 data-ev-sort="{{date published_at format='X'}}"
+                data-ev-title="{{title}}"
                 data-ev-cat-slugs="{{#foreach tags visibility="public"}}{{#match slug "event"}}{{else}}{{#match slug "events"}}{{else}}{{slug}} {{/match}}{{/match}}{{/foreach}}"
+                data-ev-cat-names="{{#foreach tags visibility="public"}}{{#match slug "event"}}{{else}}{{#match slug "events"}}{{else}}{{name}}|{{/match}}{{/match}}{{/foreach}}"
                 data-ev-date-slug="{{#foreach tags visibility="internal" limit="1"}}{{slug}}{{/foreach}}"
                 data-ev-date-name="{{#foreach tags visibility="internal" limit="1"}}{{name}}{{/foreach}}"
                 data-ev-loc-slug="{{#foreach tags visibility="internal" from="2" to="2"}}{{slug}}{{/foreach}}"
@@ -109,6 +111,125 @@
             <p class="sc-evl-empty">{{t "No events yet"}}</p>
             {{/if}}
         </div>
+        <p class="sc-evl-empty" id="sc-evl-empty-filtered" hidden>{{t "No events match these filters."}}</p>
         {{/get}}
     </div>
 </section>
+
+<style>
+  .sc-evl-card[data-hidden="1"] { display: none !important; }
+  .sc-evl-empty[hidden] { display: none !important; }
+</style>
+
+<script>
+  (function () {
+    const list = document.getElementById('sc-evl-list');
+    if (!list) return;
+    const cards = Array.from(list.querySelectorAll('.sc-evl-card'));
+    if (!cards.length) return;
+    const searchInput = document.getElementById('sc-ev-listing-search');
+    const catSel = document.getElementById('sc-ev-filter-cat');
+    const locSel = document.getElementById('sc-ev-filter-loc');
+    const dateSel = document.getElementById('sc-ev-filter-date');
+    const emptyEl = document.getElementById('sc-evl-empty-filtered');
+
+    const state = { q: '', cat: 'all', loc: 'all', date: 'all' };
+
+    // ---- Strip leading '#' from internal tag names for nicer display ----
+    const stripHash = (s) => (s || '').replace(/^#\s*/, '').trim();
+
+    // ---- Collect unique values from cards to populate dropdowns ----
+    const cats = new Map();   // slug → label
+    const locs = new Map();
+    const dates = new Map();  // slug → {label, sortKey}
+
+    cards.forEach((card) => {
+      const catSlugs = (card.dataset.evCatSlugs || '').split(/\s+/).filter(Boolean);
+      const catNames = (card.dataset.evCatNames || '').split('|').map((s) => s.trim()).filter(Boolean);
+      catSlugs.forEach((slug, i) => {
+        if (!cats.has(slug)) cats.set(slug, catNames[i] || slug);
+      });
+      const locSlug = (card.dataset.evLocSlug || '').trim();
+      const locName = stripHash(card.dataset.evLocName);
+      if (locSlug && locName) locs.set(locSlug, locName);
+      const dateSlug = (card.dataset.evDateSlug || '').trim();
+      const dateName = stripHash(card.dataset.evDateName);
+      if (dateSlug && dateName) {
+        dates.set(dateSlug, { label: dateName, sortKey: parseInt(card.dataset.evSort || '0', 10) });
+      }
+    });
+
+    function fillSelect(sel, entries, allLabel) {
+      if (!sel) return;
+      // Keep the first "all" option, drop the rest, then re-add
+      const first = sel.querySelector('option[value="all"]');
+      sel.innerHTML = '';
+      if (first) {
+        first.textContent = allLabel;
+        first.value = 'all';
+        sel.appendChild(first);
+      } else {
+        const opt = document.createElement('option');
+        opt.value = 'all'; opt.textContent = allLabel; sel.appendChild(opt);
+      }
+      entries.forEach(([value, label]) => {
+        const opt = document.createElement('option');
+        opt.value = value; opt.textContent = label;
+        sel.appendChild(opt);
+      });
+    }
+
+    // Sort categories and locations alphabetically; dates by their sortKey (newest first)
+    const sortedCats = Array.from(cats.entries()).sort((a, b) => a[1].localeCompare(b[1]));
+    const sortedLocs = Array.from(locs.entries()).sort((a, b) => a[1].localeCompare(b[1]));
+    const sortedDates = Array.from(dates.entries())
+      .sort((a, b) => b[1].sortKey - a[1].sortKey)
+      .map(([slug, v]) => [slug, v.label]);
+
+    fillSelect(catSel,  sortedCats,  catSel  && catSel.options[0]  ? catSel.options[0].textContent  : 'All categories');
+    fillSelect(locSel,  sortedLocs,  locSel  && locSel.options[0]  ? locSel.options[0].textContent  : 'All locations');
+    fillSelect(dateSel, sortedDates, dateSel && dateSel.options[0] ? dateSel.options[0].textContent : 'All dates');
+
+    // ---- Filter + update DOM ----
+    function applyFilters() {
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const slugs = (card.dataset.evCatSlugs || '').toLowerCase().split(/\s+/);
+        const locSlug = (card.dataset.evLocSlug || '').toLowerCase();
+        const dateSlug = (card.dataset.evDateSlug || '').toLowerCase();
+        const text = [
+          card.dataset.evTitle || '',
+          card.dataset.evCatNames || '',
+          stripHash(card.dataset.evLocName) || '',
+          stripHash(card.dataset.evDateName) || ''
+        ].join(' ').toLowerCase();
+
+        const catOk  = state.cat === 'all'  || slugs.includes(state.cat);
+        const locOk  = state.loc === 'all'  || locSlug === state.loc;
+        const dateOk = state.date === 'all' || dateSlug === state.date;
+        const qOk    = !state.q || text.includes(state.q);
+
+        const show = catOk && locOk && dateOk && qOk;
+        if (show) { card.removeAttribute('data-hidden'); visibleCount++; }
+        else      { card.setAttribute('data-hidden', '1'); }
+      });
+      if (emptyEl) emptyEl.hidden = visibleCount > 0;
+    }
+
+    if (searchInput) {
+      let t;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(t);
+        t = setTimeout(() => {
+          state.q = searchInput.value.trim().toLowerCase();
+          applyFilters();
+        }, 120);
+      });
+    }
+    if (catSel)  catSel.addEventListener('change',  () => { state.cat  = catSel.value;  applyFilters(); });
+    if (locSel)  locSel.addEventListener('change',  () => { state.loc  = locSel.value;  applyFilters(); });
+    if (dateSel) dateSel.addEventListener('change', () => { state.date = dateSel.value; applyFilters(); });
+
+    applyFilters();
+  })();
+</script>
