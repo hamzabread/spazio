@@ -41,14 +41,20 @@
                 {{else}}
                 <a class="gh-site-logo gh-site-logo-has-DM-logo"
                     href="{{@site.url}}" aria-label="{{@site.title}} {{t "logo and home page link"}}">
-                    {{#if @site.logo}}
-                    <img src="{{img_url @site.logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img" />
-                    <img src="{{asset "imagesAndIcons/dark-logo.svg"}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode" />
+                    {{!-- Light-mode logo (dark-colored artwork). Priority: @custom.light_mode_logo → bundled header-light.svg. --}}
+                    {{#if @custom.light_mode_logo}}
+                    <img src="{{img_url @custom.light_mode_logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img" />
                     {{else}}
-                    <span class="gh-site-title">
-                        <img class="gh-site-title-logo--dark" src="{{asset 'imagesAndIcons/dark-logo.svg'}}" alt="{{@site.title}}" />
-                        <img class="gh-site-title-logo--light" src="{{asset 'imagesAndIcons/header-light.svg'}}" alt="{{@site.title}}" />
-                    </span>
+                    <img src="{{asset "imagesAndIcons/header-light.svg"}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img" />
+                    {{/if}}
+
+                    {{!-- Dark-mode logo (light-colored artwork). Priority: @custom.dark_mode_logo → @site.logo → bundled dark-logo.svg. --}}
+                    {{#if @custom.dark_mode_logo}}
+                    <img src="{{img_url @custom.dark_mode_logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode" />
+                    {{else if @site.logo}}
+                    <img src="{{img_url @site.logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode" />
+                    {{else}}
+                    <img src="{{asset "imagesAndIcons/dark-logo.svg"}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode" />
                     {{/if}}
                 </a>
                 {{/match}}

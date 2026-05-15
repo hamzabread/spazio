@@ -41,14 +41,24 @@
                 {{else}}
                 <a class="gh-site-logo gh-site-logo-has-DM-logo"
                     href="{{@site.url}}" aria-label="{{@site.title}} {{t "logo and home page link"}}">
-                    {{#if @site.logo}}
-                    <img src="{{img_url @site.logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img" />
-                    <img src="{{asset "imagesAndIcons/dark-logo.svg"}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode" />
+                    {{!-- Light-mode logo (dark-colored artwork, visible on light backgrounds).
+                         Priority: @custom.light_mode_logo (admin upload) → bundled header-light.svg.
+                         We deliberately do NOT default to @site.logo here because @site.logo is
+                         typically uploaded as a light-on-dark artwork (invisible on light bg). --}}
+                    {{#if @custom.light_mode_logo}}
+                    <img src="{{img_url @custom.light_mode_logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img" />
                     {{else}}
-                    <span class="gh-site-title">
-                        <img class="gh-site-title-logo--dark" src="{{asset 'imagesAndIcons/dark-logo.svg'}}" alt="{{@site.title}}" />
-                        <img class="gh-site-title-logo--light" src="{{asset 'imagesAndIcons/header-light.svg'}}" alt="{{@site.title}}" />
-                    </span>
+                    <img src="{{asset "imagesAndIcons/header-light.svg"}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img" />
+                    {{/if}}
+
+                    {{!-- Dark-mode logo (light-colored artwork, visible on dark backgrounds).
+                         Priority: @custom.dark_mode_logo → @site.logo (Ghost-admin upload) → bundled dark-logo.svg. --}}
+                    {{#if @custom.dark_mode_logo}}
+                    <img src="{{img_url @custom.dark_mode_logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode" />
+                    {{else if @site.logo}}
+                    <img src="{{img_url @site.logo}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode" />
+                    {{else}}
+                    <img src="{{asset "imagesAndIcons/dark-logo.svg"}}" alt="{{@site.title}} {{t "icon"}}" class="gh-site-logo-img-dark-mode" />
                     {{/if}}
                 </a>
                 {{/match}}

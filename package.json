@@ -119,6 +119,9 @@
       "dark_mode_logo": {
         "type": "image"
       },
+      "light_mode_logo": {
+        "type": "image"
+      },
       "typography": {
         "type": "select",
         "options": [
