@@ -153,9 +153,28 @@
   display: block;
 }
 
+/* Transparent header (over a dark hero): the light-mode logo can't be seen on
+   the dark backdrop, so we swap to the dark-mode variant of the logo in BOTH
+   color schemes. Without this fallback, light-mode users on transparent-header
+   pages saw no logo at all (the light variant was hidden, the dark variant was
+   only revealed under data-color-scheme="dark"). */
 .gh-header.transparent
   .gh-site-logo-img:not(.gh-mobile-menu .gh-site-logo-img) {
   display: none;
+}
+
+.gh-header.transparent .gh-site-logo-has-DM-logo .gh-site-logo-img-dark-mode {
+  display: block;
+}
+
+/* Same swap for the fallback (no uploaded @site.logo) — show the white-text
+   title logo so it remains readable on the dark hero. */
+.gh-header.transparent .gh-site-title-logo--light {
+  display: none;
+}
+
+.gh-header.transparent .gh-site-title-logo--dark {
+  display: block;
 }
 
 /* Header Socials */
@@ -1346,10 +1365,19 @@
     height: 30px;
   }
 
-  .gh-burger-btn {
+  /* Burger is visible on every header layout below 990px, not just the
+     two header_type variants that opt-in to it. */
+  .gh-header .gh-burger-btn {
+    display: flex;
     order: 2;
     margin-right: 0;
     margin-left: 12px;
+  }
+
+  /* Desktop nav and POST A JOB / LIST YOUR COMPANY pills collapse behind the burger. */
+  .gh-header .gh-header-navigation-wrapper,
+  .gh-header.sc-header-jobs-layout .gh-header-jobs-subrow {
+    display: none;
   }
 
   .gh-header-actions {
@@ -1363,15 +1391,16 @@
 
   .gh-header.sc-header-jobs-layout .gh-header-brand-wrapper {
     flex: 0 1 auto;
-    width: auto;
+    width: 100%;
+    justify-content: space-between;
   }
 
   .gh-header.sc-header-jobs-layout > .gh-header-container:first-of-type {
     padding: 10px 16px !important;
-    flex-wrap: wrap;
   }
 
   .gh-header.sc-header-jobs-layout .gh-header-jobs-search-wrap {
+    display: none;
     order: 3;
     flex: 1 1 100%;
     max-width: none;

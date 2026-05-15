@@ -30,6 +30,7 @@ production stylesheet in assets/built/screen.css using: npm run dev
 @import "error404Page.css";
 @import "formPages.css";
 @import "searchPage.css";
+@import "tagPage.css";
 @import "accountPage.css";
 @import "media.css";
 @import "memberCard.css";

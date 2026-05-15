@@ -91,26 +91,40 @@
   .sc-jobs-sort-menu {
     position: absolute; top: calc(100% + 6px); right: 0;
     min-width: 200px;
-    background: var(--sc-card-bg, #fff);
-    border: 1px solid var(--sc-border, #2a2a2a);
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 8px; padding: 4px;
     list-style: none; margin: 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     z-index: 100;
   }
   .sc-jobs-sort-menu[hidden] { display: none !important; }
   .sc-jobs-sort-menu li {
     padding: 10px 12px; border-radius: 6px; cursor: pointer;
-    font-size: 14px; color: var(--sc-text-main, inherit);
-    transition: background 0.12s ease;
+    font-size: 14px; color: #495057;
+    transition: background 0.12s ease, color 0.12s ease;
   }
-  .sc-jobs-sort-menu li:hover { background: var(--sc-input-bg, rgba(255,255,255,0.05)); }
+  .sc-jobs-sort-menu li:hover { background: rgba(0, 0, 0, 0.04); color: #022538; }
   .sc-jobs-sort-menu li.is-active {
-    background: var(--sc-accent-soft, rgba(241,143,32,0.15));
-    color: var(--sc-accent, #f18f20); font-weight: 500;
+    background: rgba(241, 143, 32, 0.12);
+    color: #F18F20; font-weight: 500;
   }
-  [data-color-scheme="dark"] .sc-jobs-sort-menu li.is-active {
+  /* Dark mode overrides */
+  :root[data-color-scheme="dark"] .sc-jobs-sort-menu {
+    background: #101010;
+    border-color: #1B1B1B;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  :root[data-color-scheme="dark"] .sc-jobs-sort-menu li {
+    color: #9FB0C2;
+  }
+  :root[data-color-scheme="dark"] .sc-jobs-sort-menu li:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #EBEFF2;
+  }
+  :root[data-color-scheme="dark"] .sc-jobs-sort-menu li.is-active {
     background: rgba(241, 143, 32, 0.15);
+    color: #F18F20;
   }
 
   /* Empty state */
